@@ -79,7 +79,7 @@
 						<li>Links</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -207,125 +207,6 @@
 </nav>
 
       <div class="body-wrap">
-  
-    <article id="post-learn-python-the-hard-way-exercise13" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/11/22/learn-python-the-hard-way-exercise13/" class="article-date">
-  	<time datetime="2014-11-22T05:14:27.000Z" itemprop="datePublished">2014-11-22</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/11/22/learn-python-the-hard-way-exercise13/">笨办法学Python--exercise13.参数, 解包, 变量</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在这节练习中，我们将学到另外一种将变量传递给脚本的方法(脚本就是你写的 <code>.py</code> 程序)。你已经知道，如果要运行 <code>ex13.py</code>，只要在命令行运行 <code>python ex13.py</code> 就可以了。这句命令中的 <code>ex13.py</code> 部分就是所谓的“参数(argument)”，我们现在要做的就是写一个可以接收参数的脚本。</p>
-<p>将下面的程序写下来，后面你会看到详细的解释：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sys <span class="keyword">import</span> argv</span><br><span class="line"></span><br><span class="line">script, first, second, third = argv</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">"The script is called:"</span>, script</span><br><span class="line"><span class="keyword">print</span> <span class="string">"Your first variable is:"</span>, first</span><br><span class="line"><span class="keyword">print</span> <span class="string">"Your second variable is:"</span>, second</span><br><span class="line"><span class="keyword">print</span> <span class="string">"Your third variable is:"</span>, third</span><br></pre></td></tr></table></figure></p>
-<p>第一行代码中，我们用到一个<code>import</code>语句，这是将Python的功能模块加入你自己脚本的方法。Python 不会一下子将它所有的功能提供给你，而是让你需要什么就调用什么。这样可以让你的程序更加精简，而后面的程序员看到你的代码的时候，这些“import”语句可以作为提示，让他们明白你的代码用到了哪些功能。</p>
-<p><code>argv</code>就是所谓的“参数变量(argument variable)”，它是一个非常标准的编程术语。在其他的编程语言里你也可以看到它。这个变量包含了你传递给 Python 的参数。通过后面的练习你将对它有更多的了解。</p>
-<p>代码的第3行将 <code>argv</code>进行“解包(unpack)”，与其将所有参数放到同一个变量下面，我们将每个参数赋予一个变量名： script, first, second, 以及 third。这也许看上去有些奇怪,不过”解包”可能是最好的描述方式了。它的含义很简单：“把 argv 中的东西解包，将所有的参数依次赋予左边的变量名”。</p>
-<p>接下来，就是正常的打印输出了。</p>
-<h2 id="等一下-功能还有另外一个名字"><a href="#等一下-功能还有另外一个名字" class="headerlink" title="等一下! 功能还有另外一个名字"></a>等一下! 功能还有另外一个名字</h2><p>前面我们使用<code>import</code>让你的程序实现更多的功能，把<code>import</code>称为“功能”。我希望你可以在没接触到正式术语的时候就弄懂它的功能。在继续下去之前, 你需要知道它们的真正名称：模块(modules)。</p>
-<p>从现在开始我们将把这些我们导入(import)进来的功能称作模块。你将看到类似这样的说法：“你需要把sys模块import进来。”也有人将它们称作“库(libraries)”，不过我们还是叫它们模块吧。</p>
-<h2 id="你看到的结果"><a href="#你看到的结果" class="headerlink" title="你看到的结果"></a>你看到的结果</h2><p>像下面的示例一样将你的脚本运行起来（你必须在命令行里传递3个参数）：</p>
-<pre><code>$ python ex13.py first 2nd 3rd
-The script is called: ex13.py
-Your first variable is: first
-Your second variable is: 2nd
-Your third variable is: 3rd
-</code></pre><p>如果你每次输入的参数不一样，那你看到的输出结果也会略有不同：</p>
-<pre><code>$ python ex13.py stuff things that
-The script is called: ex13.py
-Your first variable is: stuff
-Your second variable is: things
-Your third variable is: that
-$
-$ python ex13.py apple orange grapefruit
-The script is called: ex13.py
-Your first variable is: apple
-Your second variable is: orange
-Your third variable is: grapefruit
-</code></pre><p>你可以将<code>first</code>, <code>2nd</code>, 和 <code>3rd</code> 替换成任意你喜欢的3个参数</p>
-<p>如果你没有运行对，你可能会看到的错误信息：</p>
-<pre><code>$ python ex13.py first 2nd
-Traceback (most recent call last):
-  File &quot;ex13.py&quot;, line 3, in &lt;module&gt;
-    script, first, second, third = argv
-ValueError: need more than 3 values to unpack
-</code></pre><h2 id="附加题"><a href="#附加题" class="headerlink" title="附加题"></a>附加题</h2><blockquote>
-<ol>
-<li>给你的脚本三个以下的参数。看看会得到什么错误信息。试着解释一下。</li>
-<li>再写两个脚本，其中一个接受更少的参数，另一个接受更多的参数，在参数解包时给它们取一些有意义的变量名。</li>
-<li>将 <code>raw_input</code> 和 <code>argv</code> 一起使用，让你的脚本从用户手上得到更多的输入。</li>
-<li>记住“模块(modules)”为你提供额外功能。多读几遍把这个词记住，因为我们后面还会用到它。</li>
-</ol>
-</blockquote>
-<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="Q-当我运行脚本的时候，有个报错-need-more-than-1-value-to-unpack"><a href="#Q-当我运行脚本的时候，有个报错-need-more-than-1-value-to-unpack" class="headerlink" title="Q:当我运行脚本的时候，有个报错: need more than 1 value to unpack."></a>Q:当我运行脚本的时候，有个报错: <code>need more than 1 value to unpack</code>.</h3><blockquote>
-<p>一定记住，关注细节是学习编程的三要素之一。如果你仔细看了我是如何在命令行运行脚本的，你也能把你的脚本正确的运行起来。</p>
-</blockquote>
-<h3 id="Q-argv-和-raw-input-有什么区别"><a href="#Q-argv-和-raw-input-有什么区别" class="headerlink" title="Q:argv 和 raw_input()有什么区别?"></a>Q:<code>argv</code> 和 <code>raw_input()</code>有什么区别?</h3><blockquote>
-<p>它们的不同之处在于要求用户输入的位置不同。如果你想让用户在命令行输入你的参数，你应该使用<code>argv</code>.，如果你希望用户在脚本执行的过程中输入参数，那就就要用到<code>raw_input()</code>。</p>
-</blockquote>
-<h3 id="Q-命令行输入的参数是字符串吗"><a href="#Q-命令行输入的参数是字符串吗" class="headerlink" title="Q:命令行输入的参数是字符串吗?"></a>Q:命令行输入的参数是字符串吗?</h3><blockquote>
-<p>是的，如果你需要输入数字，可以使用<code>int()</code>把他们转化成整数，可以参考 <code>int(raw_input())</code>.</p>
-</blockquote>
-<h3 id="Q-如何使用命令行"><a href="#Q-如何使用命令行" class="headerlink" title="Q:如何使用命令行?"></a>Q:如何使用命令行?</h3><blockquote>
-<p>通过这节练习，你其实已经快速的学会如何使用命令行了，如果在此阶段你想深入学习的话，你可以阅读这本书的附录A–命令行速成教程。</p>
-</blockquote>
-<h3 id="Q-我不知道怎样把argv-和-raw-input-结合起来使用"><a href="#Q-我不知道怎样把argv-和-raw-input-结合起来使用" class="headerlink" title="Q: 我不知道怎样把argv 和 raw_input()结合起来使用."></a>Q: 我不知道怎样把<code>argv</code> 和 <code>raw_input()</code>结合起来使用.</h3><blockquote>
-<p>不要想太多. 用<code>raw_input()</code>修改脚本后面的两行代码，然后打印输出就行。然后试试用更多的方式来同时使用这两种方法修改脚本。</p>
-</blockquote>
-<h3 id="Q-为什么我不能这么写raw-input-39-39-x"><a href="#Q-为什么我不能这么写raw-input-39-39-x" class="headerlink" title="Q:为什么我不能这么写raw_input(&#39;? &#39;) = x?"></a>Q:为什么我不能这么写<code>raw_input(&#39;? &#39;) = x</code>?</h3><blockquote>
-<p>因为这种写法正好是将它正常运行方法的逆序，按照我的写法修改，就能正常运行了。</p>
-</blockquote>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/Python/">Python</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
   
     <article id="post-learn-python-the-hard-way-exercise12" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -1217,6 +1098,113 @@ We need to put about 3 in each car.
 </blockquote>
 <h3 id="Q-为什么用4-0作为space-in-a-car的值"><a href="#Q-为什么用4-0作为space-in-a-car的值" class="headerlink" title="Q: 为什么用4.0作为space_in_a_car的值?"></a>Q: 为什么用<code>4.0</code>作为<code>space_in_a_car</code>的值?</h3><blockquote>
 <p>它的主要目的就是引出什么是浮点数。看看附加题部分。</p>
+</blockquote>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Python/">Python</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-learn-python-the-hard-way-exercise3" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/18/learn-python-the-hard-way-exercise3/" class="article-date">
+  	<time datetime="2014-11-18T14:55:54.000Z" itemprop="datePublished">2014-11-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/18/learn-python-the-hard-way-exercise3/">笨办法学Python--exercise3.数字和数学计算</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>每一种编程语言都包含处理数字和进行数学计算的方法。不必担心，程序员经常撒谎说他们是多么牛的数学天才，其实他们根本不是。如果他们真是数学天才，他们早就去从事数学相关的行业了，而不是写写广告程序和社交网络游戏。</p>
+<p>这节练习里有很多的数学运算符号。我们来看一遍它们都叫什么名字。你要一边写一边念出它们的名字来，直到你念烦了为止。名字如下：</p>
+<blockquote>
+<ul>
+<li>+ plus 加号 </li>
+<li>- minus 减号</li>
+<li>/ slash 斜杠 除法</li>
+<li>* asterisk 星号 乘法</li>
+<li>% percent 百分号 模除</li>
+<li>&lt; less-than 小于号</li>
+<li>> greater-than 大于号</li>
+<li>&lt;= less-than-equal 小于等于号</li>
+<li>>= greater-than-equal 大于等于号</li>
+</ul>
+</blockquote>
+<p>有没有注意到以上只是些符号，没有运算操作呢？写完下面的练习代码后，再回到上面的列表，写出每个符号的作用。例如<code>+</code>是用来做加法运算的。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span> <span class="string">"I will now count my chickens:"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">"Hens"</span>, <span class="number">25</span> + <span class="number">30</span> / <span class="number">6</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">"Roosters"</span>, <span class="number">100</span> - <span class="number">25</span> * <span class="number">3</span> % <span class="number">4</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">"Now I will count the eggs:"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="number">3</span> + <span class="number">2</span> + <span class="number">1</span> - <span class="number">5</span> + <span class="number">4</span> % <span class="number">2</span> - <span class="number">1</span> / <span class="number">4</span> + <span class="number">6</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">"Is it true that 3 + 2 &lt; 5 - 7?"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="number">3</span> + <span class="number">2</span> &lt; <span class="number">5</span> - <span class="number">7</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">"What is 3 + 2?"</span>, <span class="number">3</span> + <span class="number">2</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">"What is 5 - 7?"</span>, <span class="number">5</span> - <span class="number">7</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">"Oh, that's why it's False."</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">"How about some more."</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">"Is it greater?"</span>, <span class="number">5</span> &gt; <span class="number">-2</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">"Is it greater or equal?"</span>, <span class="number">5</span> &gt;= <span class="number">-2</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">"Is it less or equal?"</span>, <span class="number">5</span> &lt;= <span class="number">-2</span></span><br></pre></td></tr></table></figure>
+<h2 id="你看到的结果"><a href="#你看到的结果" class="headerlink" title="你看到的结果"></a>你看到的结果</h2><pre><code>$ python ex3.py
+I will now count my chickens:
+Hens 30
+Roosters 97
+Now I will count the eggs:
+7
+Is it true that 3 + 2 &lt; 5 - 7?
+False
+What is 3 + 2? 5
+What is 5 - 7? -2
+Oh, that&apos;s why it&apos;s False.
+How about some more.
+Is it greater? True
+Is it greater or equal? True
+Is it less or equal? False
+</code></pre><h2 id="附加题"><a href="#附加题" class="headerlink" title="附加题"></a>附加题</h2><blockquote>
+<p>1.使用<code>#</code>在代码每一行的前一行为自己写一个注释，说明这一行的作用。<br>2.记得<code>练习 0</code>的内容吧？用里边的方法把<code>Python</code>运行起来，然后使用刚才学到的运算符号，把Python当做计算器玩玩。<br>3.自己找个需要计算的东西，写一个 <code>.py</code> 文件把它计算出来。<br>4.有没有发现有些计算结果是”错”的呢？计算结果只有整数，没有小数部分。研究一下这是为什么，搜索一下“浮点数(floating point number)” 是什么东西。<br>5.使用浮点数重写一遍<code>ex3.py</code>，让它的计算结果更准确(提示: 20.0 是一个浮点数)。</p>
+</blockquote>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="Q-为什么-表示模除而不是“百分号”？"><a href="#Q-为什么-表示模除而不是“百分号”？" class="headerlink" title="Q: 为什么%表示模除而不是“百分号”？"></a>Q: 为什么<code>%</code>表示模除而不是“百分号”？</h3><blockquote>
+<p>这个问题的答案正好就是问什么大部分程序员选择用这个运算符。平时我们把它看做一个“百分号”。在编程计算中，通常把它和<code>/</code>一样当做除法的运算符。<code>%</code>是一个不同的运算，只是用<code>%</code>符号来表示。</p>
+</blockquote>
+<h3 id="Q-如何运算的？"><a href="#Q-如何运算的？" class="headerlink" title="Q: %如何运算的？"></a>Q: <code>%</code>如何运算的？</h3><blockquote>
+<p>另一种说法是, “X除以Y余J.” 比如, “100 除以16余数为4.” <code>%</code> 计算的结果就是这个余数。</p>
+</blockquote>
+<h3 id="Q-运算符的顺序是怎样的？"><a href="#Q-运算符的顺序是怎样的？" class="headerlink" title="Q: 运算符的顺序是怎样的？"></a>Q: 运算符的顺序是怎样的？</h3><blockquote>
+<p>在美国我们用一个括弧来指定加减乘除的顺序。Python中也同样遵循这个规律。</p>
+</blockquote>
+<h3 id="Q-是如何运算的？"><a href="#Q-是如何运算的？" class="headerlink" title="Q: /是如何运算的？"></a>Q: <code>/</code>是如何运算的？</h3><blockquote>
+<p>它只是舍去了小数点后面的部分，比较一下<code>7.0 / 4.0</code>和 <code>7 / 4</code>,你就会明白其中的不同了。</p>
 </blockquote>
 
       

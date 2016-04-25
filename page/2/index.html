@@ -79,7 +79,7 @@
 						<li>Links</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -207,162 +207,6 @@
 </nav>
 
       <div class="body-wrap">
-  
-    <article id="post-learn-python-the-hard-way-appendix-a-ex7" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/12/06/learn-python-the-hard-way-appendix-a-ex7/" class="article-date">
-  	<time datetime="2014-12-06T04:46:43.000Z" itemprop="datePublished">2014-12-06</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/06/learn-python-the-hard-way-appendix-a-ex7/">笨办法学Python--附录A-练习7：删除路径 (rmdir)</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这节练习中，你将学习如何删除一个空目录。</p>
-<h2 id="做到这些"><a href="#做到这些" class="headerlink" title="做到这些"></a>做到这些</h2><h3 id="Linux-OSX"><a href="#Linux-OSX" class="headerlink" title="Linux/OSX"></a>Linux/OSX</h3><pre><code>$ cd temp
-$ ls
-stuff
-$ cd stuff/things/frank/joe/alex/john/
-$ cd ..
-$ rmdir john
-$ cd ..
-$ rmdir alex
-$ cd ..
-$ ls
-joe
-$ rmdir joe
-$ cd ..
-$ ls
-frank
-$ rmdir frank
-$ cd ..
-$ ls
-things
-$ rmdir things
-$ cd ..
-$ ls
-stuff
-$ rmdir stuff
-$ pwd
-~/temp
-$
-</code></pre><blockquote>
-<p><strong>Warning:</strong><br>如果你在Mac OSX上尝试执行rmdir命令，即使你确认这个目录是空的，但是计算机仍拒绝删除该目录，那么实际上应该是有一个名为<code>.DS_Store</code>的文件。这种情况下，你可以输入 <code>rm -rf &lt;dir&gt;</code> 来执行删除操作(将 <code>&lt;dir&gt;</code> 替换为你要删除的目录名)。</p>
-</blockquote>
-<h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><pre><code>&gt; cd temp
-&gt; ls
-
-
-    Directory: C:\Users\zed\temp
-
-
-Mode                LastWriteTime     Length Name
-----                -------------     ------ ----
-d----        12/17/2011   9:03 AM            stuff
-
-
-&gt; cd stuff/things/frank/joe/alex/john/
-&gt; cd ..
-&gt; rmdir john
-&gt; cd ..
-&gt; rmdir alex
-&gt; cd ..
-&gt; rmdir joe
-&gt; cd ..
-&gt; rmdir frank
-&gt; cd ..
-&gt; ls
-
-
-    Directory: C:\Users\zed\temp\stuff
-
-
-Mode                LastWriteTime     Length Name
-----                -------------     ------ ----
-d----        12/17/2011   9:14 AM            things
-
-
-&gt; rmdir things
-&gt; cd ..
-&gt; ls
-
-
-    Directory: C:\Users\zed\temp
-
-
-Mode                LastWriteTime     Length Name
-----                -------------     ------ ----
-d----        12/17/2011   9:14 AM            stuff
-
-
-&gt; rmdir stuff
-&gt; pwd
-
-Path
-----
-C:\Users\zed\temp
-
-
-&gt; cd ..
-&gt;
-</code></pre><h2 id="你应该学到的"><a href="#你应该学到的" class="headerlink" title="你应该学到的"></a>你应该学到的</h2><p>现在我把这些命令混合起来了，所以你需要加倍注意，并确保你输入了正确的命令。每次你犯一个错误，都是因为你没有仔细看。如果你发现自己犯了不少错误，那么休息以下，或者退出练习一天。你总是需要明天再试一次的。</p>
-<p>这个例子中，你学习了如何删除一个目录。很简单，你只需要在该目录的上一级目录，输入<code>rmdir &lt;dir&gt;</code>, 把<code>&lt;dir&gt;</code> 替换成你要删除的目录名。</p>
-<h2 id="更多练习"><a href="#更多练习" class="headerlink" title="更多练习"></a>更多练习</h2><blockquote>
-<ul>
-<li>创建20个以上的目标，再把他们都删除。</li>
-<li>创建一个深度为10的单一路径的目录，然后每次删除其中的一个。</li>
-<li>如果你尝试删除一个不为空的目录，你会得到一个错误。在后面的练习中我会告诉你如何删除这样的目录。</li>
-</ul>
-</blockquote>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/Python/">Python</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
   
     <article id="post-learn-python-the-hard-way-appendix-a-ex6" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -1480,6 +1324,77 @@ PS C:\Users\zed&gt;
 <p>在你学习一种语言之后，不要成为一个以语言的方式做事情的奴隶。有时候，人们竟然使用语言做一些白痴的事情，仅仅是因为“我们一直是这么做的”。如果你喜欢你的风格并且你知道其他人都这样做，如果可以优化一些事情，那么打破这个规则。</p>
 <p>我真的很享受学习新的编程语言。我认为自己是一个“程序员的人类学家”，并且认为使用这些语言的程序员只洞察到这门语言很小的一部分。我正在学习一门大家都用来在电脑上互相交流的语言，我发现它非常迷人。再说一次，我是一个奇怪的人，学习编程语言只是因为我想学。</p>
 <p>享受它们！真的很有趣！</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Python/">Python</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-learn-python-the-hard-way-Advice_From_An_Old_Programmer" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/12/05/learn-python-the-hard-way-Advice_From_An_Old_Programmer/" class="article-date">
+  	<time datetime="2014-12-05T10:43:01.000Z" itemprop="datePublished">2014-12-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/05/learn-python-the-hard-way-Advice_From_An_Old_Programmer/">笨办法学Python--来自老程序员的建议</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>你已经完成了这本书而且打算继续编程。也许这会成为你的一门职业，也许你只是作为业余爱好玩玩。无论如何，你都需要一些建议以保证你在正确的道路上继续前行，并且让这项新的爱好为你带来最大程度的享受。</p>
+<p>我从事编程已经太长时间，长到对我来说编程已经是非常乏味的事情了。我写这本书的时候，已经懂得大约20种编程语言，而且可以在大约一天或者一个星期内学会一门编程语言(取决于这门语言有多古怪)。现在对我来说编程这件事情已经很无聊，已经谈不上什么兴趣了。当然这不是说编程本身是一件无聊的事情，也不是说你以后也一定会这样觉得，这只是我个人在当前的感觉而已。</p>
+<p>在这么久的旅程下来我的体会是：编程语言这东西并不重要，重要的是你用这些语言做的事情。事实上我一直知道这一点，不过以前我会周期性地被各种编程语言分神而忘记了这一点。现在我是永远不会忘记这一点了，你也不应该忘记这一点。</p>
+<p>你学到和用到的编程语言并不重要。不要被围绕某一种语言的信仰把你扯进去，这只会让你忘掉了语言的真正目的，也就是作为你的工具来实现有趣的事情。</p>
+<p>编程作为一项智力活动，是唯一一种能让你创建交互式艺术的艺术形式。你可以创建项目让别人使用，而且你可以间接地和使用者沟通。没有其他的艺术形式能做到如此程度的交互性。电影领着观众走向一个方向，绘画是不会动的。而代码却是双向互动的。</p>
+<p>编程作为一项职业只是一般般有趣而已。编程可能是一份好工作，但如果你想赚更多的钱而且过得更快乐，你其实开一间快餐店就可以了。你最好的选择是将你的编程技术作为你其他职业的秘密武器。</p>
+<p>技术公司里边会编程的人多到一毛钱一打，根本得不到什么尊敬。而在生物学、医药学、政府部门、社会学、物理学、数学等行业领域从事编程的人就能得到足够的尊敬，而且你可以使用这项技能在这些领域做出令人惊异的成就。</p>
+<p>当然，所有的这些建议都是没啥意义的。如果你跟着这本书学习写软件而且觉得很喜欢这件事情的话，那你完全可以将其当作一门职业去追求。你应该继续深入拓展这个近五十年来极少有人探索过的奇异而美妙的智力工作领域。若能从中得到乐趣当然就更好了。</p>
+<p>最后我要说的是学习创造软件的过程会改变你而让你与众不同。不是说更好或更坏，只是不同了。你也许会发现因为你会写软件而人们对你的态度有些怪异，也许会用“怪人”这样的词来形容你。也许你会发现因为你会戳穿他们的逻辑漏洞而他们开始讨厌和你争辩。甚至你可能会发现有人因为你懂得计算机怎么工作而觉得你是个讨厌的怪人。</p>
+<p>对于这些我只有一个建议: 让他们去死吧。这个世界需要更多的怪人，他们知道东西是怎么工作的而且喜欢找到答案。当他们那样对你时，只要记住这是你的旅程，不是他们的。“与众不同”不是谁的错，告诉你“与众不同是一种错”的人只是嫉妒你掌握了他们做梦都不能想到的技能而已。</p>
+<p>你会编程。他们不会。这真他妈的酷。</p>
 
       
     </div>

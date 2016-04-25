@@ -79,7 +79,7 @@
 						<li>Links</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -207,94 +207,6 @@
 </nav>
 
       <div class="body-wrap">
-  
-    <article id="post-UltimateAndroidCameraGuide1" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/03/19/UltimateAndroidCameraGuide1/" class="article-date">
-  	<time datetime="2014-03-18T16:42:34.000Z" itemprop="datePublished">2014-03-19</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/03/19/UltimateAndroidCameraGuide1/">Android相机开发指南（一）</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这是<a href="http://www.airpair.com/android/android-camera-development" target="_blank" rel="external">基于Android Studio及Fragment的相机开发</a>的第一章，如果你还没准备好，先去github上拉一下我的一个<a href="https://github.com/rexstjohn/UltimateAndroidCameraGuide" target="_blank" rel="external">示例工程</a>。本章主要包含“<a href="https://github.com/rexstjohn/UltimateAndroidCameraGuide/blob/master/camera/src/main/java/com/ultimate/camera/fragments/SimpleCameraIntentFragment.java" target="_blank" rel="external">SimpleCameraIntentFragment</a>.” </p>
-<p>在我们开始之前，我想花点时间讨论设备性能和重要的检查，这些都是我们应该发布一个使用相机的应用之前考虑的。</p>
-<p>记住，市场上有很多Android设备能够运行你的应用，因此重要的是要做一些检查,以确保设备能够执行您想要执行的操作。</p>
-<ul>
-<li>在程序的Menifest文件中申请权限</li>
-<li>可以使用PackageManager检查设备是否符合自己的要求</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-feature android:name=&quot;android.hardware.camera&quot; android:required=&quot;true&quot;/&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Context context = getActivity();</span><br><span class="line">PackageManager packageManager = context.getPackageManager();</span><br><span class="line"><span class="keyword">if</span>(packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA) == <span class="keyword">false</span>)&#123;</span><br><span class="line">    Toast.makeText(getActivity(), <span class="string">"This device does not have a camera."</span>, Toast.LENGTH_SHORT) .show(); </span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<p>###<strong>有一个摄像头？有多个摄像头？</strong><br>在一些Android设备您可能还需要考虑下前后摄像头。您可以使用包管理器检查相机功能，代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)</span><br></pre></td></tr></table></figure></p>
-<p>常用的检查：</p>
-<ul>
-<li><a href="http://developer.android.com/reference/android/content/pm/PackageManager.html#FEATURE_CAMERA_FRONT" target="_blank" rel="external">FEATURE_CAMERA_FRONT</a> (检查前置摄像头)</li>
-<li><a href="http://developer.android.com/reference/android/content/pm/PackageManager.html#FEATURE_CAMERA" target="_blank" rel="external">FEATURE_CAMERA</a> (检查后置摄像头)</li>
-<li><a href="http://developer.android.com/reference/android/content/pm/PackageManager.html#FEATURE_CAMERA_ANY" target="_blank" rel="external">FEATURE_CAMERA_ANY</a> (检查任意摄像头)</li>
-</ul>
-<p>###<strong>Fragments and Camera Intents</strong><br>打开实例程序，我们会看到<br><img src="http://airpair-blog.s3.amazonaws.com/wp-content/uploads/2014/03/camera_intent.png" alt="此处输入图片的描述"></p>
-<p>当你选择 “take photo”按钮，一个外部相机程序会被调起，结果会显示在主窗口，在一个小窗口会显示缩略图。<br>打开SimpleCameraIntentFragment.java 你会发现如下方法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line">    * Start the camera by dispatching a camera intent.</span><br><span class="line">    */</span></span><br><span class="line">   <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">dispatchTakePictureIntent</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="comment">// Check if there is a camera.</span></span><br><span class="line">       Context context = getActivity();</span><br><span class="line">       PackageManager packageManager = context.getPackageManager();</span><br><span class="line">       <span class="keyword">if</span> (packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA) == <span class="keyword">false</span>) &#123;</span><br><span class="line">           Toast.makeText(getActivity(), <span class="string">"This device does not have a camera."</span>, Toast.LENGTH_SHORT)</span><br><span class="line">                   .show();</span><br><span class="line">           <span class="keyword">return</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// Camera exists? Then proceed...</span></span><br><span class="line">       Intent takePictureIntent = <span class="keyword">new</span> Intent(MediaStore.ACTION_IMAGE_CAPTURE);</span><br><span class="line">       <span class="comment">// Ensure that there's a camera activity to handle the intent</span></span><br><span class="line">       CameraActivity activity = (CameraActivity) getActivity();</span><br><span class="line">       <span class="keyword">if</span> (takePictureIntent.resolveActivity(activity.getPackageManager()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">           <span class="comment">// Create the File where the photo should go.</span></span><br><span class="line">           <span class="comment">// If you don't do this, you may get a crash in some devices.</span></span><br><span class="line">           File photoFile = <span class="keyword">null</span>;</span><br><span class="line">           <span class="keyword">try</span> &#123;</span><br><span class="line">               photoFile = createImageFile();</span><br><span class="line">           &#125; <span class="keyword">catch</span> (IOException ex) &#123;</span><br><span class="line">               <span class="comment">// Error occurred while creating the File</span></span><br><span class="line">               Toast toast = Toast.makeText(activity, <span class="string">"There was a problem saving the photo..."</span>,</span><br><span class="line">                       Toast.LENGTH_SHORT);</span><br><span class="line">               toast.show();</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="comment">// Continue only if the File was successfully created</span></span><br><span class="line">           <span class="keyword">if</span> (photoFile != <span class="keyword">null</span>) &#123;</span><br><span class="line">               Uri fileUri = Uri.fromFile(photoFile);</span><br><span class="line">               activity.setCapturedImageURI(fileUri);</span><br><span class="line">               activity.setCurrentPhotoPath(fileUri.getPath());</span><br><span class="line">               takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, activity.getCapturedImageURI());</span><br><span class="line">               startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
-<p>我没有执行一个全面的相机硬件检查，只是执行了一个后置摄像头检查，如果设备之存在一个前置摄像头，那这个检查就会失败，</p>
-<p>接下来就是接收和保存图片了，基本代码都是这样子：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line">    * The activity returns with the photo.</span><br><span class="line">    * </span><br><span class="line">    * <span class="doctag">@param</span> requestCode</span><br><span class="line">    * <span class="doctag">@param</span> resultCode</span><br><span class="line">    * <span class="doctag">@param</span> data</span><br><span class="line">    */</span></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onActivityResult</span><span class="params">(<span class="keyword">int</span> requestCode, <span class="keyword">int</span> resultCode, Intent data)</span></span><br><span class="line">   </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (requestCode == REQUEST_TAKE_PHOTO &amp;&amp; resultCode == Activity.RESULT_OK) &#123;</span><br><span class="line">           addPhotoToGallery();</span><br><span class="line">           CameraActivity activity = (CameraActivity) getActivity();</span><br><span class="line">           <span class="comment">// Show the full sized image.</span></span><br><span class="line">           setFullImageFromFilePath(activity.getCurrentPhotoPath(), mImageView);</span><br><span class="line">           setFullImageFromFilePath(activity.getCurrentPhotoPath(), mThumbnailImageView);</span><br><span class="line">       &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">           Toast.makeText(getActivity(), <span class="string">"Image Capture Failed"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
-<p>###<strong>在Fragments中捕获Activity Results </strong><br>注意看如下代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Uri fileUri = Uri.fromFile(photoFile);</span><br><span class="line">activity.setCapturedImageURI(fileUri);</span><br><span class="line">activity.setCurrentPhotoPath(fileUri.getPath());</span><br></pre></td></tr></table></figure></p>
-<p>记住，由于我们在一个Fragment里使用了相机，有一些额外的步骤可以跳过，以保证所有功能都正常。</p>
-<p>在某些Android设备(例如,一些三星设备),您可能需要将从Intent传回的相机图像保存到一个文件中。当应用程序返回到前台时,该文件将不再是可用的,并由此可能会导致崩溃且没有异常抛出。</p>
-<p>为了防止这种事故,我已经创建了一个特别的Activity：“CameraActivity”自动保存和恢复你所需要保存和读取的相机文件和Uri数据，过程安全。</p>
-<p>###<strong>无崩溃情况下获取图片</strong><br>接下里看一看<a href="https://github.com/rexstjohn/UltimateAndroidCameraGuide/blob/master/camera/src/main/java/com/ultimate/camera/activities/CameraActivity.java" target="_blank" rel="external">CameraActivity</a>，我就不罗列所有的代码了，但是在这个Activity里你可以看到保存了相机文件和Uri数据，并在onResume里恢复数据。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Storage for camera image URI components</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> String CAPTURED_PHOTO_PATH_KEY = <span class="string">"mCurrentPhotoPath"</span>;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> String CAPTURED_PHOTO_URI_KEY = <span class="string">"mCapturedImageURI"</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Required for camera operations in order to save the image file on resume.</span></span><br><span class="line">  <span class="keyword">private</span> String mCurrentPhotoPath = <span class="keyword">null</span>;</span><br><span class="line">  <span class="keyword">private</span> Uri mCapturedImageURI = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSaveInstanceState</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (mCurrentPhotoPath != <span class="keyword">null</span>) &#123;</span><br><span class="line">          savedInstanceState.putString(CAPTURED_PHOTO_PATH_KEY, mCurrentPhotoPath);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (mCapturedImageURI != <span class="keyword">null</span>) &#123;</span><br><span class="line">          savedInstanceState.putString(CAPTURED_PHOTO_URI_KEY, mCapturedImageURI.toString());</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">super</span>.onSaveInstanceState(savedInstanceState);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onRestoreInstanceState</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (savedInstanceState.containsKey(CAPTURED_PHOTO_PATH_KEY)) &#123;</span><br><span class="line">          mCurrentPhotoPath = savedInstanceState.getString(CAPTURED_PHOTO_PATH_KEY);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (savedInstanceState.containsKey(CAPTURED_PHOTO_URI_KEY)) &#123;</span><br><span class="line">          mCapturedImageURI = Uri.parse(savedInstanceState.getString(CAPTURED_PHOTO_URI_KEY));</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">super</span>.onRestoreInstanceState(savedInstanceState);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
-<p>实际上我在这里做的是存储然后回调必要的路径信息，然后Android设备就得到了文件的引用并通过一个Intent去保存，没有这些代码，相机应用会在onResume时崩溃。</p>
-<p>这就是我所要说的安全的在Fragment里使用相机Intent。大家可以自由发挥写出自己的调用相机的代码。</p>
-<p><a href="http://www.airpair.com/android/taking-pictures-android-fragment-intents" target="_blank" rel="external">源地址</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/相机/">相机</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/译文/">译文</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
   
     <article id="post-android-transitions" class="article article-type-post" itemscope itemprop="blogPost">
   
