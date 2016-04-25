@@ -4,69 +4,18 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>笨办法学Python--附录A-练习7：删除路径 (rmdir) | flyouting and shirley</title>
+  <title>测试 | flyouting and shirley</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这节练习中，你将学习如何删除一个空目录。
-做到这些Linux/OSX$ cd temp
-$ ls
-stuff
-$ cd stuff/things/frank/joe/alex/john/
-$ cd ..
-$ rmdir john
-$ cd ..
-$ rmdir alex
-$ cd ..
-$ ls
-joe
-$ rmdir joe
-$ cd ..
-$ ls
-frank
-$ rmdir frank
-$">
+  <meta name="description">
 <meta property="og:type" content="article">
-<meta property="og:title" content="笨办法学Python--附录A-练习7：删除路径 (rmdir)">
-<meta property="og:url" content="http://coofee.me/2014/12/06/learn-python-the-hard-way-appendix-a-ex7/index.html">
+<meta property="og:title" content="测试">
+<meta property="og:url" content="http://coofee.me/2016/04/26/测试/index.html">
 <meta property="og:site_name" content="flyouting and shirley">
-<meta property="og:description" content="这节练习中，你将学习如何删除一个空目录。
-做到这些Linux/OSX$ cd temp
-$ ls
-stuff
-$ cd stuff/things/frank/joe/alex/john/
-$ cd ..
-$ rmdir john
-$ cd ..
-$ rmdir alex
-$ cd ..
-$ ls
-joe
-$ rmdir joe
-$ cd ..
-$ ls
-frank
-$ rmdir frank
-$">
-<meta property="og:updated_time" content="2014-12-10T15:00:14.000Z">
+<meta property="og:description">
+<meta property="og:updated_time" content="2016-04-25T16:27:09.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="笨办法学Python--附录A-练习7：删除路径 (rmdir)">
-<meta name="twitter:description" content="这节练习中，你将学习如何删除一个空目录。
-做到这些Linux/OSX$ cd temp
-$ ls
-stuff
-$ cd stuff/things/frank/joe/alex/john/
-$ cd ..
-$ rmdir john
-$ cd ..
-$ rmdir alex
-$ cd ..
-$ ls
-joe
-$ rmdir joe
-$ cd ..
-$ ls
-frank
-$ rmdir frank
-$">
+<meta name="twitter:title" content="测试">
+<meta name="twitter:description">
   
     <link rel="alternative" href="/atom.xml" title="flyouting and shirley" type="application/atom+xml">
   
@@ -258,11 +207,11 @@ $">
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-learn-python-the-hard-way-appendix-a-ex7" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-测试" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2014/12/06/learn-python-the-hard-way-appendix-a-ex7/" class="article-date">
-  	<time datetime="2014-12-06T04:46:43.000Z" itemprop="datePublished">2014-12-06</time>
+      <a href="/2016/04/26/测试/" class="article-date">
+  	<time datetime="2016-04-25T16:27:09.000Z" itemprop="datePublished">2016-04-26</time>
 </a>
     </div>
   
@@ -275,7 +224,7 @@ $">
         
   
     <h1 class="article-title" itemprop="name">
-      笨办法学Python--附录A-练习7：删除路径 (rmdir)
+      测试
     </h1>
   
 
@@ -283,15 +232,7 @@ $">
       
       <div class="article-info article-info-post">
         
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
-	</div>
-
         
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/Python/">Python</a>
-	</div>
-
 
         <div class="clearfix"></div>
       </div>
@@ -299,103 +240,7 @@ $">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这节练习中，你将学习如何删除一个空目录。</p>
-<h2 id="做到这些"><a href="#做到这些" class="headerlink" title="做到这些"></a>做到这些</h2><h3 id="Linux-OSX"><a href="#Linux-OSX" class="headerlink" title="Linux/OSX"></a>Linux/OSX</h3><pre><code>$ cd temp
-$ ls
-stuff
-$ cd stuff/things/frank/joe/alex/john/
-$ cd ..
-$ rmdir john
-$ cd ..
-$ rmdir alex
-$ cd ..
-$ ls
-joe
-$ rmdir joe
-$ cd ..
-$ ls
-frank
-$ rmdir frank
-$ cd ..
-$ ls
-things
-$ rmdir things
-$ cd ..
-$ ls
-stuff
-$ rmdir stuff
-$ pwd
-~/temp
-$
-</code></pre><blockquote>
-<p><strong>Warning:</strong><br>如果你在Mac OSX上尝试执行rmdir命令，即使你确认这个目录是空的，但是计算机仍拒绝删除该目录，那么实际上应该是有一个名为<code>.DS_Store</code>的文件。这种情况下，你可以输入 <code>rm -rf &lt;dir&gt;</code> 来执行删除操作(将 <code>&lt;dir&gt;</code> 替换为你要删除的目录名)。</p>
-</blockquote>
-<h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><pre><code>&gt; cd temp
-&gt; ls
-
-
-    Directory: C:\Users\zed\temp
-
-
-Mode                LastWriteTime     Length Name
-----                -------------     ------ ----
-d----        12/17/2011   9:03 AM            stuff
-
-
-&gt; cd stuff/things/frank/joe/alex/john/
-&gt; cd ..
-&gt; rmdir john
-&gt; cd ..
-&gt; rmdir alex
-&gt; cd ..
-&gt; rmdir joe
-&gt; cd ..
-&gt; rmdir frank
-&gt; cd ..
-&gt; ls
-
-
-    Directory: C:\Users\zed\temp\stuff
-
-
-Mode                LastWriteTime     Length Name
-----                -------------     ------ ----
-d----        12/17/2011   9:14 AM            things
-
-
-&gt; rmdir things
-&gt; cd ..
-&gt; ls
-
-
-    Directory: C:\Users\zed\temp
-
-
-Mode                LastWriteTime     Length Name
-----                -------------     ------ ----
-d----        12/17/2011   9:14 AM            stuff
-
-
-&gt; rmdir stuff
-&gt; pwd
-
-Path
-----
-C:\Users\zed\temp
-
-
-&gt; cd ..
-&gt;
-</code></pre><h2 id="你应该学到的"><a href="#你应该学到的" class="headerlink" title="你应该学到的"></a>你应该学到的</h2><p>现在我把这些命令混合起来了，所以你需要加倍注意，并确保你输入了正确的命令。每次你犯一个错误，都是因为你没有仔细看。如果你发现自己犯了不少错误，那么休息以下，或者退出练习一天。你总是需要明天再试一次的。</p>
-<p>这个例子中，你学习了如何删除一个目录。很简单，你只需要在该目录的上一级目录，输入<code>rmdir &lt;dir&gt;</code>, 把<code>&lt;dir&gt;</code> 替换成你要删除的目录名。</p>
-<h2 id="更多练习"><a href="#更多练习" class="headerlink" title="更多练习"></a>更多练习</h2><blockquote>
-<ul>
-<li>创建20个以上的目标，再把他们都删除。</li>
-<li>创建一个深度为10的单一路径的目录，然后每次删除其中的一个。</li>
-<li>如果你尝试删除一个不为空的目录，你会得到一个错误。在后面的练习中我会告诉你如何删除这样的目录。</li>
-</ul>
-</blockquote>
-
+        
       
     </div>
     
@@ -404,18 +249,9 @@ C:\Users\zed\temp
     
 <nav id="article-nav">
   
-    <a href="/2014/12/06/learn-python-the-hard-way-appendix-a-ex8/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          笨办法学Python--附录A-练习8：目录切换(pushd, popd)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2014/12/06/learn-python-the-hard-way-appendix-a-ex6/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">笨办法学Python--附录A-练习6：列出当前路径 (ls)</div>
+    <a href="/2014/12/06/learn-python-the-hard-way-appendix-a-next/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">笨办法学Python--附录A-下一步</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -450,7 +286,7 @@ C:\Users\zed\temp
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="learn-python-the-hard-way-appendix-a-ex7" data-title="笨办法学Python--附录A-练习7：删除路径 (rmdir)" data-url="http://coofee.me/2014/12/06/learn-python-the-hard-way-appendix-a-ex7/"></div>
+	<div class="ds-thread" data-thread-key="测试" data-title="测试" data-url="http://coofee.me/2016/04/26/测试/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
