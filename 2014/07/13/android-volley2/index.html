@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Volley源码学习笔记二 | flyouting and shirley</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="##Request这里看下网络请求类 Request。先看下类图：
+来看下Request类的重要属性：123456789101112131415161718192021222324public abstract class Request&amp;lt;T&amp;gt; implements Comparable&amp;lt;Request&amp;lt;T&amp;gt;&amp;gt; &amp;#123;       /** 请求方法  目前">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Volley源码学习笔记二">
+<meta property="og:url" content="http://coofee.me/2014/07/13/android-volley2/index.html">
+<meta property="og:site_name" content="flyouting and shirley">
+<meta property="og:description" content="##Request这里看下网络请求类 Request。先看下类图：
+来看下Request类的重要属性：123456789101112131415161718192021222324public abstract class Request&amp;lt;T&amp;gt; implements Comparable&amp;lt;Request&amp;lt;T&amp;gt;&amp;gt; &amp;#123;       /** 请求方法  目前">
+<meta property="og:image" content="https://raw.githubusercontent.com/flyouting/Blog_jepg/master/request.png">
+<meta property="og:updated_time" content="2014-11-05T14:41:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Volley源码学习笔记二">
+<meta name="twitter:description" content="##Request这里看下网络请求类 Request。先看下类图：
+来看下Request类的重要属性：123456789101112131415161718192021222324public abstract class Request&amp;lt;T&amp;gt; implements Comparable&amp;lt;Request&amp;lt;T&amp;gt;&amp;gt; &amp;#123;       /** 请求方法  目前">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/flyouting/Blog_jepg/master/request.png">
+  
+    <link rel="alternative" href="/atom.xml" title="flyouting and shirley" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">flyouting and shirley</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">记录一点一滴</p>
+		
+
+		<!--
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>Über</li>
+						
+					</ul>
+				</div>
+			</div>
+		-->
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">首页</a></li>
+				        
+							<li><a href="/archives">文章列表</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				<div class="switch-part switch-part2"><script>var n ='b-26003349-pe-f-801';var ch ='pc_6'; var w1 = 200;var h1 = 280;</script> <script src='http://static.luna.58.com/js/mad.js'></script></div>
+				
+				<!--
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/AndroidStudio/" style="font-size: 10px;">AndroidStudio</a> <a href="/tags/DB/" style="font-size: 12.5px;">DB</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/ImageSpan/" style="font-size: 10px;">ImageSpan</a> <a href="/tags/ORM/" style="font-size: 12.5px;">ORM</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/activeandroid/" style="font-size: 10px;">activeandroid</a> <a href="/tags/android/" style="font-size: 17.5px;">android</a> <a href="/tags/intent/" style="font-size: 10px;">intent</a> <a href="/tags/key/" style="font-size: 10px;">key</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/span/" style="font-size: 10px;">span</a> <a href="/tags/transitions/" style="font-size: 10px;">transitions</a> <a href="/tags/volley/" style="font-size: 15px;">volley</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/后台，多线程/" style="font-size: 10px;">后台，多线程</a> <a href="/tags/相机/" style="font-size: 15px;">相机</a> <a href="/tags/终端/" style="font-size: 10px;">终端</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+					</div>
+				</section>
+				-->
+				
+				<!--
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				-->
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">flyouting and shirley</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">flyouting and shirley</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">记录一点一滴</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">首页</a></li>
+		        
+					<li><a href="/archives">文章列表</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-android-volley2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/07/13/android-volley2/" class="article-date">
+  	<time datetime="2014-07-13T14:39:21.000Z" itemprop="datePublished">2014-07-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Volley源码学习笔记二
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/volley/">volley</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/笔记/">笔记</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##Request<br>这里看下网络请求类 <code>Request</code>。<br>先看下类图：<br><img src="https://raw.githubusercontent.com/flyouting/Blog_jepg/master/request.png" alt="此处输入图片的描述"></p>
+<p>来看下Request类的重要属性：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public abstract class Request&lt;T&gt; implements Comparable&lt;Request&lt;T&gt;&gt; &#123;</span><br><span class="line">   </span><br><span class="line">    /** 请求方法  目前支持 GET, POST, PUT, and DELETE. */</span><br><span class="line">    private final int mMethod;</span><br><span class="line"></span><br><span class="line">    /** 请求的api地址 */</span><br><span class="line">    private final String mUrl;</span><br><span class="line"></span><br><span class="line">    /** 发生错误的回调接口 */</span><br><span class="line">    private final Response.ErrorListener mErrorListener;</span><br><span class="line">    </span><br><span class="line">    /** 请求的序号，相同优先级的请求在请求队列中根据序号来进行排序，序号低的排在队列前面。*/</span><br><span class="line">    private Integer mSequence;</span><br><span class="line"></span><br><span class="line">    /** 该请求所在的请求队列 */</span><br><span class="line">    private RequestQueue mRequestQueue;</span><br><span class="line"></span><br><span class="line">    /** 此请求的网络返回是否需要保存在缓存 */</span><br><span class="line">    private boolean mShouldCache = true;</span><br><span class="line"></span><br><span class="line">    /** 是否能被取消 */</span><br><span class="line">    private boolean mCanceled = false;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后是主要方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">    * 返回请求体的字节数组表示。默认实现为返回null，所以如果是POST或PUT请求，子类需要重写这个方法。</span><br><span class="line">    *</span><br><span class="line">    * @throws AuthFailureError in the event of auth failure</span><br><span class="line">    */</span><br><span class="line">   public byte[] getBody() throws AuthFailureError &#123;</span><br><span class="line">       Map&lt;String, String&gt; params = getParams();</span><br><span class="line">       if (params != null &amp;&amp; params.size() &gt; 0) &#123;</span><br><span class="line">           return encodeParameters(params, getParamsEncoding());</span><br><span class="line">       &#125;</span><br><span class="line">       return null;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">     * 抽象方法，需要子类实现，用以解析网路返回的原始数据</span><br><span class="line">     * 并返回一个特定的响应类型即Response&lt;T&gt;中的T类</span><br><span class="line">     * 传回null将会再deliverResponse时不进行分发处理</span><br><span class="line">     */</span><br><span class="line">    abstract protected Response&lt;T&gt; parseNetworkResponse(NetworkResponse response);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">     * 用来将解析好的响应结果交付给监听器进行处理</span><br><span class="line">     * 传入的参数response需要保证为非空</span><br><span class="line">     * 解析失败的response将不会被分发处理</span><br><span class="line">     */</span><br><span class="line">    abstract protected void deliverResponse(T response);</span><br></pre></td></tr></table></figure>
+<p><code>Request</code>实现<code>Comparable</code>接口来对<code>Request</code>的优先级进行比较，从而决定<code>Request</code>在队列中的顺序。优先级越高，在请求队列中排得越前，相同优先级的序号越低，排得越前。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public int compareTo(Request&lt;T&gt; other) &#123;</span><br><span class="line">    Priority left = this.getPriority();</span><br><span class="line">    Priority right = other.getPriority();</span><br><span class="line"></span><br><span class="line">    // High-priority requests are &quot;lesser&quot; so they are sorted to the front.</span><br><span class="line">    // Equal priorities are sorted by sequence number to provide FIFO ordering.</span><br><span class="line">    return left == right ?</span><br><span class="line">            this.mSequence - other.mSequence :</span><br><span class="line">            right.ordinal() - left.ordinal();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>Requestv派生出三个子类</code>JsonRequest<code>、</code>ImageRequest<code>、</code>ClearCacheRequest`。</p>
+<p>##JsonRequest<br><code>JsonRequest&lt;T&gt;</code>也是一个抽象类，可以发送一个<code>Json</code>表示的请求体，并返回一个T类型的响应。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public JsonRequest(String url, String requestBody, Listener&lt;T&gt; listener,</span><br><span class="line">        ErrorListener errorListener) &#123;</span><br><span class="line">    this(Method.DEPRECATED_GET_OR_POST, url, requestBody, listener, errorListener);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>默认的方法是GET，除非<code>getPostBody()</code>和<code>getPostParams()</code>方法被重写，会默认<code>POST</code>方法。构造方法需要传入的参数API地址，请求体的<code>JSON</code>字符串<code>requestbody</code>，数据成功返回后的回调方法，网络错误的回调方法。</p>
+<p><code>JsonArrayRequest</code>、<code>JsonObjectRequest</code>继承自<code>JsonRequest</code>，分别表示返回一个<code>JsonArray</code>响应的请求与返回一个<code>JsonObject</code>响应的请求。</p>
+<p>##ImageRequest<br>根据一个URL来请求一个位图<code>Bitmap</code>，看构造函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public ImageRequest(String url, Response.Listener&lt;Bitmap&gt; listener, int maxWidth, int maxHeight,</span><br><span class="line">           Config decodeConfig, Response.ErrorListener errorListener) &#123;</span><br><span class="line">       super(Method.GET, url, errorListener);</span><br><span class="line">       setRetryPolicy(</span><br><span class="line">               new DefaultRetryPolicy(IMAGE_TIMEOUT_MS, IMAGE_MAX_RETRIES, IMAGE_BACKOFF_MULT));</span><br><span class="line">       mListener = listener;</span><br><span class="line">       mDecodeConfig = decodeConfig;</span><br><span class="line">       mMaxWidth = maxWidth;</span><br><span class="line">       mMaxHeight = maxHeight;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>mMaxWidth</code>： 解码位图的最大宽度，<code>mMaxHeight</code>：解码位图的最大高度，如果<code>mMaxWidth</code>，<code>mMaxHeight</code>都为0，则保持位图的原始尺寸，如果其中一个不为0，则按照原始位图的宽高比进行解码，如果都不为0，则将解码成最适合width * height区域并且保持原始位图宽高比的位图。另外还有个处理解码后的位图的监听器。</p>
+<p><code>ImageRequest</code>的优先级是最低的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">   public Priority getPriority() &#123;</span><br><span class="line">       return Priority.LOW;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<p>这里需要注意的是，回调是返回的一个<code>bitmap</code>对象。网络数据返回时是byte数组，然后编码成<code>bitmap</code>，并有对宽高进行处理的逻辑，最后将符合要求的<code>bitmap</code>返回。对于普通的图片可以这样做，但是对于特别的格式，比如gif文件，不能返回bitmap，否则就会只返回第一帧，对于有这样需求的地方，需要自己定义一个新的图片获取<code>request</code>类，可以讲byte数组封装成自己需要的类型返回。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"> private Response&lt;Bitmap&gt; doParse(NetworkResponse response) &#123;</span><br><span class="line">        byte[] data = response.data;</span><br><span class="line">        BitmapFactory.Options decodeOptions = new BitmapFactory.Options();</span><br><span class="line">        Bitmap bitmap = null;</span><br><span class="line">        if (mMaxWidth == 0 &amp;&amp; mMaxHeight == 0) &#123;</span><br><span class="line">            decodeOptions.inPreferredConfig = mDecodeConfig;</span><br><span class="line">            bitmap = BitmapFactory.decodeByteArray(data, 0, data.length, decodeOptions);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            // If we have to resize this image, first get the natural bounds.</span><br><span class="line">            decodeOptions.inJustDecodeBounds = true;</span><br><span class="line">            BitmapFactory.decodeByteArray(data, 0, data.length, decodeOptions);</span><br><span class="line">            int actualWidth = decodeOptions.outWidth;</span><br><span class="line">            int actualHeight = decodeOptions.outHeight;</span><br><span class="line"></span><br><span class="line">            // Then compute the dimensions we would ideally like to decode to.</span><br><span class="line">            int desiredWidth = getResizedDimension(mMaxWidth, mMaxHeight,</span><br><span class="line">                    actualWidth, actualHeight);</span><br><span class="line">            int desiredHeight = getResizedDimension(mMaxHeight, mMaxWidth,</span><br><span class="line">                    actualHeight, actualWidth);</span><br><span class="line"></span><br><span class="line">            // Decode to the nearest power of two scaling factor.</span><br><span class="line">            decodeOptions.inJustDecodeBounds = false;</span><br><span class="line">            // TODO(ficus): Do we need this or is it okay since API 8 doesn&apos;t support it?</span><br><span class="line">            // decodeOptions.inPreferQualityOverSpeed = PREFER_QUALITY_OVER_SPEED;</span><br><span class="line">            decodeOptions.inSampleSize =</span><br><span class="line">                findBestSampleSize(actualWidth, actualHeight, desiredWidth, desiredHeight);</span><br><span class="line">            Bitmap tempBitmap =</span><br><span class="line">                BitmapFactory.decodeByteArray(data, 0, data.length, decodeOptions);</span><br><span class="line"></span><br><span class="line">            // If necessary, scale down to the maximal acceptable size.</span><br><span class="line">            if (tempBitmap != null &amp;&amp; (tempBitmap.getWidth() &gt; desiredWidth ||</span><br><span class="line">                    tempBitmap.getHeight() &gt; desiredHeight)) &#123;</span><br><span class="line">                bitmap = Bitmap.createScaledBitmap(tempBitmap,</span><br><span class="line">                        desiredWidth, desiredHeight, true);</span><br><span class="line">                tempBitmap.recycle();</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                bitmap = tempBitmap;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (bitmap == null) &#123;</span><br><span class="line">            return Response.error(new ParseError(response));</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return Response.success(bitmap, HttpHeaderParser.parseCacheHeaders(response));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>##ClearCacheRequest<br>一个模拟的用来清理缓存的请求<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public ClearCacheRequest(Cache cache, Runnable callback) &#123;</span><br><span class="line">        super(Method.GET, null, null);</span><br><span class="line">        mCache = cache;</span><br><span class="line">        mCallback = callback;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>mCache</code>：需要清理的缓存，<code>mCallback</code>：缓存清理完后在主线程中被调用的回调接口。<code>parseNetworkResponse</code>与<code>deliverResponse</code>都是空实现，因为这是一个模拟的<code>Request</code>，没有实际的网络请求。</p>
+<p><code>ClearCacheRequest</code>的优先级是最高的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">   public Priority getPriority() &#123;</span><br><span class="line">       return Priority.IMMEDIATE;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<p>在平时用的时候，我们可以写一些<code>request</code>的使用基类，因为有时候我们需要在每个请求里添加固定的几项参数，或者<code>header</code>。在基类里复写<code>getHeaders()</code>，<code>getParams()</code>方法。</p>
+<p>##cache</p>
+<p>这里看看<code>request</code>的访问缓存机制。</p>
+<p><code>request</code>里用到的缓存对象是在<code>RequestQueue</code>的构造方法里传入的一个新创建的<code>DiskBasedCache</code>。</p>
+<p>在<code>volley</code>中定义了一个<code>Cache</code>接口，并在此接口中定义了再<code>cache</code>中包存对象的数据结构<code>Entry</code>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">public interface Cache &#123;</span><br><span class="line">   </span><br><span class="line">    public Entry get(String key);</span><br><span class="line">    public void put(String key, Entry entry);</span><br><span class="line">    public void initialize();</span><br><span class="line">    public void invalidate(String key, boolean fullExpire);</span><br><span class="line">    public void remove(String key);</span><br><span class="line">    public void clear();</span><br><span class="line"></span><br><span class="line">   </span><br><span class="line">    public static class Entry &#123;</span><br><span class="line">        /** The data returned from cache. */</span><br><span class="line">        public byte[] data;</span><br><span class="line">        /** Date of this response as reported by the server. */</span><br><span class="line">        public long serverDate;</span><br><span class="line">        /** TTL for this record. */</span><br><span class="line">        public long ttl;</span><br><span class="line">        /** Soft TTL for this record. */</span><br><span class="line">        public long softTtl;</span><br><span class="line">        /** Immutable response headers as received from server; must be non-null. */</span><br><span class="line">        public Map&lt;String, String&gt; responseHeaders = Collections.emptyMap();</span><br><span class="line">        /** True if the entry is expired. */</span><br><span class="line">        public boolean isExpired() &#123;</span><br><span class="line">            return this.ttl &lt; System.currentTimeMillis();</span><br><span class="line">        &#125;</span><br><span class="line">        /** True if a refresh is needed from the original data source. */</span><br><span class="line">        public boolean refreshNeeded() &#123;</span><br><span class="line">            return this.softTtl &lt; System.currentTimeMillis();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>由代码可以看到接口中定义了常用的获取，添加，删除，清空方法。<code>Entry</code>的数据结构包含了字节数组对象，服务器时间，数据在本地生成的时间，软生成时间，这两个时间用于判断是否过期以及是否需要刷新数据。</p>
+<p><code>DiskBasedCache</code>实现了Cache接口，重写了接口中的几个方法。先看一下添加进缓冲区对象：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">   public synchronized void put(String key, Entry entry) &#123;</span><br><span class="line">       pruneIfNeeded(entry.data.length);</span><br><span class="line">       File file = getFileForKey(key);</span><br><span class="line">       try &#123;</span><br><span class="line">           FileOutputStream fos = new FileOutputStream(file);</span><br><span class="line">           CacheHeader e = new CacheHeader(key, entry);</span><br><span class="line">           boolean success = e.writeHeader(fos);</span><br><span class="line">           if (!success) &#123;</span><br><span class="line">               fos.close();</span><br><span class="line">               VolleyLog.d(&quot;Failed to write header for %s&quot;, file.getAbsolutePath());</span><br><span class="line">               throw new IOException();</span><br><span class="line">           &#125;</span><br><span class="line">           fos.write(entry.data);</span><br><span class="line">           fos.close();</span><br><span class="line">           putEntry(key, e);</span><br><span class="line">           return;</span><br><span class="line">       &#125; catch (IOException e) &#123;</span><br><span class="line">       &#125;</span><br><span class="line">       boolean deleted = file.delete();</span><br><span class="line">       if (!deleted) &#123;</span><br><span class="line">           VolleyLog.d(&quot;Could not clean up file %s&quot;, file.getAbsolutePath());</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<p>首先是检查对象的大小，当缓冲区空间足够新对象的加入时就直接添加进来，否则会删除部分对象，一直到新对象添加进来后还会有10%的空间剩余时为止。文件引用以<code>LinkHashMap</code>保存，默认的<code>LRU</code>策略。添加时，首先以URL为key，经过个文本转换后，以转换后的文本为名称，获取一个<code>file</code>对象。首先向这个对象写入缓存的头文件，然后是真正有用的网络返回数据。最后是当前内存占有量数值的更新，这里需要注意的是真实数据被写入磁盘文件后，在内存中维护的应用，存的只是数据的相关属性。</p>
+<p>再看怎么从缓冲区获取数据：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">   public synchronized Entry get(String key) &#123;</span><br><span class="line">       CacheHeader entry = mEntries.get(key);</span><br><span class="line">       // if the entry does not exist, return.</span><br><span class="line">       if (entry == null) &#123;</span><br><span class="line">           return null;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       File file = getFileForKey(key);</span><br><span class="line">       CountingInputStream cis = null;</span><br><span class="line">       try &#123;</span><br><span class="line">           cis = new CountingInputStream(new FileInputStream(file));</span><br><span class="line">           CacheHeader.readHeader(cis); // eat header</span><br><span class="line">           byte[] data = streamToBytes(cis, (int) (file.length() - cis.bytesRead));</span><br><span class="line">           return entry.toCacheEntry(data);</span><br><span class="line">       &#125; catch (IOException e) &#123;</span><br><span class="line">           VolleyLog.d(&quot;%s: %s&quot;, file.getAbsolutePath(), e.toString());</span><br><span class="line">           remove(key);</span><br><span class="line">           return null;</span><br><span class="line">       &#125; finally &#123;</span><br><span class="line">           if (cis != null) &#123;</span><br><span class="line">               try &#123;</span><br><span class="line">                   cis.close();</span><br><span class="line">               &#125; catch (IOException ioe) &#123;</span><br><span class="line">                   return null;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<p>首先根据key从缓存中获取<code>CacheHeader</code>，这里包含了真实数据的各种属性，然后再拿到存有数据的磁盘文件，先从文件中把头文件过滤，然后读取剩下的真正的数据部分到<code>CacheHeader</code>对象中，这样，一个完整的<code>CacheHeader</code>对象得到了，可以返回了。</p>
+<p>由此可见，<code>Volley</code>中的第二层缓冲区即文件缓冲区对外不可见，是因为<code>RequestQueue</code>的构造方法直接生成了一个新的<code>DiskBasedCache</code>，如果开放出这个接口，可以传入自定义的<code>DiskCache</code>，只要实现<code>cache</code>接口，重写必要的方法就行，至于存储对象的数据结构，就看具体需求了。那些头文件中的数据属性信息其实也可以不存，直接把数据存成文件。比如在gif文件的支持中，我们需要在文件缓冲区中直接拿到gif的文件对象。这就需要在这一层次中添加接口了。</p>
+<p>参考资料：<br><a href="http://www.cnblogs.com/spec-dog/p/3821417.html" target="_blank" rel="external">http://www.cnblogs.com/spec-dog/p/3821417.html</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/07/14/android-volley3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Volley源码学习笔记三
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/07/12/android-volley1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Volley源码学习笔记一</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="android-volley2" data-title="Volley源码学习笔记二" data-url="http://coofee.me/2014/07/13/android-volley2/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"flyouting"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 flyouting and shirley
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

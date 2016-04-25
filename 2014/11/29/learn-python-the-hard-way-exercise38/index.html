@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>笨办法学Python--exercise38.列表操作 | flyouting and shirley</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="你已经学过了列表。在你学习“while循环”的时候，你对列表进行过“追加(append)”操作，而且将列表的内容打印了出来。另外你应该还在附加题里研究过 Python 文档，看了列表支持的其他操作。这已经是一段时间以前了，所以如果你不记得了的话，就回到本书的前面再复习一遍把。
+找到了吗？还记得吗？很好。那时候你对一个列表执行了append函数。不过，你也许还没有真正明白发生的事情，所以我们再来看看">
+<meta property="og:type" content="article">
+<meta property="og:title" content="笨办法学Python--exercise38.列表操作">
+<meta property="og:url" content="http://coofee.me/2014/11/29/learn-python-the-hard-way-exercise38/index.html">
+<meta property="og:site_name" content="flyouting and shirley">
+<meta property="og:description" content="你已经学过了列表。在你学习“while循环”的时候，你对列表进行过“追加(append)”操作，而且将列表的内容打印了出来。另外你应该还在附加题里研究过 Python 文档，看了列表支持的其他操作。这已经是一段时间以前了，所以如果你不记得了的话，就回到本书的前面再复习一遍把。
+找到了吗？还记得吗？很好。那时候你对一个列表执行了append函数。不过，你也许还没有真正明白发生的事情，所以我们再来看看">
+<meta property="og:updated_time" content="2014-12-07T15:02:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="笨办法学Python--exercise38.列表操作">
+<meta name="twitter:description" content="你已经学过了列表。在你学习“while循环”的时候，你对列表进行过“追加(append)”操作，而且将列表的内容打印了出来。另外你应该还在附加题里研究过 Python 文档，看了列表支持的其他操作。这已经是一段时间以前了，所以如果你不记得了的话，就回到本书的前面再复习一遍把。
+找到了吗？还记得吗？很好。那时候你对一个列表执行了append函数。不过，你也许还没有真正明白发生的事情，所以我们再来看看">
+  
+    <link rel="alternative" href="/atom.xml" title="flyouting and shirley" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">flyouting and shirley</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">记录一点一滴</p>
+		
+
+		<!--
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>Über</li>
+						
+					</ul>
+				</div>
+			</div>
+		-->
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">首页</a></li>
+				        
+							<li><a href="/archives">文章列表</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				<div class="switch-part switch-part2"><script>var n ='b-26003349-pe-f-801';var ch ='pc_6'; var w1 = 200;var h1 = 280;</script> <script src='http://static.luna.58.com/js/mad.js'></script></div>
+				
+				<!--
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/AndroidStudio/" style="font-size: 10px;">AndroidStudio</a> <a href="/tags/DB/" style="font-size: 12.5px;">DB</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/ImageSpan/" style="font-size: 10px;">ImageSpan</a> <a href="/tags/ORM/" style="font-size: 12.5px;">ORM</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/activeandroid/" style="font-size: 10px;">activeandroid</a> <a href="/tags/android/" style="font-size: 17.5px;">android</a> <a href="/tags/intent/" style="font-size: 10px;">intent</a> <a href="/tags/key/" style="font-size: 10px;">key</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/span/" style="font-size: 10px;">span</a> <a href="/tags/transitions/" style="font-size: 10px;">transitions</a> <a href="/tags/volley/" style="font-size: 15px;">volley</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/后台，多线程/" style="font-size: 10px;">后台，多线程</a> <a href="/tags/相机/" style="font-size: 15px;">相机</a> <a href="/tags/终端/" style="font-size: 10px;">终端</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+					</div>
+				</section>
+				-->
+				
+				<!--
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				-->
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">flyouting and shirley</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">flyouting and shirley</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">记录一点一滴</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">首页</a></li>
+		        
+					<li><a href="/archives">文章列表</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-learn-python-the-hard-way-exercise38" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/29/learn-python-the-hard-way-exercise38/" class="article-date">
+  	<time datetime="2014-11-29T04:18:13.000Z" itemprop="datePublished">2014-11-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      笨办法学Python--exercise38.列表操作
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Python/">Python</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>你已经学过了列表。在你学习“while循环”的时候，你对列表进行过“追加(append)”操作，而且将列表的内容打印了出来。另外你应该还在附加题里研究过 Python 文档，看了列表支持的其他操作。这已经是一段时间以前了，所以如果你不记得了的话，就回到本书的前面再复习一遍把。</p>
+<p>找到了吗？还记得吗？很好。那时候你对一个列表执行了<code>append</code>函数。不过，你也许还没有真正明白发生的事情，所以我们再来看看我们可以对列表进行什么样的操作。</p>
+<p>当你看到像 mystuff.append(‘hello’) 这样的代码时，你事实上已经在 Python 内部激发了一个连锁反应。以下是它的工作原理：</p>
+<blockquote>
+<ol>
+<li>1.Python 看到你用到了<code>mystuff</code>，于是就去找到这个变量。也许它需要倒着检查看你有没有在哪里用<code>=</code>创建过这个变量，或者检查它是不是一个函数参数，或者看它是不是一个全局变量。不管哪种方式，它得先找到 mystuff 这个变量才行。</li>
+<li>一旦它找到了<code>mystuff</code>，就轮到处理句点<code>.</code>(period)这个操作符，而且开始查看<code>mystuff</code>内部的一些变量了。由于<code>mystuff</code>是一个列表，Python 知道它支持一些函数。</li>
+<li>接下来轮到了处理<code>append</code>。Python会将“append”和<code>mystuff</code>支持的所有函数的名称一一对比，如果确实其中有一个叫<code>append</code>的函数，那么 Python 就会去使用这个函数。</li>
+<li>接下来 Python 看到了括号<code>(</code> (parenthesis) 并且意识到, “噢，原来这应该是一个函数”，到了这里，它就正常会调用这个函数了，不过这里的函数还要多一个参数才行。</li>
+<li>这个额外的参数其实是……<code>mystuff</code>!我知道，很奇怪是不是？不过这就是 Python 的工作原理，所以还是记住这一点，就当它是正常的好了。真正发生的事情其实是 <code>append(mystuff, &#39;hello&#39;)</code> ，不过你看到的只是 <code>mystuff.append(&#39;hello&#39;)</code> 。</li>
+</ol>
+</blockquote>
+<p>大部分时候你不需要知道这些细节，不过如果你看到一个像这样的 Python 错误信息的时候，上面的细节就对你有用了：</p>
+<pre><code>$ python
+Python 2.6.5 (r265:79063, Apr 16 2010, 13:57:41)
+[GCC 4.4.3] on linux2
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt; class Thing(object):
+...     def test(hi):
+...             print &quot;hi&quot;
+...
+&gt;&gt;&gt; a = Thing()
+&gt;&gt;&gt; a.test(&quot;hello&quot;)
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+TypeError: test() takes exactly 1 argument (2 given)
+&gt;&gt;&gt;
+</code></pre><p>就是这个吗？嗯，这个是我在Python命令行下展示给你的一点魔法。你还没有见过<code>class</code>不过后面很快就要碰到了。现在你看到 Python 说<code>test() takes exactly 1 argument (2 given)</code> (test() 只可以接受1个参数，实际上给了两个)。它意味着 python 把 <code>a.test(&quot;hello&quot;)</code> 改成了<code>test(a,&quot;hello&quot;)</code>，而有人弄错了，没有为它添加 <code>a</code>这个参数。</p>
+<p>一下子要消化这么多可能有点难度，我们将做几个练习，让你头脑中有一个深刻的印象。下面的练习将字符串和列表混在一起，看看你能不能在里边找出点乐子来：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">ten_things = <span class="string">"Apples Oranges Crows Telephone Light Sugar"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">"Wait there are not 10 things in that list. Let's fix that."</span></span><br><span class="line"></span><br><span class="line">stuff = ten_things.split(<span class="string">' '</span>)</span><br><span class="line">more_stuff = [<span class="string">"Day"</span>, <span class="string">"Night"</span>, <span class="string">"Song"</span>, <span class="string">"Frisbee"</span>, <span class="string">"Corn"</span>, <span class="string">"Banana"</span>, <span class="string">"Girl"</span>, <span class="string">"Boy"</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> len(stuff) != <span class="number">10</span>:</span><br><span class="line">    next_one = more_stuff.pop()</span><br><span class="line">    <span class="keyword">print</span> <span class="string">"Adding: "</span>, next_one</span><br><span class="line">    stuff.append(next_one)</span><br><span class="line">    <span class="keyword">print</span> <span class="string">"There are %d items now."</span> % len(stuff)</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">"There we go: "</span>, stuff</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">"Let's do some things with stuff."</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> stuff[<span class="number">1</span>]</span><br><span class="line"><span class="keyword">print</span> stuff[<span class="number">-1</span>] <span class="comment"># whoa! fancy</span></span><br><span class="line"><span class="keyword">print</span> stuff.pop()</span><br><span class="line"><span class="keyword">print</span> <span class="string">' '</span>.join(stuff) <span class="comment"># what? cool!</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'#'</span>.join(stuff[<span class="number">3</span>:<span class="number">5</span>]) <span class="comment"># super stellar!</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="你看到的结果"><a href="#你看到的结果" class="headerlink" title="你看到的结果"></a>你看到的结果</h2><pre><code>$ python ex38.py
+Wait there are not 10 things in that list. Let&apos;s fix that.
+Adding:  Boy
+There are 7 items now.
+Adding:  Girl
+There are 8 items now.
+Adding:  Banana
+There are 9 items now.
+Adding:  Corn
+There are 10 items now.
+There we go:  [&apos;Apples&apos;, &apos;Oranges&apos;, &apos;Crows&apos;, &apos;Telephone&apos;, &apos;Light&apos;, &apos;Sugar&apos;, &apos;Boy&apos;, &apos;Girl&apos;, &apos;Banana&apos;, &apos;Corn&apos;]
+Let&apos;s do some things with stuff.
+Oranges
+Corn
+Corn
+Apples Oranges Crows Telephone Light Sugar Boy Girl Banana
+Telephone#Light
+</code></pre><h2 id="列表能实现什么"><a href="#列表能实现什么" class="headerlink" title="列表能实现什么"></a>列表能实现什么</h2><p>假设你打算创建一个基于钓鱼的电脑游戏。如果你不知道什么是钓鱼，花点时间在网上找到相关资料看一看。要做到这些，你需要里了解一些关于“扑克牌”的概念，并将它们变成你的Python程序。你必须用python写出知道如何玩一副虚拟扑克牌的代码，这样人们就能把你的游戏当成真实的游戏来玩，即使它不是真的。你需要的是一副“扑克牌”结构，而程序员就称之为“数据结构”。</p>
+<p>什么是数据结构呢？如果你仔细想想，数据结构其实就是一种正式的构造（组织）一些数据（事实）的方法。真的就是这么简单，尽管一些数据结构十分错综复杂，它们也仅仅是在程序中存储数据的方式而已，这样你就能用不同的方式访问它们。</p>
+<p>我将在下一节练习中更深入的讲解这些，但是列表是程序员常用的数据结构之一。它们只是数据的有序列表，你可以通过线性索引来存储或访问它们。什么？记住我说过的话，只是因为一个程序员说过“列表是一个列表”并不意味着它比真实世界中的列表复杂多少。 让我们以扑克牌为例：</p>
+<blockquote>
+<ol>
+<li>你有一堆有值的卡片。</li>
+<li>这些卡片式一堆，一列，或者可以从头到尾排列这些卡片。</li>
+<li>你可以随机的从顶部、中部或者底部取出卡片。</li>
+<li>如果你想找到某张特殊的卡片, 你必须一张一张的检索这些卡片。</li>
+</ol>
+</blockquote>
+<p>让我们看看我说过什么：</p>
+<p> “一个有序的列表”<br>是的，扑克牌有第一张和最后一张<br>“有一些你要存储的事物”<br>是的，卡片就是我要存储的东西<br>“可以随机访问”<br>是的，在这副牌中我可以任意取出一张.<br>“是线性的”<br>是的，如果我想找到特定的一张牌，我必须从头开始按顺序查找。<br>“有索引的”<br>差不多, 如果我让你找到一副扑克牌的第19张，你就必须按照顺序去数，直到你找到这一张。在python的列表中，计算机可以直接跳到你给出的索引处。这就是一个列表做的所有的事情，这么解释应该给了你一个在编程中找到列表概念的方法吧。编程中的每一个概念通常都有与真实世界相关联，至少在真实世界是有用的。如果你能找出虚拟的概念在真实世界中对应的概念，那你也可以通过这些找到数据结构到底是做什么的。</p>
+<h2 id="什么情况可以使用列表"><a href="#什么情况可以使用列表" class="headerlink" title="什么情况可以使用列表"></a>什么情况可以使用列表</h2><p>当你有一些有东西能匹配列表数据结构的有用特性时，使用列表: </p>
+<blockquote>
+<ol>
+<li>如果你需要维护一组次序，记住，这是把次序编成列表，而不是给次序排序，列表不会帮你排序。</li>
+<li>如果你需要根据一个随机数访问列表内容，记住，这时候基数从0开始。</li>
+<li>如果你需要从头到尾操作列表内容，记住，这就是for循环。</li>
+</ol>
+</blockquote>
+<h2 id="附加题"><a href="#附加题" class="headerlink" title="附加题"></a>附加题</h2><blockquote>
+<ol>
+<li>将每一个被调用的函数以上述的方式翻译成 Python 实际执行的动作。比如<code>more_stuff.pop()</code> 是 <code>pop(more_stuff)</code>.</li>
+<li>将这两种方式翻译为自然语言。</li>
+<li>上网阅读一些关于“面向对象编程(Object Oriented Programming)”的资料。晕了吧？嗯，我以前也是。别担心。你将从这本书学到足够用的关于面向对象编程的基础知识，而以后你还可以慢慢学到更多。</li>
+<li>查一下 Python中的 “class” 是什么东西。不要阅读关于其他语言的 “class” 的用法，这会让你更糊涂。</li>
+<li>如果你不知道我讲的是些什么东西，别担心。程序员为了显得自己聪明，于是就发明了 Opject Oriented Programming，简称为 OOP，然后他们就开始滥用这个东西了。如果你觉得这东西太难，你可以开始学一下 “函数编程(functional programming)”。</li>
+<li>找出10种可以放在列表中的例子，并用它们写一些脚本。</li>
+</ol>
+</blockquote>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="Q：你没有说说不要用while循环？"><a href="#Q：你没有说说不要用while循环？" class="headerlink" title="Q：你没有说说不要用while循环？"></a>Q：你没有说说不要用while循环？</h3><blockquote>
+<p>是的，请记住，当需要的时候，你可以打破规则，只有蠢人才会一直一味的遵从规则。</p>
+</blockquote>
+<h3 id="Q-join-39-39-stuff-为什么没有生效？"><a href="#Q-join-39-39-stuff-为什么没有生效？" class="headerlink" title="Q:join(&#39; &#39;, stuff)为什么没有生效？"></a>Q:<code>join(&#39; &#39;, stuff)</code>为什么没有生效？</h3><blockquote>
+<p>文档中关于join的内容，写的没有意义，<code>join</code>是使用一个字符串将列表内容链接起来的一个方法，你可以试试这么写<code>&#39; &#39;.join(stuff).</code>.</p>
+</blockquote>
+<h3 id="Q-为什么你用了一个while循环？"><a href="#Q-为什么你用了一个while循环？" class="headerlink" title="Q: 为什么你用了一个while循环？"></a>Q: 为什么你用了一个while循环？</h3><blockquote>
+<p>试着用for循环改写一下，看看哪个更简单</p>
+</blockquote>
+<h3 id="Q-stuff-3-5-实现了什么功能？"><a href="#Q-stuff-3-5-实现了什么功能？" class="headerlink" title="Q: stuff[3:5]实现了什么功能？"></a>Q: <code>stuff[3:5]</code>实现了什么功能？</h3><blockquote>
+<p>这句代码从<code>stuff</code>中获取了一个子集，包含stuff的第3和第4个元素，没有包含第5个元素。它和<code>range(3,5)</code>的工作原理相近。</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/11/29/learn-python-the-hard-way-exercise39/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          笨办法学Python--exercise39.字典,可爱的字典
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/11/28/learn-python-the-hard-way-exercise37/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">笨办法学Python--exercise37.复习符号</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="learn-python-the-hard-way-exercise38" data-title="笨办法学Python--exercise38.列表操作" data-url="http://coofee.me/2014/11/29/learn-python-the-hard-way-exercise38/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"flyouting"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 flyouting and shirley
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

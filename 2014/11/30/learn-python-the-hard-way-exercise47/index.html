@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>笨办法学Python--exercise47.自动化测试 | flyouting and shirley</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="你需要一遍一遍地在你的游戏中输入命令，来测试游戏的功能是否正常。这个过程是很枯燥无味的。如果能写一小段代码用来测试你的代码岂不是更好？然后无论你对程序做了什么修改，或者添加了什么新东西，你只要“跑一下你的测试”，而这些测试能确认程序依然能正确运行。这些自动测试不会抓到所有的 bug，但可以让你无需重复输入命令运行你的代码，从而为你节约很多时间。
+从这节练习开始，以后的练习将不会有“你应该看到的结果">
+<meta property="og:type" content="article">
+<meta property="og:title" content="笨办法学Python--exercise47.自动化测试">
+<meta property="og:url" content="http://coofee.me/2014/11/30/learn-python-the-hard-way-exercise47/index.html">
+<meta property="og:site_name" content="flyouting and shirley">
+<meta property="og:description" content="你需要一遍一遍地在你的游戏中输入命令，来测试游戏的功能是否正常。这个过程是很枯燥无味的。如果能写一小段代码用来测试你的代码岂不是更好？然后无论你对程序做了什么修改，或者添加了什么新东西，你只要“跑一下你的测试”，而这些测试能确认程序依然能正确运行。这些自动测试不会抓到所有的 bug，但可以让你无需重复输入命令运行你的代码，从而为你节约很多时间。
+从这节练习开始，以后的练习将不会有“你应该看到的结果">
+<meta property="og:updated_time" content="2014-12-07T15:15:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="笨办法学Python--exercise47.自动化测试">
+<meta name="twitter:description" content="你需要一遍一遍地在你的游戏中输入命令，来测试游戏的功能是否正常。这个过程是很枯燥无味的。如果能写一小段代码用来测试你的代码岂不是更好？然后无论你对程序做了什么修改，或者添加了什么新东西，你只要“跑一下你的测试”，而这些测试能确认程序依然能正确运行。这些自动测试不会抓到所有的 bug，但可以让你无需重复输入命令运行你的代码，从而为你节约很多时间。
+从这节练习开始，以后的练习将不会有“你应该看到的结果">
+  
+    <link rel="alternative" href="/atom.xml" title="flyouting and shirley" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">flyouting and shirley</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">记录一点一滴</p>
+		
+
+		<!--
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>Über</li>
+						
+					</ul>
+				</div>
+			</div>
+		-->
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">首页</a></li>
+				        
+							<li><a href="/archives">文章列表</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				<div class="switch-part switch-part2"><script>var n ='b-26003349-pe-f-801';var ch ='pc_6'; var w1 = 200;var h1 = 280;</script> <script src='http://static.luna.58.com/js/mad.js'></script></div>
+				
+				<!--
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/AndroidStudio/" style="font-size: 10px;">AndroidStudio</a> <a href="/tags/DB/" style="font-size: 12.5px;">DB</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/ImageSpan/" style="font-size: 10px;">ImageSpan</a> <a href="/tags/ORM/" style="font-size: 12.5px;">ORM</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/activeandroid/" style="font-size: 10px;">activeandroid</a> <a href="/tags/android/" style="font-size: 17.5px;">android</a> <a href="/tags/intent/" style="font-size: 10px;">intent</a> <a href="/tags/key/" style="font-size: 10px;">key</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/span/" style="font-size: 10px;">span</a> <a href="/tags/transitions/" style="font-size: 10px;">transitions</a> <a href="/tags/volley/" style="font-size: 15px;">volley</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/后台，多线程/" style="font-size: 10px;">后台，多线程</a> <a href="/tags/相机/" style="font-size: 15px;">相机</a> <a href="/tags/终端/" style="font-size: 10px;">终端</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+					</div>
+				</section>
+				-->
+				
+				<!--
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				-->
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">flyouting and shirley</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">flyouting and shirley</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">记录一点一滴</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">首页</a></li>
+		        
+					<li><a href="/archives">文章列表</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-learn-python-the-hard-way-exercise47" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/30/learn-python-the-hard-way-exercise47/" class="article-date">
+  	<time datetime="2014-11-30T07:40:25.000Z" itemprop="datePublished">2014-11-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      笨办法学Python--exercise47.自动化测试
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Python/">Python</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>你需要一遍一遍地在你的游戏中输入命令，来测试游戏的功能是否正常。这个过程是很枯燥无味的。如果能写一小段代码用来测试你的代码岂不是更好？然后无论你对程序做了什么修改，或者添加了什么新东西，你只要“跑一下你的测试”，而这些测试能确认程序依然能正确运行。这些自动测试不会抓到所有的 bug，但可以让你无需重复输入命令运行你的代码，从而为你节约很多时间。</p>
+<p>从这节练习开始，以后的练习将不会有“你应该看到的结果”部分，取而代之的是一个“你应该测试的东西”。从现在开始，你需要为自己写的所有代码写自动化测试，而这将让你成为一个更好的程序员。</p>
+<p>我不会解释你为什么需要写自动化测试。我要告诉你的是，你想要成为一个程序员，而程序的作用是让无聊冗繁的工作自动化，测试一个软件毫无疑问是无聊冗繁的，所以你还是写点代码让它为你测试的更好。</p>
+<p>这应该是你需要的所有的解释了。因为你写单元测试的原因是让你的大脑更加强健。读了这本书，你写了很多代码让它们实现一些事情。现在你将更进一步，写出懂得你写的其他代码的代码。这个写代码测试你写的其他代码的过程将强迫你清楚的理解你之前写的代码。这会让你更清晰地了解你写的代码实现的功能及其原理，而且让你对细节的注意更上一个台阶。</p>
+<p>##　编写测试用例</p>
+<p>我们将拿一段非常简单的代码为例，写一个简单的测试，这个测试将建立在上节我们创建的项目骨架上面。</p>
+<p>首先从你的项目骨架创建一个叫做<code>ex47</code>的项目。下面是你要采取的步骤。我会给出文字说明，而不是直接告诉你该如何写代码，所以你要自己弄明白并写出代码。</p>
+<blockquote>
+<ol>
+<li>复制<code>skeleton</code>到<code>ex47</code></li>
+<li>将所有的<code>NAME</code>重命名为<code>ex47</code></li>
+<li>修改所有文件中<code>NAME</code>为<code>ex47</code></li>
+<li>最后删除所有的<code>*.pyc</code>文件</li>
+</ol>
+</blockquote>
+<p>如果遇到什么困难，回顾一下练习46，如果你不能简单的完成这些，那你需要多练习几次。</p>
+<blockquote>
+<p><strong>NOTE:</strong><br>记得通过命令<code>nosetests</code>来检测你的测试代码没有错误信息。你可以通过<code>python ex47_tests.py</code>来运行，但是它不会那么容易的运行，你必须保证你的每一个测试文件正常运行。</p>
+</blockquote>
+<p>接下来创建一个简单的<code>ex47/game.py</code>文件，里边放一些用来被测试的代码。我们现在放一个傻乎乎的小 class 进去，用来作为我们的测试对象：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Room</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, description)</span>:</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.description = description</span><br><span class="line">        self.paths = &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">go</span><span class="params">(self, direction)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.paths.get(direction, <span class="keyword">None</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add_paths</span><span class="params">(self, paths)</span>:</span></span><br><span class="line">        self.paths.update(paths)</span><br></pre></td></tr></table></figure></p>
+<p>准备好了这个文件，接下来把测试骨架改成这样子：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> nose.tools <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> ex47.game <span class="keyword">import</span> Room</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_room</span><span class="params">()</span>:</span></span><br><span class="line">    gold = Room(<span class="string">"GoldRoom"</span>, </span><br><span class="line">                <span class="string">"""This room has gold in it you can grab. There's a</span><br><span class="line">                door to the north."""</span>)</span><br><span class="line">    assert_equal(gold.name, <span class="string">"GoldRoom"</span>)</span><br><span class="line">    assert_equal(gold.paths, &#123;&#125;)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_room_paths</span><span class="params">()</span>:</span></span><br><span class="line">    center = Room(<span class="string">"Center"</span>, <span class="string">"Test room in the center."</span>)</span><br><span class="line">    north = Room(<span class="string">"North"</span>, <span class="string">"Test room in the north."</span>)</span><br><span class="line">    south = Room(<span class="string">"South"</span>, <span class="string">"Test room in the south."</span>)</span><br><span class="line"></span><br><span class="line">    center.add_paths(&#123;<span class="string">'north'</span>: north, <span class="string">'south'</span>: south&#125;)</span><br><span class="line">    assert_equal(center.go(<span class="string">'north'</span>), north)</span><br><span class="line">    assert_equal(center.go(<span class="string">'south'</span>), south)</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_map</span><span class="params">()</span>:</span></span><br><span class="line">    start = Room(<span class="string">"Start"</span>, <span class="string">"You can go west and down a hole."</span>)</span><br><span class="line">    west = Room(<span class="string">"Trees"</span>, <span class="string">"There are trees here, you can go east."</span>)</span><br><span class="line">    down = Room(<span class="string">"Dungeon"</span>, <span class="string">"It's dark down here, you can go up."</span>)</span><br><span class="line"></span><br><span class="line">    start.add_paths(&#123;<span class="string">'west'</span>: west, <span class="string">'down'</span>: down&#125;)</span><br><span class="line">    west.add_paths(&#123;<span class="string">'east'</span>: start&#125;)</span><br><span class="line">    down.add_paths(&#123;<span class="string">'up'</span>: start&#125;)</span><br><span class="line"></span><br><span class="line">    assert_equal(start.go(<span class="string">'west'</span>), west)</span><br><span class="line">    assert_equal(start.go(<span class="string">'west'</span>).go(<span class="string">'east'</span>), start)</span><br><span class="line">    assert_equal(start.go(<span class="string">'down'</span>).go(<span class="string">'up'</span>), start)</span><br></pre></td></tr></table></figure></p>
+<p>这个文件导入了你在<code>ex47.game</code>创建的<code>Room</code>这个类，接下来我们要做的就是测试它。于是我们看到一系列的以<code>test_</code>开头的测试函数，它们就是所谓的“测试用例(test case)”，每一个测试用例里面都有一小段代码，它们会创建一个或者一些房间，然后去确认房间的功能和你期望的是否一样。它测试了基本的房间功能，然后测试了路径，最后测试了整个地图。</p>
+<p>这里最重要的函数是<code>assert_equal</code>，它保证了你设置的变量，以及你在<code>Room</code> 里设置的路径和你的期望相符。如果你得到错误的结果的话，<code>nosetests</code> 将会打印出一个错误信息，这样你就可以找到出错的地方并且修正过来。</p>
+<h2 id="测试指南"><a href="#测试指南" class="headerlink" title="测试指南"></a>测试指南</h2><p>在写测试代码时，你可以照着下面这些不是很严格的指南来做：</p>
+<blockquote>
+<ol>
+<li>测试脚本要放到<code>tests/</code>目录下，并且命名为<code>BLAH_tests.py</code>，否则 <code>nosetests</code>就不会执行你的测试脚本了。这样做还有一个好处就是防止测试代码和别的代码互相混掉。</li>
+<li>为你的每一个模组写一个测试。</li>
+<li>测试用例（函数）保持简短，但如果看上去不怎么整洁也没关系，测试用例一般都有点乱。</li>
+<li>就算测试用例有些乱，也要试着让他们保持整洁，把里边重复的代码删掉。创建一些辅助函数来避免重复的代码。当你下次在改完代码需要改测试的时候，你会感谢我这一条建议的。重复的代码会让修改测试变得很难操作。</li>
+<li>最后一条是别太把测试当做一回事。有时候，更好的方法是把代码和测试全部删掉，然后重新设计代码。</li>
+</ol>
+</blockquote>
+<h2 id="你看到的结果"><a href="#你看到的结果" class="headerlink" title="你看到的结果"></a>你看到的结果</h2><pre><code>$ nosetests
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.008s
+
+OK
+</code></pre><p>如果一切工作正常的话，你看到的结果应该就是这样。试着把代码改错几个地方，然后看错误信息会是什么，再把代码改正确。</p>
+<h2 id="附加题"><a href="#附加题" class="headerlink" title="附加题"></a>附加题</h2><blockquote>
+<ol>
+<li>仔细读读<code>nosetest</code>相关的文档，再去了解一下其他的替代方案。</li>
+<li>了解一下 Python 的 “doc tests” ，看看你是不是更喜欢这种测试方式。</li>
+<li>改进你游戏里的 Room，然后用它重建你的游戏，这次重写，你需要一边写代码，一边把单元测试写出来。</li>
+</ol>
+</blockquote>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="Q-当我运行nosetest的时候，我遇到一个语法错误"><a href="#Q-当我运行nosetest的时候，我遇到一个语法错误" class="headerlink" title="Q: 当我运行nosetest的时候，我遇到一个语法错误"></a>Q: 当我运行<code>nosetest</code>的时候，我遇到一个语法错误</h3><blockquote>
+<p>如果你遇到这个报错，看看错误信息是怎么说的，并改正该行或上一行的错误。类似<code>nosetest</code>的工具是在运行你的代码和测试代码，所以他可以像运行python一样发现你的语法错误。</p>
+</blockquote>
+<h3 id="Q-我无法导入ex47-game"><a href="#Q-我无法导入ex47-game" class="headerlink" title="Q: 我无法导入ex47.game"></a>Q: 我无法导入<code>ex47.game</code></h3><blockquote>
+<p>确认你创建了<code>ex47/__init__.py</code>文件，参照练习46，看它是如何做的。如果这个文件没有问题，在OSX/Linux下执行:<code>export PYTHONPATH=.</code>在window下执行<code>$env:PYTHONPATH = &quot;$env:PYTHONPATH;.&quot;</code>，最后，确认你是用<code>nosetest</code>运行测试脚本，而不是用python。</p>
+</blockquote>
+<h3 id="Q-我运行nosetest的时候，遇到一个报错UserWarning"><a href="#Q-我运行nosetest的时候，遇到一个报错UserWarning" class="headerlink" title="Q: 我运行nosetest的时候，遇到一个报错UserWarning"></a>Q: 我运行<code>nosetest</code>的时候，遇到一个报错<code>UserWarning</code></h3><blockquote>
+<p>你可能安装了两个版本的python或者没有使用<code>distribute</code>，按照我在练习46中所描述的安装<code>distribute</code>或<code>pip</code>。</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/12/01/learn-python-the-hard-way-exercise48/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          笨办法学Python--exercise48.更复杂的用户输入
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/11/30/learn-python-the-hard-way-exercise46/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">笨办法学Python--exercise46.项目骨架</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="learn-python-the-hard-way-exercise47" data-title="笨办法学Python--exercise47.自动化测试" data-url="http://coofee.me/2014/11/30/learn-python-the-hard-way-exercise47/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"flyouting"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 flyouting and shirley
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Volley源码学习笔记三 | flyouting and shirley</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="##图片获取
+在volley中有个ImageLoader用于专门加载图片，看一下其中的重要对象：12345678910111213141516/** 处理ImageRequest的请求队列. */private final RequestQueue mRequestQueue;/** 第一级缓冲区，在进入volley前首先会这里查看有没有缓存 */private final ImageCache">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Volley源码学习笔记三">
+<meta property="og:url" content="http://coofee.me/2014/07/14/android-volley3/index.html">
+<meta property="og:site_name" content="flyouting and shirley">
+<meta property="og:description" content="##图片获取
+在volley中有个ImageLoader用于专门加载图片，看一下其中的重要对象：12345678910111213141516/** 处理ImageRequest的请求队列. */private final RequestQueue mRequestQueue;/** 第一级缓冲区，在进入volley前首先会这里查看有没有缓存 */private final ImageCache">
+<meta property="og:image" content="http://bcs.duapp.com/myblog-wrodpress//blog/201404//imageload2.png">
+<meta property="og:updated_time" content="2014-11-05T14:42:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Volley源码学习笔记三">
+<meta name="twitter:description" content="##图片获取
+在volley中有个ImageLoader用于专门加载图片，看一下其中的重要对象：12345678910111213141516/** 处理ImageRequest的请求队列. */private final RequestQueue mRequestQueue;/** 第一级缓冲区，在进入volley前首先会这里查看有没有缓存 */private final ImageCache">
+<meta name="twitter:image" content="http://bcs.duapp.com/myblog-wrodpress//blog/201404//imageload2.png">
+  
+    <link rel="alternative" href="/atom.xml" title="flyouting and shirley" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">flyouting and shirley</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">记录一点一滴</p>
+		
+
+		<!--
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>Über</li>
+						
+					</ul>
+				</div>
+			</div>
+		-->
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">首页</a></li>
+				        
+							<li><a href="/archives">文章列表</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				<div class="switch-part switch-part2"><script>var n ='b-26003349-pe-f-801';var ch ='pc_6'; var w1 = 200;var h1 = 280;</script> <script src='http://static.luna.58.com/js/mad.js'></script></div>
+				
+				<!--
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/AndroidStudio/" style="font-size: 10px;">AndroidStudio</a> <a href="/tags/DB/" style="font-size: 12.5px;">DB</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/ImageSpan/" style="font-size: 10px;">ImageSpan</a> <a href="/tags/ORM/" style="font-size: 12.5px;">ORM</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/activeandroid/" style="font-size: 10px;">activeandroid</a> <a href="/tags/android/" style="font-size: 17.5px;">android</a> <a href="/tags/intent/" style="font-size: 10px;">intent</a> <a href="/tags/key/" style="font-size: 10px;">key</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/span/" style="font-size: 10px;">span</a> <a href="/tags/transitions/" style="font-size: 10px;">transitions</a> <a href="/tags/volley/" style="font-size: 15px;">volley</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/后台，多线程/" style="font-size: 10px;">后台，多线程</a> <a href="/tags/相机/" style="font-size: 15px;">相机</a> <a href="/tags/终端/" style="font-size: 10px;">终端</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+					</div>
+				</section>
+				-->
+				
+				<!--
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				-->
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">flyouting and shirley</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">flyouting and shirley</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">记录一点一滴</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">首页</a></li>
+		        
+					<li><a href="/archives">文章列表</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-android-volley3" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/07/14/android-volley3/" class="article-date">
+  	<time datetime="2014-07-14T14:39:26.000Z" itemprop="datePublished">2014-07-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Volley源码学习笔记三
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/volley/">volley</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/笔记/">笔记</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##图片获取</p>
+<p>在<code>volley</code>中有个<code>ImageLoader</code>用于专门加载图片，看一下其中的重要对象：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/** 处理ImageRequest的请求队列. */</span><br><span class="line">private final RequestQueue mRequestQueue;</span><br><span class="line"></span><br><span class="line">/** 第一级缓冲区，在进入volley前首先会这里查看有没有缓存 */</span><br><span class="line">private final ImageCache mCache;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 一个keys -&gt; BatchedImageRequest的HashMap，</span><br><span class="line"> * 用来跟踪动态请求,这样我们可以合并多个请求相同的URL到一个网络请求。</span><br><span class="line"> */</span><br><span class="line">private final HashMap&lt;String, BatchedImageRequest&gt; mInFlightRequests =</span><br><span class="line">        new HashMap&lt;String, BatchedImageRequest&gt;();</span><br><span class="line"></span><br><span class="line">/** 一个保存当前需要等待响应HashMap */</span><br><span class="line">private final HashMap&lt;String, BatchedImageRequest&gt; mBatchedResponses =</span><br><span class="line">        new HashMap&lt;String, BatchedImageRequest&gt;();</span><br></pre></td></tr></table></figure></p>
+<p><code>ImageLoader</code>的构造方法只需要传入一个请求队列对象，和一个缓冲区对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public ImageLoader(RequestQueue queue, ImageCache imageCache) &#123;</span><br><span class="line">       mRequestQueue = queue;</span><br><span class="line">       mCache = imageCache;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<p>这个一级缓冲区对象我们可以自行扩展，只需要实现<code>ImageCache</code>接口即可。常用的就是<code>LRUCahce</code>。</p>
+<p>在看<code>ImageLoader</code>中执行网络请求获得图片的代码前，需要先了解<code>ImageContainer</code>和<code>BatchedImageRequest</code>这两个类是什么概念，因为这关系到重复行url请求的合并。先看下<code>ImageContainer</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">public class ImageContainer &#123;</span><br><span class="line">     </span><br><span class="line">        private Bitmap mBitmap;</span><br><span class="line">        private final ImageListener mListener;</span><br><span class="line">        private final String mCacheKey;</span><br><span class="line">        private final String mRequestUrl;</span><br><span class="line">        </span><br><span class="line">        public ImageContainer(Bitmap bitmap, String requestUrl,</span><br><span class="line">                String cacheKey, ImageListener listener) &#123;</span><br><span class="line">            mBitmap = bitmap;</span><br><span class="line">            mRequestUrl = requestUrl;</span><br><span class="line">            mCacheKey = cacheKey;</span><br><span class="line">            mListener = listener;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public void cancelRequest() &#123;</span><br><span class="line">            if (mListener == null) &#123;</span><br><span class="line">                return;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            BatchedImageRequest request = mInFlightRequests.get(mCacheKey);</span><br><span class="line">            if (request != null) &#123;</span><br><span class="line">                boolean canceled = request.removeContainerAndCancelIfNecessary(this);</span><br><span class="line">                if (canceled) &#123;</span><br><span class="line">                    mInFlightRequests.remove(mCacheKey);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                // check to see if it is already batched for delivery.</span><br><span class="line">                request = mBatchedResponses.get(mCacheKey);</span><br><span class="line">                if (request != null) &#123;</span><br><span class="line">                    request.removeContainerAndCancelIfNecessary(this);</span><br><span class="line">                    if (request.mContainers.size() == 0) &#123;</span><br><span class="line">                        mBatchedResponses.remove(mCacheKey);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>这个类其实就是对图片请求相关数据进行了一次封装，包含了图片对象，图片缓存key，图片URL，图片的回调监听器。并包含了一个取消请求的方法。</p>
+<p>再来看看<code>BatchedImageRequest</code>，这个其实是图片网络请求的一个封装，跟上个类不同的是，一个是对数据的封装，一个是对请求的封装，上边那个类对应的是一个具体位置的请求，这个类是对应的某一个URL的请求，比如app中有三个位置的<code>imageview</code>请求同一个url的图片，那就会有三个<code>ImageContainer</code>,而只有一个<code>BatchedImageRequest</code>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">private class BatchedImageRequest &#123;</span><br><span class="line">       /** 被追踪的请求 */</span><br><span class="line">       private final Request&lt;?&gt; mRequest;</span><br><span class="line"></span><br><span class="line">       /** 请求返回的图片数据 */</span><br><span class="line">       private Bitmap mResponseBitmap;</span><br><span class="line"></span><br><span class="line">       /** 返回出现错误 */</span><br><span class="line">       private VolleyError mError;</span><br><span class="line"></span><br><span class="line">       /** 对于同一个url的request的有效的ImageContainers列表 */</span><br><span class="line">       private final LinkedList&lt;ImageContainer&gt; mContainers = new LinkedList&lt;ImageContainer&gt;();</span><br><span class="line">       </span><br><span class="line">      </span><br><span class="line">       public BatchedImageRequest(Request&lt;?&gt; request, ImageContainer container) &#123;</span><br><span class="line">           mRequest = request;</span><br><span class="line">           mContainers.add(container);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       /**</span><br><span class="line">        * 如果出现其他同地址的请求，把ImageContainer添加进来</span><br><span class="line">        */</span><br><span class="line">       public void addContainer(ImageContainer container) &#123;</span><br><span class="line">           mContainers.add(container);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       /**</span><br><span class="line">        * 某个ImageContainer被取消，即某个位置的图片请求取消，从当前列表中移除，如果是最后一个，代表这个请求不需要了，会取消整个请求</span><br><span class="line">        */</span><br><span class="line">       public boolean removeContainerAndCancelIfNecessary(ImageContainer container) &#123;</span><br><span class="line">           mContainers.remove(container);</span><br><span class="line">           if (mContainers.size() == 0) &#123;</span><br><span class="line">               mRequest.cancel();</span><br><span class="line">               return true;</span><br><span class="line">           &#125;</span><br><span class="line">           return false;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<p>简单说就是 <code>BatchedImageRequest</code>对象是请求某一个url的图片数据的执行者，如果好几个<code>ImageView</code>都需要加载同一个url的图片，那就会生成若干个<code>ImageContainer</code>加到<code>BatchedImageRequest</code>里来。代表这些都是同一请求。</p>
+<p>现在可以看图片获取部分的代码了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">public ImageContainer get(String requestUrl, ImageListener imageListener,</span><br><span class="line">           int maxWidth, int maxHeight) &#123;</span><br><span class="line">       // only fulfill requests that were initiated from the main thread.</span><br><span class="line">       throwIfNotOnMainThread();</span><br><span class="line"></span><br><span class="line">       final String cacheKey = getCacheKey(requestUrl, maxWidth, maxHeight);</span><br><span class="line"></span><br><span class="line">       // Try to look up the request in the cache of remote images.</span><br><span class="line">       Bitmap cachedBitmap = mCache.getBitmap(cacheKey);</span><br><span class="line">       if (cachedBitmap != null) &#123;</span><br><span class="line">           // Return the cached bitmap.</span><br><span class="line">           ImageContainer container = new ImageContainer(cachedBitmap, requestUrl, null, null);</span><br><span class="line">           imageListener.onResponse(container, true);</span><br><span class="line">           return container;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       // The bitmap did not exist in the cache, fetch it!</span><br><span class="line">       ImageContainer imageContainer =</span><br><span class="line">               new ImageContainer(null, requestUrl, cacheKey, imageListener);</span><br><span class="line"></span><br><span class="line">       // Update the caller to let them know that they should use the default bitmap.</span><br><span class="line">       imageListener.onResponse(imageContainer, true);</span><br><span class="line"></span><br><span class="line">       // Check to see if a request is already in-flight.</span><br><span class="line">       BatchedImageRequest request = mInFlightRequests.get(cacheKey);</span><br><span class="line">       if (request != null) &#123;</span><br><span class="line">           // If it is, add this request to the list of listeners.</span><br><span class="line">           request.addContainer(imageContainer);</span><br><span class="line">           return imageContainer;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       // The request is not already in flight. Send the new request to the network and</span><br><span class="line">       // track it.</span><br><span class="line">       Request&lt;?&gt; newRequest =</span><br><span class="line">           new ImageRequest(requestUrl, new Listener&lt;Bitmap&gt;() &#123;</span><br><span class="line">               @Override</span><br><span class="line">               public void onResponse(Bitmap response) &#123;</span><br><span class="line">                   onGetImageSuccess(cacheKey, response);</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;, maxWidth, maxHeight,</span><br><span class="line">           Config.RGB_565, new ErrorListener() &#123;</span><br><span class="line">               @Override</span><br><span class="line">               public void onErrorResponse(VolleyError error) &#123;</span><br><span class="line">                   onGetImageError(cacheKey, error);</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;);</span><br><span class="line"></span><br><span class="line">       mRequestQueue.add(newRequest);</span><br><span class="line">       mInFlightRequests.put(cacheKey,</span><br><span class="line">               new BatchedImageRequest(newRequest, imageContainer));</span><br><span class="line">       return imageContainer;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<p>需要传入图片url，回调的监听器，目标图片的宽高，首先是获取<code>cachekey</code>，这个key是由图片url和宽高一起组成的。由这个key从一级缓冲区里查看有无缓存，如果有的话，封装一个默认的<code>ImageContainer</code>返回，没有的话，去正在运行的图片请求集合里去查，当前url是否正在被请求，如果是的话，把当前<code>ImageContainer</code>添加进入<code>Request</code>里的<code>ImageContainer</code>列表。否则的话，生成一个<code>ImageRequest</code>，添加进入队列执行网络请求，并在正在执行的网络集合中<code>mInFlightRequests</code>中添加此请求。</p>
+<p>图片获取到之后是怎么操作的呢，在上代码中看到，会执行<code>onGetImageSuccess(cacheKey, response)</code>方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">private void onGetImageSuccess(String cacheKey, Bitmap response) &#123;</span><br><span class="line">       // cache the image that was fetched.</span><br><span class="line">       mCache.putBitmap(cacheKey, response);</span><br><span class="line"></span><br><span class="line">       // remove the request from the list of in-flight requests.</span><br><span class="line">       BatchedImageRequest request = mInFlightRequests.remove(cacheKey);</span><br><span class="line"></span><br><span class="line">       if (request != null) &#123;</span><br><span class="line">           // Update the response bitmap.</span><br><span class="line">           request.mResponseBitmap = response;</span><br><span class="line"></span><br><span class="line">           // Send the batched response</span><br><span class="line">           batchResponse(cacheKey, request);</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure></p>
+<p>首先是把取得的<code>bitmap</code>放到一级缓冲区里，然后从正在执行的<code>Request</code>列表中移除，并把<code>Request</code>里的<code>mResponseBitmap</code>对象设置好，接着执行<code>batchResponse(cacheKey, request)</code>方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">private void batchResponse(String cacheKey, BatchedImageRequest request) &#123;</span><br><span class="line">        mBatchedResponses.put(cacheKey, request);</span><br><span class="line">        // If we don&apos;t already have a batch delivery runnable in flight, make a new one.</span><br><span class="line">        // Note that this will be used to deliver responses to all callers in mBatchedResponses.</span><br><span class="line">        if (mRunnable == null) &#123;</span><br><span class="line">            mRunnable = new Runnable() &#123;</span><br><span class="line">                @Override</span><br><span class="line">                public void run() &#123;</span><br><span class="line">                    for (BatchedImageRequest bir : mBatchedResponses.values()) &#123;</span><br><span class="line">                        for (ImageContainer container : bir.mContainers) &#123;</span><br><span class="line">                            // If one of the callers in the batched request canceled the request</span><br><span class="line">                            // after the response was received but before it was delivered,</span><br><span class="line">                            // skip them.</span><br><span class="line">                            if (container.mListener == null) &#123;</span><br><span class="line">                                continue;</span><br><span class="line">                            &#125;</span><br><span class="line">                            if (bir.getError() == null) &#123;</span><br><span class="line">                                container.mBitmap = bir.mResponseBitmap;</span><br><span class="line">                                container.mListener.onResponse(container, false);</span><br><span class="line">                            &#125; else &#123;</span><br><span class="line">                                container.mListener.onErrorResponse(bir.getError());</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    mBatchedResponses.clear();</span><br><span class="line">                    mRunnable = null;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;;</span><br><span class="line">            // Post the runnable.</span><br><span class="line">            mHandler.postDelayed(mRunnable, mBatchResponseDelayMs);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>首先是把<code>BatchedImageRequest</code>扔到了待处理的<code>BatchedImageRequest</code>的hashmap里，即<code>mBatchedResponses</code>，然后是遍历<code>mBatchedResponses</code>，依次获取其中的<code>BatchedImageRequest</code>对象，然后遍历这个对象中的<code>ImageContainer</code>集合，依次执行<code>ImageContainer</code>里的listener的回调方法。这样在默认的listener中就会设置图片到ImageView上了。</p>
+<p>最后附上网上借用的流程图：</p>
+<p><img src="http://bcs.duapp.com/myblog-wrodpress//blog/201404//imageload2.png" alt="此处输入图片的描述"></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/07/16/android-volley4/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Volley框架的增强一
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/07/13/android-volley2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Volley源码学习笔记二</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="android-volley3" data-title="Volley源码学习笔记三" data-url="http://coofee.me/2014/07/14/android-volley3/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"flyouting"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 flyouting and shirley
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

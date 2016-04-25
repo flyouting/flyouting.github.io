@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>WebView探索 | flyouting and shirley</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近一段时间都在捣腾 Webview，对于之前的Jelly Bean中与KitKat中基于Chromium实现的不同，有点有意思的发现。如果你不知道我在说什么，可以理解，毕竟，除了一些很好的补充，API大多仍保持原状，我们可以从这两个地址了解更多相关资料，地址一，地址二。
+免责声明：这篇文章我不打算描述所有不同的API，我只是想强调我经历的一些问题/解决方案/在使用WebView API开发应用程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WebView探索">
+<meta property="og:url" content="http://coofee.me/2014/03/20/webview-research/index.html">
+<meta property="og:site_name" content="flyouting and shirley">
+<meta property="og:description" content="最近一段时间都在捣腾 Webview，对于之前的Jelly Bean中与KitKat中基于Chromium实现的不同，有点有意思的发现。如果你不知道我在说什么，可以理解，毕竟，除了一些很好的补充，API大多仍保持原状，我们可以从这两个地址了解更多相关资料，地址一，地址二。
+免责声明：这篇文章我不打算描述所有不同的API，我只是想强调我经历的一些问题/解决方案/在使用WebView API开发应用程">
+<meta property="og:updated_time" content="2014-11-04T15:17:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WebView探索">
+<meta name="twitter:description" content="最近一段时间都在捣腾 Webview，对于之前的Jelly Bean中与KitKat中基于Chromium实现的不同，有点有意思的发现。如果你不知道我在说什么，可以理解，毕竟，除了一些很好的补充，API大多仍保持原状，我们可以从这两个地址了解更多相关资料，地址一，地址二。
+免责声明：这篇文章我不打算描述所有不同的API，我只是想强调我经历的一些问题/解决方案/在使用WebView API开发应用程">
+  
+    <link rel="alternative" href="/atom.xml" title="flyouting and shirley" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">flyouting and shirley</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">记录一点一滴</p>
+		
+
+		<!--
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>Über</li>
+						
+					</ul>
+				</div>
+			</div>
+		-->
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">首页</a></li>
+				        
+							<li><a href="/archives">文章列表</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				<div class="switch-part switch-part2"><script>var n ='b-26003349-pe-f-801';var ch ='pc_6'; var w1 = 200;var h1 = 280;</script> <script src='http://static.luna.58.com/js/mad.js'></script></div>
+				
+				<!--
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/AndroidStudio/" style="font-size: 10px;">AndroidStudio</a> <a href="/tags/DB/" style="font-size: 12.5px;">DB</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/ImageSpan/" style="font-size: 10px;">ImageSpan</a> <a href="/tags/ORM/" style="font-size: 12.5px;">ORM</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/activeandroid/" style="font-size: 10px;">activeandroid</a> <a href="/tags/android/" style="font-size: 17.5px;">android</a> <a href="/tags/intent/" style="font-size: 10px;">intent</a> <a href="/tags/key/" style="font-size: 10px;">key</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/span/" style="font-size: 10px;">span</a> <a href="/tags/transitions/" style="font-size: 10px;">transitions</a> <a href="/tags/volley/" style="font-size: 15px;">volley</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/后台，多线程/" style="font-size: 10px;">后台，多线程</a> <a href="/tags/相机/" style="font-size: 15px;">相机</a> <a href="/tags/终端/" style="font-size: 10px;">终端</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+					</div>
+				</section>
+				-->
+				
+				<!--
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				-->
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">flyouting and shirley</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">flyouting and shirley</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">记录一点一滴</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">首页</a></li>
+		        
+					<li><a href="/archives">文章列表</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-webview-research" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/03/20/webview-research/" class="article-date">
+  	<time datetime="2014-03-20T15:16:27.000Z" itemprop="datePublished">2014-03-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      WebView探索
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webview/">webview</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/译文/">译文</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近一段时间都在捣腾 <code>Webview</code>，对于之前的Jelly Bean中与KitKat中基于Chromium实现的不同，有点有意思的发现。如果你不知道我在说什么，可以理解，毕竟，除了一些很好的补充，API大多仍保持原状，我们可以从这两个地址了解更多相关资料，<a href="https://developers.google.com/chrome/mobile/docs/webview/overview" target="_blank" rel="external">地址一</a>，<a href="http://developer.android.com/guide/webapps/migrating.html" target="_blank" rel="external">地址二</a>。</p>
+<p>免责声明：这篇文章我不打算描述所有不同的API，我只是想强调我经历的一些问题/解决方案/在使用WebView API开发应用程序时的发现。</p>
+<p>##API实现上的差异</p>
+<p>###Hit test result<br>我最近才发现这个类，它非常有用，在我目前所进行的项目中，用户可以通过点击链接或者列表项，去到他网站的不同页面，这些动作有不同的影响，在后者的情况下，应用程序必须明确地请求加载新的URL，否则就会再次加载相同的页面，但在前者中不用这样。</p>
+<p><a href="https://developer.android.com/reference/android/webkit/WebView.html#getHitTestResult%28%29" target="_blank" rel="external"><code>WebView.getHitTestResult()</code></a>方法返回一个<a href="https://developer.android.com/reference/android/webkit/WebView.HitTestResult.html" target="_blank" rel="external"><code>HitTestResult</code></a>对象。对象中包含类型，url，这个类型用来表示被点击元素的类型，如果是个有HTTP src属性标签的HTML，类型会是<a href="https://developer.android.com/reference/android/webkit/WebView.HitTestResult.html#SRC_ANCHOR_TYPE" target="_blank" rel="external"><code>WebView.HitTestResult.SRC_ANCHOR_TYPE</code></a>。在Webview中，如果有一个不支持的元素被点击，<a href="http://grepcode.com/file/repository.grepcode.com/java/ext/com.google.android/android/4.3.1_r1/android/webkit/WebViewClassic.java#7723" target="_blank" rel="external">4.4之前的api会返回一个null</a>。<a href="http://grepcode.com/file/repository.grepcode.com/java/ext/com.google.android/android/4.4.2_r1/com/android/webview/chromium/WebViewChromium.java#872" target="_blank" rel="external">4.4的api会返回一个非空对象</a>。</p>
+<p>###WebView 历史记录<br>Webview把所有的访问记录都存在一个称之为<a href="https://developer.android.com/reference/android/webkit/WebBackForwardList.html" target="_blank" rel="external"><code>WebBackForwardList</code></a>的数据结构中。可以通过<a href="https://developer.android.com/reference/android/webkit/WebView.html#copyBackForwardList%28%29" target="_blank" rel="external"><code>WebView.copyBackForwardList()</code></a>方法来获取列表检索，正如名字一样，它会返回一个Webview中保存的数据列表的副本。调用<a href="https://developer.android.com/reference/android/webkit/WebView.html#goBack%28%29" target="_blank" rel="external"><code>WebView.goBack()</code></a>方法之后，应用需要检索之前页面的url，我们可以很简单的通过<a href="https://developer.android.com/reference/android/webkit/WebBackForwardList.html#getCurrentItem%28%29" target="_blank" rel="external"><code>WebBackForwardList.getCurrentItem()</code></a>方法得到。之前的实现是在返回当前页面，4.4的做法是返回之前的页面。</p>
+<p>###Javascript links<br>这一点有一点点模糊：如果一个页面包含一个这样的链接：<code>&lt;a href=&quot;javascript:;&quot;&gt;...&lt;/a&gt;</code>，这种做法其实很常见如果你想把某个元素显示成链接，但是又没有链接任何资源时。4.4中当元素被触发，会触发<a href="https://developer.android.com/reference/android/webkit/WebViewClient.html#onPageFinished%28android.webkit.WebView,%20java.lang.String%29" target="_blank" rel="external"><code>WebViewClient.onPageFinished()</code></a>回调。虽然不确定这里发生了什么，但这么做很好，因为如果你在页面完成了加载时注入javascript，它有可能注入两次，这会导致一些意想不到的事情发生。</p>
+<p>###增加的API<br><a href="https://developers.google.com/chrome-developer-tools/docs/remote-debugging" target="_blank" rel="external">Remote debugging</a>：非常不错，如果你工作用到Webview很多，你会喜欢这个。链接里有很详细的细节，可以看看。<br><a href="https://developer.android.com/reference/android/webkit/WebView.html#evaluateJavascript%28java.lang.String,%20android.webkit.ValueCallback%3Cjava.lang.String%3E%29" target="_blank" rel="external">WebView.evaluateJavascript()</a>：这个方法可以直接从注入的javascript得到一个回调结果。只是需要在方法调用时提供一个<a href="https://developer.android.com/reference/android/webkit/ValueCallback.html" target="_blank" rel="external">ValueCallback</a>。4.4之前也可以实现类似效果，但是需要更多的样板。</p>
+<p>###保持代码健壮，封装差异</p>
+<p>因为处理不同的API实现而导致代码混乱的情况很常见，我发现避免这种情况的一个方式是创建一个适配器接口，隐藏了这些差异。如此，我最后实现的代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IWebViewCompatibility</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">injectWebView</span><span class="params">(WebView webView)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">evaluateJavascript</span><span class="params">(String script, ValueCallbackAdapter callback)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">boolean</span> <span class="title">httpLinkHit</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="function">String <span class="title">getPreviousPageUrl</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Adapter interface for legacy WebView API</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">interface</span> <span class="title">ValueCallbackAdapter</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">evaluateResult</span><span class="params">(String value)</span></span>;</span><br><span class="line">    <span class="function">String <span class="title">javascriptInterfaceMethodName</span><span class="params">()</span></span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如果应用使用了什么注入框架，比如  <a href="https://github.com/square/dagger" target="_blank" rel="external">Dagger</a>，在注入之前，在适配器初始化时，我们需要添加一个if语句。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Module</span>(injects = WebViewFragment.class)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebViewModule</span> </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="meta">@Provides</span> <span class="meta">@Singleton</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> IWebViewCompatibility <span class="title">provideWebViewCompatibility</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> SUPPORTS_KITKAT ? <span class="keyword">new</span> ChromiumWebViewCompatibility()</span><br><span class="line">      : <span class="keyword">new</span> LegacyWebViewCompatibility();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我们看看之前的api是如何获取javascript的回调结果的。我们可以利用 <a href="https://developer.android.com/reference/android/webkit/JavascriptInterface.html" target="_blank" rel="external">JavascriptInterface</a> 机制在页面添加helper接口，从这会接收到的javascript返回的结果（我的建议：在webview加载任何东西之前确保这一点，否则为了把接口加入页面，需要重新加载页面），现在我们实现传统的适配器接口：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LegacyWebViewCompatibility</span> <span class="keyword">implements</span> <span class="title">IWebViewCompatibility</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> WebView webView;</span><br><span class="line">  <span class="keyword">private</span> ValueCallbackAdapter callback;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">injectWebView</span><span class="params">(WebView webView)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.webView = webView;</span><br><span class="line">    <span class="keyword">this</span>.webView.addJavascriptInterface(<span class="keyword">new</span> LegacyCallbackInterfaceHelper(), NAME);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">evaluateJavascript</span><span class="params">(<span class="keyword">final</span> String script, ValueCallbackAdapter callback)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.callback = callback;</span><br><span class="line">    <span class="keyword">if</span> (callback != <span class="keyword">null</span>) &#123;</span><br><span class="line">      String js = String.format(<span class="string">"javascript:&#123;var res=%s;%s.%s(res);&#125;;void(0);"</span>, script, NAME,</span><br><span class="line">        callback.javascriptInterfaceMethodName());</span><br><span class="line">      webView.loadUrl(js);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      webView.loadUrl(<span class="string">"javascript:&#123;"</span> + script + <span class="string">"&#125;;void(0);"</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">LegacyCallbackInterfaceHelper</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> String NAME = <span class="string">"legacyAndroidCallbackInterfaceHelper"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@JavascriptInterface</span> <span class="meta">@SuppressWarnings</span>(<span class="string">"unused"</span>) <span class="comment">// Called from js</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">jimdoDefined</span><span class="params">(String result)</span> </span>&#123;</span><br><span class="line">        ((Activity) webView.getContext()).runOnUiThread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">          <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            LegacyWebViewCompatibilityDelegate.<span class="keyword">this</span>.callback.evaluateResult(result);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>正如你所看到的，我们有很多方式来实现相同的结果。这里需要注意的是：回调应该运行在主线程——JavascriptInterface方法在WebView线程上运行，否则你会在log中得到一个警告。</p>
+<p>从这点出发，我们可以用这点来检查是否javascript已经被注入，避免其被注入两次。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">javascriptInjector.injectFunction(screen, <span class="string">"typeof jimdo === \'undefined\'"</span>,</span><br><span class="line">  <span class="keyword">new</span> WebViewCompatibilityDelegate.ValueCallbackAdapter() &#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">evaluateResult</span><span class="params">(String jimdoUndefined)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (Boolean.valueOf(jimdoUndefined)) &#123;</span><br><span class="line">      javascriptInjector.injectScript(screen, <span class="string">"my_script.js"</span>, <span class="keyword">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> String <span class="title">javascriptInterfaceMethodName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// This corresponds to LegacyCallbackInterfaceHelper.jimdoDefined()</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"jimdoDefined"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>首先，程序注入一个javascript方法去检查有脚本定义的一个变量是否被定义，然后根据返回的结果来决定是否进行javascript注入。</p>
+<p><a href="http://stefanodacchille.github.io/blog/2014/02/23/webview-explorations/?utm_source=Android%20Weekly&amp;utm_campaign=7c5cc74aea-Android_Weekly_93&amp;utm_medium=email&amp;utm_term=0_4eb677ad19-7c5cc74aea-337831413" target="_blank" rel="external">源地址</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/03/21/UltimateAndroidCameraGuide4/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Android相机开发指南（四）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/03/20/UltimateAndroidCameraGuide3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android相机开发指南（三）</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="webview-research" data-title="WebView探索" data-url="http://coofee.me/2014/03/20/webview-research/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"flyouting"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 flyouting and shirley
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

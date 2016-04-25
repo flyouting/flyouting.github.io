@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>笨办法学Python--exercise28. 布尔表达式 | flyouting and shirley</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="上一节学到的逻辑组合的正式名称是“布尔逻辑表达式(boolean logic expression)”。在编程中，布尔逻辑可以说是无处不在。它们是计算机运算的基础和重要组成部分，掌握它们就跟学音乐掌握音阶一样重要。
+在这节练习中，你将在python里使用到上节学到的逻辑表达式。先为下面的每一个逻辑问题写出你认为的答案，每一题的答案要么为True要么为False。写完以后，你需要将python运行起">
+<meta property="og:type" content="article">
+<meta property="og:title" content="笨办法学Python--exercise28. 布尔表达式">
+<meta property="og:url" content="http://coofee.me/2014/11/25/learn-python-the-hard-way-exercise28/index.html">
+<meta property="og:site_name" content="flyouting and shirley">
+<meta property="og:description" content="上一节学到的逻辑组合的正式名称是“布尔逻辑表达式(boolean logic expression)”。在编程中，布尔逻辑可以说是无处不在。它们是计算机运算的基础和重要组成部分，掌握它们就跟学音乐掌握音阶一样重要。
+在这节练习中，你将在python里使用到上节学到的逻辑表达式。先为下面的每一个逻辑问题写出你认为的答案，每一题的答案要么为True要么为False。写完以后，你需要将python运行起">
+<meta property="og:updated_time" content="2014-12-01T14:14:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="笨办法学Python--exercise28. 布尔表达式">
+<meta name="twitter:description" content="上一节学到的逻辑组合的正式名称是“布尔逻辑表达式(boolean logic expression)”。在编程中，布尔逻辑可以说是无处不在。它们是计算机运算的基础和重要组成部分，掌握它们就跟学音乐掌握音阶一样重要。
+在这节练习中，你将在python里使用到上节学到的逻辑表达式。先为下面的每一个逻辑问题写出你认为的答案，每一题的答案要么为True要么为False。写完以后，你需要将python运行起">
+  
+    <link rel="alternative" href="/atom.xml" title="flyouting and shirley" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">flyouting and shirley</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">记录一点一滴</p>
+		
+
+		<!--
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>Über</li>
+						
+					</ul>
+				</div>
+			</div>
+		-->
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">首页</a></li>
+				        
+							<li><a href="/archives">文章列表</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				<div class="switch-part switch-part2"><script>var n ='b-26003349-pe-f-801';var ch ='pc_6'; var w1 = 200;var h1 = 280;</script> <script src='http://static.luna.58.com/js/mad.js'></script></div>
+				
+				<!--
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/AndroidStudio/" style="font-size: 10px;">AndroidStudio</a> <a href="/tags/DB/" style="font-size: 12.5px;">DB</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/ImageSpan/" style="font-size: 10px;">ImageSpan</a> <a href="/tags/ORM/" style="font-size: 12.5px;">ORM</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/activeandroid/" style="font-size: 10px;">activeandroid</a> <a href="/tags/android/" style="font-size: 17.5px;">android</a> <a href="/tags/intent/" style="font-size: 10px;">intent</a> <a href="/tags/key/" style="font-size: 10px;">key</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/span/" style="font-size: 10px;">span</a> <a href="/tags/transitions/" style="font-size: 10px;">transitions</a> <a href="/tags/volley/" style="font-size: 15px;">volley</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/后台，多线程/" style="font-size: 10px;">后台，多线程</a> <a href="/tags/相机/" style="font-size: 15px;">相机</a> <a href="/tags/终端/" style="font-size: 10px;">终端</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+					</div>
+				</section>
+				-->
+				
+				<!--
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				-->
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">flyouting and shirley</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">flyouting and shirley</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">记录一点一滴</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">首页</a></li>
+		        
+					<li><a href="/archives">文章列表</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-learn-python-the-hard-way-exercise28" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/25/learn-python-the-hard-way-exercise28/" class="article-date">
+  	<time datetime="2014-11-25T13:13:33.000Z" itemprop="datePublished">2014-11-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      笨办法学Python--exercise28. 布尔表达式
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Python/">Python</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>上一节学到的逻辑组合的正式名称是“布尔逻辑表达式(boolean logic expression)”。在编程中，布尔逻辑可以说是无处不在。它们是计算机运算的基础和重要组成部分，掌握它们就跟学音乐掌握音阶一样重要。</p>
+<p>在这节练习中，你将在python里使用到上节学到的逻辑表达式。先为下面的每一个逻辑问题写出你认为的答案，每一题的答案要么为<code>True</code>要么为<code>False</code>。写完以后，你需要将python运行起来，把这些逻辑语句输入进去，确认你写的答案是否正确。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">True</span> <span class="keyword">and</span> <span class="keyword">True</span></span><br><span class="line"><span class="keyword">False</span> <span class="keyword">and</span> <span class="keyword">True</span></span><br><span class="line"><span class="number">1</span> == <span class="number">1</span> <span class="keyword">and</span> <span class="number">2</span> == <span class="number">1</span></span><br><span class="line"><span class="string">"test"</span> == <span class="string">"test"</span></span><br><span class="line"><span class="number">1</span> == <span class="number">1</span> <span class="keyword">or</span> <span class="number">2</span> != <span class="number">1</span></span><br><span class="line"><span class="keyword">True</span> <span class="keyword">and</span> <span class="number">1</span> == <span class="number">1</span></span><br><span class="line"><span class="keyword">False</span> <span class="keyword">and</span> <span class="number">0</span> != <span class="number">0</span></span><br><span class="line"><span class="keyword">True</span> <span class="keyword">or</span> <span class="number">1</span> == <span class="number">1</span></span><br><span class="line"><span class="string">"test"</span> == <span class="string">"testing"</span></span><br><span class="line"><span class="number">1</span> != <span class="number">0</span> <span class="keyword">and</span> <span class="number">2</span> == <span class="number">1</span></span><br><span class="line"><span class="string">"test"</span> != <span class="string">"testing"</span></span><br><span class="line"><span class="string">"test"</span> == <span class="number">1</span></span><br><span class="line"><span class="keyword">not</span> (<span class="keyword">True</span> <span class="keyword">and</span> <span class="keyword">False</span>)</span><br><span class="line"><span class="keyword">not</span> (<span class="number">1</span> == <span class="number">1</span> <span class="keyword">and</span> <span class="number">0</span> != <span class="number">1</span>)</span><br><span class="line"><span class="keyword">not</span> (<span class="number">10</span> == <span class="number">1</span> <span class="keyword">or</span> <span class="number">1000</span> == <span class="number">1000</span>)</span><br><span class="line"><span class="keyword">not</span> (<span class="number">1</span> != <span class="number">10</span> <span class="keyword">or</span> <span class="number">3</span> == <span class="number">4</span>)</span><br><span class="line"><span class="keyword">not</span> (<span class="string">"testing"</span> == <span class="string">"testing"</span> <span class="keyword">and</span> <span class="string">"Zed"</span> == <span class="string">"Cool Guy"</span>)</span><br><span class="line"><span class="number">1</span> == <span class="number">1</span> <span class="keyword">and</span> (<span class="keyword">not</span> (<span class="string">"testing"</span> == <span class="number">1</span> <span class="keyword">or</span> <span class="number">1</span> == <span class="number">0</span>))</span><br><span class="line"><span class="string">"chunky"</span> == <span class="string">"bacon"</span> <span class="keyword">and</span> (<span class="keyword">not</span> (<span class="number">3</span> == <span class="number">4</span> <span class="keyword">or</span> <span class="number">3</span> == <span class="number">3</span>))</span><br><span class="line"><span class="number">3</span> == <span class="number">3</span> <span class="keyword">and</span> (<span class="keyword">not</span> (<span class="string">"testing"</span> == <span class="string">"testing"</span> <span class="keyword">or</span> <span class="string">"Python"</span> == <span class="string">"Fun"</span>))</span><br></pre></td></tr></table></figure>
+<p>在本节结尾的地方我会给你一个理清复杂逻辑的技巧。</p>
+<p>所有的布尔逻辑表达式都可以用下面的简单流程得到结果：</p>
+<blockquote>
+<ol>
+<li>找到相等判断的部分 (<code>==</code> 或者 <code>!=</code>)，将其改写为其最终值 (<code>True</code> 或 <code>False</code>)。</li>
+<li>找到括号里的 <code>and/or</code>，先算出它们的值。</li>
+<li>找到每一个<code>not</code>，算出他们反过来的值。</li>
+<li>找到剩下的 <code>and/or</code>，解出它们的值。</li>
+<li>等你都做完后，剩下的结果应该就是 <code>True</code> 或者 <code>False</code> 了。</li>
+</ol>
+</blockquote>
+<p>下面我们以 20行的逻辑表达式演示一下：</p>
+<pre><code>3 != 4 and not (&quot;testing&quot; != &quot;test&quot; or &quot;Python&quot; == &quot;Python&quot;)
+</code></pre><p>接下来你将看到这个复杂表达式是如何逐级解为一个单独结果的：</p>
+<blockquote>
+<ol>
+<li><p>解出每一个等值判断:</p>
+<blockquote>
+<p>a. <code>3 != 4</code> 为 <code>True</code>: <code>True and not (&quot;testing&quot; != &quot;test&quot; or &quot;Python&quot; == &quot;Python&quot;)</code><br>b. <code>&quot;testing&quot; != &quot;test&quot;</code> 为 <code>True</code>: <code>True and not (True or &quot;Python&quot; == &quot;Python&quot;)</code><br>c. <code>&quot;Python&quot; == &quot;Python&quot;</code>为<code>True</code>: <code>True and not (True or True)</code></p>
+</blockquote>
+</li>
+<li><p>找到括号中的每一个<code>and/or</code>:</p>
+<blockquote>
+<p>a. <code>(True or True)</code> 为 True: <code>True and not (True)</code></p>
+</blockquote>
+</li>
+<li>找到每一个 <code>not</code> 并将其逆转:<blockquote>
+<p>a. <code>not (True)</code> 为 False: <code>True and False</code></p>
+</blockquote>
+</li>
+<li>找到剩下的 <code>and/or</code>，解出它们的值:<blockquote>
+<p>a. <code>True and False</code> 为 <code>False</code></p>
+</blockquote>
+</li>
+</ol>
+</blockquote>
+<p>这样我们就解出了它最终的值为 False.</p>
+<blockquote>
+<p><strong>Warning:</strong><br>复杂的逻辑表达式一开始看上去可能会让你觉得很难。而且你也许已经碰壁过了，不过别灰心，这些“逻辑体操”式的训练只是让你逐渐习惯起来，这样后面你可以轻易应对编程里边更酷的一些东西。只要你坚持下去，不放过自己做错的地方就行了。如果你暂时不太能理解也没关系，弄懂的时候总会到来的。</p>
+</blockquote>
+<h2 id="你看到的结果"><a href="#你看到的结果" class="headerlink" title="你看到的结果"></a>你看到的结果</h2><p>以下内容是在你自己猜测结果以后，通过和 python 对话得到的结果：</p>
+<pre><code>$ python
+Python 2.5.1 (r251:54863, Feb  6 2009, 19:02:12)
+[GCC 4.0.1 (Apple Inc. build 5465)] on darwin
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt; True and True
+True
+&gt;&gt;&gt; 1 == 1 and 2 == 2
+True
+</code></pre><h2 id="附加题"><a href="#附加题" class="headerlink" title="附加题"></a>附加题</h2><blockquote>
+<ol>
+<li>Python 里还有很多和<code>!=</code>、 <code>==</code> 类似的操作符. 试着尽可能多地列出 Python 中的等价运算符。例如 <code>&lt;</code> 或者 <code>&lt;=</code> 。</li>
+<li>写出每一个等价运算符的名称。例如 <code>!=</code> 叫 “not equal（不等于）”。</li>
+<li>在 python 中测试新的布尔操作。在敲回车前你需要喊出它的结果。不要思考，凭自己的第一感就可以了。把表达式和结果用笔写下来再敲回车，最后看自己做对多少，做错多少。</li>
+<li>把习题 3 那张纸丢掉，以后你不再需要查询它了。</li>
+</ol>
+</blockquote>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="Q-为什么-quot-test-quot-and-quot-test-quot-返回-quot-test-quot-以及1-and-1-返回-1-而不是-True"><a href="#Q-为什么-quot-test-quot-and-quot-test-quot-返回-quot-test-quot-以及1-and-1-返回-1-而不是-True" class="headerlink" title="Q: 为什么&quot;test&quot; and &quot;test&quot; 返回 &quot;test&quot;以及1 and 1 返回 1 而不是 True?"></a>Q: 为什么<code>&quot;test&quot; and &quot;test&quot;</code> 返回 <code>&quot;test&quot;</code>以及<code>1 and 1</code> 返回 <code>1</code> 而不是 <code>True</code>?</h3><blockquote>
+<p>python和很多语言可以返回布尔表达式中的一个操作数，而不仅仅是真或假。这意味着如果你计算<code>False and 1</code> 你会得到表达式的第一个操作数 (False) ，但是如果你计算<code>True and 1</code>的时候，你得到它的第二个操作数(1)。试一试吧。</p>
+</blockquote>
+<h3 id="Q-和-lt-gt-有什么不同吗"><a href="#Q-和-lt-gt-有什么不同吗" class="headerlink" title="Q:!=和 &lt;&gt;有什么不同吗?"></a>Q:<code>!=</code>和 <code>&lt;&gt;</code>有什么不同吗?</h3><blockquote>
+<p>Python已经声明赞成使用<code>!=</code>而弃用<code>&lt;&gt;</code>所以尽量使用<code>!=</code>吧。其他的应该没有区别了。</p>
+</blockquote>
+<h3 id="Q-有没有捷径去判断布尔表达式的值"><a href="#Q-有没有捷径去判断布尔表达式的值" class="headerlink" title="Q:有没有捷径去判断布尔表达式的值?"></a>Q:有没有捷径去判断布尔表达式的值?</h3><blockquote>
+<p>有的。任何的<code>and</code>表达式包含一个<code>False</code>结果就是<code>False</code>,任何<code>or</code>表达式有一个<code>True</code>结果就是<code>True</code>，你就可以在此处得到结果，但要确保你能处理整个表达式，因为后面这是一个很有用的技能。</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/11/26/learn-python-the-hard-way-exercise29/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          笨办法学Python--exercise29. IF 语句
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/11/24/learn-python-the-hard-way-exercise27/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">笨办法学Python--exercise27. 记住逻辑</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="learn-python-the-hard-way-exercise28" data-title="笨办法学Python--exercise28. 布尔表达式" data-url="http://coofee.me/2014/11/25/learn-python-the-hard-way-exercise28/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"flyouting"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 flyouting and shirley
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

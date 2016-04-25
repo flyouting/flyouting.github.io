@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>笨办法学Python--exercise39.字典,可爱的字典 | flyouting and shirley</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="接下来我要教你另外一种让你伤脑筋的容器型数据结构，因为一旦你学会这种容器，你将拥有超酷的能力。这是最有用的容器：字典(dictionary)。
+Python 将这种数据类型叫做 “dict”，有的语言里它的名称是 “hash”。这两种名字我都会用到，不过这并不重要，重要的是它们和列表的区别。你看，针对列表你可以做这样的事情：
+&amp;gt;&amp;gt;&amp;gt; things = [&amp;apos;a&amp;apos;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="笨办法学Python--exercise39.字典,可爱的字典">
+<meta property="og:url" content="http://coofee.me/2014/11/29/learn-python-the-hard-way-exercise39/index.html">
+<meta property="og:site_name" content="flyouting and shirley">
+<meta property="og:description" content="接下来我要教你另外一种让你伤脑筋的容器型数据结构，因为一旦你学会这种容器，你将拥有超酷的能力。这是最有用的容器：字典(dictionary)。
+Python 将这种数据类型叫做 “dict”，有的语言里它的名称是 “hash”。这两种名字我都会用到，不过这并不重要，重要的是它们和列表的区别。你看，针对列表你可以做这样的事情：
+&amp;gt;&amp;gt;&amp;gt; things = [&amp;apos;a&amp;apos;">
+<meta property="og:updated_time" content="2014-12-07T15:02:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="笨办法学Python--exercise39.字典,可爱的字典">
+<meta name="twitter:description" content="接下来我要教你另外一种让你伤脑筋的容器型数据结构，因为一旦你学会这种容器，你将拥有超酷的能力。这是最有用的容器：字典(dictionary)。
+Python 将这种数据类型叫做 “dict”，有的语言里它的名称是 “hash”。这两种名字我都会用到，不过这并不重要，重要的是它们和列表的区别。你看，针对列表你可以做这样的事情：
+&amp;gt;&amp;gt;&amp;gt; things = [&amp;apos;a&amp;apos;">
+  
+    <link rel="alternative" href="/atom.xml" title="flyouting and shirley" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">flyouting and shirley</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">记录一点一滴</p>
+		
+
+		<!--
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>Über</li>
+						
+					</ul>
+				</div>
+			</div>
+		-->
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">首页</a></li>
+				        
+							<li><a href="/archives">文章列表</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				<div class="switch-part switch-part2"><script>var n ='b-26003349-pe-f-801';var ch ='pc_6'; var w1 = 200;var h1 = 280;</script> <script src='http://static.luna.58.com/js/mad.js'></script></div>
+				
+				<!--
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/AndroidStudio/" style="font-size: 10px;">AndroidStudio</a> <a href="/tags/DB/" style="font-size: 12.5px;">DB</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/ImageSpan/" style="font-size: 10px;">ImageSpan</a> <a href="/tags/ORM/" style="font-size: 12.5px;">ORM</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/activeandroid/" style="font-size: 10px;">activeandroid</a> <a href="/tags/android/" style="font-size: 17.5px;">android</a> <a href="/tags/intent/" style="font-size: 10px;">intent</a> <a href="/tags/key/" style="font-size: 10px;">key</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/span/" style="font-size: 10px;">span</a> <a href="/tags/transitions/" style="font-size: 10px;">transitions</a> <a href="/tags/volley/" style="font-size: 15px;">volley</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/后台，多线程/" style="font-size: 10px;">后台，多线程</a> <a href="/tags/相机/" style="font-size: 15px;">相机</a> <a href="/tags/终端/" style="font-size: 10px;">终端</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+					</div>
+				</section>
+				-->
+				
+				<!--
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				-->
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">flyouting and shirley</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">flyouting and shirley</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">记录一点一滴</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">首页</a></li>
+		        
+					<li><a href="/archives">文章列表</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-learn-python-the-hard-way-exercise39" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/29/learn-python-the-hard-way-exercise39/" class="article-date">
+  	<time datetime="2014-11-29T05:42:31.000Z" itemprop="datePublished">2014-11-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      笨办法学Python--exercise39.字典,可爱的字典
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Python/">Python</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>接下来我要教你另外一种让你伤脑筋的容器型数据结构，因为一旦你学会这种容器，你将拥有超酷的能力。这是最有用的容器：字典(dictionary)。</p>
+<p>Python 将这种数据类型叫做 “dict”，有的语言里它的名称是 “hash”。这两种名字我都会用到，不过这并不重要，重要的是它们和列表的区别。你看，针对列表你可以做这样的事情：</p>
+<pre><code>&gt;&gt;&gt; things = [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;, &apos;d&apos;]
+&gt;&gt;&gt; print things[1]
+b
+&gt;&gt;&gt; things[1] = &apos;z&apos;
+&gt;&gt;&gt; print things[1]
+z
+&gt;&gt;&gt; things
+[&apos;a&apos;, &apos;z&apos;, &apos;c&apos;, &apos;d&apos;]
+</code></pre><p>你可以使用数字作为列表的索引，也就是你可以通过数字找到列表中的元素。你现在应该了解列表的这些特性，而你也应了解，你也只能通过数字来获取列表中的元素。</p>
+<p>而 dict 所作的，是让你可以通过任何东西找到元素，不只是数字。是的，字典可以将一个物件和另外一个东西关联，不管它们的类型是什么，我们来看看：</p>
+<pre><code>&gt;&gt;&gt; stuff = {&apos;name&apos;: &apos;Zed&apos;, &apos;age&apos;: 39, &apos;height&apos;: 6 * 12 + 2}
+&gt;&gt;&gt; print stuff[&apos;name&apos;]
+Zed
+&gt;&gt;&gt; print stuff[&apos;age&apos;]
+39
+&gt;&gt;&gt; print stuff[&apos;height&apos;]
+74
+&gt;&gt;&gt; stuff[&apos;city&apos;] = &quot;San Francisco&quot;
+&gt;&gt;&gt; print stuff[&apos;city&apos;]
+San Francisco
+</code></pre><p>你将看到除了通过数字以外，我们还可以用字符串来从字典中获取 stuff ，我们还可以用字符串来往字典中添加元素。当然它支持的不只有字符串，我们还可以做这样的事情：</p>
+<pre><code>&gt;&gt;&gt; stuff[1] = &quot;Wow&quot;
+&gt;&gt;&gt; stuff[2] = &quot;Neato&quot;
+&gt;&gt;&gt; print stuff[1]
+Wow
+&gt;&gt;&gt; print stuff[2]
+Neato
+&gt;&gt;&gt; stuff
+{&apos;city&apos;: &apos;San Francisco&apos;, 2: &apos;Neato&apos;, &apos;name&apos;: &apos;Zed&apos;, 1: &apos;Wow&apos;, &apos;age&apos;: 39, &apos;height&apos;: 74}
+</code></pre><p>在这段代码中，我使用了数字，当我打印stuff的时候，你可以看到，不止有数字还有字符串作为字典的key。事实上，我可以使用任何东西，这么说并不准确，不过你先这么理解就行了。</p>
+<p>当然了，一个只能放东西进去的字典是没啥意思的，所以我们还要有删除的方法，也就是使用<code>del</code> 这个关键字：</p>
+<pre><code>&gt;&gt;&gt; del stuff[&apos;city&apos;]
+&gt;&gt;&gt; del stuff[1]
+&gt;&gt;&gt; del stuff[2]
+&gt;&gt;&gt; stuff
+{&apos;name&apos;: &apos;Zed&apos;, &apos;age&apos;: 36, &apos;height&apos;: 74}
+</code></pre><h2 id="一个字典实例"><a href="#一个字典实例" class="headerlink" title="一个字典实例"></a>一个字典实例</h2><p>接下来我们要做一个练习，你必须非常仔细，我要求你将这个练习写下来，然后试着弄懂它做了些什么。注意一下这个例子中是如何对应这些州和它们的缩写，以及这些缩写对应的州里的城市。 记住, “映射” 是字典中的关键概念.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># create a mapping of state to abbreviation</span></span><br><span class="line">states = &#123;</span><br><span class="line">    <span class="string">'Oregon'</span>: <span class="string">'OR'</span>,</span><br><span class="line">    <span class="string">'Florida'</span>: <span class="string">'FL'</span>,</span><br><span class="line">    <span class="string">'California'</span>: <span class="string">'CA'</span>,</span><br><span class="line">    <span class="string">'New York'</span>: <span class="string">'NY'</span>,</span><br><span class="line">    <span class="string">'Michigan'</span>: <span class="string">'MI'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># create a basic set of states and some cities in them</span></span><br><span class="line">cities = &#123;</span><br><span class="line">    <span class="string">'CA'</span>: <span class="string">'San Francisco'</span>,</span><br><span class="line">    <span class="string">'MI'</span>: <span class="string">'Detroit'</span>,</span><br><span class="line">    <span class="string">'FL'</span>: <span class="string">'Jacksonville'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># add some more cities</span></span><br><span class="line">cities[<span class="string">'NY'</span>] = <span class="string">'New York'</span></span><br><span class="line">cities[<span class="string">'OR'</span>] = <span class="string">'Portland'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># print out some cities</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'-'</span> * <span class="number">10</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">"NY State has: "</span>, cities[<span class="string">'NY'</span>]</span><br><span class="line"><span class="keyword">print</span> <span class="string">"OR State has: "</span>, cities[<span class="string">'OR'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># print some states</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'-'</span> * <span class="number">10</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">"Michigan's abbreviation is: "</span>, states[<span class="string">'Michigan'</span>]</span><br><span class="line"><span class="keyword">print</span> <span class="string">"Florida's abbreviation is: "</span>, states[<span class="string">'Florida'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># do it by using the state then cities dict</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'-'</span> * <span class="number">10</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">"Michigan has: "</span>, cities[states[<span class="string">'Michigan'</span>]]</span><br><span class="line"><span class="keyword">print</span> <span class="string">"Florida has: "</span>, cities[states[<span class="string">'Florida'</span>]]</span><br><span class="line"></span><br><span class="line"><span class="comment"># print every state abbreviation</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'-'</span> * <span class="number">10</span></span><br><span class="line"><span class="keyword">for</span> state, abbrev <span class="keyword">in</span> states.items():</span><br><span class="line">    <span class="keyword">print</span> <span class="string">"%s is abbreviated %s"</span> % (state, abbrev)</span><br><span class="line"></span><br><span class="line"><span class="comment"># print every city in state</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'-'</span> * <span class="number">10</span></span><br><span class="line"><span class="keyword">for</span> abbrev, city <span class="keyword">in</span> cities.items():</span><br><span class="line">    <span class="keyword">print</span> <span class="string">"%s has the city %s"</span> % (abbrev, city)</span><br><span class="line"></span><br><span class="line"><span class="comment"># now do both at the same time</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'-'</span> * <span class="number">10</span></span><br><span class="line"><span class="keyword">for</span> state, abbrev <span class="keyword">in</span> states.items():</span><br><span class="line">    <span class="keyword">print</span> <span class="string">"%s state is abbreviated %s and has city %s"</span> % (</span><br><span class="line">        state, abbrev, cities[abbrev])</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">'-'</span> * <span class="number">10</span></span><br><span class="line"><span class="comment"># safely get a abbreviation by state that might not be there</span></span><br><span class="line">state = states.get(<span class="string">'Texas'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> state:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">"Sorry, no Texas."</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># get a city with a default value</span></span><br><span class="line">city = cities.get(<span class="string">'TX'</span>, <span class="string">'Does Not Exist'</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">"The city for the state 'TX' is: %s"</span> % city</span><br></pre></td></tr></table></figure>
+<h2 id="你看到的结果"><a href="#你看到的结果" class="headerlink" title="你看到的结果"></a>你看到的结果</h2><pre><code>$ python ex39.py
+----------
+NY State has:  New York
+OR State has:  Portland
+----------
+Michigan&apos;s abbreviation is:  MI
+Florida&apos;s abbreviation is:  FL
+----------
+Michigan has:  Detroit
+Florida has:  Jacksonville
+----------
+California is abbreviated CA
+Michigan is abbreviated MI
+New York is abbreviated NY
+Florida is abbreviated FL
+Oregon is abbreviated OR
+----------
+FL has the city Jacksonville
+CA has the city San Francisco
+MI has the city Detroit
+OR has the city Portland
+NY has the city New York
+----------
+California state is abbreviated CA and has city San Francisco
+Michigan state is abbreviated MI and has city Detroit
+New York state is abbreviated NY and has city New York
+Florida state is abbreviated FL and has city Jacksonville
+Oregon state is abbreviated OR and has city Portland
+----------
+Sorry, no Texas.
+The city for the state &apos;TX&apos; is: Does Not Exist
+</code></pre><h2 id="字典能做什么"><a href="#字典能做什么" class="headerlink" title="字典能做什么"></a>字典能做什么</h2><p>字典是另一个数据结构的例子，和列表一样，是编程中最常用的数据结构之一。 字典是用来做映射或者存储你需要的键值对，这样当你需要的时候，你可以通过key来获取它的值。同样，程序员不会使用一个像“字典”这样的术语，来称呼那些不能像一个写满词汇的真实字典正常使用的事物，所以我们只要把它当做真实世界中的字典来用就好。</p>
+<p>假如你想知道这个单词”Honorificabilitudinitatibus”的意思。你可以很简单的把它复制粘贴放进任何一个搜索引擎中找到答案。我们真的可以说一个搜索引擎就像一个巨大的超级复杂版本的《牛津英语词典》(OED).在搜索引擎出现之前，你可能会这样做：</p>
+<blockquote>
+<ol>
+<li>走进图书馆，找到一本字典，我们称这本字典为OED</li>
+<li>你知道单词”honorificabilitudinitatibus” 以字母 ‘H’开头，所以你查看字典的小标签，找到以 ‘H’ 开头的部分.</li>
+<li>然后你会浏览书页，直到找到”hon”开头的地方。</li>
+<li>然后你再翻过一些书页，直到找到 “honorificabilitudinitatibus” 或者找到以 “hp” 开头的单词，发现这个词不在我们的字典中。</li>
+<li>当你找到这个条目，你就可以仔细阅读并弄明白它的意思。</li>
+</ol>
+</blockquote>
+<p>这个过程跟我们在程序中使用字典的是相似的，你会映射（”mapping”）找到这个单词”honorificabilitudinitatibus”的定义。Python中的字典就跟真实世界中的这本牛津词典（OED）差不多。</p>
+<h2 id="定义自己的字典类"><a href="#定义自己的字典类" class="headerlink" title="定义自己的字典类"></a>定义自己的字典类</h2><p>这节练习的最后一段代码给你演示了如何使用你刚学会的list来创建一个字典数据结构。这段代码可能有些难以理解，所以如果你要花费你很长的时间去弄明白代码额含义也不要担心。代码中会有一些新的知识点，它确实有些复杂，还有一些事情需要你上网查找</p>
+<p>为了使用Python中的<code>dict</code>保存数据，我打算把我的数据结构叫做<code>hashmap</code>,这是字典数据结构的另一个名字。你要把下面的代码输入一个叫做<code>hashmap.py</code>的文件，这样我们就可以在另一个文件 <code>ex39_test.py</code>中执行它。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">new</span><span class="params">(num_buckets=<span class="number">256</span>)</span>:</span></span><br><span class="line">    <span class="string">"""Initializes a Map with the given number of buckets."""</span></span><br><span class="line">    aMap = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, num_buckets):</span><br><span class="line">        aMap.append([])</span><br><span class="line">    <span class="keyword">return</span> aMap</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hash_key</span><span class="params">(aMap, key)</span>:</span></span><br><span class="line">    <span class="string">"""Given a key this will create a number and then convert it to</span><br><span class="line">    an index for the aMap's buckets."""</span></span><br><span class="line">    <span class="keyword">return</span> hash(key) % len(aMap)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_bucket</span><span class="params">(aMap, key)</span>:</span></span><br><span class="line">    <span class="string">"""Given a key, find the bucket where it would go."""</span></span><br><span class="line">    bucket_id = hash_key(aMap, key)</span><br><span class="line">    <span class="keyword">return</span> aMap[bucket_id]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_slot</span><span class="params">(aMap, key, default=None)</span>:</span></span><br><span class="line">    <span class="string">"""</span><br><span class="line">    Returns the index, key, and value of a slot found in a bucket.</span><br><span class="line">    Returns -1, key, and default (None if not set) when not found.</span><br><span class="line">    """</span></span><br><span class="line">    bucket = get_bucket(aMap, key)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i, kv <span class="keyword">in</span> enumerate(bucket):</span><br><span class="line">        k, v = kv</span><br><span class="line">        <span class="keyword">if</span> key == k:</span><br><span class="line">            <span class="keyword">return</span> i, k, v</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>, key, default</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(aMap, key, default=None)</span>:</span></span><br><span class="line">    <span class="string">"""Gets the value in a bucket for the given key, or the default."""</span></span><br><span class="line">    i, k, v = get_slot(aMap, key, default=default)</span><br><span class="line">    <span class="keyword">return</span> v</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">set</span><span class="params">(aMap, key, value)</span>:</span></span><br><span class="line">    <span class="string">"""Sets the key to the value, replacing any existing value."""</span></span><br><span class="line">    bucket = get_bucket(aMap, key)</span><br><span class="line">    i, k, v = get_slot(aMap, key)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> i &gt;= <span class="number">0</span>:</span><br><span class="line">        <span class="comment"># the key exists, replace it</span></span><br><span class="line">        bucket[i] = (key, value)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># the key does not, append to create it</span></span><br><span class="line">        bucket.append((key, value))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">delete</span><span class="params">(aMap, key)</span>:</span></span><br><span class="line">    <span class="string">"""Deletes the given key from the Map."""</span></span><br><span class="line">    bucket = get_bucket(aMap, key)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(bucket)):</span><br><span class="line">        k, v = bucket[i]</span><br><span class="line">        <span class="keyword">if</span> key == k:</span><br><span class="line">            <span class="keyword">del</span> bucket[i]</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">list</span><span class="params">(aMap)</span>:</span></span><br><span class="line">    <span class="string">"""Prints out what's in the Map."""</span></span><br><span class="line">    <span class="keyword">for</span> bucket <span class="keyword">in</span> aMap:</span><br><span class="line">        <span class="keyword">if</span> bucket:</span><br><span class="line">            <span class="keyword">for</span> k, v <span class="keyword">in</span> bucket:</span><br><span class="line">                <span class="keyword">print</span> k, v</span><br></pre></td></tr></table></figure>
+<p>上面的代码创建了一个叫做<code>hashmap</code>的模块，你需要把这个模块import到文件 <code>ex39_test.py</code> 中，并让这个文件运行起来：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashmap</span><br><span class="line"></span><br><span class="line"><span class="comment"># create a mapping of state to abbreviation</span></span><br><span class="line">states = hashmap.new()</span><br><span class="line">hashmap.set(states, <span class="string">'Oregon'</span>, <span class="string">'OR'</span>)</span><br><span class="line">hashmap.set(states, <span class="string">'Florida'</span>, <span class="string">'FL'</span>)</span><br><span class="line">hashmap.set(states, <span class="string">'California'</span>, <span class="string">'CA'</span>)</span><br><span class="line">hashmap.set(states, <span class="string">'New York'</span>, <span class="string">'NY'</span>)</span><br><span class="line">hashmap.set(states, <span class="string">'Michigan'</span>, <span class="string">'MI'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># create a basic set of states and some cities in them</span></span><br><span class="line">cities = hashmap.new()</span><br><span class="line">hashmap.set(cities, <span class="string">'CA'</span>, <span class="string">'San Francisco'</span>)</span><br><span class="line">hashmap.set(cities, <span class="string">'MI'</span>, <span class="string">'Detroit'</span>)</span><br><span class="line">hashmap.set(cities, <span class="string">'FL'</span>, <span class="string">'Jacksonville'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># add some more cities</span></span><br><span class="line">hashmap.set(cities, <span class="string">'NY'</span>, <span class="string">'New York'</span>)</span><br><span class="line">hashmap.set(cities, <span class="string">'OR'</span>, <span class="string">'Portland'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># print out some cities</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'-'</span> * <span class="number">10</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">"NY State has: %s"</span> % hashmap.get(cities, <span class="string">'NY'</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">"OR State has: %s"</span> % hashmap.get(cities, <span class="string">'OR'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># print some states</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'-'</span> * <span class="number">10</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">"Michigan's abbreviation is: %s"</span> % hashmap.get(states, <span class="string">'Michigan'</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">"Florida's abbreviation is: %s"</span> % hashmap.get(states, <span class="string">'Florida'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># do it by using the state then cities dict</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'-'</span> * <span class="number">10</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">"Michigan has: %s"</span> % hashmap.get(cities, hashmap.get(states, <span class="string">'Michigan'</span>))</span><br><span class="line"><span class="keyword">print</span> <span class="string">"Florida has: %s"</span> % hashmap.get(cities, hashmap.get(states, <span class="string">'Florida'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># print every state abbreviation</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'-'</span> * <span class="number">10</span></span><br><span class="line">hashmap.list(states)</span><br><span class="line"></span><br><span class="line"><span class="comment"># print every city in state</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'-'</span> * <span class="number">10</span></span><br><span class="line">hashmap.list(cities)</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">'-'</span> * <span class="number">10</span></span><br><span class="line">state = hashmap.get(states, <span class="string">'Texas'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> state:</span><br><span class="line">  <span class="keyword">print</span> <span class="string">"Sorry, no Texas."</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># default values using ||= with the nil result</span></span><br><span class="line"><span class="comment"># can you do this on one line?</span></span><br><span class="line">city = hashmap.get(cities, <span class="string">'TX'</span>, <span class="string">'Does Not Exist'</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">"The city for the state 'TX' is: %s"</span> % city</span><br></pre></td></tr></table></figure>
+<p>你应该发现这段代码跟我们在这节开始时写的代码几乎相同，除了它使用了你新实现的HashMap。通读代码并且确信你明白这段代码中的每一行是如何与<code>ex39.py</code>中的代码实现相同的功能。</p>
+<h2 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h2><p>这个 <code>hashmap</code> 只不过是”拥有键值对的有插槽的列表”，用几分钟时间分析一下我说的意思：</p>
+<p>“一个列表”<br>在 <code>hashmap</code> 函数中，我创建了一个列表变量<code>aMap</code>，并且用其他的列表填充了这个变量。<br>“有插槽的列表”<br>最开始这个列表是空的,当我给这个数据结构添加键值对之后，它就会填充一些插槽或者其他的东西<br>“拥有键值对”<br>表示这个列表中的每个插槽都包含一个<code>(key, value)</code>这样的元素或者数据对。</p>
+<p>如果我的这个描述仍旧没让你弄明白是什么意思，花点时间在纸上画一画它们，直到你搞明白为止。实际上，手动在纸上运算是让你弄明白它们的好办法。</p>
+<p>你现在知道数据是如何被组织起来的，你还需要知道它每个操作的算法。算法指的是你做什么事情的步骤。它是是数据结构运行起来的代码。我们接下来要逐个分析下代码中用到的操作， 下面是在 <code>hashmap</code>算法中一个通用的模式：</p>
+<blockquote>
+<ol>
+<li>把一个关键字转换成整数使用哈希函数: <code>hash_key</code>.</li>
+<li>Convert this hash to a bucket number using a <code>%</code>(模除) 操作.</li>
+<li>Get this bucket from the <code>aMap</code> list of buckets, and then traverse it to find the slot that contains the key we want.</li>
+</ol>
+</blockquote>
+<p>操作<code>set</code> 实现以下功能,如果key值存在，则替换原有的值，不存在则创建一个新值。</p>
+<p>下面我们逐个函数分析一下hashmap的代码，让你明白它是如何工作的。 跟我一起分析并确保你明白每一行代码的意思。给每一行加上注释，确保你明白他们是做什么的。就是如此简单，我建议你对下面提到的每一行代码都花点时间在Python shell或者纸上多练习练习:</p>
+<p>new<br>首先，我以创建一个函数来生成一个hashmap开始，也被称为初始化。 我先创建一个包含列表的变量，叫做<code>aMap</code>,然后把列表<code>num_buckets</code>放进去， <code>num_buckets</code>用来存放我给hashmap设置的内容。 后面我会在另一个函数中使用<code>len(aMap)</code> 来查找一共有多少个 buckets。确信你明白我说的。</p>
+<p>hash_key<br>这个看似简单的函数是一个dict如何工作的核心。它是用Python内建的哈希函数将字符串转换为数字。Python为自己的字典数据结构使用此功能，而我只是复用它. 你应该启动一个Python控制台，看看它是如何工作的. 当我拿到key对应的数字的时候, 我使用 <code>%</code> (模除) 操作和 <code>len(aMap)</code> 来获得一个放置这个key的位置。你应该知道，<code>%</code> (模除) 操作将会返回除法操作的余数。我也可以使用这个方法来限制大数，将其固为较小的一组数字。如果你不知道我在说什么，使用Python解析器研究一下。</p>
+<p>get_bucket<br>这个函数使用<code>hash_key</code>来找到一个key所在的“bucket”。当我在<code>hash_key</code>函数中进行<code>%len(aMap)</code>操作的时候，我知道无论我获得哪一个 <code>bucket_id</code>都会填充进  <code>aMap</code> 列表中. 使用 <code>bucket_id</code> 可以找到一个key所在的“bucket” 。</p>
+<p>get_slot<br>这个函数使用<code>get_bucket</code>来获得一个key所在的“bucket”， 它通过查找bucket中的每一个元素来找到对应的key。找到对应的key之后，它会返回这样一个元组<code>(i, k, v)</code>，i表示的是key的索引值，k就是key本身，v是key对应的值。你现在已经了解了足够字典数据结构运行的原理。它通过keys、哈希值和模量找到一个bucket，然后搜索这个bucket，找到对应的条目。它有效的减少了搜索次数。</p>
+<p>get<br>这是一个人们需要<code>hashmap</code>的最方便的函数。它使用<code>get_slot</code>来获得 元组<code>(i, k, v)</code> 但是只返回<code>v</code>. 确定你明白这些默认变量是如何运行的，以及<code>get_slot</code>中<code>(i, k, v)</code> 分派给<code>i</code>, <code>k</code>, <code>v</code>的变量是如何获得的。</p>
+<p>set<br>设置一个<code>key/value</code>键值对，并将其追加到字典中，保证以后再用到的时候可以获取的到。但是，我希望我的<code>hashmap</code>每个key值存储一次。为了做到这点， 首先，我要找到这个key是不是已经存在，如果存在，我会替换它原来的值，如果不存在，则会追加进来。这样做会比简单的追加慢一些，但是更满足<code>hashmap</code>使用者的期望。如果你允许一个key有多个value，你需要使用 <code>get</code>方法查阅所有的“bucket”并返回一个所有value的列表。这是平衡设计的一个很好的例子。现在的版本是你可以更快速的 <code>get</code>, 但是会慢一些 <code>set</code>.</p>
+<p>delete<br>删除一个key, 找到key对应的 bucket，并将其从列表中删除。因为我选择一个key只能对应一个value，当我找到一个相应的key的时候，我就可以停止继续查找和删除。如果我选择允许一个key可以对应多个value的话，我的删除操作也会慢一些，因为我要找到所有key对应的value，并将其删除。</p>
+<p>list<br>最后的功能仅仅是一个小小的调试功能，它能打印出<code>hashmap</code> 中的所有东西，并且能帮助你理解字典的细微之处。</p>
+<p>在所有的函数之后，我有一点点的测试代码，可以确保他们正常工作。</p>
+<h2 id="三级列表"><a href="#三级列表" class="headerlink" title="三级列表"></a>三级列表</h2><p>正如我在讨论中提到的， 由于我选择 <code>set</code> 来重写 (替换) 原有的keys，这会让<code>set</code>执行的慢一些，但是这决定能让其他的一些函数快一些。如果我想要一个<code>hashmap</code>允许一个key对应多个value，但又要求所有函数仍然执行的很快，怎么办</p>
+<p>我要做的就是让每个“bucket”中的插槽的值都是一个列表。这意味着我要给字典再增加第三级列表。这种<code>hashmap</code>仍然满足字典的定义。我说过， “每一个key可以有对个value”的另一种说法就是”每一个key有一个value的列表”。 </p>
+<h2 id="你应该看到的结果（again）"><a href="#你应该看到的结果（again）" class="headerlink" title="你应该看到的结果（again）"></a>你应该看到的结果（again）</h2><pre><code>$ python ex39_test.py
+Traceback (most recent call last):
+  File &quot;ex39_test.py&quot;, line 1, in &lt;module&gt;
+    import hashmap
+ImportError: No module named hashmap
+</code></pre><h2 id="什么时候选择字典，什么时候选择列表"><a href="#什么时候选择字典，什么时候选择列表" class="headerlink" title="什么时候选择字典，什么时候选择列表"></a>什么时候选择字典，什么时候选择列表</h2><p>如同我在练习38中提到的，列出有特定的特性，帮助你控制和组织需要放在表结构的东西。 字典也一样，但是<code>dict</code>的特性是与列表不同的，因为他们是用键值对映射来工作的。当遇到下面情况的时候，可以使用字典： </p>
+<blockquote>
+<ol>
+<li>你要检索的东西是以一些标识为基础的，比如名字、地址或其他一切可以作为key的东西。</li>
+<li>你不需要这些东西是有序的。词典通常不会有序的概念，所以你必须使用一个列表。</li>
+<li>你想要通过key增删一个元素。</li>
+</ol>
+</blockquote>
+<p>也就是说，如果你要用一个非数字的key，使用<code>dict</code>，如果你需要有序的东西，使用<code>list</code>.</p>
+<h2 id="附加题"><a href="#附加题" class="headerlink" title="附加题"></a>附加题</h2><blockquote>
+<ol>
+<li>用自己国家的州和城市做一些类似的映射关系</li>
+<li>在 Python 文档中找到 dictionary 的相关的内容，学着对 dict 做更多的操作。</li>
+<li>找出一些 dict 无法做到的事情。例如比较重要的一个就是 dict 的内容是无序的，你可以检查一下看看是否真是这样。</li>
+<li>阅读python的关于断言的功能，然后修改hashmap的代码，给每一个测试增加一些断言相关的代码，替换原来的打印代码。比如，你可以断言第一个操作返回”Flamenco Sketches” 而不是直接打印出”Flamenco Sketches” 。</li>
+<li>有没有注意到<code>list</code>方法没有按照你增加元素的顺序把它们列出来？这是字典不维持秩序的一个例子，如果你将代码进行分析，你就会明白为什么。</li>
+<li>像写<code>list</code>方法一样写一个<code>dump</code>方法，实现备份字典内所有内容的功能</li>
+<li>确定你知道<code>hash</code>在代码中实现了什么功能，它是一个特殊的函数，能将字符串转化为整数。在网上找到相关文档，了解在程序设计中，什么是哈希函数。</li>
+</ol>
+</blockquote>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="Q：字典和列表的区别？"><a href="#Q：字典和列表的区别？" class="headerlink" title="Q：字典和列表的区别？"></a>Q：字典和列表的区别？</h3><blockquote>
+<p>list是一个有序的项目列表，dict是匹配一些项目（称为“键”）和其他项目（称为“值”）。</p>
+</blockquote>
+<h3 id="Q-我怎样使用字典？"><a href="#Q-我怎样使用字典？" class="headerlink" title="Q: 我怎样使用字典？"></a>Q: 我怎样使用字典？</h3><blockquote>
+<p>当你需要通过一个值来访问另一个值的时候，使用字典。实际上，你可以把字典称作“对照表”</p>
+</blockquote>
+<h3 id="Q-我怎样使用列表？"><a href="#Q-我怎样使用列表？" class="headerlink" title="Q: 我怎样使用列表？"></a>Q: 我怎样使用列表？</h3><blockquote>
+<p>对任何需要有序的事情集合使用列表，你只需要通过他们的数值索引来访问它们。</p>
+</blockquote>
+<h3 id="Q-加入我需要一个字典，但是又需要是有序的，怎么办？"><a href="#Q-加入我需要一个字典，但是又需要是有序的，怎么办？" class="headerlink" title="Q:加入我需要一个字典，但是又需要是有序的，怎么办？"></a>Q:加入我需要一个字典，但是又需要是有序的，怎么办？</h3><blockquote>
+<p>看看python中<code>collections.OrderedDict</code>这个数据结构。网上搜索相关的文档。</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/11/29/learn-python-the-hard-way-exercise40/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          笨办法学Python--exercise40.模块, 类和对象
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/11/29/learn-python-the-hard-way-exercise38/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">笨办法学Python--exercise38.列表操作</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="learn-python-the-hard-way-exercise39" data-title="笨办法学Python--exercise39.字典,可爱的字典" data-url="http://coofee.me/2014/11/29/learn-python-the-hard-way-exercise39/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"flyouting"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 flyouting and shirley
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>笨办法学Python--exercise45.你来制作一个游戏 | flyouting and shirley</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="你要开始学会自食其力了。通过阅读这本书你应该已经学到了一点，那就是你需要的所有的信息网上都有，你只要去搜索就能找到。唯一困扰你的就是如何使用正确的词汇进行搜索。学到现在，你在挑选搜索关键字方面应该已经有些感觉了。现在已经是时候了，你需要尝试写一个大的项目，并让它运行起来。
+以下是你的需求：
+
+
+制作一个截然不同的游戏。
+使用多个文件，并使用import调用这些文件。确认自己知道import 的用法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="笨办法学Python--exercise45.你来制作一个游戏">
+<meta property="og:url" content="http://coofee.me/2014/11/30/learn-python-the-hard-way-exercise45/index.html">
+<meta property="og:site_name" content="flyouting and shirley">
+<meta property="og:description" content="你要开始学会自食其力了。通过阅读这本书你应该已经学到了一点，那就是你需要的所有的信息网上都有，你只要去搜索就能找到。唯一困扰你的就是如何使用正确的词汇进行搜索。学到现在，你在挑选搜索关键字方面应该已经有些感觉了。现在已经是时候了，你需要尝试写一个大的项目，并让它运行起来。
+以下是你的需求：
+
+
+制作一个截然不同的游戏。
+使用多个文件，并使用import调用这些文件。确认自己知道import 的用法">
+<meta property="og:updated_time" content="2014-12-07T15:15:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="笨办法学Python--exercise45.你来制作一个游戏">
+<meta name="twitter:description" content="你要开始学会自食其力了。通过阅读这本书你应该已经学到了一点，那就是你需要的所有的信息网上都有，你只要去搜索就能找到。唯一困扰你的就是如何使用正确的词汇进行搜索。学到现在，你在挑选搜索关键字方面应该已经有些感觉了。现在已经是时候了，你需要尝试写一个大的项目，并让它运行起来。
+以下是你的需求：
+
+
+制作一个截然不同的游戏。
+使用多个文件，并使用import调用这些文件。确认自己知道import 的用法">
+  
+    <link rel="alternative" href="/atom.xml" title="flyouting and shirley" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">flyouting and shirley</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">记录一点一滴</p>
+		
+
+		<!--
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>Über</li>
+						
+					</ul>
+				</div>
+			</div>
+		-->
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">首页</a></li>
+				        
+							<li><a href="/archives">文章列表</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				<div class="switch-part switch-part2"><script>var n ='b-26003349-pe-f-801';var ch ='pc_6'; var w1 = 200;var h1 = 280;</script> <script src='http://static.luna.58.com/js/mad.js'></script></div>
+				
+				<!--
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/AndroidStudio/" style="font-size: 10px;">AndroidStudio</a> <a href="/tags/DB/" style="font-size: 12.5px;">DB</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/ImageSpan/" style="font-size: 10px;">ImageSpan</a> <a href="/tags/ORM/" style="font-size: 12.5px;">ORM</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/activeandroid/" style="font-size: 10px;">activeandroid</a> <a href="/tags/android/" style="font-size: 17.5px;">android</a> <a href="/tags/intent/" style="font-size: 10px;">intent</a> <a href="/tags/key/" style="font-size: 10px;">key</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/span/" style="font-size: 10px;">span</a> <a href="/tags/transitions/" style="font-size: 10px;">transitions</a> <a href="/tags/volley/" style="font-size: 15px;">volley</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/后台，多线程/" style="font-size: 10px;">后台，多线程</a> <a href="/tags/相机/" style="font-size: 15px;">相机</a> <a href="/tags/终端/" style="font-size: 10px;">终端</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+					</div>
+				</section>
+				-->
+				
+				<!--
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				-->
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">flyouting and shirley</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">flyouting and shirley</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">记录一点一滴</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">首页</a></li>
+		        
+					<li><a href="/archives">文章列表</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-learn-python-the-hard-way-exercise45" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/30/learn-python-the-hard-way-exercise45/" class="article-date">
+  	<time datetime="2014-11-30T03:11:35.000Z" itemprop="datePublished">2014-11-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      笨办法学Python--exercise45.你来制作一个游戏
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Python/">Python</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>你要开始学会自食其力了。通过阅读这本书你应该已经学到了一点，那就是你需要的所有的信息网上都有，你只要去搜索就能找到。唯一困扰你的就是如何使用正确的词汇进行搜索。学到现在，你在挑选搜索关键字方面应该已经有些感觉了。现在已经是时候了，你需要尝试写一个大的项目，并让它运行起来。</p>
+<p>以下是你的需求：</p>
+<blockquote>
+<ol>
+<li>制作一个截然不同的游戏。</li>
+<li>使用多个文件，并使用<code>import</code>调用这些文件。确认自己知道<code>import</code> 的用法。</li>
+<li>对于每个房间使用一个 class，class 的命名要能体现出它的用处(例如 <code>GoldRoom</code>、<code>KoiPondRoom</code>)。</li>
+<li>你的执行器代码应该了解这些房间，所以创建一个类来调用并且记录这些房间。有很多种方法可以达到这个目的，不过你可以考虑让每个房间返回下一个房间，或者设置一个变量，让它指定下一个房间是什么。</li>
+</ol>
+</blockquote>
+<p>其他的事情就全靠你了。花一个星期完成这件任务，做一个你能做出来的最好的游戏。使用你学过的任何东西（类，函数，字典，列表……）来改进你的程序。这节课的目的是教你如何构建 class 出来，而这些 class 又能调用到其它 Python 文件中的 class。</p>
+<p>我不会详细地告诉你告诉你怎样做，你需要自己完成。试着下手吧，编程就是解决问题的过程，这就意味着你要尝试各种可能性，进行实验，经历失败，然后丢掉你做出来的东西重头开始。当你被某个问题卡住的时候，你可以向别人寻求帮助，并把你的代码贴出来给他们看。如果有人刻薄你，别理他们，你只要集中精力在帮你的人身上就可以了。持续修改和清理你的代码，直到它完整可执行为止，然后再研究一下看它还能不能被改进。</p>
+<p>祝你好运，下个星期你做出游戏后我们再见。</p>
+<h2 id="评估你的游戏"><a href="#评估你的游戏" class="headerlink" title="评估你的游戏"></a>评估你的游戏</h2><p>这节练习的目的是检查评估你的游戏。也许你只完成了一半，卡在那里没有进行下去，也许你勉强做出来了。不管怎样，我们将串一下你应该弄懂的一些东西，并确认你的游戏里有使用到它们。我们将学习如何用正确的格式构建 class，使用 class 的一些通用习惯，另外还有很多的“书本知识”让你学习。</p>
+<p>为什么我会让你先行尝试，然后才告诉你正确的做法呢？因为从现在开始你要学会“自给自足”，以前是我牵着你前行，以后就得靠你自己了。后面的习题我只会告诉你你的任务，你需要自己去完成，在你完成后我再告诉你如何可以改进你的作业。</p>
+<p>一开始你会觉得很困难并且很不习惯，但只要坚持下去，你就会培养出自己解决问题的能力。你还会找出创新的方法解决问题，这比从课本中拷贝解决方案强多了。</p>
+<h2 id="函数的风格"><a href="#函数的风格" class="headerlink" title="函数的风格"></a>函数的风格</h2><p>以前我教过的怎样写好函数的方法一样是适用的，不过这里要添加几条：</p>
+<blockquote>
+<ul>
+<li>由于各种各样的原因，程序员将 class (类)里边的函数称作 method （方法）。很大程度上这只是个市场策略（用来推销 OOP），不过如果你把它们称作“函数”的话，是会有啰嗦的人跳出来纠正你的。如果你觉得他们太烦了，你可以告诉他们从数学方面演示一下“函数”和“方法”究竟有什么不同，这样他们会很快闭嘴的。</li>
+<li>在你使用 class 的过程中，很大一部分时间是告诉你的 class 如何“做事情”。给这些函数命名的时候，与其命名成一个名词，不如命名为一个动词，作为给 class 的一个命令。就和 list 的 pop (抛出)函数一样，它相当于说：“嘿，列表，把这东西给我 pop 出去。”它的名字不是<code>remove_from_end_of_list</code> ，因为即使它的功能的确是这样，这一串字符也不是一个命令。</li>
+<li>让你的函数保持简单小巧。由于某些原因，有些人开始学习 class 后就会忘了这一条。</li>
+</ul>
+</blockquote>
+<h2 id="类的风格"><a href="#类的风格" class="headerlink" title="类的风格"></a>类的风格</h2><blockquote>
+<ul>
+<li>你的 class 应该使用 “camel case（驼峰式大小写）”，例如你应该使用 <code>SuperGoldFactory</code>而不是<code>super_gold_factory</code>。</li>
+<li>你的 <code>__init__</code>不应该做太多的事情，这会让 class 变得难以使用。</li>
+<li>你的其它函数应该使用 “underscore format（下划线隔词）”，所以你可以写<code>my_awesome_hair</code>，<br>而不是 <code>myawesomehair</code>或者<code>MyAwesomeHair</code>。</li>
+<li>用一致的方式组织函数的参数。如果你的 class 需要处理 users、dogs、和 cats，就保持这个次序（特别情况除外）。如果一个函数的参数是<code>(dog, cat, user)</code>，另一个的是<code>(user, cat, dog)</code> ，这会让函数使用起来很困难。</li>
+<li>不要对全局变量或者来自模组的变量进行重定义或者赋值，让这些东西自顾自就行了。</li>
+<li>不要一根筋式地维持风格一致性，这是思维力底下的妖怪喽啰做的事情。一致性是好事情，不过愚蠢地跟着别人遵从一些白痴口号是错误的行为——这本身就是一种坏的风格。好好为自己着想吧。</li>
+<li>永远永远都使用<code>class Name(object)</code>的方式定义 class，否则你会碰到大麻烦。</li>
+</ul>
+</blockquote>
+<h2 id="代码风格"><a href="#代码风格" class="headerlink" title="代码风格"></a>代码风格</h2><blockquote>
+<ul>
+<li>为了以方便他人阅读，为自己的代码字符之间留下一些空白。你将会看到一些很差的程序员，他们写的代码还算通顺，但字符之间没有任何空间。这种风格在任何编程语言中都是坏习惯，人的眼睛和大脑会通过空白和垂直对齐的位置来扫描和区隔视觉元素，如果你的代码里没有任何空白，这相当于为你的代码上了迷彩装。</li>
+<li>如果一段代码你无法朗读出来，那么这段代码的可读性可能就有问题。如你找不到让某个东西易用的方法，试着也朗读出来。这样不仅会逼迫你慢速而且真正仔细阅读过去，还会帮你找到难读的段落，从而知道那些代码的易读性需要作出改进。</li>
+<li>学着模仿别人的风格写 Python 程序，直到哪天你找到你自己的风格为止。</li>
+<li>一旦你有了自己的风格，也别把它太当回事。程序员工作的一部分就是和别人的代码打交道，有的人审美就是很差。相信我，你的审美某一方面一定也很差，只是你从未意识到而已。</li>
+<li>如果你发现有人写的代码风格你很喜欢，那就模仿他们的风格。</li>
+</ul>
+</blockquote>
+<h2 id="好的注释"><a href="#好的注释" class="headerlink" title="好的注释"></a>好的注释</h2><blockquote>
+<ul>
+<li>有程序员会告诉你，说你的代码需要有足够的可读性，这样你就无需写注释了。他们会以自己接近官腔的声音说“所以你永远都不应该写代码注释。”这些人要么是一些顾问型的人物，如果别人无法使用他们的代码，就会付更多钱给他们让他们解决问题。要么他们能力不足，从来没有跟别人合作过。别理会这些人，好好写你的注释。</li>
+<li>写注释的时候，描述清楚为什么你要这样做。代码只会告诉你“这样实现”，而不会告诉你“为什么要这样实现”，而后者比前者更重要。</li>
+<li>当你为函数写文档注释的时候，记得为别的代码使用者也写些东西。你不需要狂写一大堆，但一两句话写写这个函数的用法还是很有用的。</li>
+<li>最后要说的是，虽然注释是好东西，太多的注释就不见得是了。而且注释也是需要维护的，你要尽量让注释短小精悍一语中的，如果你对代码做了更改，记得检查并更新相关的注释，确认它们还是正确的。</li>
+</ul>
+</blockquote>
+<h2 id="为你的游戏评分"><a href="#为你的游戏评分" class="headerlink" title="为你的游戏评分"></a>为你的游戏评分</h2><p>现在我要求你假装成我，板起脸来，把你的代码打印出来，然后拿一支红笔，把代码中所有的错误都标出来。你要充分利用你在本章以及前面学到的知识。等你批改完了，我要求你把所有的错误改对。这个过程我需要你多重复几次，争取找到更多的可以改进的地方。使用我前面教过的方法，把代码分解成最细小的单元一一进行分析。</p>
+<p>这个练习的目的是训练你对于细节的关注程度。等你检查完自己的代码，再找一段别人的代码用这种方法检查一遍。把代码打印出来，检查出所有代码和风格方面的错误，然后试着在不改坏别人代码的前提下把它们修改正确、</p>
+<p>这周我要求你的事情就是批改和纠错，包含你自己的代码和别人的代码，再没有别的了。这节习题难度还是挺大，不过一旦你完成了任务，你学过的东西就会牢牢记在脑中。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/11/30/learn-python-the-hard-way-exercise46/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          笨办法学Python--exercise46.项目骨架
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/11/30/learn-python-the-hard-way-exercise44/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">笨办法学Python--exercise44.继承Vs.包含</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="learn-python-the-hard-way-exercise45" data-title="笨办法学Python--exercise45.你来制作一个游戏" data-url="http://coofee.me/2014/11/30/learn-python-the-hard-way-exercise45/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"flyouting"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 flyouting and shirley
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

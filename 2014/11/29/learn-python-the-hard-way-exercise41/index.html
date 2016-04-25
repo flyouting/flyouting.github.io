@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>笨办法学Python--exercise41.学会说面向对象 | flyouting and shirley</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在这个练习中，我要教你如何说“面向对象”，我要给你一些你需要知道定义的词。然后我会给你一组你必须了解的句子，最后我会给你一大堆练习，你必须完成这练习题，将我给你的句子转化成自己的词汇。
+单词解释class(类)：告诉python去创建一个新类型。object(对象)：有两种意思，事物的基本类型，或者事物的实例化。instance(实例)：你通过python创建一个类所获得的。def：用来在类中定义">
+<meta property="og:type" content="article">
+<meta property="og:title" content="笨办法学Python--exercise41.学会说面向对象">
+<meta property="og:url" content="http://coofee.me/2014/11/29/learn-python-the-hard-way-exercise41/index.html">
+<meta property="og:site_name" content="flyouting and shirley">
+<meta property="og:description" content="在这个练习中，我要教你如何说“面向对象”，我要给你一些你需要知道定义的词。然后我会给你一组你必须了解的句子，最后我会给你一大堆练习，你必须完成这练习题，将我给你的句子转化成自己的词汇。
+单词解释class(类)：告诉python去创建一个新类型。object(对象)：有两种意思，事物的基本类型，或者事物的实例化。instance(实例)：你通过python创建一个类所获得的。def：用来在类中定义">
+<meta property="og:updated_time" content="2014-12-07T15:15:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="笨办法学Python--exercise41.学会说面向对象">
+<meta name="twitter:description" content="在这个练习中，我要教你如何说“面向对象”，我要给你一些你需要知道定义的词。然后我会给你一组你必须了解的句子，最后我会给你一大堆练习，你必须完成这练习题，将我给你的句子转化成自己的词汇。
+单词解释class(类)：告诉python去创建一个新类型。object(对象)：有两种意思，事物的基本类型，或者事物的实例化。instance(实例)：你通过python创建一个类所获得的。def：用来在类中定义">
+  
+    <link rel="alternative" href="/atom.xml" title="flyouting and shirley" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">flyouting and shirley</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">记录一点一滴</p>
+		
+
+		<!--
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>Über</li>
+						
+					</ul>
+				</div>
+			</div>
+		-->
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">首页</a></li>
+				        
+							<li><a href="/archives">文章列表</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				<div class="switch-part switch-part2"><script>var n ='b-26003349-pe-f-801';var ch ='pc_6'; var w1 = 200;var h1 = 280;</script> <script src='http://static.luna.58.com/js/mad.js'></script></div>
+				
+				<!--
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/AndroidStudio/" style="font-size: 10px;">AndroidStudio</a> <a href="/tags/DB/" style="font-size: 12.5px;">DB</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/ImageSpan/" style="font-size: 10px;">ImageSpan</a> <a href="/tags/ORM/" style="font-size: 12.5px;">ORM</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/activeandroid/" style="font-size: 10px;">activeandroid</a> <a href="/tags/android/" style="font-size: 17.5px;">android</a> <a href="/tags/intent/" style="font-size: 10px;">intent</a> <a href="/tags/key/" style="font-size: 10px;">key</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/span/" style="font-size: 10px;">span</a> <a href="/tags/transitions/" style="font-size: 10px;">transitions</a> <a href="/tags/volley/" style="font-size: 15px;">volley</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/后台，多线程/" style="font-size: 10px;">后台，多线程</a> <a href="/tags/相机/" style="font-size: 15px;">相机</a> <a href="/tags/终端/" style="font-size: 10px;">终端</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+					</div>
+				</section>
+				-->
+				
+				<!--
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				-->
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">flyouting and shirley</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">flyouting and shirley</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">记录一点一滴</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">首页</a></li>
+		        
+					<li><a href="/archives">文章列表</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-learn-python-the-hard-way-exercise41" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/29/learn-python-the-hard-way-exercise41/" class="article-date">
+  	<time datetime="2014-11-29T12:41:45.000Z" itemprop="datePublished">2014-11-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      笨办法学Python--exercise41.学会说面向对象
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Python/">Python</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在这个练习中，我要教你如何说“面向对象”，我要给你一些你需要知道定义的词。然后我会给你一组你必须了解的句子，最后我会给你一大堆练习，你必须完成这练习题，将我给你的句子转化成自己的词汇。</p>
+<h2 id="单词解释"><a href="#单词解释" class="headerlink" title="单词解释"></a>单词解释</h2><p>class(类)：告诉python去创建一个新类型。<br>object(对象)：有两种意思，事物的基本类型，或者事物的实例化。<br>instance(实例)：你通过python创建一个类所获得的。<br>def：用来在类中定义一个函数。<br>self：在一个类包含的函数中，self是一个用来访问实例或对象的变量。<br>inheritance：概念，表示一个类可以继承另一个类的特征,就像你和你的父母。<br>composition：概念，表示一个类可以包含其他类,就像汽车轮子。<br>attribute：类所拥有的特性，通常是变量。<br>is-a：惯用语，表示一个东西继承自另一个东西(a),像在“鲑鱼”是“鱼”。<br>has-a：惯用语，表示由其他事情或有一个特征(a),如“鲑鱼有嘴。” </p>
+<p>花一些时间制作一些卡片用来记忆这些术语。像往常一样，直到你完成这个练习后，这都不会有太多的意义，但是首先你需要知道的基本词汇。 </p>
+<h2 id="短语解释"><a href="#短语解释" class="headerlink" title="短语解释"></a>短语解释</h2><p>接下来,在左边有一个Python代码片段列表，右面是他们的解释<br><code>class X(Y)</code>：创建一个叫X的类，并继承Y。<br><code>class X(object): def __init__(self, J)</code>：类X有一个<code>__init__</code>方法，该方法有self和J两个参数。<br><code>class X(object): def M(self, J)</code>：类X有一个叫M的函数，该函数有self和J两个参数。<br><code>foo = X()</code>：给foo赋值为类X的一个实例。<br><code>foo.M(J)</code>：从foo里调用M函数，传递的参数为self和J。<br><code>foo.K = Q</code>：从foo里调用K属性，并将其设置为Q。</p>
+<p>你可以把上面看到的所有的X, Y, M, J, K, Q, 以及 foo 看做空白的坑，比如，我还可以这么写：</p>
+<blockquote>
+<ol>
+<li>创建一个叫？？的类继承Y</li>
+<li>类？？有一个<code>__init__</code>方法，该方法有self和？？两个参数。</li>
+<li>类？？有一个叫？？的函数，该函数有self和？？两个参数。</li>
+<li>给foo赋值为类？？的一个实例。</li>
+<li>从foo里调用？？函数，传递的参数为self和？？。</li>
+<li>从foo里调用？？属性，并将其设置为？？。</li>
+</ol>
+</blockquote>
+<p>同样的，把这些写到卡片上，牢牢记住它们。卡片的前面写上python的小段代码，背面写上它们的解释，你要做到每当你看到正面的代码段的时候，能立即说出后面的解释。</p>
+<h2 id="组合练习"><a href="#组合练习" class="headerlink" title="组合练习"></a>组合练习</h2><p>最后给你准备的是将单词和短语结合起来练习。我希望你能做到下面的要求：</p>
+<blockquote>
+<ol>
+<li>准备好短语的卡片，并拼命的练习</li>
+<li>翻转卡片，阅读这些解释语句，挑选出语句中包含单词练习中单词的卡片</li>
+<li>通过这些语句拼命练习这些单词</li>
+<li>坚持练习，直到你厌烦了，休息一下，然后继续练习</li>
+</ol>
+</blockquote>
+<h2 id="阅读测试"><a href="#阅读测试" class="headerlink" title="阅读测试"></a>阅读测试</h2><p>下面有一个python脚本，这个脚本会以无尽模式训练你，检验你所掌握的这些单词。这是一个很简单的脚本，它实现的功能是使用了一个叫做<code>urllib</code>的类库来下载我提供的单词列表。下面就是这个脚本，你需要正确的输入并命名为<code>oop_test.py</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">WORD_URL = <span class="string">"http://learncodethehardway.org/words.txt"</span></span><br><span class="line">WORDS = []</span><br><span class="line"></span><br><span class="line">PHRASES = &#123;</span><br><span class="line">    <span class="string">"class %%%(%%%):"</span>:</span><br><span class="line">      <span class="string">"Make a class named %%% that is-a %%%."</span>,</span><br><span class="line">    <span class="string">"class %%%(object):\n\tdef __init__(self, ***)"</span> :</span><br><span class="line">      <span class="string">"class %%% has-a __init__ that takes self and *** parameters."</span>,</span><br><span class="line">    <span class="string">"class %%%(object):\n\tdef ***(self, @@@)"</span>:</span><br><span class="line">      <span class="string">"class %%% has-a function named *** that takes self and @@@ parameters."</span>,</span><br><span class="line">    <span class="string">"*** = %%%()"</span>:</span><br><span class="line">      <span class="string">"Set *** to an instance of class %%%."</span>,</span><br><span class="line">    <span class="string">"***.***(@@@)"</span>:</span><br><span class="line">      <span class="string">"From *** get the *** function, and call it with parameters self, @@@."</span>,</span><br><span class="line">    <span class="string">"***.*** = '***'"</span>:</span><br><span class="line">      <span class="string">"From *** get the *** attribute and set it to '***'."</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># do they want to drill phrases first</span></span><br><span class="line"><span class="keyword">if</span> len(sys.argv) == <span class="number">2</span> <span class="keyword">and</span> sys.argv[<span class="number">1</span>] == <span class="string">"english"</span>:</span><br><span class="line">    PHRASE_FIRST = <span class="keyword">True</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    PHRASE_FIRST = <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># load up the words from the website</span></span><br><span class="line"><span class="keyword">for</span> word <span class="keyword">in</span> urlopen(WORD_URL).readlines():</span><br><span class="line">    WORDS.append(word.strip())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">convert</span><span class="params">(snippet, phrase)</span>:</span></span><br><span class="line">    class_names = [w.capitalize() <span class="keyword">for</span> w <span class="keyword">in</span></span><br><span class="line">                   random.sample(WORDS, snippet.count(<span class="string">"%%%"</span>))]</span><br><span class="line">    other_names = random.sample(WORDS, snippet.count(<span class="string">"***"</span>))</span><br><span class="line">    results = []</span><br><span class="line">    param_names = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, snippet.count(<span class="string">"@@@"</span>)):</span><br><span class="line">        param_count = random.randint(<span class="number">1</span>,<span class="number">3</span>)</span><br><span class="line">        param_names.append(<span class="string">', '</span>.join(random.sample(WORDS, param_count)))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> sentence <span class="keyword">in</span> snippet, phrase:</span><br><span class="line">        result = sentence[:]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># fake class names</span></span><br><span class="line">        <span class="keyword">for</span> word <span class="keyword">in</span> class_names:</span><br><span class="line">            result = result.replace(<span class="string">"%%%"</span>, word, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># fake other names</span></span><br><span class="line">        <span class="keyword">for</span> word <span class="keyword">in</span> other_names:</span><br><span class="line">            result = result.replace(<span class="string">"***"</span>, word, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># fake parameter lists</span></span><br><span class="line">        <span class="keyword">for</span> word <span class="keyword">in</span> param_names:</span><br><span class="line">            result = result.replace(<span class="string">"@@@"</span>, word, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        results.append(result)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> results</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># keep going until they hit CTRL-D</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        snippets = PHRASES.keys()</span><br><span class="line">        random.shuffle(snippets)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> snippet <span class="keyword">in</span> snippets:</span><br><span class="line">            phrase = PHRASES[snippet]</span><br><span class="line">            question, answer = convert(snippet, phrase)</span><br><span class="line">            <span class="keyword">if</span> PHRASE_FIRST:</span><br><span class="line">                question, answer = answer, question</span><br><span class="line"></span><br><span class="line">            <span class="keyword">print</span> question</span><br><span class="line"></span><br><span class="line">            raw_input(<span class="string">"&gt; "</span>)</span><br><span class="line">            <span class="keyword">print</span> <span class="string">"ANSWER:  %s\n\n"</span> % answer</span><br><span class="line"><span class="keyword">except</span> EOFError:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">"\nBye"</span></span><br></pre></td></tr></table></figure>
+<p>运行这个脚本，尝试将这些“面向对象的短语”翻译成自己的语言。你应该能看到字典<code>PHRASES</code>中包含了刚才练习的所有的短语。</p>
+<h2 id="练习将英语转换为代码"><a href="#练习将英语转换为代码" class="headerlink" title="练习将英语转换为代码"></a>练习将英语转换为代码</h2><p>接下来，你可以使用”english”选项来执行脚本，这样你可以反过来练习：</p>
+<pre><code>$ python oop_test.py english
+</code></pre><p>记住这些短语使用的是无意义的词汇。学习阅读代码的一部分是停止纠结这些用于变量和类的名字的真实意义。人们常常会在读到一个像“cork”的词时突然迷糊,因为这个词会混淆他们的意义。在这个例子中，”Cork”只是用来作为一个类的名字。不要给它任何意义的解释。</p>
+<h2 id="阅读更多的代码"><a href="#阅读更多的代码" class="headerlink" title="阅读更多的代码"></a>阅读更多的代码</h2><p>你现在需要继续阅读更多的代码，阅读你找到的代码中这些你刚学过的短语表达。你需要找出文件中所有的类，然后执行以下步骤：</p>
+<blockquote>
+<ol>
+<li>给出每一个类的名字，并说出这些类继承哪些类</li>
+<li>列出每个类所包含的函数，以及函数需要的参数</li>
+<li>列出类所有的属性</li>
+<li>对每个属性，给出属性的类型</li>
+</ol>
+</blockquote>
+<p>这个练习的目的是通过阅读真实的代码，学习你刚才学到的短语是如何使用的。如果你练习的足够所，你应该能看到这些模式在代码中向你大声呼喊，然而在这之前，他们是你所不知道的，只是模糊的空白而已。</p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="Q-这句代码result-sentence-实现了什么"><a href="#Q-这句代码result-sentence-实现了什么" class="headerlink" title="Q: 这句代码result = sentence[:]实现了什么"></a>Q: 这句代码<code>result = sentence[:]</code>实现了什么</h3><blockquote>
+<p>这是python中用来复制列表的一种方式。你使用了列表的分割切片语法<code>[:]</code>，得到列表从第一个到最后一个元素的切片。</p>
+</blockquote>
+<h3 id="Q-这个脚本很难跑起来啊"><a href="#Q-这个脚本很难跑起来啊" class="headerlink" title="Q: 这个脚本很难跑起来啊"></a>Q: 这个脚本很难跑起来啊</h3><blockquote>
+<p>你需要输入这些代码并保证它能运行。这个脚本可能会有一些小问题，但是它并不复杂。试着用你到目前为止学到的东西来调试脚本，每输入一行，确认一下是否与我的代码一样，并在网上搜索你所不了解的所有问题。</p>
+</blockquote>
+<h3 id="Q-这对我来说太难了！"><a href="#Q-这对我来说太难了！" class="headerlink" title="Q: 这对我来说太难了！"></a>Q: 这对我来说太难了！</h3><blockquote>
+<p>你可以的，慢慢来，如果需要的话，你逐个字符的输入，然后弄明白它是做什么的。</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/11/29/learn-python-the-hard-way-exercise42/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          笨办法学Python--exercise42.对象、类、以及从属关系
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/11/29/learn-python-the-hard-way-exercise40/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">笨办法学Python--exercise40.模块, 类和对象</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="learn-python-the-hard-way-exercise41" data-title="笨办法学Python--exercise41.学会说面向对象" data-url="http://coofee.me/2014/11/29/learn-python-the-hard-way-exercise41/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"flyouting"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 flyouting and shirley
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

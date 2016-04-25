@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Android ORM 框架之 ActiveAndroid | flyouting and shirley</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近研究了一下Android中的ORM框架，其一是ActiveAndroid，ActiveAndroid算是一个轻量级的ORM框架，配置，使用还都算是比较简单的。
+##初始化Jar包
+
+Github地址，下载源代码
+打开CMD，进入源码根目录
+执行ant
+jar包生成，可以在dist文件夹里找到。
+
+##工程配置
+
+在AndroidManifest.xml中需要添加数据库名和版本号
+
+123456">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android ORM 框架之 ActiveAndroid">
+<meta property="og:url" content="http://coofee.me/2014/04/01/android-orm-activeandroid/index.html">
+<meta property="og:site_name" content="flyouting and shirley">
+<meta property="og:description" content="最近研究了一下Android中的ORM框架，其一是ActiveAndroid，ActiveAndroid算是一个轻量级的ORM框架，配置，使用还都算是比较简单的。
+##初始化Jar包
+
+Github地址，下载源代码
+打开CMD，进入源码根目录
+执行ant
+jar包生成，可以在dist文件夹里找到。
+
+##工程配置
+
+在AndroidManifest.xml中需要添加数据库名和版本号
+
+123456">
+<meta property="og:updated_time" content="2014-11-04T15:21:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android ORM 框架之 ActiveAndroid">
+<meta name="twitter:description" content="最近研究了一下Android中的ORM框架，其一是ActiveAndroid，ActiveAndroid算是一个轻量级的ORM框架，配置，使用还都算是比较简单的。
+##初始化Jar包
+
+Github地址，下载源代码
+打开CMD，进入源码根目录
+执行ant
+jar包生成，可以在dist文件夹里找到。
+
+##工程配置
+
+在AndroidManifest.xml中需要添加数据库名和版本号
+
+123456">
+  
+    <link rel="alternative" href="/atom.xml" title="flyouting and shirley" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">flyouting and shirley</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">记录一点一滴</p>
+		
+
+		<!--
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>Über</li>
+						
+					</ul>
+				</div>
+			</div>
+		-->
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">首页</a></li>
+				        
+							<li><a href="/archives">文章列表</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				<div class="switch-part switch-part2"><script>var n ='b-26003349-pe-f-801';var ch ='pc_6'; var w1 = 200;var h1 = 280;</script> <script src='http://static.luna.58.com/js/mad.js'></script></div>
+				
+				<!--
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/AndroidStudio/" style="font-size: 10px;">AndroidStudio</a> <a href="/tags/DB/" style="font-size: 12.5px;">DB</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/ImageSpan/" style="font-size: 10px;">ImageSpan</a> <a href="/tags/ORM/" style="font-size: 12.5px;">ORM</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/activeandroid/" style="font-size: 10px;">activeandroid</a> <a href="/tags/android/" style="font-size: 17.5px;">android</a> <a href="/tags/intent/" style="font-size: 10px;">intent</a> <a href="/tags/key/" style="font-size: 10px;">key</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/span/" style="font-size: 10px;">span</a> <a href="/tags/transitions/" style="font-size: 10px;">transitions</a> <a href="/tags/volley/" style="font-size: 15px;">volley</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/后台，多线程/" style="font-size: 10px;">后台，多线程</a> <a href="/tags/相机/" style="font-size: 15px;">相机</a> <a href="/tags/终端/" style="font-size: 10px;">终端</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+					</div>
+				</section>
+				-->
+				
+				<!--
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				-->
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">flyouting and shirley</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">flyouting and shirley</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">记录一点一滴</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">首页</a></li>
+		        
+					<li><a href="/archives">文章列表</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-android-orm-activeandroid" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/04/01/android-orm-activeandroid/" class="article-date">
+  	<time datetime="2014-04-01T14:55:54.000Z" itemprop="datePublished">2014-04-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android ORM 框架之 ActiveAndroid
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DB/">DB</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ORM/">ORM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/activeandroid/">activeandroid</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/笔记/">笔记</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近研究了一下Android中的ORM框架，其一是ActiveAndroid，ActiveAndroid算是一个轻量级的ORM框架，配置，使用还都算是比较简单的。</p>
+<p>##初始化Jar包</p>
+<ol>
+<li><a href="https://github.com/pardom/ActiveAndroid" target="_blank" rel="external">Github地址</a>，下载源代码</li>
+<li>打开CMD，进入源码根目录</li>
+<li>执行ant</li>
+<li>jar包生成，可以在dist文件夹里找到。</li>
+</ol>
+<p>##工程配置</p>
+<ul>
+<li>在AndroidManifest.xml中需要添加数据库名和版本号</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta-data</span><br><span class="line">           android:name=<span class="string">"AA_DB_NAME"</span></span><br><span class="line">           android:value=<span class="string">"Pickrand.db"</span> /&gt;</span><br><span class="line">&lt;meta-data</span><br><span class="line">           android:name=<span class="string">"AA_DB_VERSION"</span></span><br><span class="line">           android:value=<span class="string">"1"</span> /&gt;</span><br></pre></td></tr></table></figure>
+<p>如果这两个都不写的话，默认会是Application.db，库版本号为1。</p>
+<ul>
+<li>在Application中初始化<br>可以继承com.activeandroid.app.Application，可以在自己的Application里初始化，看com.activeandroid.app.Application文件就明白了：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Application</span> <span class="keyword">extends</span> <span class="title">android</span>.<span class="title">app</span>.<span class="title">Application</span> </span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>.onCreate();</span><br><span class="line">		ActiveAndroid.initialize(<span class="keyword">this</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onTerminate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>.onTerminate();</span><br><span class="line">		ActiveAndroid.dispose();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>所以如果不继承只需要在自己的Application 添加ActiveAndroid.initialize(this)和<br>ActiveAndroid.dispose()的操作即可。</p>
+<p>##实际应用</p>
+<p>###创建Model类<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Table</span>(name = <span class="string">"Items"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Item</span> <span class="keyword">extends</span> <span class="title">Model</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 这样可以避免重复</span></span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"remote_id"</span>, unique = <span class="keyword">true</span>, onUniqueConflict = Column.ConflictAction.REPLACE)</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> remoteId;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"Name"</span>)</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"Category"</span>)</span><br><span class="line">    <span class="keyword">public</span> Category category;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 确保每个model类中都有一个默认的构造方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Item</span><span class="params">()</span></span>&#123;</span><br><span class="line">       <span class="keyword">super</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Item</span><span class="params">(String remoteId, String name, Category category)</span></span>&#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">        <span class="keyword">this</span>.remoteId = remoteId;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.category = category;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这个Item类中包含了一个Category类型的对象<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Table</span>(name = <span class="string">"Categories"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Category</span> <span class="keyword">extends</span> <span class="title">Model</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"remote_id"</span>, unique = <span class="keyword">true</span>, onUniqueConflict = Column.ConflictAction.REPLACE)</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> remoteId;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"Name"</span>)</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"Entry"</span>)</span><br><span class="line">    <span class="keyword">public</span> Entry entry;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Category</span><span class="params">()</span></span>&#123;</span><br><span class="line">       <span class="keyword">super</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">saveEntry</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (entry != <span class="keyword">null</span>) &#123;</span><br><span class="line">            entry.save();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> List&lt;Item&gt; data;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用外键，实现一对多存储</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Item&gt; <span class="title">items</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        data = getMany(Item.class, <span class="string">"Category"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这其中又包含了一个Entry对象<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Table</span>(name = <span class="string">"Entrys"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Entry</span> <span class="keyword">extends</span> <span class="title">Model</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"Name"</span>)</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>具体的model类其实是根据实际情况来写的，这里只写最简单的。在数据库应用中，我们涉及的无外乎是增删改查，这里以一个简单的例子来研究一下。</p>
+<p>实际项目中，我们经常会遇到这样的情况，一个类<code>Category</code> 中包含一个<code>Entry</code>对象，包含一个<code>List&lt;Item&gt;</code>对象，一个String对象。</p>
+<p>模拟一下数据：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Category&gt; Categorys = <span class="keyword">new</span> ArrayList&lt;Category&gt;();</span><br><span class="line">List&lt;Item&gt; Items = <span class="keyword">new</span> ArrayList&lt;Item&gt;();</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">      Category restaurants = <span class="keyword">new</span> Category();</span><br><span class="line">      restaurants.name = <span class="string">"Category "</span> + i;</span><br><span class="line">      Entry entry = <span class="keyword">new</span> Entry();</span><br><span class="line">      entry.name = <span class="string">"entry "</span> + i;</span><br><span class="line">      restaurants.entry = entry;</span><br><span class="line">      Categorys.add(restaurants);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">3</span>; j++) &#123;</span><br><span class="line">          Item item = <span class="keyword">new</span> Item();</span><br><span class="line">          item.name = <span class="string">"Item "</span> + i + <span class="string">" from "</span> + <span class="string">"Category "</span> + i;</span><br><span class="line">          item.category = restaurants;</span><br><span class="line">          Items.add(item);</span><br><span class="line">      &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<p>在这个框架中，一个对象中包含一个List对象，其实就是把List对象全部存到另一个表里，通过外键来关联。</p>
+<p>###增</p>
+<p>通过事务，批量添加进数据库。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">ActiveAndroid.beginTransaction();</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">int</span> len = Categorys.size();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">        Categorys.get(i).saveEntry();</span><br><span class="line">        Categorys.get(i).save();</span><br><span class="line">    &#125;</span><br><span class="line">    len = Items.size();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">        Items.get(i).save();</span><br><span class="line">    &#125;</span><br><span class="line">    ActiveAndroid.setTransactionSuccessful();</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    ActiveAndroid.endTransaction();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这里需要注意的是Item类中包含Category对象，Category类中包含Entry对象。必须先保存Entry对象，Entry对象会得到一个Id，然后才能存储Category对象，否则Category对象中的Entry对象就会为null。这部分逻辑可以查看Model类中save()方法的源码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (ReflectionUtils.isModel(fieldType)) &#123;</span><br><span class="line">	values.put(fieldName, ((Model) value).getId());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如果Entry对象不先存储，Id是为null的。Entry与Category关联的依赖就是Entry<br>的Id。所以执行完<code>Categorys.get(i).saveEntry()</code>后才执行<code>Categorys.get(i).save()</code>其后才执行Item的存储，这时候Category对象都已经有了Id，Item会自动关联。</p>
+<p>###删<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Item item = Item.load(Item.class, <span class="number">1</span>);</span><br><span class="line">item.delete();</span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line"><span class="keyword">new</span> Delete().from(Item.class).where(<span class="string">"remote_id = ?"</span>, <span class="number">1</span>).execute();</span><br></pre></td></tr></table></figure></p>
+<p>批量删除就用事务。</p>
+<p>###改<br>先看下<code>Model</code>类源码152行：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (mId == <span class="keyword">null</span>) &#123;</span><br><span class="line">	mId = db.insert(mTableInfo.getTableName(), <span class="keyword">null</span>, values);</span><br><span class="line">&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">	db.update(mTableInfo.getTableName(), values, idName+<span class="string">"="</span> + mId, <span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>很明显，如果<code>mId</code>不存在就会去数据库创建这跳数据，而如果数据存在的话，那就是更新了。所以，更改数据后直接执行<code>save</code>方法即可。</p>
+<p>###查<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;Item&gt; <span class="title">getAll</span><span class="params">(Category category，<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">new</span> Select()</span><br><span class="line">          .from(Item.class)</span><br><span class="line">          .where(<span class="string">"Category = ?"</span>, category.getId())</span><br><span class="line">          .orderBy(<span class="string">"Name ASC"</span>)</span><br><span class="line">          .limit(num)</span><br><span class="line">          .execute();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>执行一个<code>Select</code>方法，指定表<code>Item.class</code>，限定条件<code>where(&quot;Category = ?&quot;, category.getId())</code>，排序为<code>orderBy(&quot;Name ASC&quot;)</code>，取出个数为<code>limit(num)</code><br>当然还支持其他非常多的指令</p>
+<ul>
+<li>offset</li>
+<li>as</li>
+<li>desc/asc</li>
+<li>inner/outer/cross join</li>
+<li>group by</li>
+<li>having<br>这个就根据自己需求了。</li>
+</ul>
+<p>在查询<code>Category</code>数据中，因为每个对象中包括了一个<code>List&lt;Item&gt;</code>对象，所以，我们需要在查询出<code>Category</code>对象后，在把关联的List表查询一遍。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ActiveAndroid.beginTransaction();</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    List&lt;Category&gt; testCategory = <span class="keyword">new</span> Select().from(Category.class).limit(<span class="number">20</span>).execute();</span><br><span class="line">    <span class="keyword">if</span> (testCategory != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span> len = testCategory.size();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">            testCategory.get(i).items();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">   ActiveAndroid.setTransactionSuccessful();</span><br><span class="line">   &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">       ActiveAndroid.endTransaction();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>如此执行完，对象中的data就可以直接用了。</p>
+<p>##总结<br>作为一个轻量级的ORM框架，在快速开发中，应用起来还是很方便的，比ORMLite要简单一些，但某些细节不如ORMLite更强大，不如对象中包含对象时，ORMLite中可以有参数设定自动创建，而不是需要我们手动执行下sava，也许在ActiveAndroid中也可以这样，但目前我没搞明白注解中另几个属性的意思。整体性能经测试（100条Category数据，300条Item数据，100条Entry数据）存储耗时1.1s-1.2s，与ORMLite是持平的，但也许是测试数据太小了，没有说服性，有时间可以进行10w条数据的测试。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/05/05/efficiently-filtering-android-intents-with-android-ssp/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          使用Android:ssp高效过滤Android intents
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/03/31/android-orm-ormlite/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android ORM框架之 ORMLite</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="android-orm-activeandroid" data-title="Android ORM 框架之 ActiveAndroid" data-url="http://coofee.me/2014/04/01/android-orm-activeandroid/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"flyouting"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 flyouting and shirley
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>笨办法学Python--exercise40.模块, 类和对象 | flyouting and shirley</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Python 是一门“面向对象编程语言”。这意味着在Python中有一个叫做类的概念，你能通过类用一种特殊的方式构建你的软件。使用类的概念，能给你的程序增添一致性，这样你可以用一种很轻松方便的方式调用他们。至少，这是面向对象的理论。
+我现在要通过使用你已经知道的字典和模块等来教你开始学习面向对象编程、类和对象。我的问题是面向对象编程（OOP）只是普通的怪异。你要为之而奋斗，努力尝试理解我讲的内容，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="笨办法学Python--exercise40.模块, 类和对象">
+<meta property="og:url" content="http://coofee.me/2014/11/29/learn-python-the-hard-way-exercise40/index.html">
+<meta property="og:site_name" content="flyouting and shirley">
+<meta property="og:description" content="Python 是一门“面向对象编程语言”。这意味着在Python中有一个叫做类的概念，你能通过类用一种特殊的方式构建你的软件。使用类的概念，能给你的程序增添一致性，这样你可以用一种很轻松方便的方式调用他们。至少，这是面向对象的理论。
+我现在要通过使用你已经知道的字典和模块等来教你开始学习面向对象编程、类和对象。我的问题是面向对象编程（OOP）只是普通的怪异。你要为之而奋斗，努力尝试理解我讲的内容，">
+<meta property="og:updated_time" content="2014-12-07T15:02:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="笨办法学Python--exercise40.模块, 类和对象">
+<meta name="twitter:description" content="Python 是一门“面向对象编程语言”。这意味着在Python中有一个叫做类的概念，你能通过类用一种特殊的方式构建你的软件。使用类的概念，能给你的程序增添一致性，这样你可以用一种很轻松方便的方式调用他们。至少，这是面向对象的理论。
+我现在要通过使用你已经知道的字典和模块等来教你开始学习面向对象编程、类和对象。我的问题是面向对象编程（OOP）只是普通的怪异。你要为之而奋斗，努力尝试理解我讲的内容，">
+  
+    <link rel="alternative" href="/atom.xml" title="flyouting and shirley" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">flyouting and shirley</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">记录一点一滴</p>
+		
+
+		<!--
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>Über</li>
+						
+					</ul>
+				</div>
+			</div>
+		-->
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">首页</a></li>
+				        
+							<li><a href="/archives">文章列表</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				<div class="switch-part switch-part2"><script>var n ='b-26003349-pe-f-801';var ch ='pc_6'; var w1 = 200;var h1 = 280;</script> <script src='http://static.luna.58.com/js/mad.js'></script></div>
+				
+				<!--
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/AndroidStudio/" style="font-size: 10px;">AndroidStudio</a> <a href="/tags/DB/" style="font-size: 12.5px;">DB</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/ImageSpan/" style="font-size: 10px;">ImageSpan</a> <a href="/tags/ORM/" style="font-size: 12.5px;">ORM</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/activeandroid/" style="font-size: 10px;">activeandroid</a> <a href="/tags/android/" style="font-size: 17.5px;">android</a> <a href="/tags/intent/" style="font-size: 10px;">intent</a> <a href="/tags/key/" style="font-size: 10px;">key</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/span/" style="font-size: 10px;">span</a> <a href="/tags/transitions/" style="font-size: 10px;">transitions</a> <a href="/tags/volley/" style="font-size: 15px;">volley</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/后台，多线程/" style="font-size: 10px;">后台，多线程</a> <a href="/tags/相机/" style="font-size: 15px;">相机</a> <a href="/tags/终端/" style="font-size: 10px;">终端</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+					</div>
+				</section>
+				-->
+				
+				<!--
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				-->
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">flyouting and shirley</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">flyouting and shirley</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">记录一点一滴</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">首页</a></li>
+		        
+					<li><a href="/archives">文章列表</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-learn-python-the-hard-way-exercise40" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/29/learn-python-the-hard-way-exercise40/" class="article-date">
+  	<time datetime="2014-11-29T07:41:45.000Z" itemprop="datePublished">2014-11-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      笨办法学Python--exercise40.模块, 类和对象
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Python/">Python</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Python 是一门“面向对象编程语言”。这意味着在Python中有一个叫做类的概念，你能通过类用一种特殊的方式构建你的软件。使用类的概念，能给你的程序增添一致性，这样你可以用一种很轻松方便的方式调用他们。至少，这是面向对象的理论。</p>
+<p>我现在要通过使用你已经知道的字典和模块等来教你开始学习面向对象编程、类和对象。我的问题是面向对象编程（OOP）只是普通的怪异。你要为之而奋斗，努力尝试理解我讲的内容，编写代码，在下一个练习中，我会更深入的讲解。</p>
+<p>我们要开始了。</p>
+<h2 id="模块就像字典"><a href="#模块就像字典" class="headerlink" title="模块就像字典"></a>模块就像字典</h2><p>你知道字典是如何被创建以及使用的，它用来将一个事物对应到另一个事物。意思就是说如果你有一个字典，字典中包括一个key “apple”，那么你就可以实现：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mystuff = &#123;<span class="string">'apple'</span>: <span class="string">"I AM APPLES!"</span>&#125;</span><br><span class="line"><span class="keyword">print</span> mystuff[<span class="string">'apple'</span>]</span><br></pre></td></tr></table></figure></p>
+<p>记住“从X获取Y”的说法，然后想一想模块（module）。你之前已经写过一些模块，你应该知道它们：</p>
+<blockquote>
+<ol>
+<li>包含一些函数和变量的python文件</li>
+<li>你可以导入这个文件</li>
+<li>你可以用<code>.</code>操作符访问这个模块的函数和变量</li>
+</ol>
+</blockquote>
+<p>想象一下我有一个叫做<code>mystuff.py</code>的模块，在这个模块中有一个叫做<code>apple</code>的函数，下面是 <code>mystuff.py</code> 模块的代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># this goes in mystuff.py</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">apple</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"I AM APPLES!"</span></span><br></pre></td></tr></table></figure></p>
+<p>当我写完以上代码，我就可以通过import来调用<code>mystuff</code>模块，并访问<code>apple</code>函数：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> mystuff</span><br><span class="line">mystuff.apple()</span><br></pre></td></tr></table></figure></p>
+<p>我还可以增加一个叫做<code>tangerine</code>的变量:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">apple</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"I AM APPLES!"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># this is just a variable</span></span><br><span class="line">tangerine = <span class="string">"Living reflection of a dream"</span></span><br></pre></td></tr></table></figure></p>
+<p>可以用相同的方法来访问：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> mystuff</span><br><span class="line"></span><br><span class="line">mystuff.apple()</span><br><span class="line"><span class="keyword">print</span> mystuff.tangerine</span><br></pre></td></tr></table></figure></p>
+<p>返回再看字典，你应该发现模块的使用跟字典是相似的，只不过语法不同，我们比较一下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mystuff[<span class="string">'apple'</span>] <span class="comment"># get apple from dict</span></span><br><span class="line">mystuff.apple() <span class="comment"># get apple from the module</span></span><br><span class="line">mystuff.tangerine <span class="comment"># same thing, it's just a variable</span></span><br></pre></td></tr></table></figure></p>
+<p>也就是说我们在Python中有一套通用的模式：</p>
+<blockquote>
+<ol>
+<li>有一个key=value模式的容器</li>
+<li>通过key从容器中获取数据</li>
+</ol>
+</blockquote>
+<p>在字典中，key是一个字符串，写法为<code>[key]</code>,在模块中，key是一个标识符，写法为<code>.key</code>，在其余的地方，他们几乎是一样的。</p>
+<h2 id="类就像模块"><a href="#类就像模块" class="headerlink" title="类就像模块"></a>类就像模块</h2><p>你可以认为一个模块就是一个可以存放Python代码的特殊字典，这样你就可以通过<code>.</code>操作符访问它。Python还有一个另外的结构提供相似的功能，就是类（class）。类的作用是组织一系列的函数和数据并将它们放在一个容器里，这样你可以通过<code>.</code>操作符访问到它们。</p>
+<p>如果我想创建一个类似<code>mystuff</code>的类，我需要这样做：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyStuff</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.tangerine = <span class="string">"And now a thousand years between"</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">apple</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">"I AM CLASSY APPLES!"</span></span><br></pre></td></tr></table></figure>
+<p>这相比于模块复杂一些，对比之下肯定会有不同，但是你应该能返现这个类就像写一个包含<code>apple()</code>方法的“迷你”<code>mystuff</code>模块一样.让你困惑的地方可能是<code>__init__()</code>这个方法以及使用<code>self.tangerine</code>给<code>tangerine</code>赋值。</p>
+<p>这正是为什么要使用类而不是仅有模块的原因：你可以使用<code>Mystuff</code>这个类，还可以用它来创建更多个<code>Mystuff</code>，而他们之间也不会互相冲突。当你导入一个模块时，你的整个项目也就只有一个这个模块。</p>
+<p>在你理解这些之前，你需要明白什么是“对象”，以及如何像使用<code>Mystuff.py</code>模块一样使用<code>Mystuff</code>这个类。</p>
+<h2 id="对象就像导入"><a href="#对象就像导入" class="headerlink" title="对象就像导入"></a>对象就像导入</h2><p>如果一个类就像一个迷你模块，那么类也会有一个类似<code>import</code>的概念，这个概念被称为实例化，这只是对创建一种更虚幻更聪明的叫法。当一个类被实例化，你就得到一个类的对象。</p>
+<p>实例化类的方法就是像调用函数一样调用这个类：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">thing = MyStuff()</span><br><span class="line">thing.apple()</span><br><span class="line"><span class="keyword">print</span> thing.tangerine</span><br></pre></td></tr></table></figure></p>
+<p>第一行就是实例化的操作，这个操作多像是在调用一个函数啊。当然了，python在幕后帮你做了一系列的事情，我带你来看看具体的调用步骤：</p>
+<blockquote>
+<ol>
+<li>python 查找 <code>MyStuff()</code> 并确认它是你已经定义过的类</li>
+<li>python创建一个空的对象，该对象拥有你在类中用<code>def</code>创建的所有函数</li>
+<li>python看你是否创建了<code>__init__</code>函数，如果有，调用该方法初始化你新创建的空对象</li>
+<li>在<code>MyStuff</code>中，<code>__init__</code>方法有一个额外的变量<code>self</code>，这是python为我创建的一个空的对象，我可以在其上设置变量。</li>
+<li>然后，我给<code>self.tangerine</code>设置一首歌词，然后初始化这个对象</li>
+<li>python可以使用这个新创建好的对象，并将其分配给我可以使用的变量<code>thing</code>。</li>
+</ol>
+</blockquote>
+<p>这就是当你调用一个类的时候，python做的事情。记住，这并不是把类给你，而是把类作为蓝本来创建这种类型东西的副本。</p>
+<p>我给了你一个类的简单工作原理，这样你就可以基于你所了解的模块，建立你对类的理解。事实上，在这一点上，类和对象与模块是有区别的：</p>
+<blockquote>
+<ul>
+<li>类是用来创建迷你模块的蓝本或定义 </li>
+<li>实例化是如何创建这些小模块，并在同一时间将其导入。实例化仅仅是指通过类创建一个对象。</li>
+<li>由此产生的迷你模块被称为对象，你可以将其分配给一个变量，让它开始运行</li>
+</ul>
+</blockquote>
+<p>在这一点上，对象和模块的表现不同，这只是提供一种让你理解类和对象的方法。</p>
+<h2 id="从一个事物中获取事物"><a href="#从一个事物中获取事物" class="headerlink" title="从一个事物中获取事物"></a>从一个事物中获取事物</h2><p>现在我提供给你3中方法从一个事物中获取另一个：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># dict style</span></span><br><span class="line">mystuff[<span class="string">'apples'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># module style</span></span><br><span class="line">mystuff.apples()</span><br><span class="line"><span class="keyword">print</span> mystuff.tangerine</span><br><span class="line"></span><br><span class="line"><span class="comment"># class style</span></span><br><span class="line">thing = MyStuff()</span><br><span class="line">thing.apples()</span><br><span class="line"><span class="keyword">print</span> thing.tangerine</span><br></pre></td></tr></table></figure>
+<h2 id="类的举例"><a href="#类的举例" class="headerlink" title="类的举例"></a>类的举例</h2><p>你应该可以看到在这三个key=value的容器类型有一定的相似性，你也可能有一堆问题.记住这些问题，下一节练习会训练你关于“面向对象的词汇”。这节练习中，我只想让你输入这些代码并保证它能正常运行，这样能让你再继续下一节练习之前获得一些经验。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Song</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, lyrics)</span>:</span></span><br><span class="line">        self.lyrics = lyrics</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sing_me_a_song</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> self.lyrics:</span><br><span class="line">            <span class="keyword">print</span> line</span><br><span class="line"></span><br><span class="line">happy_bday = Song([<span class="string">"Happy birthday to you"</span>,</span><br><span class="line">                   <span class="string">"I don't want to get sued"</span>,</span><br><span class="line">                   <span class="string">"So I'll stop right there"</span>])</span><br><span class="line"></span><br><span class="line">bulls_on_parade = Song([<span class="string">"They rally around tha family"</span>,</span><br><span class="line">                        <span class="string">"With pockets full of shells"</span>])</span><br><span class="line"></span><br><span class="line">happy_bday.sing_me_a_song()</span><br><span class="line"></span><br><span class="line">bulls_on_parade.sing_me_a_song()</span><br></pre></td></tr></table></figure>
+<h2 id="你应该看到的内容"><a href="#你应该看到的内容" class="headerlink" title="你应该看到的内容"></a>你应该看到的内容</h2><pre><code>$ python ex40.py
+Happy birthday to you
+I don&apos;t want to get sued
+So I&apos;ll stop right there
+They rally around tha family
+With pockets full of shells
+</code></pre><h2 id="附加题"><a href="#附加题" class="headerlink" title="附加题"></a>附加题</h2><blockquote>
+<ol>
+<li>用本节学到的内容多写几首歌，确定你明白你把一个字符串的列表作为歌词传递进去。 </li>
+<li>把歌词放进一个单独的变量，再把这个变量传递给类</li>
+<li>看看你能不能让这个类做更多的事情，如果没什么想法也没关系，试试看，会有什么</li>
+<li>在网上搜索一些“面向对象编程”的资料，尝试让你的大脑填满这些资料。如果这些资料对你没有用，也没关系，这些东西有一半对我来说也是没有意义的。</li>
+</ol>
+</blockquote>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="Q：为什么我在类里创建-init-或其他函数的时候需要使用self"><a href="#Q：为什么我在类里创建-init-或其他函数的时候需要使用self" class="headerlink" title="Q：为什么我在类里创建__init__或其他函数的时候需要使用self?"></a>Q：为什么我在类里创建<code>__init__</code>或其他函数的时候需要使用<code>self</code>?</h3><blockquote>
+<p>如果你不实用<code>self</code>，像这种代码<code>cheese = &#39;Frank&#39;</code>就是不明确的. 代码并不清楚你指的是实例的<code>cheese</code>属性，还是一个叫做<code>cheese</code>d的全局变量。如果你使用<code>self.cheese=&#39;Frank&#39;</code>代码就会十分清楚你指的就是实例中的属性<code>self.cheese</code>.</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/11/29/learn-python-the-hard-way-exercise41/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          笨办法学Python--exercise41.学会说面向对象
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/11/29/learn-python-the-hard-way-exercise39/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">笨办法学Python--exercise39.字典,可爱的字典</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="learn-python-the-hard-way-exercise40" data-title="笨办法学Python--exercise40.模块, 类和对象" data-url="http://coofee.me/2014/11/29/learn-python-the-hard-way-exercise40/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"flyouting"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 flyouting and shirley
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

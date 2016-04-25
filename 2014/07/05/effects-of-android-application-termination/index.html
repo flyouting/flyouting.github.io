@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Android应用程序终止的影响 | flyouting and shirley</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="透过ActivityManagerService来查看程序是如何被关闭的
+在一般的系统进程管理和用户操作之间，还有少数一些方法能够使我们的程序终止。作为一个开发者，你的代码可能会产生一些附加效果，我们来看看一下终止应用的方法产生的影响：
+
+内存压力（即lowmemorykiller）杀掉一个进程
+用户从最近使用的程序展示项中滑动移除任务
+用户从系统设置处强制关闭应用
+
+##Foreground v">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android应用程序终止的影响">
+<meta property="og:url" content="http://coofee.me/2014/07/05/effects-of-android-application-termination/index.html">
+<meta property="og:site_name" content="flyouting and shirley">
+<meta property="og:description" content="透过ActivityManagerService来查看程序是如何被关闭的
+在一般的系统进程管理和用户操作之间，还有少数一些方法能够使我们的程序终止。作为一个开发者，你的代码可能会产生一些附加效果，我们来看看一下终止应用的方法产生的影响：
+
+内存压力（即lowmemorykiller）杀掉一个进程
+用户从最近使用的程序展示项中滑动移除任务
+用户从系统设置处强制关闭应用
+
+##Foreground v">
+<meta property="og:image" content="http://www.doubleencore.com/wp-content/uploads/2014/05/Swipe1.gif">
+<meta property="og:image" content="http://www.doubleencore.com/wp-content/uploads/2014/05/ForceStop.gif">
+<meta property="og:updated_time" content="2014-11-04T16:54:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android应用程序终止的影响">
+<meta name="twitter:description" content="透过ActivityManagerService来查看程序是如何被关闭的
+在一般的系统进程管理和用户操作之间，还有少数一些方法能够使我们的程序终止。作为一个开发者，你的代码可能会产生一些附加效果，我们来看看一下终止应用的方法产生的影响：
+
+内存压力（即lowmemorykiller）杀掉一个进程
+用户从最近使用的程序展示项中滑动移除任务
+用户从系统设置处强制关闭应用
+
+##Foreground v">
+<meta name="twitter:image" content="http://www.doubleencore.com/wp-content/uploads/2014/05/Swipe1.gif">
+  
+    <link rel="alternative" href="/atom.xml" title="flyouting and shirley" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">flyouting and shirley</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">记录一点一滴</p>
+		
+
+		<!--
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>Über</li>
+						
+					</ul>
+				</div>
+			</div>
+		-->
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">首页</a></li>
+				        
+							<li><a href="/archives">文章列表</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				<div class="switch-part switch-part2"><script>var n ='b-26003349-pe-f-801';var ch ='pc_6'; var w1 = 200;var h1 = 280;</script> <script src='http://static.luna.58.com/js/mad.js'></script></div>
+				
+				<!--
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/AndroidStudio/" style="font-size: 10px;">AndroidStudio</a> <a href="/tags/DB/" style="font-size: 12.5px;">DB</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/ImageSpan/" style="font-size: 10px;">ImageSpan</a> <a href="/tags/ORM/" style="font-size: 12.5px;">ORM</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/activeandroid/" style="font-size: 10px;">activeandroid</a> <a href="/tags/android/" style="font-size: 17.5px;">android</a> <a href="/tags/intent/" style="font-size: 10px;">intent</a> <a href="/tags/key/" style="font-size: 10px;">key</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/span/" style="font-size: 10px;">span</a> <a href="/tags/transitions/" style="font-size: 10px;">transitions</a> <a href="/tags/volley/" style="font-size: 15px;">volley</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/后台，多线程/" style="font-size: 10px;">后台，多线程</a> <a href="/tags/相机/" style="font-size: 15px;">相机</a> <a href="/tags/终端/" style="font-size: 10px;">终端</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+					</div>
+				</section>
+				-->
+				
+				<!--
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				-->
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">flyouting and shirley</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">flyouting and shirley</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">记录一点一滴</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">首页</a></li>
+		        
+					<li><a href="/archives">文章列表</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-effects-of-android-application-termination" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/07/05/effects-of-android-application-termination/" class="article-date">
+  	<time datetime="2014-07-04T16:51:24.000Z" itemprop="datePublished">2014-07-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android应用程序终止的影响
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/译文/">译文</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>透过ActivityManagerService来查看程序是如何被关闭的</p>
+<p>在一般的系统进程管理和用户操作之间，还有少数一些方法能够使我们的程序终止。作为一个开发者，你的代码可能会产生一些附加效果，我们来看看一下终止应用的方法产生的影响：</p>
+<ul>
+<li>内存压力（即lowmemorykiller）杀掉一个进程</li>
+<li>用户从最近使用的程序展示项中滑动移除任务</li>
+<li>用户从系统设置处强制关闭应用</li>
+</ul>
+<p>##Foreground vs. Background<br>在我们进一步讨论之前，我们需要先简单说下Android是如何看待前台和后台状态的。一般来说，当前对用户可见的，可交互的应用被称之为前台应用。系统中其他的应用被认为处于后台状态。低内存清理模块可能无法平等的看待<a href="https://github.com/android/platform_frameworks_base/blob/android-4.4.3_r1/services/java/com/android/server/am/ProcessList.java#L47-104" target="_blank" rel="external">后台状态</a>，但是鉴于讨论这个问题，姑且认为是同等看待的。</p>
+<p>服务对象可以被标记为“前台服务”，其唯一活跃的用户界面是由一个在系统窗口一直存在的notification组成。在这种特殊的情况下，应用进程被给予了很高的等级（特别是PERCEPTIBLE_APP_ADJ，值为2，值越低优先级越高），即使它没有任何可以跟用户交互的界面，虽然不能完全等同与一个可见的程序，但是这里我们认为它使得所有进程都处于前台状态。</p>
+<p>技术上而言，我所指的是进程所在的“调度组”，这不同于出于内存压力需要而去关闭进程时用于排序的数值，系统服务使用这种区分来管理涉及到清除进程的行为。这很重要，需要记住。</p>
+<p>##比较对照</p>
+<table>
+<thead>
+<tr>
+<th>行为</th>
+<th style="text-align:right">低内存清理</th>
+<th style="text-align:right">清除最近任务</th>
+<th style="text-align:right">强制关闭</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>进程终止</td>
+<td style="text-align:right">Y</td>
+<td style="text-align:right">Y1</td>
+<td style="text-align:right">Y</td>
+</tr>
+<tr>
+<td>PendingIntent可触发</td>
+<td style="text-align:right">Y</td>
+<td style="text-align:right">Y</td>
+<td style="text-align:right">N</td>
+</tr>
+<tr>
+<td>接收广播可以启动程序</td>
+<td style="text-align:right">Y</td>
+<td style="text-align:right">Y</td>
+<td style="text-align:right">N</td>
+</tr>
+<tr>
+<td>Activity栈保存</td>
+<td style="text-align:right">Y</td>
+<td style="text-align:right">N</td>
+<td style="text-align:right">N</td>
+</tr>
+</tbody>
+</table>
+<p>Y1:这个终止不能保证，详见下文</p>
+<p>##低内存清理<br>这种情况在Android系统中会阶段性发生，且用户无察觉，当系统内存不足时，它会关闭一些进程以回收资源。这么做是为了尽量少的对用户产生影响。所以，当程序进程被终止，外部事件（比如一个广播）会再次启动这个进程。程序甚至会保存在最近使用页面以方便用户再次打开。此外，进程被终止时存在的所有的Activity的栈都会被保留，当用户把应用重新切到前台的时候，他们会被重现。理论上，在第一时间终止应用进程对用户是而言是隐性的。</p>
+<p>##清除最近任务<br><img src="http://www.doubleencore.com/wp-content/uploads/2014/05/Swipe1.gif" alt="2"></p>
+<p>当用户在最近任务页面清除掉一个应用时，产生的行为有些不同。在这种情况下，系统会认为用户不希望此应用状态被保留。此程序进程分配的Activity栈也会被清理。下一次打开应用会开启一个全新的任务。跟上边一样，从其他应用和服务发来的行为可以唤醒并重启此应用进程。</p>
+<p>此外，如果进程当时处于一个后台状态的话，那只会终止进程。这通常被认为是正确的，因为一个前台的Activity栈在最近任务页面显示且活跃时也会被暂时切入后台。然而，如果是一个活跃的前台服务的情况下，终止进程的行为会被阻止。在后边会描述为什么这样。</p>
+<p>然而这确实意味着，后台运行的服务不能阻止这个级别的进程终止。为了帮助过渡，服务类通过onTaskRemoved()方法提供了一个回调，可以在服务被强制关闭之前记录或处理一些关键的东西。注意，这个回调特定于这种用例，低内存清理时是没有这个回调的。</p>
+<p>##强制关闭<br><img src="http://www.doubleencore.com/wp-content/uploads/2014/05/ForceStop.gif" alt="3"><br>最后这种情况是指用户进入系统设置页面，强制要求关闭某个应用。很多人认为这跟之前的方式是一样的。但这里有些需要特别注意，首先就是不管进程是不是后台状态，用户强制关闭时，进程一定会被终止。</p>
+<p>除此之外，系统服务中关于此进程的记录都会被标记成”关闭状态”，这意味着没有外部触发可以唤醒整个应用进程。在用户再次主动的开发它之前，这个进程是被孤立的。就跟用户刚安装了应用且一次都没打开过一样的状态。</p>
+<p>##一个有趣的边界情况</p>
+<p>不可避免的是，随着Android进程管理的不断进步，复杂性的提升会导致一些未知的状态。其中一个例子就是在<a href="https://code.google.com/p/android/issues/detail?id=63618#c22" target="_blank" rel="external">一个bug报告的评论里</a>，这里描述的行为是当应用正在运行一个前台服务，任务被滑动取消了，进程依然保持运行状态，但是它很容易被外部触发给搞死。</p>
+<p>这么做的原因在于当前<code>ActivityManagerService</code>是如何管理这些事件的。当收到一个请求，需要清理某一个app的任务，如果进程被认为是后台的，服务会直接终止进程。如果是在前台，那服务会延迟一会才会被终止。推测这是为了让把工作做完后才终止，或者从前台状态转变成其他。</p>
+<p>在<code>ActivityManagerService.computeOomAdjLocked()</code>方法中，进程的前后台状态的重新评定都会检查标记值。这就跟系统事件一样，不断的在发生，这个小例子的关键问题看起来像是在<code>ActivityManagerService</code>中的<a href="https://github.com/android/platform_frameworks_base/blob/android-4.4.3_r1/services/java/com/android/server/am/ActivityManagerService.java#L14313-L14357" target="_blank" rel="external">一段代码</a>中，它用于评估不同的事件条件。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (app == TOP_APP) &#123;</span><br><span class="line">            <span class="comment">// The last app on the list is the foreground app.</span></span><br><span class="line">            adj = ProcessList.FOREGROUND_APP_ADJ;</span><br><span class="line">            schedGroup = Process.THREAD_GROUP_DEFAULT;</span><br><span class="line">            app.adjType = <span class="string">"top-activity"</span>;</span><br><span class="line">            foregroundActivities = <span class="keyword">true</span>;</span><br><span class="line">            interesting = <span class="keyword">true</span>;</span><br><span class="line">            procState = ActivityManager.PROCESS_STATE_TOP;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (app.instrumentationClass != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">// Don't want to kill running instrumentation.</span></span><br><span class="line">            adj = ProcessList.FOREGROUND_APP_ADJ;</span><br><span class="line">            schedGroup = Process.THREAD_GROUP_DEFAULT;</span><br><span class="line">            app.adjType = <span class="string">"instrumentation"</span>;</span><br><span class="line">            interesting = <span class="keyword">true</span>;</span><br><span class="line">            procState = ActivityManager.PROCESS_STATE_IMPORTANT_FOREGROUND;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> ((queue = isReceivingBroadcast(app)) != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">// An app that is currently receiving a broadcast also</span></span><br><span class="line">            <span class="comment">// counts as being in the foreground for OOM killer purposes.</span></span><br><span class="line">            <span class="comment">// It's placed in a sched group based on the nature of the</span></span><br><span class="line">            <span class="comment">// broadcast as reflected by which queue it's active in.</span></span><br><span class="line">            adj = ProcessList.FOREGROUND_APP_ADJ;</span><br><span class="line">            schedGroup = (queue == mFgBroadcastQueue)</span><br><span class="line">                    ? Process.THREAD_GROUP_DEFAULT : Process.THREAD_GROUP_BG_NONINTERACTIVE;</span><br><span class="line">            app.adjType = <span class="string">"broadcast"</span>;</span><br><span class="line">            procState = ActivityManager.PROCESS_STATE_RECEIVER;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (app.executingServices.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">// An app that is currently executing a service callback also</span></span><br><span class="line">            <span class="comment">// counts as being in the foreground.</span></span><br><span class="line">            adj = ProcessList.FOREGROUND_APP_ADJ;</span><br><span class="line">            schedGroup = app.execServicesFg ?</span><br><span class="line">                    Process.THREAD_GROUP_DEFAULT : Process.THREAD_GROUP_BG_NONINTERACTIVE;</span><br><span class="line">            app.adjType = <span class="string">"exec-service"</span>;</span><br><span class="line">            procState = ActivityManager.PROCESS_STATE_SERVICE;</span><br><span class="line">            <span class="comment">//Slog.i(TAG, "EXEC " + (app.execServicesFg ? "FG" : "BG") + ": " + app);</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// As far as we know the process is empty.  We may change our mind later.</span></span><br><span class="line">            schedGroup = Process.THREAD_GROUP_BG_NONINTERACTIVE;</span><br><span class="line">            <span class="comment">// At this point we don't actually know the adjustment.  Use the cached adj</span></span><br><span class="line">            <span class="comment">// value that the caller wants us to.</span></span><br><span class="line">            adj = cachedAdj;</span><br><span class="line">            procState = ActivityManager.PROCESS_STATE_CACHED_EMPTY;</span><br><span class="line">            app.cached = <span class="keyword">true</span>;</span><br><span class="line">            app.empty = <span class="keyword">true</span>;</span><br><span class="line">            app.adjType = <span class="string">"cch-empty"</span>;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></p>
+<p>通过代码可以看到，一个接收广播的活动在检查是否有前台服务之前就被评定了。如果应用程序在接收标准广播的过程（即一个没有flag_receiver_foreground标志），该过程将被设置为后台状态，代码不会继续执行验证是否有前台服务正在运行。</p>
+<p>总结，导致意外的情况：</p>
+<ol>
+<li>程序启动了一个前台服务</li>
+<li>用户将程序切到后台（程序仍在前台集合里，因为服务）</li>
+<li>用户滑动清除了任务，当状态改变时，进程会被杀死</li>
+<li>接收到广播事件，ActivityManagerService更新程序进程的状态来处理广播</li>
+<li>在这么做时， ActivityManagerService把进程移到后台，因为广播事件中不包含前台标示。</li>
+<li>在这种情况下，ActivityManagerService跳过了前台服务的检测。</li>
+<li>在同一地方，如果进程被标记为死亡或者后台组，检测返回为TRUE。</li>
+</ol>
+<p><a href="http://www.doubleencore.com/2014/06/effects-android-application-termination/" target="_blank" rel="external">原文地址</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/07/05/best-practices-for-background-jobs/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Android后台任务最佳实践
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/07/03/header-first-builder/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android 设计模式--建造者模式</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="effects-of-android-application-termination" data-title="Android应用程序终止的影响" data-url="http://coofee.me/2014/07/05/effects-of-android-application-termination/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"flyouting"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 flyouting and shirley
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

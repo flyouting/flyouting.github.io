@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>笨办法学Python--exercise46.项目骨架 | flyouting and shirley</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="这里你将学会如何建立一个项目“骨架”目录。这个骨架目录具备让项目跑起来的所有基本内容。它里边会包含你的项目文件布局、自动化测试代码，模组，以及安装脚本。当你建立一个新项目的时候，只要把这个目录复制过去，改改目录的名字，再编辑里边的文件就行了。
+安装Python 软件包的你需要使用pip预先安装一些软件包，不过问题就来了。我的本意是让这本书越清晰越干净越好，不过安装软件的方法是在是太多了，如果我要一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="笨办法学Python--exercise46.项目骨架">
+<meta property="og:url" content="http://coofee.me/2014/11/30/learn-python-the-hard-way-exercise46/index.html">
+<meta property="og:site_name" content="flyouting and shirley">
+<meta property="og:description" content="这里你将学会如何建立一个项目“骨架”目录。这个骨架目录具备让项目跑起来的所有基本内容。它里边会包含你的项目文件布局、自动化测试代码，模组，以及安装脚本。当你建立一个新项目的时候，只要把这个目录复制过去，改改目录的名字，再编辑里边的文件就行了。
+安装Python 软件包的你需要使用pip预先安装一些软件包，不过问题就来了。我的本意是让这本书越清晰越干净越好，不过安装软件的方法是在是太多了，如果我要一">
+<meta property="og:updated_time" content="2014-12-07T15:15:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="笨办法学Python--exercise46.项目骨架">
+<meta name="twitter:description" content="这里你将学会如何建立一个项目“骨架”目录。这个骨架目录具备让项目跑起来的所有基本内容。它里边会包含你的项目文件布局、自动化测试代码，模组，以及安装脚本。当你建立一个新项目的时候，只要把这个目录复制过去，改改目录的名字，再编辑里边的文件就行了。
+安装Python 软件包的你需要使用pip预先安装一些软件包，不过问题就来了。我的本意是让这本书越清晰越干净越好，不过安装软件的方法是在是太多了，如果我要一">
+  
+    <link rel="alternative" href="/atom.xml" title="flyouting and shirley" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">flyouting and shirley</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">记录一点一滴</p>
+		
+
+		<!--
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>Über</li>
+						
+					</ul>
+				</div>
+			</div>
+		-->
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">首页</a></li>
+				        
+							<li><a href="/archives">文章列表</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				<div class="switch-part switch-part2"><script>var n ='b-26003349-pe-f-801';var ch ='pc_6'; var w1 = 200;var h1 = 280;</script> <script src='http://static.luna.58.com/js/mad.js'></script></div>
+				
+				<!--
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/AndroidStudio/" style="font-size: 10px;">AndroidStudio</a> <a href="/tags/DB/" style="font-size: 12.5px;">DB</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/ImageSpan/" style="font-size: 10px;">ImageSpan</a> <a href="/tags/ORM/" style="font-size: 12.5px;">ORM</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/activeandroid/" style="font-size: 10px;">activeandroid</a> <a href="/tags/android/" style="font-size: 17.5px;">android</a> <a href="/tags/intent/" style="font-size: 10px;">intent</a> <a href="/tags/key/" style="font-size: 10px;">key</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/span/" style="font-size: 10px;">span</a> <a href="/tags/transitions/" style="font-size: 10px;">transitions</a> <a href="/tags/volley/" style="font-size: 15px;">volley</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/后台，多线程/" style="font-size: 10px;">后台，多线程</a> <a href="/tags/相机/" style="font-size: 15px;">相机</a> <a href="/tags/终端/" style="font-size: 10px;">终端</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+					</div>
+				</section>
+				-->
+				
+				<!--
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				-->
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">flyouting and shirley</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">flyouting and shirley</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">记录一点一滴</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">首页</a></li>
+		        
+					<li><a href="/archives">文章列表</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-learn-python-the-hard-way-exercise46" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/30/learn-python-the-hard-way-exercise46/" class="article-date">
+  	<time datetime="2014-11-30T06:41:39.000Z" itemprop="datePublished">2014-11-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      笨办法学Python--exercise46.项目骨架
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Python/">Python</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这里你将学会如何建立一个项目“骨架”目录。这个骨架目录具备让项目跑起来的所有基本内容。它里边会包含你的项目文件布局、自动化测试代码，模组，以及安装脚本。当你建立一个新项目的时候，只要把这个目录复制过去，改改目录的名字，再编辑里边的文件就行了。</p>
+<h2 id="安装Python-软件包的"><a href="#安装Python-软件包的" class="headerlink" title="安装Python 软件包的"></a>安装Python 软件包的</h2><p>你需要使用pip预先安装一些软件包，不过问题就来了。我的本意是让这本书越清晰越干净越好，不过安装软件的方法是在是太多了，如果我要一步一步写下来，那 10 页都写不完，而且告诉你吧，我本来就是个懒人。</p>
+<p>所以我不会提供详细的安装步骤了，我只会告诉你需要安装哪些东西，然后让你自己搞定。即使我给了你所需软件详尽的安装说明，你还是不得不与之奋斗。计算机更新换代非常频繁，你在安装过程中遇到问题的时候，可以在网上搜索解决方案。</p>
+<p>你需要安装下面的软件包：</p>
+<blockquote>
+<ol>
+<li>pip – <a href="http://pypi.python.org/pypi/pip" target="_blank" rel="external">http://pypi.python.org/pypi/pip</a></li>
+<li>distribute – <a href="http://pypi.python.org/pypi/distribute" target="_blank" rel="external">http://pypi.python.org/pypi/distribute</a></li>
+<li>nose – <a href="http://pypi.python.org/pypi/nose/" target="_blank" rel="external">http://pypi.python.org/pypi/nose/</a></li>
+<li>virtualenv – <a href="http://pypi.python.org/pypi/virtualenv" target="_blank" rel="external">http://pypi.python.org/pypi/virtualenv</a></li>
+</ol>
+</blockquote>
+<p>不要只是手动下载并且安装这些软件包，你应该看一下别人的建议，尤其看看针对你的操作系统别人是怎样建议你安装和使用的。同样的软件包在不一样的操作系统上面的安装方式是不一样的，不一样版本的 Linux 和 OSX 会有不同，而 Windows 更是不同。</p>
+<p>我要预先警告你，这个过程会是相当无趣。在业内我们将这种事情叫做 “yak shaving(剃牦牛)”。它指的是在你做一件有意义的事情之前的一些准备工作，而这些准备工作又是及其无聊冗繁的。你要做一个很酷的 Python 项目，但是创建骨架目录需要你安装一些软件包，而安装软件包之前你还要安装软件包安装工具(package installer)，而要安装这个工具你还得先学会如何在你的操作系统下安装软件，真是烦不胜烦呀。</p>
+<p>无论如何，还是克服困难把。你就把它当做进入编程俱乐部的一个考验。每个程序员都会经历这条道路，在每一段“酷”的背后总会有一段“烦”的。</p>
+<blockquote>
+<p><strong>NOTE:</strong><br>有时候python的安装程序不会把<code>C:\Python27\Script</code>加入到系统的<code>PATH</code>中，如果你遇到了这个问题，就参照练习0自己把这个目录加上：<code>[Environment]::SetEnvironmentVariable(&quot;Path&quot;, &quot;$env:Path;C:\Python27\Scripts&quot;, &quot;User&quot;)</code></p>
+</blockquote>
+<h2 id="创建骨架内容"><a href="#创建骨架内容" class="headerlink" title="创建骨架内容"></a>创建骨架内容</h2><p>首先使用下述命令创建你的骨架目录：</p>
+<pre><code>$ mkdir projects
+$ cd projects/
+$ mkdir skeleton
+$ cd skeleton
+$ mkdir bin NAME tests docs
+</code></pre><p>我使用了一个叫<code>projects</code>的目录，用来存放我自己的各个项目。然后我在里边建立了一个叫做<code>skeleton</code>的文件夹，这就是我们新项目的基础目录。其中叫做<code>NAME</code>的文件夹是你的项目的主文件夹，你可以将它任意取名。</p>
+<p>接下来我们要配置一些初始文件：</p>
+<pre><code>$ touch NAME/__init__.py
+$ touch tests/__init__.py
+</code></pre><p>在windows上，你可以这样配置初始文件：</p>
+<pre><code>$ new-item -type file NAME/__init__.py
+$ new-item -type file tests/__init__.py
+</code></pre><p>以上命令为你创建了空的模组目录，以供你后面为其添加代码。然后我们需要建立一个<code>setup.py</code>文件，这个文件在安装项目的时候我们会用到它：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">from</span> setuptools <span class="keyword">import</span> setup</span><br><span class="line"><span class="keyword">except</span> ImportError:</span><br><span class="line">    <span class="keyword">from</span> distutils.core <span class="keyword">import</span> setup</span><br><span class="line"></span><br><span class="line">config = &#123;</span><br><span class="line">    <span class="string">'description'</span>: <span class="string">'My Project'</span>,</span><br><span class="line">    <span class="string">'author'</span>: <span class="string">'My Name'</span>,</span><br><span class="line">    <span class="string">'url'</span>: <span class="string">'URL to get it at.'</span>,</span><br><span class="line">    <span class="string">'download_url'</span>: <span class="string">'Where to download it.'</span>,</span><br><span class="line">    <span class="string">'author_email'</span>: <span class="string">'My email.'</span>,</span><br><span class="line">    <span class="string">'version'</span>: <span class="string">'0.1'</span>,</span><br><span class="line">    <span class="string">'install_requires'</span>: [<span class="string">'nose'</span>],</span><br><span class="line">    <span class="string">'packages'</span>: [<span class="string">'NAME'</span>],</span><br><span class="line">    <span class="string">'scripts'</span>: [],</span><br><span class="line">    <span class="string">'name'</span>: <span class="string">'projectname'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">setup(**config)</span><br></pre></td></tr></table></figure></p>
+<p>编辑这个文件，把自己的联系方式写进去，然后放到那里就行了。</p>
+<p>最后你需要一个简单的测试专用的骨架文件叫<code>tests/NAME_tests.py</code>：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> nose.tools <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> NAME</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">setup</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"SETUP!"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">teardown</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"TEAR DOWN!"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_basic</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"I RAN!"</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="最终的目录结构"><a href="#最终的目录结构" class="headerlink" title="最终的目录结构"></a>最终的目录结构</h2><p>当你完成一切设置,你的目录应该看起来像我在这里: </p>
+<pre><code>skeleton/
+     NAME/
+         __init__.py
+     bin/
+     docs/
+     setup.py
+     tests/
+         NAME_tests.py
+         __init__.py
+</code></pre><p>从现在开始，你应该在这个目录下运行命令。如果你不能执行<code>ls -R</code>命令并看到相似的目录结构，说明你在一个错误的目录下。比如，人们经常会到<code>tests/</code>目录下尝试执行文件，那肯定是无法运行的。要运行你应用的测试用例，你也应该在目录<code>tests/</code>的上一层目录执行，加入你这样执行：</p>
+<pre><code>$ cd tests/   # WRONG! WRONG! WRONG!
+$ nosetests
+
+----------------------------------------------------------------------
+Ran 0 tests in 0.000s
+
+OK
+</code></pre><p>那结果肯定是错误的，你应当在<code>tests/</code>目录的上一层目录执行，所以为了修正你的错误，你应该这样做：</p>
+<pre><code>$ cd ..   # get out of tests/
+$ ls      # CORRECT! you are now in the right spot
+NAME                bin             docs            setup.py        tests
+$ nosetests
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.004s
+
+OK
+</code></pre><p>一定要记住这一点，因为人们经常犯这个错误。</p>
+<h2 id="测试你的配置"><a href="#测试你的配置" class="headerlink" title="测试你的配置"></a>测试你的配置</h2><p>安装了所有上面的软件包以后，你就可以做下面的事情了：</p>
+<pre><code>$ nosetests
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.007s
+
+OK
+</code></pre><p>下一节练习中我会告诉你<code>nosetests</code>的功能，不过如果你没有看到上面的画面，那就说明你哪里出错了。确认一下你的<code>NAME</code>和<code>tests</code>目录下存在 <code>__init__.py</code>， 并且你没有把 <code>tests/NAME_tests.py</code> 命名错。</p>
+<h2 id="使用这个项目骨架"><a href="#使用这个项目骨架" class="headerlink" title="使用这个项目骨架"></a>使用这个项目骨架</h2><p>剃牦牛的事情已经做的差不多了，以后每次你要新建一个项目时，只要做下面的事情就可以了：</p>
+<blockquote>
+<ol>
+<li>拷贝这份骨架目录，把名字改成你新项目的名字。</li>
+<li>再将<code>NAME</code>模组更名为你需要的名字，它可以是你项目的名字，当然别的名字也行。</li>
+<li>编辑<code>setup.py</code>让它包含你新项目的相关信息。</li>
+<li>重命名<code>tests/NAME_tests.py</code>，让它的名字匹配到你模组的名字。</li>
+<li>使用<code>nosetests</code>检查有无错误。</li>
+<li>开始写代码吧。</li>
+</ol>
+</blockquote>
+<h2 id="小测验"><a href="#小测验" class="headerlink" title="小测验"></a>小测验</h2><p>本节没有附加题，不过有一些小测验需要你完成</p>
+<blockquote>
+<ol>
+<li>找文档阅读，学会使用你前面安装了的软件包。</li>
+<li>阅读关于<code>setup.py</code>的文档，看它里边可以做多少配置。Python 的安装器并不是一个好软件，所以使用起来也非常奇怪。</li>
+<li>创建一个项目，在模组目录里写一些代码，并让这个模组可以运行。</li>
+<li>在 <code>bin</code> 目录下放一个可以运行的脚本，找材料学习一下怎样创建可以在系统下运行的 Python 脚本。</li>
+<li>在你的 <code>setup.py</code>中加入<code>bin</code>这个目录，这样你安装时就可以连它安装进去。</li>
+<li>使用<code>setup.py</code>安装你的模组，并确定安装的模组可以正常使用，最后使用<code>pip</code>将其卸载。</li>
+</ol>
+</blockquote>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="Q-这些说明在windows上也是一样的吗？"><a href="#Q-这些说明在windows上也是一样的吗？" class="headerlink" title="Q: 这些说明在windows上也是一样的吗？"></a>Q: 这些说明在windows上也是一样的吗？</h3><blockquote>
+<p>是的，不过也取决于你windows系统的版本，你可能需要在配置上下点功夫它才能正常运行，坚持研究并尝试，直到你能在windows上正常的运行这个骨架，或者你可以找一些有python+windows开发经验的人帮忙。</p>
+</blockquote>
+<h3 id="Q-我好像不能在windows上运行nosetests"><a href="#Q-我好像不能在windows上运行nosetests" class="headerlink" title="Q: 我好像不能在windows上运行nosetests"></a>Q: 我好像不能在windows上运行<code>nosetests</code></h3><blockquote>
+<p>有时候python的安装程序不会把<code>C:\Python27\Script</code>加入到系统的<code>PATH</code>中，如果你遇到了这个问题，就参照练习0自己把这个目录加上：<code>[Environment]::SetEnvironmentVariable(&quot;Path&quot;, &quot;$env:Path;C:\Python27\Scripts&quot;, &quot;User&quot;)</code></p>
+</blockquote>
+<h3 id="Q-我应该在我的配置文件setup-py中放些什么？"><a href="#Q-我应该在我的配置文件setup-py中放些什么？" class="headerlink" title="Q: 我应该在我的配置文件setup.py中放些什么？"></a>Q: 我应该在我的配置文件<code>setup.py</code>中放些什么？</h3><blockquote>
+<p>确认你阅读了distutils的文档<code>http://docs.python.org/distutils/setupscript.html</code>。</p>
+</blockquote>
+<h3 id="Q-我好像不能加载NAME模块，而且还有个”ImportError”报错"><a href="#Q-我好像不能加载NAME模块，而且还有个”ImportError”报错" class="headerlink" title="Q:我好像不能加载NAME模块，而且还有个”ImportError”报错"></a>Q:我好像不能加载<code>NAME</code>模块，而且还有个”ImportError”报错</h3><blockquote>
+<p>确认你创建了<code>NAME/__init__.py</code>这个文件，如果你用的windows系统，确认你没有把这文件命名为<code>NAME/__init__.py.txt</code>，很多程序员都犯过这个错。</p>
+</blockquote>
+<h3 id="Q-我们为什么需要一个bin-文件夹"><a href="#Q-我们为什么需要一个bin-文件夹" class="headerlink" title="Q: 我们为什么需要一个bin/文件夹"></a>Q: 我们为什么需要一个<code>bin/</code>文件夹</h3><blockquote>
+<p>这只是一个用来存放在命令行执行的脚本的地方，不是用来存在模块的。</p>
+</blockquote>
+<h3 id="Q-你有一个真实的项目举例吗？"><a href="#Q-你有一个真实的项目举例吗？" class="headerlink" title="Q: 你有一个真实的项目举例吗？"></a>Q: 你有一个真实的项目举例吗？</h3><blockquote>
+<p>有很多python写的项目都可以作为实例，你可以看看我创建的这个简单的项目<code>https://gitorious.org/python-modargs</code>.</p>
+</blockquote>
+<h3 id="Q-我的nosetests运行时只显示正在运行一个测试，这是正确的吗？"><a href="#Q-我的nosetests运行时只显示正在运行一个测试，这是正确的吗？" class="headerlink" title="Q: 我的nosetests运行时只显示正在运行一个测试，这是正确的吗？"></a>Q: 我的<code>nosetests</code>运行时只显示正在运行一个测试，这是正确的吗？</h3><blockquote>
+<p>是的，我的也是这么显示的。</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/11/30/learn-python-the-hard-way-exercise47/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          笨办法学Python--exercise47.自动化测试
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/11/30/learn-python-the-hard-way-exercise45/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">笨办法学Python--exercise45.你来制作一个游戏</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="learn-python-the-hard-way-exercise46" data-title="笨办法学Python--exercise46.项目骨架" data-url="http://coofee.me/2014/11/30/learn-python-the-hard-way-exercise46/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"flyouting"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 flyouting and shirley
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

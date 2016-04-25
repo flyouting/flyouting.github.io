@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>笨办法学Python--exercise31.做出决定 | flyouting and shirley</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="这本书的上半部分你打印了一些东西，而且调用了函数，不过一切都是直线式进行的。你的脚本从最上面一行开始，一路运行到结束，但其中并没有决定程序流向的分支点。现在你已经学了if,else,和elif，你就可以开始创建包含条件判断的脚本了。
+上一个脚本中你写了一系列的简单提问测试。这节的脚本中，你将需要向用户提问，依据用户的答案来做出决定。把脚本写下来，多多鼓捣一阵子，看看它的工作原理是什么。
+12345">
+<meta property="og:type" content="article">
+<meta property="og:title" content="笨办法学Python--exercise31.做出决定">
+<meta property="og:url" content="http://coofee.me/2014/11/27/learn-python-the-hard-way-exercise31/index.html">
+<meta property="og:site_name" content="flyouting and shirley">
+<meta property="og:description" content="这本书的上半部分你打印了一些东西，而且调用了函数，不过一切都是直线式进行的。你的脚本从最上面一行开始，一路运行到结束，但其中并没有决定程序流向的分支点。现在你已经学了if,else,和elif，你就可以开始创建包含条件判断的脚本了。
+上一个脚本中你写了一系列的简单提问测试。这节的脚本中，你将需要向用户提问，依据用户的答案来做出决定。把脚本写下来，多多鼓捣一阵子，看看它的工作原理是什么。
+12345">
+<meta property="og:updated_time" content="2014-12-07T15:02:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="笨办法学Python--exercise31.做出决定">
+<meta name="twitter:description" content="这本书的上半部分你打印了一些东西，而且调用了函数，不过一切都是直线式进行的。你的脚本从最上面一行开始，一路运行到结束，但其中并没有决定程序流向的分支点。现在你已经学了if,else,和elif，你就可以开始创建包含条件判断的脚本了。
+上一个脚本中你写了一系列的简单提问测试。这节的脚本中，你将需要向用户提问，依据用户的答案来做出决定。把脚本写下来，多多鼓捣一阵子，看看它的工作原理是什么。
+12345">
+  
+    <link rel="alternative" href="/atom.xml" title="flyouting and shirley" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">flyouting and shirley</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">记录一点一滴</p>
+		
+
+		<!--
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>Über</li>
+						
+					</ul>
+				</div>
+			</div>
+		-->
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">首页</a></li>
+				        
+							<li><a href="/archives">文章列表</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				<div class="switch-part switch-part2"><script>var n ='b-26003349-pe-f-801';var ch ='pc_6'; var w1 = 200;var h1 = 280;</script> <script src='http://static.luna.58.com/js/mad.js'></script></div>
+				
+				<!--
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/AndroidStudio/" style="font-size: 10px;">AndroidStudio</a> <a href="/tags/DB/" style="font-size: 12.5px;">DB</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/ImageSpan/" style="font-size: 10px;">ImageSpan</a> <a href="/tags/ORM/" style="font-size: 12.5px;">ORM</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/activeandroid/" style="font-size: 10px;">activeandroid</a> <a href="/tags/android/" style="font-size: 17.5px;">android</a> <a href="/tags/intent/" style="font-size: 10px;">intent</a> <a href="/tags/key/" style="font-size: 10px;">key</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/span/" style="font-size: 10px;">span</a> <a href="/tags/transitions/" style="font-size: 10px;">transitions</a> <a href="/tags/volley/" style="font-size: 15px;">volley</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/后台，多线程/" style="font-size: 10px;">后台，多线程</a> <a href="/tags/相机/" style="font-size: 15px;">相机</a> <a href="/tags/终端/" style="font-size: 10px;">终端</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+					</div>
+				</section>
+				-->
+				
+				<!--
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				-->
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">flyouting and shirley</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">flyouting and shirley</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">记录一点一滴</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">首页</a></li>
+		        
+					<li><a href="/archives">文章列表</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-learn-python-the-hard-way-exercise31" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/27/learn-python-the-hard-way-exercise31/" class="article-date">
+  	<time datetime="2014-11-27T06:14:36.000Z" itemprop="datePublished">2014-11-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      笨办法学Python--exercise31.做出决定
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Python/">Python</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这本书的上半部分你打印了一些东西，而且调用了函数，不过一切都是直线式进行的。你的脚本从最上面一行开始，一路运行到结束，但其中并没有决定程序流向的分支点。现在你已经学了<code>if</code>,<code>else</code>,和<code>elif</code>，你就可以开始创建包含条件判断的脚本了。</p>
+<p>上一个脚本中你写了一系列的简单提问测试。这节的脚本中，你将需要向用户提问，依据用户的答案来做出决定。把脚本写下来，多多鼓捣一阵子，看看它的工作原理是什么。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span> <span class="string">"You enter a dark room with two doors.  Do you go through door #1 or door #2?"</span></span><br><span class="line"></span><br><span class="line">door = raw_input(<span class="string">"&gt; "</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> door == <span class="string">"1"</span>:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">"There's a giant bear here eating a cheese cake.  What do you do?"</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"1. Take the cake."</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"2. Scream at the bear."</span></span><br><span class="line"></span><br><span class="line">    bear = raw_input(<span class="string">"&gt; "</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> bear == <span class="string">"1"</span>:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">"The bear eats your face off.  Good job!"</span></span><br><span class="line">    <span class="keyword">elif</span> bear == <span class="string">"2"</span>:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">"The bear eats your legs off.  Good job!"</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">"Well, doing %s is probably better.  Bear runs away."</span> % bear</span><br><span class="line"></span><br><span class="line"><span class="keyword">elif</span> door == <span class="string">"2"</span>:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">"You stare into the endless abyss at Cthulhu's retina."</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"1. Blueberries."</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"2. Yellow jacket clothespins."</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"3. Understanding revolvers yelling melodies."</span></span><br><span class="line"></span><br><span class="line">    insanity = raw_input(<span class="string">"&gt; "</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> insanity == <span class="string">"1"</span> <span class="keyword">or</span> insanity == <span class="string">"2"</span>:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">"Your body survives powered by a mind of jello.  Good job!"</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">"The insanity rots your eyes into a pool of muck.  Good job!"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">"You stumble around and fall on a knife and die.  Good job!"</span></span><br></pre></td></tr></table></figure>
+<p>这里的重点是你可以在“if语句”内部再放一个“if语句”。这是一个很强大的功能，可以用来创建嵌套(nested)，其中的一个分支将引向另一个分支的子分支。</p>
+<p>你需要理解<code>if语句</code>包含<code>if语句</code>的概念。做一下附加题，确保自己真正理解了它们。</p>
+<h2 id="你看到的结果"><a href="#你看到的结果" class="headerlink" title="你看到的结果"></a>你看到的结果</h2><p>下面是我玩这个小游戏的结果，我玩的不怎么样：</p>
+<pre><code>$ python ex31.py
+You enter a dark room with two doors.  Do you go through door #1 or door #2?
+&gt;  1
+There&apos;s a giant bear here eating a cheese cake.  What do you do?
+1. Take the cake.
+2. Scream at the bear.
+&gt;  2
+The bear eats your legs off.  Good job!
+</code></pre><h2 id="附加题"><a href="#附加题" class="headerlink" title="附加题"></a>附加题</h2><blockquote>
+<ol>
+<li>为游戏添加新的部分，改变玩家做决定的位置。尽自己的能力扩展这个游戏，不过别把游戏弄得太怪异了。</li>
+<li>写一个全新的游戏，你可能不喜欢我提供的这个，那么自己写一个玩玩。这是你的电脑，你可以用它做任何自己想做的事情。</li>
+</ol>
+</blockquote>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="Q-可以用if-else替换elif-吗？"><a href="#Q-可以用if-else替换elif-吗？" class="headerlink" title="Q: 可以用if-else替换elif 吗？"></a>Q: 可以用<code>if-else</code>替换<code>elif</code> 吗？</h3><blockquote>
+<p>某些情况下可以, 但是这个也依赖于每一个<code>if/else</code>是怎么写的 。这也意味着， Python会检查每个if-else的组合，而不是只检查<code>if-elif-else</code>组合中的第一个为假的分支，尝试用两种方式多编写一些代码，以找出他们的不同点。</p>
+</blockquote>
+<h3 id="Q-我怎么知道一个数字是在一个数字范围之间？"><a href="#Q-我怎么知道一个数字是在一个数字范围之间？" class="headerlink" title="Q:我怎么知道一个数字是在一个数字范围之间？"></a>Q:我怎么知道一个数字是在一个数字范围之间？</h3><blockquote>
+<p>有两种方法: 一种经典的方式是使用<code>0 &lt; x &lt; 10</code> 或者 <code>1 &lt;= x &lt; 10</code>,另一中方式是使用<code>x in range(1, 10)</code>。</p>
+</blockquote>
+<h3 id="Q-怎样才能在if-elif-else代码块中增加更多的选择？"><a href="#Q-怎样才能在if-elif-else代码块中增加更多的选择？" class="headerlink" title="Q: 怎样才能在if-elif-else代码块中增加更多的选择？"></a>Q: 怎样才能在<code>if-elif-else</code>代码块中增加更多的选择？</h3><blockquote>
+<p>为每一个可能的选择增加一个<code>elif</code> 代码块。</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/11/27/learn-python-the-hard-way-exercise32/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          笨办法学Python--exercise32.循环和列表
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/11/26/learn-python-the-hard-way-exercise30/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">笨办法学Python--exercise30. Else 和 If</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="learn-python-the-hard-way-exercise31" data-title="笨办法学Python--exercise31.做出决定" data-url="http://coofee.me/2014/11/27/learn-python-the-hard-way-exercise31/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"flyouting"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 flyouting and shirley
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

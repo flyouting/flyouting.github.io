@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>笨办法学Python--exercise50.你的第一个网站 | flyouting and shirley</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最后的3个练习将会很难，你需要在他们身上多花一些时间。第一个练习里你将创建一个简单的web版本的游戏。在你开始这节练习以前，你必须已经成功地完成过了《习题 46》的内容，正确安装了pip，而且学会了如何安装软件包以及如何创建项目骨架。如果你不记得这些内容，就回到《习题 46》重新复习一遍。
+安装 lpthw.web在创建你的第一个网页应用程序之前，你需要安装一个“Web 框架”，它的名字叫lpth">
+<meta property="og:type" content="article">
+<meta property="og:title" content="笨办法学Python--exercise50.你的第一个网站">
+<meta property="og:url" content="http://coofee.me/2014/12/02/learn-python-the-hard-way-exercise50/index.html">
+<meta property="og:site_name" content="flyouting and shirley">
+<meta property="og:description" content="最后的3个练习将会很难，你需要在他们身上多花一些时间。第一个练习里你将创建一个简单的web版本的游戏。在你开始这节练习以前，你必须已经成功地完成过了《习题 46》的内容，正确安装了pip，而且学会了如何安装软件包以及如何创建项目骨架。如果你不记得这些内容，就回到《习题 46》重新复习一遍。
+安装 lpthw.web在创建你的第一个网页应用程序之前，你需要安装一个“Web 框架”，它的名字叫lpth">
+<meta property="og:updated_time" content="2014-12-07T15:15:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="笨办法学Python--exercise50.你的第一个网站">
+<meta name="twitter:description" content="最后的3个练习将会很难，你需要在他们身上多花一些时间。第一个练习里你将创建一个简单的web版本的游戏。在你开始这节练习以前，你必须已经成功地完成过了《习题 46》的内容，正确安装了pip，而且学会了如何安装软件包以及如何创建项目骨架。如果你不记得这些内容，就回到《习题 46》重新复习一遍。
+安装 lpthw.web在创建你的第一个网页应用程序之前，你需要安装一个“Web 框架”，它的名字叫lpth">
+  
+    <link rel="alternative" href="/atom.xml" title="flyouting and shirley" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">flyouting and shirley</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">记录一点一滴</p>
+		
+
+		<!--
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>Über</li>
+						
+					</ul>
+				</div>
+			</div>
+		-->
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">首页</a></li>
+				        
+							<li><a href="/archives">文章列表</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				<div class="switch-part switch-part2"><script>var n ='b-26003349-pe-f-801';var ch ='pc_6'; var w1 = 200;var h1 = 280;</script> <script src='http://static.luna.58.com/js/mad.js'></script></div>
+				
+				<!--
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/AndroidStudio/" style="font-size: 10px;">AndroidStudio</a> <a href="/tags/DB/" style="font-size: 12.5px;">DB</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/ImageSpan/" style="font-size: 10px;">ImageSpan</a> <a href="/tags/ORM/" style="font-size: 12.5px;">ORM</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/activeandroid/" style="font-size: 10px;">activeandroid</a> <a href="/tags/android/" style="font-size: 17.5px;">android</a> <a href="/tags/intent/" style="font-size: 10px;">intent</a> <a href="/tags/key/" style="font-size: 10px;">key</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/span/" style="font-size: 10px;">span</a> <a href="/tags/transitions/" style="font-size: 10px;">transitions</a> <a href="/tags/volley/" style="font-size: 15px;">volley</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/后台，多线程/" style="font-size: 10px;">后台，多线程</a> <a href="/tags/相机/" style="font-size: 15px;">相机</a> <a href="/tags/终端/" style="font-size: 10px;">终端</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+					</div>
+				</section>
+				-->
+				
+				<!--
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				-->
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">flyouting and shirley</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">flyouting and shirley</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">记录一点一滴</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">首页</a></li>
+		        
+					<li><a href="/archives">文章列表</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-learn-python-the-hard-way-exercise50" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/12/02/learn-python-the-hard-way-exercise50/" class="article-date">
+  	<time datetime="2014-12-02T13:20:17.000Z" itemprop="datePublished">2014-12-02</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      笨办法学Python--exercise50.你的第一个网站
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Python/">Python</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最后的3个练习将会很难，你需要在他们身上多花一些时间。第一个练习里你将创建一个简单的web版本的游戏。在你开始这节练习以前，你必须已经成功地完成过了《习题 46》的内容，正确安装了pip，而且学会了如何安装软件包以及如何创建项目骨架。如果你不记得这些内容，就回到《习题 46》重新复习一遍。</p>
+<h2 id="安装-lpthw-web"><a href="#安装-lpthw-web" class="headerlink" title="安装 lpthw.web"></a>安装 lpthw.web</h2><p>在创建你的第一个网页应用程序之前，你需要安装一个“Web 框架”，它的名字叫<code>lpthw.web</code>。所谓的“框架”通常是指“让某件事情做起来更容易的软件包”。在网页应用的世界里，人们创建了各种各样的“网页框架”，用来解决他们在创建网站时碰到的问题，然后把这些解决方案用软件包的方式发布出来，这样你就可以利用它们引导创建你自己的项目了。</p>
+<p>可选的框架类型有很多很多，不过在这里我们将使用<code>lpthw.web</code> 框架。你可以先学会它，等到差不多的时候再去接触其它的框架，不过 <code>lpthw.web</code> 本身挺不错的，所以就算你一直使用也没关系。</p>
+<p>使用<code>pip</code>安装<code>lpthw.web</code>：</p>
+<pre><code>$ sudo pip install lpthw.web
+[sudo] password for zedshaw:
+Downloading/unpacking lpthw.web
+  Running setup.py egg_info for package lpthw.web
+
+Installing collected packages: lpthw.web
+  Running setup.py install for lpthw.web
+
+Successfully installed lpthw.web
+Cleaning up...
+</code></pre><p>以上是 Linux 和 Mac OSX 系统下的安装命令，如果你使用的是 Windows，那你只要把<code>sudo</code>去掉就可以了。如果你无法正常安装，请回到《习题 46》，确认自己学会了里边的内容。</p>
+<blockquote>
+<p><strong>Warning:</strong><br>其他 Python 程序员会警告你说<code>lpthw.web</code>只是另外一个叫做<code>web.py</code>的 Web 框架的代码分支(fork)，而<code>web.py</code>又包含了太多的“魔法(magic)”在里边。如果他们这么说的话，你告诉他们<code>Google App Engine</code>最早用的就是 <code>web.py</code>，但没有一个 Python 程序员抱怨过它里边包含了太多的魔法，因为 Google 用它也没啥问题。如果Google觉得它可以，那它对你来说也不会差。所以还是回去继续学习吧，他们这些说法与其说是教导你，不如说是拿他们自己的教条束缚你，你还是忽略这些说法好了。</p>
+</blockquote>
+<h2 id="写一个简单的“Hello-World”项目"><a href="#写一个简单的“Hello-World”项目" class="headerlink" title="写一个简单的“Hello World”项目"></a>写一个简单的“Hello World”项目</h2><p>现在我们使用<code>lpthw.web</code>做一个非常简单的“Hello World”项目出来，首先你要创建一个项目目录：</p>
+<pre><code>$ cd projects
+$ mkdir gothonweb
+$ cd gothonweb
+$ mkdir bin gothonweb tests docs templates
+$ touch gothonweb/__init__.py
+$ touch tests/__init__.py
+</code></pre><p>你最终的目的是把《习题43》中的游戏做成一个web应用，所以你的项目名称叫做<code>gothonweb</code>，不过在此之前，你需要创建一个最基本的 <code>lpthw.web</code> 应用，将下面的代码放到 <code>bin/app.py</code> 中：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> web</span><br><span class="line"></span><br><span class="line">urls = (</span><br><span class="line">  <span class="string">'/'</span>, <span class="string">'index'</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">app = web.application(urls, globals())</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">index</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">GET</span><span class="params">(self)</span>:</span></span><br><span class="line">        greeting = <span class="string">"Hello World"</span></span><br><span class="line">        <span class="keyword">return</span> greeting</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure></p>
+<p>然后使用下面的方法来运行这个 web 程序：</p>
+<pre><code>$ python bin/app.py
+http://0.0.0.0:8080/
+</code></pre><p>如果你这样做：</p>
+<pre><code>$ cd bin/   # WRONG! WRONG! WRONG!
+$ python app.py  # WRONG! WRONG! WRONG!
+</code></pre><p>那么你就错了。在所有Python项目中，都不会用<code>cd</code>到下一级目录中去启动服务，你就在最顶层的目录启动服务，这样所有的系统可以访问所有的模块和文件。 去重读习题46并理解项目布局和如何使用它。</p>
+<p>最后，使用你的网页浏览器，打开 URL <code>http://localhost:8080/</code>，你应该看到两样东西，首先是浏览器里显示了 <code>Hello, world!</code>，然后是你的命令行终端显示了如下的输出：</p>
+<pre><code>$ python bin/app.py
+http://0.0.0.0:8080/
+127.0.0.1:59542 - - [13/Jun/2011 11:44:43] &quot;HTTP/1.1 GET /&quot; - 200 OK
+127.0.0.1:59542 - - [13/Jun/2011 11:44:43] &quot;HTTP/1.1 GET /favicon.ico&quot; - 404 Not Found
+</code></pre><p>这些是<code>lpthw.web</code> 打印出的 log 信息，从这些信息你可以看出服务器有在运行，而且能了解到程序在浏览器背后做了些什么事情。这些信息还有助于你发现程序的问题。例如在最后一行它告诉你浏览器试图获取<code>/favicon.ico</code>，但是这个文件并不存在，因此它返回的状态码是 <code>404 Not Found</code>。</p>
+<p>到这里，我还没有讲到任何 web 相关的工作原理，因为首先你需要完成准备工作，以便后面的学习能顺利进行，接下来的两节习题中会有详细的解释。我会要求你用各种方法把你的 lpthw.web 应用程序弄坏，然后再将其重新构建起来：这样做的目的是让你明白运行lpthw.web 程序需要准备好哪些东西.</p>
+<h2 id="发生了什么？"><a href="#发生了什么？" class="headerlink" title="发生了什么？"></a>发生了什么？</h2><p>在浏览器访问到你的网页应用程序时，发生了下面一些事情：</p>
+<blockquote>
+<ol>
+<li>浏览器通过网络连接到你自己的电脑，它的名字叫做<code>localhost</code>，这是一个标准称谓，表示的谁就是网络中你自己的这台计算机，不管它实际名字是什么，你都可以使用localhost 来访问。它使用到的网络端口是8080。</li>
+<li>连接成功以后，浏览器对<code>bin/app.py</code>这个应用程序发出了 HTTP 请求(request)，要求访问 URL <code>/</code>，这通常是一个网站的第一个 URL。</li>
+<li>在<code>bin/app.py</code> 里，我们有一个列表，里边包含了 URL 和类的匹配关系。我们这里只定义了一组匹配，那就是 <code>&#39;/&#39;, &#39;index&#39;</code> 的匹配。它的含义是：如果有人使用浏览器访问 / 这一级目录，<code>lpthw.web</code> 将找到并加载 <code>class index</code>，从而用它处理这个浏览器请求。</li>
+<li>现在 <code>lpthw.web</code> 找到了<code>class index</code>，然后针对这个类的一个实例调用了 <code>index.GET</code> 这个方法函数。该函数运行后返回了一个字符串，以供<code>lpthw.web</code> 将其传递给浏览器。</li>
+<li>最后<code>lpthw.web</code> 完成了对于浏览器请求的处理，将响应(response)回传给浏览器，于是你就看到了现在的页面。</li>
+</ol>
+</blockquote>
+<p>确定你真的弄懂了这些，你需要画一个流程图，来理清信息是如何从浏览器传递到<code>lpthw.web</code>，再到<code>index.GET</code>，再回到你的浏览器的。</p>
+<h2 id="修正错误"><a href="#修正错误" class="headerlink" title="修正错误"></a>修正错误</h2><p>第一步，把第 11 行的<code>greeting</code>变量赋值删掉，然后刷新浏览器。你应该会看到一个错误页面，你可以通过这一页丰富的错误信息看出你的程序崩溃的原因是什么。当然你已经知道出错的原因是<code>greeting</code>的赋值丢失了，不过 <code>lpthw.web</code>还是会给你一个挺好的错误页面，让你能找到出错的具体位置。试试在这个错误页面上做以下操作：</p>
+<blockquote>
+<ol>
+<li>检查每一段<code>Local vars</code>输出（用鼠标点击它们），追踪里边提到的变量名称，以及它们是在哪些代码文件中用到的。</li>
+<li>阅读<code>Request Information</code> 一节，看看里边哪些知识是你已经熟悉了的。Request 是浏览器发给你的 <code>gothonweb</code>应用程序的信息。这些知识对于日常网页浏览没有什么用处，但现在你要学会这些东西，以便写出 web 应用程序来。<br>3.试着把这个小程序的别的位置改错，探索一下会发生什么事情。<code>lpthw.web</code> 的会把一些错误信息和堆栈跟踪(stack trace)信息显示在命令行终端，所以别忘了检查命令行终端的信息输出。</li>
+</ol>
+</blockquote>
+<h2 id="创建基本的模板文件"><a href="#创建基本的模板文件" class="headerlink" title="创建基本的模板文件"></a>创建基本的模板文件</h2><p>你已经试过用各种方法把这个 lpthw.web 程序改错，不过你有没有注意到“Hello World”不是一个好 HTML 网页呢？这是一个 web 应用，所以需要一个合适的 HTML 响应页面才对。为了达到这个目的，下一步你要做的是将“Hello World”以较大的绿色字体显示出来。</p>
+<p>第一步是创建一个<code>templates/index.html</code>文件，内容如下：</p>
+<pre><code>$def with (greeting)
+
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Gothons Of Planet Percal #25&lt;/title&gt;
+    &lt;/head&gt;
+&lt;body&gt;
+
+$if greeting:
+    I just wanted to say &lt;em style=&quot;color: green; font-size: 2em;&quot;&gt;$greeting&lt;/em&gt;.
+$else:
+    &lt;em&gt;Hello&lt;/em&gt;, world!
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>如果你学过 HTML 的话，这些内容你看上去应该很熟悉。如果你没学过 HTML，那你应该去研究一下，试着用 HTML 写几个网页，从而知道它的工作原理。不过我们这里的 HTML 文件其实是一个“模板(template)”，如果你向模板提供一些参数，<code>lpthw.web</code> 就会在模板中找到对应的位置，将参数的内容填充到模板中。例如每一个出现 <code>$greeting</code>的位置，<code>$greeting</code>的内容都会被替换成对应这个变量名的参数。</p>
+<p>为了让你的<code>bin/app.py</code>处理模板，你需要写一写代码，告诉<code>lpthw.web</code> 到哪里去找到模板进行加载，以及如何渲染(render)这个模板，按下面的方式修改你的 app.py：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> web</span><br><span class="line"></span><br><span class="line">urls = (</span><br><span class="line">  <span class="string">'/'</span>, <span class="string">'Index'</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">app = web.application(urls, globals())</span><br><span class="line"></span><br><span class="line">render = web.template.render(<span class="string">'templates/'</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Index</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">GET</span><span class="params">(self)</span>:</span></span><br><span class="line">        greeting = <span class="string">"Hello World"</span></span><br><span class="line">        <span class="keyword">return</span> render.index(greeting = greeting)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure>
+<p>特别注意一下<code>render</code>这个新变量名，注意我修改了<code>index.GET</code> 的最后一行，让它返回了<code>render.index()</code>，并且将<code>greeting</code> 变量作为参数传递给了这个函数。</p>
+<p>改好上面的代码后，刷新一下浏览器中的网页，你应该会看到一条和之前不同的绿色信息输出。你还可以在浏览器中通过“查看源文件(View Source)”看到模板被渲染成了标准有效的 HTML 源代码。</p>
+<p>这么讲也许有些太快了，我来详细解释一下模板的工作原理吧：</p>
+<blockquote>
+<ol>
+<li>在<code>bin/app.py</code>里面你添加了一个叫做<code>render</code>的新变量，它本身是一个 <code>web.template.render</code>对象。</li>
+<li>你将<code>templates/</code> 作为参数传递给了这个对象，这样就让<code>render</code> 知道了从哪里去加载模板文件。</li>
+<li>在你后面的代码中，当浏览器一如既往地触发了<code>index.GET</code> 以后，它没有再返回简单的<code>greeting</code>字符串，取而代之的是你调用了 <code>render.index</code>，而且将问候语句作为一个变量传递给它。</li>
+<li>这个<code>render_template</code>函数可以说是一个“魔法函数”，它看到了你需要的是<code>index.html</code>，于是就跑到<code>templates/</code>目录下，找到名字为<code>index.html</code> 的文件，然后就把它渲染(render)一遍（叫“转换一遍”也可以）。</li>
+<li>在<code>templates/index.html</code>文件中，你可以看到初始定义一行中说这个模板需要使用一个叫<code>greeting</code>的参数，这和函数定义中的格式差不多。另外和 Python 语法一样，模板文件是缩进敏感的，所以要确认自己弄对了缩进。</li>
+<li>最后，你让<code>templates/index.html</code>去检查<code>greeting</code>这个变量，如果这个变量存在的话，就打印出变量的内容，如果不存在的话，就会打印出一个默认的问候信息。</li>
+</ol>
+</blockquote>
+<p>要深入理解这个过程，你可以修改 greeting 变量以及 HTML 模板的内容，看看会有什么效果。然后创建一个叫做<code>templates/foo.html</code>  的模板，并且使用一个新的<code>render.foo()</code>去渲染它。从这个过程你也可以看出， <code>render</code> 调用的函数名称只要跟 <code>templates/</code>下的 <code>.html</code> 文件名匹配到，这个 HTML 模板就可以被渲染到了。</p>
+<h2 id="附加题"><a href="#附加题" class="headerlink" title="附加题"></a>附加题</h2><blockquote>
+<ol>
+<li>阅读<code>http://webpy.org/</code> 里边的文档，它其实和<code>lpthw.web</code> 是同一个项目。</li>
+<li>实验一下你在上述网站看到的所有的东西，包括里边的代码示例。</li>
+<li>阅读以下 HTML5 和 CSS3 相关的东西，自己练习着写几个 <code>.html</code> 和 <code>.css 文件</code>。</li>
+<li>如果你有一个懂 Django 朋友可以帮你的话，你可以试着使用 Django 完成一下习题 50、51、52，看看结果会是什么样子的。</li>
+</ol>
+</blockquote>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="Q-我好想无法连接到http-localhost-8080"><a href="#Q-我好想无法连接到http-localhost-8080" class="headerlink" title="Q: 我好想无法连接到http://localhost:8080/"></a>Q: 我好想无法连接到<code>http://localhost:8080/</code></h3><blockquote>
+<p>那么试试访问<code>http://127.0.0.1:8080/</code></p>
+</blockquote>
+<h3 id="Q-lpthw-web-和-web-py有什么区别？"><a href="#Q-lpthw-web-和-web-py有什么区别？" class="headerlink" title="Q: lpthw.web 和 web.py有什么区别？"></a>Q: <code>lpthw.web</code> 和 <code>web.py</code>有什么区别？</h3><blockquote>
+<p>没有区别。我只是在特定版本“锁定”<code>web.py</code>，以使它对所有学生都是一样的，然后再命名为<code>lpthw.web</code>，上一个版本的<code>web.py</code>可能就不同于这一版本。</p>
+</blockquote>
+<h3 id="Q-我的代码找不到index-html-或者其他文件"><a href="#Q-我的代码找不到index-html-或者其他文件" class="headerlink" title="Q: 我的代码找不到index.html(或者其他文件)"></a>Q: 我的代码找不到<code>index.html</code>(或者其他文件)</h3><blockquote>
+<p>你可能是先执行了<code>cd bin/</code>，不要执行这一句，所有的命令都应该在<code>bin/</code>的上一级目录执行，所以如果你不能执行<code>python bin/app.py</code>,说明你在错误的目录上。</p>
+</blockquote>
+<h3 id="Q-当我们调用模板的时候，为什么要执行greeting-greeting赋值操作"><a href="#Q-当我们调用模板的时候，为什么要执行greeting-greeting赋值操作" class="headerlink" title="Q: 当我们调用模板的时候，为什么要执行greeting=greeting赋值操作"></a>Q: 当我们调用模板的时候，为什么要执行<code>greeting=greeting</code>赋值操作</h3><blockquote>
+<p>你并没有给<code>greeting</code>赋值，你只是给模板设定一个命名参数。这是声明的一种，但它只影响调用模板的功能。 </p>
+</blockquote>
+<h3 id="Q-我的电脑上不能使用8080端口"><a href="#Q-我的电脑上不能使用8080端口" class="headerlink" title="Q: 我的电脑上不能使用8080端口"></a>Q: 我的电脑上不能使用8080端口</h3><blockquote>
+<p>你可能有一个杀毒程序占用了这个端口，试试别的端口。</p>
+</blockquote>
+<h3 id="Q-安装lpthw-web-时，我遇到报错信息ImportError-quot-No-module-named-web-quot"><a href="#Q-安装lpthw-web-时，我遇到报错信息ImportError-quot-No-module-named-web-quot" class="headerlink" title="Q: 安装lpthw.web 时，我遇到报错信息ImportError &quot;No module named web&quot;"></a>Q: 安装<code>lpthw.web</code> 时，我遇到报错信息<code>ImportError &quot;No module named web&quot;</code></h3><blockquote>
+<p>你可能安装了多个版本的Python并且正在使用一个错误的版本，或者你是因为使用了一个旧版本的<code>pip</code>，导致安装没有成功，试着先卸载<code>lpthw.web</code>，在重装一次，如果还没有解决问题，再次确认下你是否使用了正确的Python版本。</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/12/03/learn-python-the-hard-way-exercise51/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          笨办法学Python--exercise51.从浏览器获取输入
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/12/02/learn-python-the-hard-way-exercise49/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">笨办法学Python--exercise49.写代码语句</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="learn-python-the-hard-way-exercise50" data-title="笨办法学Python--exercise50.你的第一个网站" data-url="http://coofee.me/2014/12/02/learn-python-the-hard-way-exercise50/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"flyouting"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 flyouting and shirley
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

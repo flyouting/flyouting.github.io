@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>笨办法学Python--附录A-练习1：安装 | flyouting and shirley</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本附录中，你需要完成3件事：
+
+
+用你的终端做一些事情 (command line, Terminal, PowerShell).
+了解你做过的事情.
+自己多练习.
+
+
+在第一个练习中，你将学会如何打开你的终端并使用其工作，这样你才能完成本附录后面部分的学习。
+做到这些让你的终端保持工作状态，这样你就可以快速访问它，并了解它的工作原理。
+Mac OSX在Mac OSX系统上，你应该
+
+
+按住 co">
+<meta property="og:type" content="article">
+<meta property="og:title" content="笨办法学Python--附录A-练习1：安装">
+<meta property="og:url" content="http://coofee.me/2014/12/06/learn-python-the-hard-way-appendix-a-ex1/index.html">
+<meta property="og:site_name" content="flyouting and shirley">
+<meta property="og:description" content="本附录中，你需要完成3件事：
+
+
+用你的终端做一些事情 (command line, Terminal, PowerShell).
+了解你做过的事情.
+自己多练习.
+
+
+在第一个练习中，你将学会如何打开你的终端并使用其工作，这样你才能完成本附录后面部分的学习。
+做到这些让你的终端保持工作状态，这样你就可以快速访问它，并了解它的工作原理。
+Mac OSX在Mac OSX系统上，你应该
+
+
+按住 co">
+<meta property="og:updated_time" content="2014-12-10T15:13:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="笨办法学Python--附录A-练习1：安装">
+<meta name="twitter:description" content="本附录中，你需要完成3件事：
+
+
+用你的终端做一些事情 (command line, Terminal, PowerShell).
+了解你做过的事情.
+自己多练习.
+
+
+在第一个练习中，你将学会如何打开你的终端并使用其工作，这样你才能完成本附录后面部分的学习。
+做到这些让你的终端保持工作状态，这样你就可以快速访问它，并了解它的工作原理。
+Mac OSX在Mac OSX系统上，你应该
+
+
+按住 co">
+  
+    <link rel="alternative" href="/atom.xml" title="flyouting and shirley" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">flyouting and shirley</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">记录一点一滴</p>
+		
+
+		<!--
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>Über</li>
+						
+					</ul>
+				</div>
+			</div>
+		-->
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">首页</a></li>
+				        
+							<li><a href="/archives">文章列表</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				<div class="switch-part switch-part2"><script>var n ='b-26003349-pe-f-801';var ch ='pc_6'; var w1 = 200;var h1 = 280;</script> <script src='http://static.luna.58.com/js/mad.js'></script></div>
+				
+				<!--
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/AndroidStudio/" style="font-size: 10px;">AndroidStudio</a> <a href="/tags/DB/" style="font-size: 12.5px;">DB</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/ImageSpan/" style="font-size: 10px;">ImageSpan</a> <a href="/tags/ORM/" style="font-size: 12.5px;">ORM</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/activeandroid/" style="font-size: 10px;">activeandroid</a> <a href="/tags/android/" style="font-size: 17.5px;">android</a> <a href="/tags/intent/" style="font-size: 10px;">intent</a> <a href="/tags/key/" style="font-size: 10px;">key</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/span/" style="font-size: 10px;">span</a> <a href="/tags/transitions/" style="font-size: 10px;">transitions</a> <a href="/tags/volley/" style="font-size: 15px;">volley</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/后台，多线程/" style="font-size: 10px;">后台，多线程</a> <a href="/tags/相机/" style="font-size: 15px;">相机</a> <a href="/tags/终端/" style="font-size: 10px;">终端</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+					</div>
+				</section>
+				-->
+				
+				<!--
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				-->
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">flyouting and shirley</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">flyouting and shirley</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">记录一点一滴</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">首页</a></li>
+		        
+					<li><a href="/archives">文章列表</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-learn-python-the-hard-way-appendix-a-ex1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/12/06/learn-python-the-hard-way-appendix-a-ex1/" class="article-date">
+  	<time datetime="2014-12-06T02:33:16.000Z" itemprop="datePublished">2014-12-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      笨办法学Python--附录A-练习1：安装
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Python/">Python</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本附录中，你需要完成3件事：</p>
+<blockquote>
+<ul>
+<li>用你的终端做一些事情 (command line, Terminal, PowerShell).</li>
+<li>了解你做过的事情.</li>
+<li>自己多练习.</li>
+</ul>
+</blockquote>
+<p>在第一个练习中，你将学会如何打开你的终端并使用其工作，这样你才能完成本附录后面部分的学习。</p>
+<h2 id="做到这些"><a href="#做到这些" class="headerlink" title="做到这些"></a>做到这些</h2><p>让你的终端保持工作状态，这样你就可以快速访问它，并了解它的工作原理。</p>
+<h3 id="Mac-OSX"><a href="#Mac-OSX" class="headerlink" title="Mac OSX"></a>Mac OSX</h3><p>在Mac OSX系统上，你应该</p>
+<blockquote>
+<ul>
+<li>按住 <code>command</code> 键，并敲空格键。</li>
+<li>屏幕顶部会弹出一个蓝色的“搜索框”。</li>
+<li>输入“terminal”。</li>
+<li>点击终端应用程序，这个程序的图标看起来有点像一个黑盒子。</li>
+<li>终端就打开了。</li>
+<li>现在你可以在你的dock中看到你终端的那个图表，选中它右键选择选项–&gt;保留，这样你的终端就会一直保留在dock中了。</li>
+</ul>
+</blockquote>
+<p>你现在已经打开了你的终端，并将它放在你dock中，这样你下次可以快速的打开它。</p>
+<h3 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h3><p>如果你用的是Linux系统的话，我假设你知道如何打开你的终端。通过菜单窗口管理器查找叫做shell或者terminal的应用。</p>
+<h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><p>在windows系统中，我们要使用PowerShell。人们常用一个名为<code>cmd.exe</code>的程序协同工作，但是它并不像PowerShell好用。如果你有Windows7或以上版本,这样做：</p>
+<blockquote>
+<ul>
+<li>单击开始菜单</li>
+<li>在“搜索程序和文件”中输入“ powershell”。</li>
+<li>敲回车</li>
+</ul>
+</blockquote>
+<p>如果你没有Windows 7，你应该考虑升级你的系统。如果你坚持不想升级，你可以尝试从微软的下载中心安装它。网上搜索一下，找到”powershell下载”。 安装适合你电脑的版本，虽然我没有Windows XP，但我仍希望PowerShell的体验是一样的。</p>
+<h2 id="你应该学到的"><a href="#你应该学到的" class="headerlink" title="你应该学到的"></a>你应该学到的</h2><p>你已经学会如何打开你的终端了，现在你可以继续学习本附录的其余部分了。</p>
+<blockquote>
+<p><strong>NOTE:</strong><br>如果你有一些熟悉Linux系统的朋友，当他告诉用一些其他的东西替代Bash的时候，忽略他的话。我正在教你使用bash。就是这样！即使他声称，ZSH能让你提升30个IQ值甚至更多，忽视他！你的目标是在当前级别获得足够的能力，所以你用什么shell没有什么关系。接下来的警告是远离IRC或其他有黑色出没定的地方。他们认为破坏你的电脑很有趣。 命令<code>rm -rf /</code> 是一个最经典的你永远也不能使用的命令。躲开他们。如果你需要帮助，确保你是从你信任的地方获得答案，而不是从互联网上随便哪个白痴哪里得到帮助。</p>
+</blockquote>
+<h2 id="更多练习"><a href="#更多练习" class="headerlink" title="更多练习"></a>更多练习</h2><p>这节练习有一个很大的“更多练习”部分。其他的练习是没有这么复杂的更多练习的， 但是，对于本附录的其余部分，我需要你用的大脑做一些记忆的事情。相信我：这会让以后的事情如丝般柔滑！</p>
+<h3 id="Linux-Mac-OSX"><a href="#Linux-Mac-OSX" class="headerlink" title="Linux/Mac OSX"></a>Linux/Mac OSX</h3><p>给下表中的命令创建索引卡片，把命令名称写在卡片的左侧，把命令的定义或功能写在右侧。当你继续本附录中的其他课程时，也要每天抽出时间练习它们。</p>
+<p>pwd<br>:   打印当前工作目录</p>
+<p>hostname<br>:   获取我的计算机的网络名称</p>
+<p>mkdir<br>:   创建目录</p>
+<p>cd<br>:   更改目录</p>
+<p>ls<br>:   列出目录下的文件</p>
+<p>rmdir<br>:   删除目录</p>
+<p>pushd<br>:   push directory</p>
+<p>popd<br>:   pop directory</p>
+<p>cp<br>:   复制文件或目录</p>
+<p>mv<br>:   移动/重命名文件或目录</p>
+<p>less<br>:   按页查看文件</p>
+<p>cat<br>:   输出整个文件</p>
+<p>xargs<br>:   执行参数</p>
+<p>find<br>:   查找文件</p>
+<p>grep<br>:   查找文件里面的东西</p>
+<p>man<br>:   阅读帮助手册</p>
+<p>apropos<br>:   find what man page is appropriate</p>
+<p>env<br>:   查看计算机环境</p>
+<p>echo<br>:   输出一些参数</p>
+<p>export<br>:   设置一个新的环境变量</p>
+<p>exit<br>:   退出终端</p>
+<p>sudo<br>:   危险! 拥有超级用户权限!</p>
+<h3 id="Windows-1"><a href="#Windows-1" class="headerlink" title="Windows"></a>Windows</h3><p>如果你用的是windows系统，你要熟记以下命令：</p>
+<p>pwd<br>:   打印当前工作目录</p>
+<p>hostname<br>:   获取我的计算机的网络名称</p>
+<p>mkdir<br>:   创建目录</p>
+<p>cd<br>:   更改目录</p>
+<p>ls<br>:   列出目录下的文件</p>
+<p>rmdir<br>:   删除目录</p>
+<p>pushd<br>:   push directory</p>
+<p>popd<br>:   pop directory</p>
+<p>cp<br>:   复制文件或目录</p>
+<p>robocopy<br>:   更强大的复制</p>
+<p>mv<br>:   移动/重命名文件或目录</p>
+<p>more<br>:   按页查看文件</p>
+<p>type<br>:   输出整个文件</p>
+<p>forfiles<br>:   对大量文件执行一个操作</p>
+<p>dir -r<br>:   查找文件</p>
+<p>select-string<br>:   查找文件里面的东西</p>
+<p>help<br>:   阅读帮助手册</p>
+<p>helpctr<br>:   find what man page is appropriate</p>
+<p>echo<br>:    输出一些参数</p>
+<p>set<br>:   设置一个新的环境变量</p>
+<p>exit<br>:   退出终端</p>
+<p>runas<br>:   危险! 拥有超级用户权限!</p>
+<p>练习、练习、练习! 练习到你看到一个词能马上说出它的功能。然后倒着练习，你看到一个功能，知道用什么命令实现它。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/12/06/learn-python-the-hard-way-appendix-a-ex2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          笨办法学Python--附录A-练习2：路径, 文件夹, 名录 (pwd)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/12/06/learn-python-the-hard-way-appendix-a-Introduction/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">笨办法学Python--附录A-简介</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="learn-python-the-hard-way-appendix-a-ex1" data-title="笨办法学Python--附录A-练习1：安装" data-url="http://coofee.me/2014/12/06/learn-python-the-hard-way-appendix-a-ex1/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"flyouting"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 flyouting and shirley
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

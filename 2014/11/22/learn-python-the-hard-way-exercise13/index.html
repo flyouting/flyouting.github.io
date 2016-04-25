@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>笨办法学Python--exercise13.参数, 解包, 变量 | flyouting and shirley</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在这节练习中，我们将学到另外一种将变量传递给脚本的方法(脚本就是你写的 .py 程序)。你已经知道，如果要运行 ex13.py，只要在命令行运行 python ex13.py 就可以了。这句命令中的 ex13.py 部分就是所谓的“参数(argument)”，我们现在要做的就是写一个可以接收参数的脚本。
+将下面的程序写下来，后面你会看到详细的解释：12345678from sys import a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="笨办法学Python--exercise13.参数, 解包, 变量">
+<meta property="og:url" content="http://coofee.me/2014/11/22/learn-python-the-hard-way-exercise13/index.html">
+<meta property="og:site_name" content="flyouting and shirley">
+<meta property="og:description" content="在这节练习中，我们将学到另外一种将变量传递给脚本的方法(脚本就是你写的 .py 程序)。你已经知道，如果要运行 ex13.py，只要在命令行运行 python ex13.py 就可以了。这句命令中的 ex13.py 部分就是所谓的“参数(argument)”，我们现在要做的就是写一个可以接收参数的脚本。
+将下面的程序写下来，后面你会看到详细的解释：12345678from sys import a">
+<meta property="og:updated_time" content="2014-11-27T13:41:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="笨办法学Python--exercise13.参数, 解包, 变量">
+<meta name="twitter:description" content="在这节练习中，我们将学到另外一种将变量传递给脚本的方法(脚本就是你写的 .py 程序)。你已经知道，如果要运行 ex13.py，只要在命令行运行 python ex13.py 就可以了。这句命令中的 ex13.py 部分就是所谓的“参数(argument)”，我们现在要做的就是写一个可以接收参数的脚本。
+将下面的程序写下来，后面你会看到详细的解释：12345678from sys import a">
+  
+    <link rel="alternative" href="/atom.xml" title="flyouting and shirley" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">flyouting and shirley</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">记录一点一滴</p>
+		
+
+		<!--
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>Über</li>
+						
+					</ul>
+				</div>
+			</div>
+		-->
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">首页</a></li>
+				        
+							<li><a href="/archives">文章列表</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				<div class="switch-part switch-part2"><script>var n ='b-26003349-pe-f-801';var ch ='pc_6'; var w1 = 200;var h1 = 280;</script> <script src='http://static.luna.58.com/js/mad.js'></script></div>
+				
+				<!--
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/AndroidStudio/" style="font-size: 10px;">AndroidStudio</a> <a href="/tags/DB/" style="font-size: 12.5px;">DB</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/ImageSpan/" style="font-size: 10px;">ImageSpan</a> <a href="/tags/ORM/" style="font-size: 12.5px;">ORM</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/activeandroid/" style="font-size: 10px;">activeandroid</a> <a href="/tags/android/" style="font-size: 17.5px;">android</a> <a href="/tags/intent/" style="font-size: 10px;">intent</a> <a href="/tags/key/" style="font-size: 10px;">key</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/span/" style="font-size: 10px;">span</a> <a href="/tags/transitions/" style="font-size: 10px;">transitions</a> <a href="/tags/volley/" style="font-size: 15px;">volley</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/后台，多线程/" style="font-size: 10px;">后台，多线程</a> <a href="/tags/相机/" style="font-size: 15px;">相机</a> <a href="/tags/终端/" style="font-size: 10px;">终端</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+					</div>
+				</section>
+				-->
+				
+				<!--
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				-->
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">flyouting and shirley</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">flyouting and shirley</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">记录一点一滴</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">首页</a></li>
+		        
+					<li><a href="/archives">文章列表</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-learn-python-the-hard-way-exercise13" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/22/learn-python-the-hard-way-exercise13/" class="article-date">
+  	<time datetime="2014-11-22T05:14:27.000Z" itemprop="datePublished">2014-11-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      笨办法学Python--exercise13.参数, 解包, 变量
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Python/">Python</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在这节练习中，我们将学到另外一种将变量传递给脚本的方法(脚本就是你写的 <code>.py</code> 程序)。你已经知道，如果要运行 <code>ex13.py</code>，只要在命令行运行 <code>python ex13.py</code> 就可以了。这句命令中的 <code>ex13.py</code> 部分就是所谓的“参数(argument)”，我们现在要做的就是写一个可以接收参数的脚本。</p>
+<p>将下面的程序写下来，后面你会看到详细的解释：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sys <span class="keyword">import</span> argv</span><br><span class="line"></span><br><span class="line">script, first, second, third = argv</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">"The script is called:"</span>, script</span><br><span class="line"><span class="keyword">print</span> <span class="string">"Your first variable is:"</span>, first</span><br><span class="line"><span class="keyword">print</span> <span class="string">"Your second variable is:"</span>, second</span><br><span class="line"><span class="keyword">print</span> <span class="string">"Your third variable is:"</span>, third</span><br></pre></td></tr></table></figure></p>
+<p>第一行代码中，我们用到一个<code>import</code>语句，这是将Python的功能模块加入你自己脚本的方法。Python 不会一下子将它所有的功能提供给你，而是让你需要什么就调用什么。这样可以让你的程序更加精简，而后面的程序员看到你的代码的时候，这些“import”语句可以作为提示，让他们明白你的代码用到了哪些功能。</p>
+<p><code>argv</code>就是所谓的“参数变量(argument variable)”，它是一个非常标准的编程术语。在其他的编程语言里你也可以看到它。这个变量包含了你传递给 Python 的参数。通过后面的练习你将对它有更多的了解。</p>
+<p>代码的第3行将 <code>argv</code>进行“解包(unpack)”，与其将所有参数放到同一个变量下面，我们将每个参数赋予一个变量名： script, first, second, 以及 third。这也许看上去有些奇怪,不过”解包”可能是最好的描述方式了。它的含义很简单：“把 argv 中的东西解包，将所有的参数依次赋予左边的变量名”。</p>
+<p>接下来，就是正常的打印输出了。</p>
+<h2 id="等一下-功能还有另外一个名字"><a href="#等一下-功能还有另外一个名字" class="headerlink" title="等一下! 功能还有另外一个名字"></a>等一下! 功能还有另外一个名字</h2><p>前面我们使用<code>import</code>让你的程序实现更多的功能，把<code>import</code>称为“功能”。我希望你可以在没接触到正式术语的时候就弄懂它的功能。在继续下去之前, 你需要知道它们的真正名称：模块(modules)。</p>
+<p>从现在开始我们将把这些我们导入(import)进来的功能称作模块。你将看到类似这样的说法：“你需要把sys模块import进来。”也有人将它们称作“库(libraries)”，不过我们还是叫它们模块吧。</p>
+<h2 id="你看到的结果"><a href="#你看到的结果" class="headerlink" title="你看到的结果"></a>你看到的结果</h2><p>像下面的示例一样将你的脚本运行起来（你必须在命令行里传递3个参数）：</p>
+<pre><code>$ python ex13.py first 2nd 3rd
+The script is called: ex13.py
+Your first variable is: first
+Your second variable is: 2nd
+Your third variable is: 3rd
+</code></pre><p>如果你每次输入的参数不一样，那你看到的输出结果也会略有不同：</p>
+<pre><code>$ python ex13.py stuff things that
+The script is called: ex13.py
+Your first variable is: stuff
+Your second variable is: things
+Your third variable is: that
+$
+$ python ex13.py apple orange grapefruit
+The script is called: ex13.py
+Your first variable is: apple
+Your second variable is: orange
+Your third variable is: grapefruit
+</code></pre><p>你可以将<code>first</code>, <code>2nd</code>, 和 <code>3rd</code> 替换成任意你喜欢的3个参数</p>
+<p>如果你没有运行对，你可能会看到的错误信息：</p>
+<pre><code>$ python ex13.py first 2nd
+Traceback (most recent call last):
+  File &quot;ex13.py&quot;, line 3, in &lt;module&gt;
+    script, first, second, third = argv
+ValueError: need more than 3 values to unpack
+</code></pre><h2 id="附加题"><a href="#附加题" class="headerlink" title="附加题"></a>附加题</h2><blockquote>
+<ol>
+<li>给你的脚本三个以下的参数。看看会得到什么错误信息。试着解释一下。</li>
+<li>再写两个脚本，其中一个接受更少的参数，另一个接受更多的参数，在参数解包时给它们取一些有意义的变量名。</li>
+<li>将 <code>raw_input</code> 和 <code>argv</code> 一起使用，让你的脚本从用户手上得到更多的输入。</li>
+<li>记住“模块(modules)”为你提供额外功能。多读几遍把这个词记住，因为我们后面还会用到它。</li>
+</ol>
+</blockquote>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="Q-当我运行脚本的时候，有个报错-need-more-than-1-value-to-unpack"><a href="#Q-当我运行脚本的时候，有个报错-need-more-than-1-value-to-unpack" class="headerlink" title="Q:当我运行脚本的时候，有个报错: need more than 1 value to unpack."></a>Q:当我运行脚本的时候，有个报错: <code>need more than 1 value to unpack</code>.</h3><blockquote>
+<p>一定记住，关注细节是学习编程的三要素之一。如果你仔细看了我是如何在命令行运行脚本的，你也能把你的脚本正确的运行起来。</p>
+</blockquote>
+<h3 id="Q-argv-和-raw-input-有什么区别"><a href="#Q-argv-和-raw-input-有什么区别" class="headerlink" title="Q:argv 和 raw_input()有什么区别?"></a>Q:<code>argv</code> 和 <code>raw_input()</code>有什么区别?</h3><blockquote>
+<p>它们的不同之处在于要求用户输入的位置不同。如果你想让用户在命令行输入你的参数，你应该使用<code>argv</code>.，如果你希望用户在脚本执行的过程中输入参数，那就就要用到<code>raw_input()</code>。</p>
+</blockquote>
+<h3 id="Q-命令行输入的参数是字符串吗"><a href="#Q-命令行输入的参数是字符串吗" class="headerlink" title="Q:命令行输入的参数是字符串吗?"></a>Q:命令行输入的参数是字符串吗?</h3><blockquote>
+<p>是的，如果你需要输入数字，可以使用<code>int()</code>把他们转化成整数，可以参考 <code>int(raw_input())</code>.</p>
+</blockquote>
+<h3 id="Q-如何使用命令行"><a href="#Q-如何使用命令行" class="headerlink" title="Q:如何使用命令行?"></a>Q:如何使用命令行?</h3><blockquote>
+<p>通过这节练习，你其实已经快速的学会如何使用命令行了，如果在此阶段你想深入学习的话，你可以阅读这本书的附录A–命令行速成教程。</p>
+</blockquote>
+<h3 id="Q-我不知道怎样把argv-和-raw-input-结合起来使用"><a href="#Q-我不知道怎样把argv-和-raw-input-结合起来使用" class="headerlink" title="Q: 我不知道怎样把argv 和 raw_input()结合起来使用."></a>Q: 我不知道怎样把<code>argv</code> 和 <code>raw_input()</code>结合起来使用.</h3><blockquote>
+<p>不要想太多. 用<code>raw_input()</code>修改脚本后面的两行代码，然后打印输出就行。然后试试用更多的方式来同时使用这两种方法修改脚本。</p>
+</blockquote>
+<h3 id="Q-为什么我不能这么写raw-input-39-39-x"><a href="#Q-为什么我不能这么写raw-input-39-39-x" class="headerlink" title="Q:为什么我不能这么写raw_input(&#39;? &#39;) = x?"></a>Q:为什么我不能这么写<code>raw_input(&#39;? &#39;) = x</code>?</h3><blockquote>
+<p>因为这种写法正好是将它正常运行方法的逆序，按照我的写法修改，就能正常运行了。</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/11/22/learn-python-the-hard-way-exercise14/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          笨办法学Python--exercise14.提示和传递
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/11/22/learn-python-the-hard-way-exercise12/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">笨办法学Python--exercise12.提示别人</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="learn-python-the-hard-way-exercise13" data-title="笨办法学Python--exercise13.参数, 解包, 变量" data-url="http://coofee.me/2014/11/22/learn-python-the-hard-way-exercise13/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"flyouting"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 flyouting and shirley
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

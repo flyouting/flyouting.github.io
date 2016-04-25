@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>笨办法学Python--exercise10.那是什么? | flyouting and shirley</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在习题 9 中我们接触了一些新东西。我让你看到两种让字符串扩展到多行的方法。第一种方法是在月份之间用 \n (back-slash n )隔开。 这两个字符的作用是在该位置上放入一个“新行(new line)”字符。
+使用反斜杠 \(back-slash) 可以将难打印出来的字符放到字符串。针对不同的符号有很多这样的所谓“转义序列(escape sequences)”，但有一个特殊的转义序列，就是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="笨办法学Python--exercise10.那是什么?">
+<meta property="og:url" content="http://coofee.me/2014/11/21/learn-python-the-hard-way-exercise10/index.html">
+<meta property="og:site_name" content="flyouting and shirley">
+<meta property="og:description" content="在习题 9 中我们接触了一些新东西。我让你看到两种让字符串扩展到多行的方法。第一种方法是在月份之间用 \n (back-slash n )隔开。 这两个字符的作用是在该位置上放入一个“新行(new line)”字符。
+使用反斜杠 \(back-slash) 可以将难打印出来的字符放到字符串。针对不同的符号有很多这样的所谓“转义序列(escape sequences)”，但有一个特殊的转义序列，就是">
+<meta property="og:updated_time" content="2014-11-27T13:28:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="笨办法学Python--exercise10.那是什么?">
+<meta name="twitter:description" content="在习题 9 中我们接触了一些新东西。我让你看到两种让字符串扩展到多行的方法。第一种方法是在月份之间用 \n (back-slash n )隔开。 这两个字符的作用是在该位置上放入一个“新行(new line)”字符。
+使用反斜杠 \(back-slash) 可以将难打印出来的字符放到字符串。针对不同的符号有很多这样的所谓“转义序列(escape sequences)”，但有一个特殊的转义序列，就是">
+  
+    <link rel="alternative" href="/atom.xml" title="flyouting and shirley" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">flyouting and shirley</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">记录一点一滴</p>
+		
+
+		<!--
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>Über</li>
+						
+					</ul>
+				</div>
+			</div>
+		-->
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">首页</a></li>
+				        
+							<li><a href="/archives">文章列表</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				<div class="switch-part switch-part2"><script>var n ='b-26003349-pe-f-801';var ch ='pc_6'; var w1 = 200;var h1 = 280;</script> <script src='http://static.luna.58.com/js/mad.js'></script></div>
+				
+				<!--
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/AndroidStudio/" style="font-size: 10px;">AndroidStudio</a> <a href="/tags/DB/" style="font-size: 12.5px;">DB</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/ImageSpan/" style="font-size: 10px;">ImageSpan</a> <a href="/tags/ORM/" style="font-size: 12.5px;">ORM</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/activeandroid/" style="font-size: 10px;">activeandroid</a> <a href="/tags/android/" style="font-size: 17.5px;">android</a> <a href="/tags/intent/" style="font-size: 10px;">intent</a> <a href="/tags/key/" style="font-size: 10px;">key</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/span/" style="font-size: 10px;">span</a> <a href="/tags/transitions/" style="font-size: 10px;">transitions</a> <a href="/tags/volley/" style="font-size: 15px;">volley</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/后台，多线程/" style="font-size: 10px;">后台，多线程</a> <a href="/tags/相机/" style="font-size: 15px;">相机</a> <a href="/tags/终端/" style="font-size: 10px;">终端</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+					</div>
+				</section>
+				-->
+				
+				<!--
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				-->
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">flyouting and shirley</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">flyouting and shirley</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">记录一点一滴</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">首页</a></li>
+		        
+					<li><a href="/archives">文章列表</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-learn-python-the-hard-way-exercise10" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/21/learn-python-the-hard-way-exercise10/" class="article-date">
+  	<time datetime="2014-11-21T15:43:59.000Z" itemprop="datePublished">2014-11-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      笨办法学Python--exercise10.那是什么?
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Python/">Python</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在习题 9 中我们接触了一些新东西。我让你看到两种让字符串扩展到多行的方法。第一种方法是在月份之间用 <code>\n</code> (back-slash n )隔开。 这两个字符的作用是在该位置上放入一个“新行(new line)”字符。</p>
+<p>使用反斜杠 <code>\</code>(back-slash) 可以将难打印出来的字符放到字符串。针对不同的符号有很多这样的所谓“转义序列(escape sequences)”，但有一个特殊的转义序列，就是 双反斜杠(double back-slash) <code>\\</code> 。这两个字符组合会打印出一个反斜杠来。接下来我们做几个练习，然后你就知道这些转义序列的意义了。</p>
+<p>另外一种重要的转义序列是用来将单引号 ‘ 和双引号 “ 转义。想象你有一个用双引号引用起来的字符串，你想要在字符串的内容里再添加一组双引号进去，比如你想说 <code>&quot;I &quot;understand&quot; joe.&quot;</code>，Python 就会认为 “understand” 前后的两个引号是字符串的边界，从而把字符串弄错。你需要一种方法告诉 python 字符串里边的双引号是字符串而不是真正的双引号。</p>
+<p>要解决这个问题，你需要将双引号和单引号转义，让 Python 将引号也包含到字符串里边去。这里有一个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;I am 6&apos;2\&quot; tall.&quot;  # 将字符串中的双引号转义</span><br><span class="line">&apos;I am 6\&apos;2&quot; tall.&apos;  # 将字符串中的单引号转义</span><br></pre></td></tr></table></figure></p>
+<p>第二种方法是使用“三引号(triple-quotes)”，也就是 <code>&quot;&quot;&quot;</code>，你可以在一组三引号之间放入任意多行的文字。接下来你将看到用法。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">tabby_cat = <span class="string">"\tI'm tabbed in."</span></span><br><span class="line">persian_cat = <span class="string">"I'm split\non a line."</span></span><br><span class="line">backslash_cat = <span class="string">"I'm \\ a \\ cat."</span></span><br><span class="line"></span><br><span class="line">fat_cat = <span class="string">"""</span><br><span class="line">I'll do a list:</span><br><span class="line">\t* Cat food</span><br><span class="line">\t* Fishies</span><br><span class="line">\t* Catnip\n\t* Grass</span><br><span class="line">"""</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> tabby_cat</span><br><span class="line"><span class="keyword">print</span> persian_cat</span><br><span class="line"><span class="keyword">print</span> backslash_cat</span><br><span class="line"><span class="keyword">print</span> fat_cat</span><br></pre></td></tr></table></figure></p>
+<h2 id="你看到的结果"><a href="#你看到的结果" class="headerlink" title="你看到的结果"></a>你看到的结果</h2><p>注意你打印出来的制表符，这节练习中的文字间隔对于答案的正确性是很重要的。</p>
+<pre><code>$ python ex10.py
+        I&apos;m tabbed in.
+I&apos;m split
+on a line.
+I&apos;m \ a \ cat.
+
+I&apos;ll do a list:
+        * Cat food
+        * Fishies
+        * Catnip
+        * Grass
+</code></pre><h2 id="转义序列"><a href="#转义序列" class="headerlink" title="转义序列"></a>转义序列</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">转义字符</th>
+<th style="text-align:center">实现功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\</td>
+<td style="text-align:center">Backslash ()</td>
+</tr>
+<tr>
+<td style="text-align:center">\’</td>
+<td style="text-align:center">Single-quote (‘)</td>
+</tr>
+<tr>
+<td style="text-align:center">\”</td>
+<td style="text-align:center">Double-quote (“)</td>
+</tr>
+<tr>
+<td style="text-align:center">\a</td>
+<td style="text-align:center">ASCII bell (BEL)</td>
+</tr>
+<tr>
+<td style="text-align:center">\b</td>
+<td style="text-align:center">ASCII backspace (BS)</td>
+</tr>
+<tr>
+<td style="text-align:center">\f</td>
+<td style="text-align:center">ASCII formfeed (FF)</td>
+</tr>
+<tr>
+<td style="text-align:center">\n</td>
+<td style="text-align:center">ASCII linefeed (LF)</td>
+</tr>
+<tr>
+<td style="text-align:center">\N{name}</td>
+<td style="text-align:center">Character named name in the Unicode database (Unicode only)</td>
+</tr>
+<tr>
+<td style="text-align:center">\r ASCII</td>
+<td style="text-align:center">Carriage Return (CR)</td>
+</tr>
+<tr>
+<td style="text-align:center">\t ASCII</td>
+<td style="text-align:center">Horizontal Tab (TAB)</td>
+</tr>
+<tr>
+<td style="text-align:center">\uxxxx</td>
+<td style="text-align:center">Character with 16-bit hex value xxxx (Unicode only)</td>
+</tr>
+<tr>
+<td style="text-align:center">\Uxxxxxxxx</td>
+<td style="text-align:center">Character with 32-bit hex value xxxxxxxx (Unicode only)</td>
+</tr>
+<tr>
+<td style="text-align:center">\v</td>
+<td style="text-align:center">ASCII vertical tab (VT)</td>
+</tr>
+<tr>
+<td style="text-align:center">\ooo</td>
+<td style="text-align:center">Character with octal value ooo</td>
+</tr>
+<tr>
+<td style="text-align:center">\xhh</td>
+<td style="text-align:center">Character with hex value hh</td>
+</tr>
+</tbody>
+</table>
+<p>这里有一小段有意思的代码，尝试说明它们实现了什么功能：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">while True:</span><br><span class="line">    for i in [&quot;/&quot;,&quot;-&quot;,&quot;|&quot;,&quot;\\&quot;,&quot;|&quot;]:</span><br><span class="line">        print &quot;%s\r&quot; % i,</span><br></pre></td></tr></table></figure>
+<h2 id="附加题"><a href="#附加题" class="headerlink" title="附加题"></a>附加题</h2><blockquote>
+<ol>
+<li>通过把它们写在卡片上记住所有的转义序列。</li>
+<li>使用<code>&#39;&#39;&#39;</code>(三个单引号)取代三个双引号，看看效果是不是一样的？</li>
+<li>结合转义序列和格式字符串创建一个更复杂的格式。</li>
+<li>记得 %r 格式化字符串吗？使用 %r 搭配单引号和双引号转义字符打印一些字符串出来。 将 %r 和 %s 比较一下。 注意到了吗？%r 打印出来的是你写在脚本里的内容，而 %s 打印的是你应该看到的内容。</li>
+</ol>
+</blockquote>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="Q-如果我想把所有的月份写在新的一行上，应该怎么做"><a href="#Q-如果我想把所有的月份写在新的一行上，应该怎么做" class="headerlink" title="Q:如果我想把所有的月份写在新的一行上，应该怎么做?"></a>Q:如果我想把所有的月份写在新的一行上，应该怎么做?</h3><blockquote>
+<p>像这样写就可以: <code>&quot;\nJan\nFeb\nMar\nApr\nMay\nJun\nJul\nAug&quot;</code></p>
+</blockquote>
+<h3 id="Q-我还没有完全弄明白最后一句代码，我应该继续研究吗？"><a href="#Q-我还没有完全弄明白最后一句代码，我应该继续研究吗？" class="headerlink" title="Q: 我还没有完全弄明白最后一句代码，我应该继续研究吗？"></a>Q: 我还没有完全弄明白最后一句代码，我应该继续研究吗？</h3><blockquote>
+<p>当然要继续。把每次练习题中你不明白的地方记下来。当你完成更多的练习的时候，定期检查你的笔记，看看你是否可以明白笔记中的内容。有时候你可能需要回去看看之前做过的练习，并且重复的完成它们。</p>
+</blockquote>
+<h3 id="Q-是什么让-不同于其他的转义字符"><a href="#Q-是什么让-不同于其他的转义字符" class="headerlink" title="Q: 是什么让\\不同于其他的转义字符?"></a>Q: 是什么让<code>\\</code>不同于其他的转义字符?</h3><blockquote>
+<p>这是一种简单的写出 (<code>\</code>)字符的方法. 自己想想为什么我们需要<code>\\</code></p>
+</blockquote>
+<h3 id="Q-为什么我写-或者-n的时候，代码没有生效。"><a href="#Q-为什么我写-或者-n的时候，代码没有生效。" class="headerlink" title="Q:为什么我写//或者/n的时候，代码没有生效。"></a>Q:为什么我写<code>//</code>或者<code>/n</code>的时候，代码没有生效。</h3><blockquote>
+<p>因为你用的是<code>/</code> 而不是<code>\</code>.这两个是不同的字符串，他们的作用也是不一样的。</p>
+</blockquote>
+<h3 id="Q-当我使用-r-格式的时候，转义字符都没有生效。"><a href="#Q-当我使用-r-格式的时候，转义字符都没有生效。" class="headerlink" title="Q:当我使用%r 格式的时候，转义字符都没有生效。"></a>Q:当我使用<code>%r</code> 格式的时候，转义字符都没有生效。</h3><blockquote>
+<p>因为<code>%r</code> 打印出来的是你写在脚本里的内容, 这当然也会包含原始的转移序列的字符。可以使用<code>%s</code>。一定要记住：<code>%r</code>是调试用的，而<code>%s</code> 才是显示输出用的。</p>
+</blockquote>
+<p>###Q:我没有明白附加题3.你所说的“结合”转义序列和格式是什么意思？</p>
+<blockquote>
+<p>你需要明白一点，所有的这些练习题，都可以结合起来解决一些难题。这节练习带你了解了格式化字符串，你可以结合使用格式化字符串和转义字符写一些新的代码。</p>
+</blockquote>
+<p>###Q: <code>&#39;&#39;&#39;</code> 和<code>&quot;&quot;&quot;</code>哪个更好?</p>
+<blockquote>
+<p>这个只依赖于你的代码风格。 现在可以使用<code>&#39;&#39;&#39;</code> (三个单引号)，但是也要做好准备别人都在用的，感觉更好的方式。</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/11/22/learn-python-the-hard-way-exercise11/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          笨办法学Python--exercise11.提问
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/11/21/learn-python-the-hard-way-exercise9/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">笨办法学Python--exercise9.打印, 打印, 打印</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="learn-python-the-hard-way-exercise10" data-title="笨办法学Python--exercise10.那是什么?" data-url="http://coofee.me/2014/11/21/learn-python-the-hard-way-exercise10/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"flyouting"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 flyouting and shirley
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

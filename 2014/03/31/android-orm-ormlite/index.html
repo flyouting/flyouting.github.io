@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Android ORM框架之 ORMLite | flyouting and shirley</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="ORMLite这个框架恐怕是在ORM中被采用的比较多的一个。文档，实例，源码都比较多，维护也不错。
+##下载ORMLite Jar包可以通过官方发布页面下载jar包，ORMLite release page，目前最新的是4.48。在android应用中使用，我们需要下载ormlite-android-4.48.jar和ormlite-core-4.48.jar两个文件
+##工程使用
+###配置mo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android ORM框架之 ORMLite">
+<meta property="og:url" content="http://coofee.me/2014/03/31/android-orm-ormlite/index.html">
+<meta property="og:site_name" content="flyouting and shirley">
+<meta property="og:description" content="ORMLite这个框架恐怕是在ORM中被采用的比较多的一个。文档，实例，源码都比较多，维护也不错。
+##下载ORMLite Jar包可以通过官方发布页面下载jar包，ORMLite release page，目前最新的是4.48。在android应用中使用，我们需要下载ormlite-android-4.48.jar和ormlite-core-4.48.jar两个文件
+##工程使用
+###配置mo">
+<meta property="og:updated_time" content="2014-11-04T17:02:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android ORM框架之 ORMLite">
+<meta name="twitter:description" content="ORMLite这个框架恐怕是在ORM中被采用的比较多的一个。文档，实例，源码都比较多，维护也不错。
+##下载ORMLite Jar包可以通过官方发布页面下载jar包，ORMLite release page，目前最新的是4.48。在android应用中使用，我们需要下载ormlite-android-4.48.jar和ormlite-core-4.48.jar两个文件
+##工程使用
+###配置mo">
+  
+    <link rel="alternative" href="/atom.xml" title="flyouting and shirley" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">flyouting and shirley</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">记录一点一滴</p>
+		
+
+		<!--
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>Über</li>
+						
+					</ul>
+				</div>
+			</div>
+		-->
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">首页</a></li>
+				        
+							<li><a href="/archives">文章列表</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				<div class="switch-part switch-part2"><script>var n ='b-26003349-pe-f-801';var ch ='pc_6'; var w1 = 200;var h1 = 280;</script> <script src='http://static.luna.58.com/js/mad.js'></script></div>
+				
+				<!--
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/AndroidStudio/" style="font-size: 10px;">AndroidStudio</a> <a href="/tags/DB/" style="font-size: 12.5px;">DB</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/ImageSpan/" style="font-size: 10px;">ImageSpan</a> <a href="/tags/ORM/" style="font-size: 12.5px;">ORM</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/activeandroid/" style="font-size: 10px;">activeandroid</a> <a href="/tags/android/" style="font-size: 17.5px;">android</a> <a href="/tags/intent/" style="font-size: 10px;">intent</a> <a href="/tags/key/" style="font-size: 10px;">key</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/span/" style="font-size: 10px;">span</a> <a href="/tags/transitions/" style="font-size: 10px;">transitions</a> <a href="/tags/volley/" style="font-size: 15px;">volley</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/后台，多线程/" style="font-size: 10px;">后台，多线程</a> <a href="/tags/相机/" style="font-size: 15px;">相机</a> <a href="/tags/终端/" style="font-size: 10px;">终端</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+					</div>
+				</section>
+				-->
+				
+				<!--
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				-->
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">flyouting and shirley</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">flyouting and shirley</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">记录一点一滴</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">首页</a></li>
+		        
+					<li><a href="/archives">文章列表</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-android-orm-ormlite" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/03/31/android-orm-ormlite/" class="article-date">
+  	<time datetime="2014-03-31T13:17:59.000Z" itemprop="datePublished">2014-03-31</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android ORM框架之 ORMLite
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DB/">DB</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ORM/">ORM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/笔记/">笔记</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>ORMLite这个框架恐怕是在ORM中被采用的比较多的一个。文档，实例，源码都比较多，维护也不错。</p>
+<p>##下载ORMLite Jar包<br>可以通过官方发布页面下载jar包，<a href="http://ormlite.com/releases/" target="_blank" rel="external">ORMLite release page</a>，目前最新的是4.48。在android应用中使用，我们需要下载ormlite-android-4.48.jar和ormlite-core-4.48.jar两个文件</p>
+<p>##工程使用</p>
+<p>###配置model类<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DatabaseTable</span>(tableName = <span class="string">"Category"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Category</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@DatabaseField</span>(generatedId = <span class="keyword">true</span>)</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> id;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@DatabaseField</span></span><br><span class="line">    <span class="keyword">public</span> String cateName;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ForeignCollectionField</span>(eager = <span class="keyword">false</span>)</span><br><span class="line">    <span class="keyword">public</span> ForeignCollection&lt;Item&gt; items;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>@DatabaseTable</code> 注解中，<code>tableName</code> 参数是可选的，也就是这个类对应的表名。如果没有特别指出，那么这个类名将默认作为表名。对于类中的每个需要存储的成员变量，都需要添加<code>@DatabaseField</code>注解。</p>
+<p><code>@ForeignCollectionField</code> 表示这个表中的数据在其他表中是外键，这里标记了<code>items</code>成员变量是一个匹配<code>Category</code> 的<code>items</code>集合。成员变量<code>items</code>的类型必须要么是<code>ForeignCollection&lt;T&gt;</code>要么是<code>Collection&lt;T&gt;</code>，没有其他的集合被支持。当然，这里的Item类必须有一个Category类型的外部变量。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DatabaseTable</span>(tableName = <span class="string">"item"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Item</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@DatabaseField</span>(generatedId = <span class="keyword">true</span>)</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="meta">@DatabaseField</span></span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">    <span class="meta">@DatabaseField</span>(foreign = <span class="keyword">true</span>, foreignAutoRefresh = <span class="keyword">true</span>)</span><br><span class="line">    <span class="keyword">public</span> Category category;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>@DatabaseField</code> 常用注解：</p>
+<ul>
+<li><code>columnName</code>  指定字段名,不指定则变量名作为字段名</li>
+<li><code>canBeNull</code>      字段是否能被分配null值。默认是true。如果你设置成false，那么你每次在数据库中插入数据是都必须为这个字段提供值。</li>
+<li><code>dataType</code> 指定字段的类型</li>
+<li><code>defaultValue</code> 当我们在表中创建新的记录时的一个字段的默认值。默认情况下是没有这个值的</li>
+<li><code>width</code> 字段的宽度，主要用于字符串字段。默认是0</li>
+<li><code>id</code> 这个字段是否是id，默认是false。在一个class中只有一个成变量可以有这个值。id字段是一条记录的唯一标识而且是必需的，只能在generatedId和 generatedIdSequence其中选一个。</li>
+<li><code>generatedId</code> 字段是否自动增加。默认为false。类中的一个成员变量设置了这个值，它告诉数据库每添加一条新记录都自动增加id。当一个有generatedid的对象被创建时使用Dao.create()方法，数据库将为记录生成一个id，它会被返回并且被create方法设置进对象。</li>
+<li><code>generatedIdSequence</code> 序列编号的名字，这个值在生成的时候会被使用。和generatedId相似，但是你能够指定使用的序列名称。默认是没有的。</li>
+<li><code>foreign</code> 指定这个字段的对象是一个外键,外键值是这个对象的id</li>
+<li><code>persisted</code> 指定是否持久化此变量,默认true</li>
+<li><code>foreignAutoCreate</code> 外键不存在时是否自动添加到外间表中</li>
+<li><code>foreignColumnName</code> 外键字段指定的外键表中的哪个字段</li>
+</ul>
+<p><code>@ForeignCollectionField</code>常用注解</p>
+<ul>
+<li><code>eager</code> 表示该集合是在初始化这个对象的时候,是否讲对象取出还是在遍历的时候才取出,默认false遍历的时候才取出,size()方法也会引起遍历</li>
+<li>columnName</li>
+<li>orderColumnName</li>
+<li>foreignFieldName</li>
+</ul>
+<p>###添加无参构造方法<br>给class添加了注解字段后，你也需要添加一个无参的包内可见的构造器。当一个对象在查询中被返回时，ORMLite使用java反射机制构造一个对象并且构造器需要被调用。</p>
+<p>###创建DB Helper<br>创建一个自己的<code>DBHelper</code>类，继承自<code>OrmLiteSqliteOpenHelper</code>，这个类可以在程序被安装时创建或者升级数据库，同时也可以提供一个DAO给其他的类使用。这个helper类需要实现<code>onCreate(SQLiteDatabase sqliteDatabase, ConnectionSource connectionSource)</code> 和<code>onUpgrade(SQLiteDatabase database, ConnectionSource connectionSource, int oldVersion, int newVersion)</code>方法。一个用于生成数据库，一个用于升级数据库。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Database helper class used to manage the creation and upgrading of your</span><br><span class="line"> * database. This class also usually provides the DAOs used by the other</span><br><span class="line"> * classes.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DatabaseHelper</span> <span class="keyword">extends</span> <span class="title">OrmLiteSqliteOpenHelper</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// name of the database file for your application -- change to something</span></span><br><span class="line">    <span class="comment">// appropriate for your app</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String DATABASE_NAME = <span class="string">"demo.db"</span>;</span><br><span class="line">    <span class="comment">// any time you make changes to your database objects, you may have to</span></span><br><span class="line">    <span class="comment">// increase the database version</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DATABASE_VERSION = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// the DAO object we use to access the tables</span></span><br><span class="line">    <span class="keyword">private</span> RuntimeExceptionDao&lt;Category, Integer&gt; cateRuntimeDao = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">private</span> RuntimeExceptionDao&lt;Item, Integer&gt; itemRuntimeDao = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 添加事物</span></span><br><span class="line">    <span class="keyword">public</span> DatabaseConnection conn;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DatabaseHelper</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, DATABASE_NAME, <span class="keyword">null</span>, DATABASE_VERSION);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * This is called when the database is first created. Usually you should</span><br><span class="line">     * call createTable statements here to create the tables that will store</span><br><span class="line">     * your data.</span><br><span class="line">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(SQLiteDatabase db, ConnectionSource connectionSource)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Log.d(DatabaseHelper.class.getName(), <span class="string">"onCreate"</span>);</span><br><span class="line"></span><br><span class="line">            conn = connectionSource.getSpecialConnection();</span><br><span class="line"></span><br><span class="line">            TableUtils.createTable(connectionSource, Item.class);</span><br><span class="line">            TableUtils.createTable(connectionSource, Category.class);</span><br><span class="line">            <span class="comment">// TableUtils.createTable(connectionSource, ArticleResponse.class);</span></span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">            Log.e(DatabaseHelper.class.getName(), <span class="string">"Can't create database"</span>, e);</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * This is called when your application is upgraded and it has a higher</span><br><span class="line">     * version number. This allows you to adjust the various data to match the</span><br><span class="line">     * new version number.</span><br><span class="line">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onUpgrade</span><span class="params">(SQLiteDatabase db, ConnectionSource connectionSource, <span class="keyword">int</span> oldVersion,</span><br><span class="line">            <span class="keyword">int</span> newVersion)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Log.d(DatabaseHelper.class.getName(), <span class="string">"onUpgrade"</span>);</span><br><span class="line"></span><br><span class="line">            TableUtils.dropTable(connectionSource, Item.class, <span class="keyword">true</span>);</span><br><span class="line">            TableUtils.dropTable(connectionSource, Category.class, <span class="keyword">true</span>);</span><br><span class="line">            <span class="comment">// after we drop the old databases, we create the new ones</span></span><br><span class="line">            onCreate(db, connectionSource);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">            Log.e(DatabaseHelper.class.getName(), <span class="string">"Can't drop databases"</span>, e);</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * Returns the RuntimeExceptionDao (Database Access Object) version of a Dao</span><br><span class="line">     * for our classes. It will create it or just give the cached value.</span><br><span class="line">     * RuntimeExceptionDao only through RuntimeExceptions.</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> RuntimeExceptionDao&lt;Item, Integer&gt; <span class="title">getItemDao</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (itemRuntimeDao == <span class="keyword">null</span>) &#123;</span><br><span class="line">            itemRuntimeDao = getRuntimeExceptionDao(Item.class);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> itemRuntimeDao;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> RuntimeExceptionDao&lt;Category, Integer&gt; <span class="title">getCateDao</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (cateRuntimeDao == <span class="keyword">null</span>) &#123;</span><br><span class="line">            cateRuntimeDao = getRuntimeExceptionDao(Category.class);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cateRuntimeDao;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * Close the database connections and clear any cached DAOs.</span><br><span class="line">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.close();</span><br><span class="line"></span><br><span class="line">        itemRuntimeDao = <span class="keyword">null</span>;</span><br><span class="line">        cateRuntimeDao = <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>###创建DBManager<br>创建DBManager，管理DBHelper。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DatabaseManager</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 全局对象</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> DatabaseHelper mDatabaseHelper;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Context context;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">DatabaseManager</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * <span class="doctag">@param</span> context application context</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        DatabaseManager.context = context;</span><br><span class="line">        mDatabaseHelper = <span class="keyword">new</span> DatabaseHelper(context);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * <span class="doctag">@return</span> instance of the object</span><br><span class="line">     * <span class="doctag">@throws</span> IllegalStatException if init has not yet been called</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> DatabaseHelper <span class="title">getHelper</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (mDatabaseHelper == <span class="keyword">null</span>) &#123;</span><br><span class="line">            mDatabaseHelper = <span class="keyword">new</span> DatabaseHelper(context);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> mDatabaseHelper;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>当然如果不喜欢用全局的，可以在Activity层面去使用。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">   <span class="keyword">private</span> DatabaseHelper databaseHelper = <span class="keyword">null</span>;</span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">super</span>.onDestroy();</span><br><span class="line"></span><br><span class="line">	<span class="comment">/*</span><br><span class="line">	 * You'll need this in your class to release the helper when done.</span><br><span class="line">	 */</span></span><br><span class="line">	<span class="keyword">if</span> (databaseHelper != <span class="keyword">null</span>) &#123;</span><br><span class="line">		OpenHelperManager.releaseHelper();</span><br><span class="line">		databaseHelper = <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * You'll need this in your class to get the helper from the manager once per class.</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> DatabaseHelper <span class="title">getHelper</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (databaseHelper == <span class="keyword">null</span>) &#123;</span><br><span class="line">		databaseHelper = OpenHelperManager.getHelper(<span class="keyword">this</span>, DatabaseHelper.class);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> databaseHelper;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>###创建DAO<br>在DBHelper里其实已经添加了获取DAO的接口，<code>Dao&lt;T,V&gt;</code>，包含两个泛型,第一个泛型表DAO操作的类,第二个表示操作类的主键类型。<br>DAO里的主要方法：</p>
+<ul>
+<li><code>create</code> 插入一条数据</li>
+<li><code>createIfNotExists</code> 如果不存在则插入</li>
+<li><code>createOrUpdate</code> 如果指定id则更新</li>
+<li><code>queryForId</code> 更具id查找</li>
+<li><code>update</code> 查找出数据</li>
+<li><code>delete</code> 删除数据</li>
+<li><code>queryBuilder()</code> 创建一个查询生成器:进行复杂查询</li>
+<li><code>deleteBuilder()</code> 创建一个删除生成器,进程复杂条件删除</li>
+<li><code>updateBuilder()</code> 创建修条件生成器,进行复杂条件修改</li>
+</ul>
+<p>##数据增删改查</p>
+<p>###增<br>首先模拟一下数据：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> List&lt;Category&gt; cateList = <span class="keyword">new</span> ArrayList&lt;Category&gt;();</span><br><span class="line"><span class="keyword">private</span> List&lt;Item&gt; itemList = <span class="keyword">new</span> ArrayList&lt;Item&gt;();</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">    Category cate = <span class="keyword">new</span> Category();</span><br><span class="line">    cate.cateName = <span class="string">"Category "</span> + i;</span><br><span class="line">    cateList.add(cate);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">3</span>; j++) &#123;</span><br><span class="line">        Item item = <span class="keyword">new</span> Item();</span><br><span class="line">        item.name = <span class="string">"item "</span> + j + <span class="string">" from Category "</span> + i;</span><br><span class="line">        item.category = cate;</span><br><span class="line">        itemList.add(item);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后是插入数据的异步：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">InstertAsyncTask</span> <span class="keyword">extends</span> <span class="title">AsyncTask</span>&lt;<span class="title">List</span>&lt;<span class="title">Category</span>&gt;, <span class="title">Object</span>, <span class="title">Object</span>&gt; </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> List&lt;Category&gt; cateList;</span><br><span class="line">        <span class="keyword">private</span> List&lt;Item&gt; itemList;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">InstertAsyncTask</span><span class="params">(List&lt;Category&gt; cateList, List&lt;Item&gt; items)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.cateList = cateList;</span><br><span class="line">            <span class="keyword">this</span>.itemList = items;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">protected</span> Object <span class="title">doInBackground</span><span class="params">(<span class="keyword">final</span> List&lt;Category&gt;... params)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line"></span><br><span class="line">                connection = <span class="keyword">new</span> AndroidDatabaseConnection(DatabaseManager.getHelper()</span><br><span class="line">                        .getWritableDatabase(), <span class="keyword">true</span>);</span><br><span class="line">              </span><br><span class="line"></span><br><span class="line">                <span class="keyword">final</span> RuntimeExceptionDao&lt;Category, Integer&gt; cateRuntimeDao = DatabaseManager</span><br><span class="line">                        .getHelper()</span><br><span class="line">                        .getCateDao();</span><br><span class="line">                <span class="keyword">final</span> RuntimeExceptionDao&lt;Item, Integer&gt; itemRuntimeDao = DatabaseManager</span><br><span class="line">                        .getHelper()</span><br><span class="line">                        .getItemDao();</span><br><span class="line">              </span><br><span class="line"></span><br><span class="line">            TransactionManager.callInTransaction(DatabaseManager.getHelper()</span><br><span class="line">                        .getConnectionSource(), <span class="keyword">new</span> Callable&lt;Void&gt;() &#123;</span><br><span class="line"></span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> Void <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">                        <span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">                       </span><br><span class="line">                        <span class="keyword">for</span> (Category cate : cateList) &#123;</span><br><span class="line">                            cateRuntimeDao.create(cate);</span><br><span class="line"></span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="keyword">for</span> (Item item : itemList) &#123;</span><br><span class="line">                            itemRuntimeDao.create(item);</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">               </span><br><span class="line">            &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>###删<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DeleteAsyncTask</span> <span class="keyword">extends</span> <span class="title">AsyncTask</span>&lt;<span class="title">String</span>, <span class="title">Object</span>, <span class="title">Object</span>&gt; </span>&#123;</span><br><span class="line">       <span class="keyword">private</span> List&lt;Category&gt; cateList;</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="title">DeleteAsyncTask</span><span class="params">(List&lt;Category&gt; cateList)</span> </span>&#123;</span><br><span class="line">           <span class="keyword">this</span>.cateList = cateList;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="meta">@Override</span></span><br><span class="line">       <span class="function"><span class="keyword">protected</span> Object <span class="title">doInBackground</span><span class="params">(String... params)</span> </span>&#123;</span><br><span class="line">           <span class="keyword">final</span> RuntimeExceptionDao&lt;Category, Integer&gt; cateRuntimeDao = DatabaseManager</span><br><span class="line">                   .getHelper()</span><br><span class="line">                   .getCateDao();</span><br><span class="line">           cateRuntimeDao.delete(cateList);</span><br><span class="line">           <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<p>同样是通过DAO操作的，可以传入一个List对象，可以传入一个model对象，也可以传入ID。</p>
+<p>###改<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UpdateCardReadStatusAsyncTask</span> <span class="keyword">extends</span> <span class="title">AsyncTask</span>&lt;<span class="title">Object</span>, <span class="title">Object</span>, <span class="title">Object</span>&gt; </span>&#123;</span><br><span class="line">        Category category = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">        UpdateCardReadStatusAsyncTask(Category category) &#123;</span><br><span class="line">            <span class="keyword">this</span>.category = category;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">protected</span> Object <span class="title">doInBackground</span><span class="params">(Object... params)</span> </span>&#123;</span><br><span class="line">            DatabaseManager</span><br><span class="line">                    .getHelper()</span><br><span class="line">                    .getCateDao().update(category);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>把修改过后的对象传入，通过DAO执行update方法即可更新。</p>
+<p>###查<br>这里只是举个例子：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Category&gt; categorys = DatabaseManager</span><br><span class="line">                .getHelper()</span><br><span class="line">                .getCateDao().queryBuilder()</span><br><span class="line">                .orderBy(<span class="string">"publish_date"</span>, <span class="keyword">false</span>).limit(<span class="number">20l</span>)</span><br><span class="line">                .where().lt(<span class="string">"publish_date"</span>, publish_time).and().eq(<span class="string">"kind"</span>, kind)</span><br><span class="line">                .query();</span><br></pre></td></tr></table></figure></p>
+<p>这次查询是返回一个按照<code>publish_date</code>时间降序，个数为20个，<code>publish_date</code>时间小于指定时间，<code>kind</code>类型等于指定类型的一个List表。<br>查询可以用原始查询语句，这适合比较复杂的查询条件。<br><code>queryBuilder()</code>里有常见的查询条件，可以查询API。<br>需要注意的是，这次查询完毕后，对象包含的List对象其实是<code>ForeignCollection&lt;Item&gt;</code>类型的，跟我们平时用的<code>ArrayList</code>是不一样的，我们需要些个<code>get</code>方法，返回一个 <code>new ArrayList&lt;Item&gt;().addAll(items);</code></p>
+<p>###添加事务<br>批量操作肯定是要添加事务的，这里有两种添加事务的方法。<br>一种是<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">TransactionManager.callInTransaction(DatabaseManager.getHelper()</span><br><span class="line">                       .getConnectionSource(), <span class="keyword">new</span> Callable&lt;Void&gt;() &#123;</span><br><span class="line"></span><br><span class="line">                   <span class="meta">@Override</span></span><br><span class="line">                   <span class="function"><span class="keyword">public</span> Void <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">                       <span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line"></span><br><span class="line">                      数据操作</span><br><span class="line">            </span><br><span class="line">                       <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">                   &#125;</span><br><span class="line">               &#125;);</span><br></pre></td></tr></table></figure></p>
+<p>另一种是：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">savepoint = connection.setSavePoint(POINTNAME);</span><br><span class="line">time = System.currentTimeMillis();</span><br><span class="line">    <span class="keyword">for</span> (Category cate : cateList) &#123;</span><br><span class="line">         cateRuntimeDao.create(cate);</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">for</span> (Item item : itemList) &#123;</span><br><span class="line">         itemRuntimeDao.create(item);</span><br><span class="line">     &#125;</span><br><span class="line">connection.commit(savepoint);</span><br></pre></td></tr></table></figure></p>
+<p>如果不执行commit操作，就会回滚数据库。当然第二种方法的处理需要加try-catch块。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/04/01/android-orm-activeandroid/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Android ORM 框架之 ActiveAndroid
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/03/22/UltimateAndroidCameraGuide5/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android相机开发指南（五）</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="android-orm-ormlite" data-title="Android ORM框架之 ORMLite" data-url="http://coofee.me/2014/03/31/android-orm-ormlite/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"flyouting"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 flyouting and shirley
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Android后台任务最佳实践 | flyouting and shirley</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="官方文档地址
+##在后台服务中运行
+除非你做特别指定，否则在应用中的大部分操作都是执行在前台，在一个特殊的UI线程里面进行的。这有可能会导致一些问题，因为长时间运行的操作会影响到你应用的响应速度。为了避免这个问题，android框架提供了一系列帮助你在后台通过线程推迟加载的功能，用得最多的就是IntentService。
+这里将向你描述如何实现一个IntentService，发送请求操作并向其它组">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android后台任务最佳实践">
+<meta property="og:url" content="http://coofee.me/2014/07/05/best-practices-for-background-jobs/index.html">
+<meta property="og:site_name" content="flyouting and shirley">
+<meta property="og:description" content="官方文档地址
+##在后台服务中运行
+除非你做特别指定，否则在应用中的大部分操作都是执行在前台，在一个特殊的UI线程里面进行的。这有可能会导致一些问题，因为长时间运行的操作会影响到你应用的响应速度。为了避免这个问题，android框架提供了一系列帮助你在后台通过线程推迟加载的功能，用得最多的就是IntentService。
+这里将向你描述如何实现一个IntentService，发送请求操作并向其它组">
+<meta property="og:updated_time" content="2014-11-05T14:34:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android后台任务最佳实践">
+<meta name="twitter:description" content="官方文档地址
+##在后台服务中运行
+除非你做特别指定，否则在应用中的大部分操作都是执行在前台，在一个特殊的UI线程里面进行的。这有可能会导致一些问题，因为长时间运行的操作会影响到你应用的响应速度。为了避免这个问题，android框架提供了一系列帮助你在后台通过线程推迟加载的功能，用得最多的就是IntentService。
+这里将向你描述如何实现一个IntentService，发送请求操作并向其它组">
+  
+    <link rel="alternative" href="/atom.xml" title="flyouting and shirley" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">flyouting and shirley</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">记录一点一滴</p>
+		
+
+		<!--
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>Über</li>
+						
+					</ul>
+				</div>
+			</div>
+		-->
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">首页</a></li>
+				        
+							<li><a href="/archives">文章列表</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				<div class="switch-part switch-part2"><script>var n ='b-26003349-pe-f-801';var ch ='pc_6'; var w1 = 200;var h1 = 280;</script> <script src='http://static.luna.58.com/js/mad.js'></script></div>
+				
+				<!--
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/AndroidStudio/" style="font-size: 10px;">AndroidStudio</a> <a href="/tags/DB/" style="font-size: 12.5px;">DB</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/ImageSpan/" style="font-size: 10px;">ImageSpan</a> <a href="/tags/ORM/" style="font-size: 12.5px;">ORM</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/activeandroid/" style="font-size: 10px;">activeandroid</a> <a href="/tags/android/" style="font-size: 17.5px;">android</a> <a href="/tags/intent/" style="font-size: 10px;">intent</a> <a href="/tags/key/" style="font-size: 10px;">key</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/span/" style="font-size: 10px;">span</a> <a href="/tags/transitions/" style="font-size: 10px;">transitions</a> <a href="/tags/volley/" style="font-size: 15px;">volley</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/后台，多线程/" style="font-size: 10px;">后台，多线程</a> <a href="/tags/相机/" style="font-size: 15px;">相机</a> <a href="/tags/终端/" style="font-size: 10px;">终端</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+					</div>
+				</section>
+				-->
+				
+				<!--
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				-->
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">flyouting and shirley</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">flyouting and shirley</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">记录一点一滴</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">首页</a></li>
+		        
+					<li><a href="/archives">文章列表</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-best-practices-for-background-jobs" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/07/05/best-practices-for-background-jobs/" class="article-date">
+  	<time datetime="2014-07-05T14:33:48.000Z" itemprop="datePublished">2014-07-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android后台任务最佳实践
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后台，多线程/">后台，多线程</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/译文/">译文</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://developer.android.com/training/best-background.html" target="_blank" rel="external">官方文档地址</a></p>
+<p>##在后台服务中运行</p>
+<p>除非你做特别指定，否则在应用中的大部分操作都是执行在前台，在一个特殊的UI线程里面进行的。这有可能会导致一些问题，因为长时间运行的操作会影响到你应用的响应速度。为了避免这个问题，android框架提供了一系列帮助你在后台通过线程推迟加载的功能，用得最多的就是<a href="http://developer.android.com/reference/android/app/IntentService.html" target="_blank" rel="external"><code>IntentService</code></a>。</p>
+<p>这里将向你描述如何实现一个<code>IntentService</code>，发送请求操作并向其它组件报告结果。</p>
+<p>###创建一个后台服务<br><code>IntentService</code>类为一个操作运行在一个线程上提供了一个简单的结构，这允许它可以处理长时间运行的操作而不影响你的用户界面的响应。同时，一个<code>IntentService</code>不被大多数用户界面的生命周期事件影响，因此它可以在异步任务关闭时继续运行。</p>
+<p>每个<code>IntentService</code>都是有限制条件的：</p>
+<ol>
+<li>它不可以直接和应用的界面进行交互，为了将操作结果返回给界面，你需要将他们发送到<code>Activity</code>。</li>
+<li>工作请求是按顺序进行的，当已经有一个操作在<code>IntentService</code>中运行时，如果这时你发送另外一个请求，需要等到第一个操作执行完毕后才会继续后面的请求</li>
+<li>在<code>IntentService</code>中运行的操作是不可以被中断的</li>
+</ol>
+<p>然而，多数情况下一个<code>IntentService</code>是后台操作最适合的处理方式。</p>
+<p>这里将告诉你如何创建你自己的<code>IntentService</code>子类，还会向你展示如何创建一个必要的<code>onHandleIntent()</code>回调。最后，将告诉你如何在manifest文件中定义<code>IntentService</code>。</p>
+<p>####创建一个IntentService<br>为了在你的应用中创建一个<code>IntentService</code>组件，需要定义一个继承于<code>IntentService</code>的类并复写其<code>onHandleIntent()</code>方法，比如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RSSPullService</span> <span class="keyword">extends</span> <span class="title">IntentService</span> </span>&#123;  </span><br><span class="line">    <span class="meta">@Override</span>  </span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onHandleIntent</span><span class="params">(Intent workIntent)</span> </span>&#123;  </span><br><span class="line">        <span class="comment">// Gets data from the incoming Intent  </span></span><br><span class="line">        String dataString = workIntent.getDataString();  </span><br><span class="line">        ...  </span><br><span class="line">        <span class="comment">// Do work here, based on the contents of dataString  </span></span><br><span class="line">        ...  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>注意，对于任何一个<code>Service</code>都会回调的那些方法，比如<code>onStartCommand()</code>，都会自动地被<code>IntentService</code>引用。在一个<code>IntentService</code>中，你应该避免复写这些回调方法。</p>
+<p>####在件Manifest中定义IntentService</p>
+<p><code>IntentService</code>同样需要在你应用的清单文件中有一个入口，通过在<code>&lt;application&gt;</code>标签下声明<code>&lt;service&gt;</code>的方式来为<code>IntentService</code>提供入口：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;application</span><br><span class="line">    android:icon=<span class="string">"@drawable/icon"</span></span><br><span class="line">    android:label=<span class="string">"@string/app_name"</span>&gt;</span><br><span class="line">    ...</span><br><span class="line">    &lt;!--</span><br><span class="line">        Because android:exported is set to <span class="string">"false"</span>,</span><br><span class="line">        the service is only available to <span class="keyword">this</span> app.</span><br><span class="line">    --&gt;</span><br><span class="line">    &lt;service</span><br><span class="line">        android:name=<span class="string">".RSSPullService"</span></span><br><span class="line">        android:exported=<span class="string">"false"</span>/&gt;</span><br><span class="line">    ...</span><br><span class="line">&lt;application/&gt;</span><br></pre></td></tr></table></figure></p>
+<p>这里的<code>“android:name”</code>属性指定了<code>IntentService</code>的类名。</p>
+<p>注意，<code>&lt;service&gt;</code>标签没有包含<code>IntentFilter</code>过滤器。该窗口通过一个明确地Intent向服务发送工作请求，所以不需要任何过滤器。也就是说，只有在同一个应用内，或者是有相同ID的其它应用才可以访问这个服务。</p>
+<p>现在你有了基本的<code>IntentService</code>类，你可以通过Intent对象发送工作请求了。</p>
+<p>###向后台服务发送工作请求</p>
+<p>这里将告诉你如何通过发送Intent来触发<code>IntentService</code>执行一个操作。这个Intent可以包含<code>IntentService</code>需要处理的可选数据。你可以在<code>Activity</code>或者<code>Fragment</code>的任何一个地方向<code>IntentService</code>传递Intent。</p>
+<p>####创建并发送一个工作请求给IntentService</p>
+<p>为了创建一个工作请求并将其发送到<code>IntentService</code>，需要创建一个明确地Intent来添加工作请求数据，然后通过调用<code>IntentService</code>的<code>StartService()</code>方法来发送它。</p>
+<p>具体实例如下：</p>
+<p> 1.为<code>IntentService</code>的子类<code>RSSPullService</code>创建一个新的、明确地Intent。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span><br><span class="line"> * Creates a new Intent to start the RSSPullService</span><br><span class="line"> * IntentService. Passes a URI in the</span><br><span class="line"> * Intent's "data" field.</span><br><span class="line"> */</span></span><br><span class="line">mServiceIntent = <span class="keyword">new</span> Intent(getActivity(), RSSPullService.class);</span><br><span class="line">mServiceIntent.setData(Uri.parse(dataUrl));</span><br></pre></td></tr></table></figure></p>
+<p> 2.调用<code>startService()</code>方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// Starts the IntentService</span></span><br><span class="line">getActivity().startService(mServiceIntent);</span><br></pre></td></tr></table></figure></p>
+<p>注意，你可以在<code>Activity</code>或者<code>Fragment</code>的任何地方发送工作请求。比如，如果你需要首先获取用户输入，你可以在按钮点击或者类似于手势操作的回调中来发送请求。</p>
+<p>一旦你调用了<code>startService()</code>方法，<code>IntentService</code>会处理定义在<code>onHandleIntent()</code>方法中的工作，然后自己停止。</p>
+<p>下一步是向原始的<code>Activity</code>或者<code>Fragment</code>报告工作请求的结果。</p>
+<p>###报告工作状态<br>这里将告诉你如何将后台服务的请求工作状态报告给发送请求的组件。这将允许你，比如报告一个窗口对象的UI更新请求状态。一般推荐使用<code>LocalBroadcastManager</code>来发送和接收这些状态，但这仅限于在你自己应用的各组件中广播Intent。</p>
+<p>####从<code>IntentService</code>中报告状态</p>
+<p>为了在<code>IntentService</code>中向其他组件发送工作请求状态，首先你需要创建一个包含状态信息数据的Intent，作为了一个选项，你可以在Intent中添加一个操作或者数据URI。</p>
+<p>下一步，通过调用<code>LocalBroadcastManager.sendBroadcast()</code>方法来发送Intent，在你应用中发送到其它组件的Intent是注册过的。通过<code>LocalBroadcastManager</code>的<code>getInstance()</code>方法来实例化<code>LocalBroadcastManager</code>。</p>
+<p>例子：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Constants</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">// Defines a custom Intent action</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String BROADCAST_ACTION =</span><br><span class="line">        <span class="string">"com.example.android.threadsample.BROADCAST"</span>;</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">// Defines the key for the status "extra" in an Intent</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String EXTENDED_DATA_STATUS =</span><br><span class="line">        <span class="string">"com.example.android.threadsample.STATUS"</span>;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RSSPullService</span> <span class="keyword">extends</span> <span class="title">IntentService</span> </span>&#123;</span><br><span class="line">...</span><br><span class="line">    <span class="comment">/*</span><br><span class="line">     * Creates a new Intent containing a Uri object</span><br><span class="line">     * BROADCAST_ACTION is a custom Intent action</span><br><span class="line">     */</span></span><br><span class="line">    Intent localIntent =</span><br><span class="line">            <span class="keyword">new</span> Intent(Constants.BROADCAST_ACTION)</span><br><span class="line">            <span class="comment">// Puts the status into the Intent</span></span><br><span class="line">            .putExtra(Constants.EXTENDED_DATA_STATUS, status);</span><br><span class="line">    <span class="comment">// Broadcasts the Intent to receivers in this app.</span></span><br><span class="line">    LocalBroadcastManager.getInstance(<span class="keyword">this</span>).sendBroadcast(localIntent);</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>####从<code>IntentService</code>中接收广播状态<br>为了能够接收Intent对象，需要定义一个<code>BroadcastReciver</code>的子类。在该类中，实现<code>BroadcastReceiver</code>的<code>onReceive()</code>回调方法，在接收到一个Intent时<code>LocalBroadcastManager</code>会引用它。<code>LocalBroadcastManager</code>将接收到的Intent传递到<code>BroadcastReceiver</code>的<code>onRecive()</code>方法中。</p>
+<p>一旦你定义了<code>BroadcastReceiver</code>，你就可以通过指定动作、类别和数据等过滤信息来匹配它了。为了达到这种效果，你需要创建一个<code>IntentFilter</code>。下面的代码向你展示了如何定义filter：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Class that displays photos</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DisplayActivity</span> <span class="keyword">extends</span> <span class="title">FragmentActivity</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle stateBundle)</span> </span>&#123;</span><br><span class="line">        ...</span><br><span class="line">        <span class="keyword">super</span>.onCreate(stateBundle);</span><br><span class="line">        ...</span><br><span class="line">        <span class="comment">// The filter's action is BROADCAST_ACTION</span></span><br><span class="line">        IntentFilter mStatusIntentFilter = <span class="keyword">new</span> IntentFilter(</span><br><span class="line">                Constants.BROADCAST_ACTION);</span><br><span class="line">    </span><br><span class="line">        <span class="comment">// Adds a data filter for the HTTP scheme</span></span><br><span class="line">        mStatusIntentFilter.addDataScheme(<span class="string">"http"</span>);</span><br><span class="line">        ...</span><br></pre></td></tr></table></figure></p>
+<p>为了在系统中注册<code>BroadcastReceiver</code>和<code>IntentFilter</code>，你需要实例化<code>LocalBroadcastManager</code>并调用其<code>registerReceiver()</code>方法。下例展示的是如何注册<code>BroadcastReceiver</code>和其过滤器的过程：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Instantiates a new DownloadStateReceiver</span></span><br><span class="line">     DownloadStateReceiver mDownloadStateReceiver =</span><br><span class="line">             <span class="keyword">new</span> DownloadStateReceiver();</span><br><span class="line">     <span class="comment">// Registers the DownloadStateReceiver and its intent filters</span></span><br><span class="line">     LocalBroadcastManager.getInstance(<span class="keyword">this</span>).registerReceiver(</span><br><span class="line">             mDownloadStateReceiver,</span><br><span class="line">             mStatusIntentFilter);</span><br><span class="line">     ...</span><br></pre></td></tr></table></figure></p>
+<p> 一个<code>BroadcastReceiver</code>可以操作多于一种类型的广播Intent对象，每个类型都有自己的操作。这种特征允许你在不同的action中运行代码，不需要为每个action都定义一个<code>BroadcastReceiver</code>。为了为同一个<code>BroadcastReceiver</code>定义其它的<code>IntentFilter</code>，创建<code>IntentFilter</code>并重复调用<code>registerReceiver()</code>。比如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span><br><span class="line">       * Instantiates a new action filter.</span><br><span class="line">       * No data filter is needed.</span><br><span class="line">       */</span></span><br><span class="line">      statusIntentFilter = <span class="keyword">new</span> IntentFilter(Constants.ACTION_ZOOM_IMAGE);</span><br><span class="line">      ...</span><br><span class="line">      <span class="comment">// Registers the receiver with the new filter</span></span><br><span class="line">      LocalBroadcastManager.getInstance(getActivity()).registerReceiver(</span><br><span class="line">              mDownloadStateReceiver,</span><br><span class="line">              mIntentFilter);</span><br></pre></td></tr></table></figure></p>
+<p>发送一个广播Intent不会<code>start</code>或者<code>resume</code>一个窗口。即使你的窗口在后台，窗口中的<code>BroadcastReceiver</code>都是可以接收并处理Intent对象的，但并不会强制让你的应用处于前台。当你的窗口处于后台时如果你想向用户通知这个事件，你可以使用<code>Notification</code>。在接收一个广播Intent时是绝不会启动一个窗口的。</p>
+<p>##在后台加载数据<br>对于你需要显示的数据，但需要花时间去通过<code>ContentProvider</code>查询时，如果你直接在Activity层面去执行查询操作，可能会严重影响界面的响应速度，比如ANR。就算不会ANR，用户也会明显地感觉到卡顿的现象。为了避免这种问题，你应该在非UI线程里面来初始化查询操作，直到等待它结束后再窗口显示结果。</p>
+<p>你可以通过一个对象在后台执行查询同步，待查询结束后更新UI。这个对象就是<code>CursorLoader</code>。除了初始化后台查询外，当查询有变动时<code>CursorLoader</code>会自动地重新查询数据。</p>
+<p>这里将向你描述如何通过<code>CursorLoader</code>执行后台查询操作。在代码中用到了<code>V4-SupportLibrary</code>版本的类，它支持V1.6及以上的版本执行此操作。</p>
+<p>###通过CursorLoader执行查询操作<br>通过<code>CursorLoader</code>在后台执行同步查询有别于<code>ContentProvider</code>，它会返回结果到调用它的<code>Activity</code>或者<code>FragmentActivity</code>。这样就允许<code>Activity</code>或者<code>FragmentActivity</code>在后台查询数据时可以和用户交互。</p>
+<p>####定义一个使用<code>CursorLoader</code>的Activity</p>
+<p>为了能够在<code>Activity</code>或者<code>FragmentActivity</code>中使用<code>CursorLoader</code>，需要使用<code>LoaderCallbacks&lt;Cursor&gt;</code>接口，<code>CursorLoader</code>引用接口定义的回调和类进行交互；本课和下一课将详细描述每一个回调。</p>
+<p>比如，下面的实例向你展示如何使用依赖库中的<code>CursorLoader</code>定义<code>FragmentActivity</code>。通过扩展<code>FragmentActivity</code>，可以达到通过<code>Fragment</code>使用<code>CursorLoader</code>一样的效果。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PhotoThumbnailFragment</span> <span class="keyword">extends</span> <span class="title">FragmentActivity</span> <span class="keyword">implements</span></span><br><span class="line">        <span class="title">LoaderManager</span>.<span class="title">LoaderCallbacks</span>&lt;<span class="title">Cursor</span>&gt; </span>&#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>####初始化查询操作</p>
+<p>为了初始化查询操作，你需要调用<code>LoadManager</code>的<code>initLoader()</code>方法，它初始化后台框架，你可以在用户进入查询的数据后执行该操作，或者，如果你不需要任何数据，你可以在<code>onCreate()</code>或者<code>onCreateView()</code>中执行该操作，比如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Identifies a particular Loader being used in this component</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> URL_LOADER = <span class="number">0</span>;</span><br><span class="line">...</span><br><span class="line"><span class="comment">/* When the system is ready for the Fragment to appear, this displays</span><br><span class="line"> * the Fragment's View</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> View <span class="title">onCreateView</span><span class="params">(</span><br><span class="line">        LayoutInflater inflater,</span><br><span class="line">        ViewGroup viewGroup,</span><br><span class="line">        Bundle bundle)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">/*</span><br><span class="line">     * Initializes the CursorLoader. The URL_LOADER value is eventually passed</span><br><span class="line">     * to onCreateLoader().</span><br><span class="line">     */</span></span><br><span class="line">    getLoaderManager().initLoader(URL_LOADER, <span class="keyword">null</span>, <span class="keyword">this</span>);</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>注意：<code>getLoaderManager()</code>方法仅仅适用于Fragment类，为了能够在<code>FragmentActivity</code>中获取<code>LoaderManager</code>，需通过调用<code>getSupportLoaderManager()</code>。</p>
+<p>####开始查询</p>
+<p>为了能够尽快地初始化后台框架，系统会调用你类中的<code>onCreateLoader()</code>方法，为了能够开始查询，需要从该方法中反馈一个CursorLoader对象。你可以初始化一个空的CursorLoader对象然后通过它来定义查询操作，或者你可以在初始化对象的同时定义查询操作。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span><br><span class="line">* Callback that's invoked when the system has initialized the Loader and</span><br><span class="line">* is ready to start the query. This usually happens when initLoader() is</span><br><span class="line">* called. The loaderID argument contains the ID value passed to the</span><br><span class="line">* initLoader() call.</span><br><span class="line">*/</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Loader&lt;Cursor&gt; <span class="title">onCreateLoader</span><span class="params">(<span class="keyword">int</span> loaderID, Bundle bundle)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="comment">/*</span><br><span class="line">     * Takes action based on the ID of the Loader that's being created</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">switch</span> (loaderID) &#123;</span><br><span class="line">        <span class="keyword">case</span> URL_LOADER:</span><br><span class="line">            <span class="comment">// Returns a new CursorLoader</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> CursorLoader(</span><br><span class="line">                        getActivity(),   <span class="comment">// Parent activity context</span></span><br><span class="line">                        mDataUrl,        <span class="comment">// Table to query</span></span><br><span class="line">                        mProjection,     <span class="comment">// Projection to return</span></span><br><span class="line">                        <span class="keyword">null</span>,            <span class="comment">// No selection clause</span></span><br><span class="line">                        <span class="keyword">null</span>,            <span class="comment">// No selection arguments</span></span><br><span class="line">                        <span class="keyword">null</span>             <span class="comment">// Default sort order</span></span><br><span class="line">        );</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="comment">// An invalid id was passed in</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>一旦生成了后台框架的对象，系统就会开始在后台执行查询操作，当查询操作执行完成后，后台框架会调用<code>onLoadFinished()</code>方法。</p>
+<p>###处理结果</p>
+<p>正如前面所述，你应该在你所实现类的<code>onCreateLoader()</code>方法中通过CursorLoader加载你的数据，加载器会在你Acitivity或者FragmentActivity的<code>LoaderCallbacks.onLoadFinished()</code>方法中返回查询结果。该方法的其中一个入参为包含查询结果的游标。你可以使用这个对象来更新你的数据或者做其它操作。</p>
+<p>除了<code>onCreateLoader()</code>和<code>onLoadFinished()</code>方法，你还需要实现<code>onLoaderReset()</code>方法，这个方法会在数据更新更新时被调用，当数据变化时，框架会重新执行当前的查询操作。</p>
+<p>####处理查询结果</p>
+<p>为了显示从<code>CursorLoader</code>返回的游标数据，你需要自定义一个继承于AdapterView的视图，并为这个视图定义一个继承于<code>CursorAdapter</code>的适配器。然后系统会自动地将数据从游标移到视图。</p>
+<p>在你显示任何数据之前你可以为视图和适配器建立连接，然后再<code>onLoadFinished()</code>方法中将游标移到适配器。当你将游标移到适配器后，系统会自动地更新视图。在游标的数据有改动时同样会更新视图。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> String[] mFromColumns = &#123;</span><br><span class="line">    DataProviderContract.IMAGE_PICTURENAME_COLUMN</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] mToFields = &#123;</span><br><span class="line">    R.id.PictureName</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// Gets a handle to a List View</span></span><br><span class="line">ListView mListView = (ListView) findViewById(R.id.dataList);</span><br><span class="line"><span class="comment">/*</span><br><span class="line"> * Defines a SimpleCursorAdapter for the ListView</span><br><span class="line"> *</span><br><span class="line"> */</span></span><br><span class="line">SimpleCursorAdapter mAdapter =</span><br><span class="line">    <span class="keyword">new</span> SimpleCursorAdapter(</span><br><span class="line">            <span class="keyword">this</span>,                <span class="comment">// Current context</span></span><br><span class="line">            R.layout.list_item,  <span class="comment">// Layout for a single row</span></span><br><span class="line">            <span class="keyword">null</span>,                <span class="comment">// No Cursor yet</span></span><br><span class="line">            mFromColumns,        <span class="comment">// Cursor columns to use</span></span><br><span class="line">            mToFields,           <span class="comment">// Layout fields to use</span></span><br><span class="line">            <span class="number">0</span>                    <span class="comment">// No flags</span></span><br><span class="line">    );</span><br><span class="line"><span class="comment">// Sets the adapter for the view</span></span><br><span class="line">mListView.setAdapter(mAdapter);</span><br><span class="line">...</span><br><span class="line"><span class="comment">/*</span><br><span class="line"> * Defines the callback that CursorLoader calls</span><br><span class="line"> * when it's finished its query</span><br><span class="line"> */</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onLoadFinished</span><span class="params">(Loader&lt;Cursor&gt; loader, Cursor cursor)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">/*</span><br><span class="line">     * Moves the query results into the adapter, causing the</span><br><span class="line">     * ListView fronting this adapter to re-display</span><br><span class="line">     */</span></span><br><span class="line">    mAdapter.changeCursor(cursor);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>####删除旧的游标信息<br>当游标非法时<code>CursorLoader</code>会被重置，这多数情况发生在游标的数据有改动时，在重新执行查询操作前，框架会调用你所实现的<code>onLoaderReset()</code>方法。在这个回调中，你应该删除当前游标的所有信息来避免内存泄露。一旦结束回调<code>onLoaderReset()</code>方法后，<code>CursorLoader</code>会重新执行查询操作。比如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line"> * Invoked when the CursorLoader is being reset. For example, this is</span><br><span class="line"> * called if the data in the provider changes and the Cursor becomes stale.</span><br><span class="line"> */</span><br><span class="line">@Override</span><br><span class="line">public void onLoaderReset(Loader&lt;Cursor&gt; loader) &#123;</span><br><span class="line">    </span><br><span class="line">    /*</span><br><span class="line">     * Clears out the adapter&apos;s reference to the Cursor.</span><br><span class="line">     * This prevents memory leaks.</span><br><span class="line">     */</span><br><span class="line">    mAdapter.changeCursor(null);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>##管理设备的激活状态</p>
+<p>当一个android设备处于空闲状态时，它首先会变暗，然后会关屏，最终会让CPU停止工作。这样处理是为了避免设备的电池被快速地耗尽，然而有些时候你的应用需要一些不同的表现：</p>
+<p>（1）游戏或者电影应用可能需要保持屏幕常亮；</p>
+<p>（2）有些应用虽然不需要屏幕常亮，但在CPU执行完核心操作之前同样需要保持程序运行。</p>
+<p>本节的目的是告诉你在避免电池被快速耗尽的情况下如何保持设备处于激活状态。</p>
+<p>###保持设备处于激活状态</p>
+<p>为了避免电池被耗尽，android设备会在处于空闲状态时立即切换到休眠状态。然而，有些时候一个应用需要保持屏幕常亮或者CPU直到某些事情被处理完成。<br>你该采取什么操作取决于你应用的需求。然而，通用的规则是你应该使用最轻量级的操作来处理你的应用程序，使你的应用减少对系统资源的占用。下面将向你描述通过怎样地操作来使得你对应用的处理和系统默认的休眠行为相容。</p>
+<p>####保持屏幕常亮<br>某些应用需要保持屏幕常亮，比如游戏或者电影应用。最好的方式是在你的窗口中使用<code>FLAG_KEEP_SCREEN_ON</code>属性（只在一个窗口，绝不是在一个服务或者其它应用组件中），比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class MainActivity extends Activity &#123;</span><br><span class="line">  @Override</span><br><span class="line">  protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">    super.onCreate(savedInstanceState);</span><br><span class="line">    setContentView(R.layout.activity_main);</span><br><span class="line">    getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<p>这种先进的处理方式有别于唤醒锁，它不需要特殊的权限，平台会正确地管理应用之间的切换，你不需要担心自己的应用没有释放没有使用的资源。</p>
+<p>实现该功能的另一种思路是在你应用xml文件中使用<code>android:keepScreenOn</code>属性：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;RelativeLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;match_parent&quot;</span><br><span class="line">    android:keepScreenOn=&quot;true&quot;&gt;</span><br><span class="line">    ...</span><br><span class="line">&lt;/RelativeLayout&gt;</span><br></pre></td></tr></table></figure></p>
+<p>使用<code>andorid:keepScreenOn=”true”</code>和使用<code>FLAG_KEEP_SCREEN_ON</code>是一样的效果。你可以使用适合于你应用的任何一种方式。通过在程序中设置你窗口常亮状态的优势是：它可以清楚这个标志，从而可以关闭屏幕。</p>
+<p>####保持CPU持续工作<br>如果你希望在设备休眠之前CPU能够完成需要处理的工作，你可以使用一个叫唤醒锁的<code>PowerManager</code>系统服务。唤醒锁允许你的应用可以控制主机设备电源的状态。</p>
+<p>创建和保持唤醒锁会在一定程度上对电池的寿命有所影响，因此你应该只在非常有必要的情况下使用它，并尽量控制使用时间。比如，你绝不应该在一个窗口中使用唤醒锁，正如上面所描述的那样，如果你想保持当前窗口的屏幕常亮，你可以使用<code>FLAG_KEEP_SCREEN_ON</code>。</p>
+<p>应该使用唤醒锁的情况可能就是后台服务在屏幕关闭时需要通过唤醒锁保持CPU持续工作。再次声明，尽量限制它的使用时间，因为它会影响到电池的寿命。</p>
+<p>为了使用唤醒锁，首先需要在清单文件中添加<code>WAKE_LOCK</code>权限：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:name=&quot;android.permission.WAKE_LOCK&quot; /&gt;</span><br></pre></td></tr></table></figure></p>
+<p>如果你的应用包含一个使用服务处理某些事情的广播接收器，你可以通过<code>WakefulBroadcastReceiver</code>来管理你的唤醒锁，正如使用<code>WakefulBroadcastReceiver</code>一课中所描述的那样，这是一个比较好的处理方式。如果你的应用没有遵循这种方式，通过下面的代码你可以直接设置唤醒锁：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PowerManager powerManager = (PowerManager) getSystemService(POWER_SERVICE);</span><br><span class="line">Wakelock wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,</span><br><span class="line">        &quot;MyWakelockTag&quot;);</span><br><span class="line">wakeLock.acquire();</span><br></pre></td></tr></table></figure></p>
+<p>为了释放唤醒锁，你需要调用wakelock的release()方法。它将释放你对CPU的声明，在你的应用结束工作后尽快关闭唤醒锁避免电池被耗尽。</p>
+<p>####使用WakefulBroadcastReceiver<br>使用广播接收器和服务可以让你很好地管理后台任务的生命周期。</p>
+<p>一个<code>WakefulBroadcastReceiver</code>是广播接收器的一个特殊类型，它可以创建和管理你应用的<code>PARITAL_WAKE_LOCK</code>。一个<code>WakeBroadcastReceiver</code>接收到广播后将工作传递给Service（一个典型的IntentService），直到确保设备没有休眠。如果你在交接工作给服务的时候没有保持唤醒锁，在工作还没完成之前就允许设备休眠的话，将会出现一些你不愿意看到的情况。</p>
+<p>要使用<code>WakefulBroadcastReceiver</code>的第一步是在manifest文件中添加它，和其它广播接收器是一样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;receiver android:name=&quot;.MyWakefulReceiver&quot;&gt;&lt;/receiver&gt;</span><br></pre></td></tr></table></figure></p>
+<p>接下来是在代码中通过<code>startWakefulService()</code>来启动<code>MyIntentService</code>。和<code>starService()</code>方法相比，除了在服务启动时可以保持唤醒锁外，通过<code>startWakefulService()</code>方法传递的Intent可以保持一个额外的唤醒锁：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class MyWakefulReceiver extends WakefulBroadcastReceiver &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onReceive(Context context, Intent intent) &#123;</span><br><span class="line"></span><br><span class="line">        // Start the service, keeping the device awake while the service is</span><br><span class="line">        // launching. This is the Intent to deliver to the service.</span><br><span class="line">        Intent service = new Intent(context, MyIntentService.class);</span><br><span class="line">        startWakefulService(context, service);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>当服务执行完成后，系统会调用<code>MyWakefulReceiver</code>的<code>completeWakefulIntent()</code>方法来释放唤醒锁，<code>completeWakefulIntent()</code>方法携带的参数是从<code>WakefulBroadcastReceiver</code>传递过来的intent:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class MyIntentService extends IntentService &#123;</span><br><span class="line">    public static final int NOTIFICATION_ID = 1;</span><br><span class="line">    private NotificationManager mNotificationManager;</span><br><span class="line">    NotificationCompat.Builder builder;</span><br><span class="line">    public MyIntentService() &#123;</span><br><span class="line">        super(&quot;MyIntentService&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    @Override</span><br><span class="line">    protected void onHandleIntent(Intent intent) &#123;</span><br><span class="line">        Bundle extras = intent.getExtras();</span><br><span class="line">        // Do the work that requires your app to keep the CPU running.</span><br><span class="line">        // ...</span><br><span class="line">        // Release the wake lock provided by the WakefulBroadcastReceiver.</span><br><span class="line">        MyWakefulReceiver.completeWakefulIntent(intent);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>###调度重复性警报</p>
+<p>Alarms（基于AlarmManager类）给你一种方式来执行应用生命周期之外的基于时间的操作。例如，你可以使用一个alarm去初始化一个长时间运行的操作。比如开启一个服务一天一次去下载一个天气预报。</p>
+<p>Alarms有这些特点：</p>
+<ul>
+<li>它使你发送Intents在固定的时间或者时间间隔</li>
+<li>您可以使用它们结合广播接收器去开始服务和执行其他操作</li>
+<li>他们的操作范畴在应用程序之外，所以你可以使用它们来触发事件或动作，即使应用程序没有运行，即使该设备本身是睡眠状态</li>
+<li>他们帮助你减少你的应用的资源需求。你可以不依赖定时器或连续运行后台服务去安排操作</li>
+</ul>
+<p>####理解Trade-offs</p>
+<p>一个重复报警是一个具有有限灵活性的相对简单的机制。对我们的应用，它可能不是最好的选择，特别是如果您需要触发网络操作。一个设计糟糕的alarm会导致电池消耗，给服务器增加了负担。</p>
+<p>在应用生命周期外触发一个操作的常见场景是跟服务器段同步数据。在这种情况下，你可能想使用一个重复性alarm，但是你的服务器使用谷歌云存储消息传递（GCM）结合同步适配器要比 AlarmManager好很多，一个同步适配器提供给你像AlarmManager一样的调度选项，但是它提供了更多的灵活性。例如，一个同步可以是基于“新数据”从服务端或者设备，用户的不同activity，一天中的不同时间，或者其他。</p>
+<p><strong>最佳实践</strong></p>
+<p>当你在设计你的一个重复性的alarm时，你的任何选择都可能影响你的app使用（或者说是滥用）系统资源。例如，假设一个受欢迎的应用程序与服务器同步，如果同步操作是基于时钟时间，每个app的实例在晚上11点同步。服务器上的负载可能会高负载甚至导致“拒绝服务”，使用alarm时遵循这些最佳实践:</p>
+<ul>
+<li>使用重复性alarm触发网络请求时添加随机性：<ol>
+<li>当alarm触发时，做一些本地处理，意思就是不连接服务器或者向服务器请求数据。</li>
+<li>同时，安排包含有网络请求的alarm在一个随机时间段内触发。</li>
+</ol>
+</li>
+<li>使alarm频率最低</li>
+<li>不要在不必要的时候唤醒设备</li>
+<li>不要使你的alarm触发时间过于精确</li>
+<li>尽可能避免基于时钟时间的alarm</li>
+</ul>
+<p>####设置一个重复性alarm</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/07/07/androi-span-imagespan/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Span，一个强大的概念
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/07/05/effects-of-android-application-termination/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android应用程序终止的影响</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="best-practices-for-background-jobs" data-title="Android后台任务最佳实践" data-url="http://coofee.me/2014/07/05/best-practices-for-background-jobs/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"flyouting"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 flyouting and shirley
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

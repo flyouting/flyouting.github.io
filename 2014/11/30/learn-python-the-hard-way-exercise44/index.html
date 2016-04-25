@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>笨办法学Python--exercise44.继承Vs.包含 | flyouting and shirley</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在有关英雄战胜邪恶的童话中，总是有某种形式的黑暗森林。它可能是一个山洞，森林，另一个星球或者其他地方，每个人都知道英雄不应该去。当然，当不就之后坏人被你找到的时候，你发现，英雄已经去那个愚蠢的森林里杀坏人去了。看起来英雄进入了一种状态，这种状态要求英雄必须在这个邪恶的森林中冒险。 
+在面向对象编程中，继承就是那个黑暗森林。有经验的程序员知道要避免这种邪恶,因为他们知道,黑暗森林深处有着多重继承这个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="笨办法学Python--exercise44.继承Vs.包含">
+<meta property="og:url" content="http://coofee.me/2014/11/30/learn-python-the-hard-way-exercise44/index.html">
+<meta property="og:site_name" content="flyouting and shirley">
+<meta property="og:description" content="在有关英雄战胜邪恶的童话中，总是有某种形式的黑暗森林。它可能是一个山洞，森林，另一个星球或者其他地方，每个人都知道英雄不应该去。当然，当不就之后坏人被你找到的时候，你发现，英雄已经去那个愚蠢的森林里杀坏人去了。看起来英雄进入了一种状态，这种状态要求英雄必须在这个邪恶的森林中冒险。 
+在面向对象编程中，继承就是那个黑暗森林。有经验的程序员知道要避免这种邪恶,因为他们知道,黑暗森林深处有着多重继承这个">
+<meta property="og:updated_time" content="2014-12-07T15:15:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="笨办法学Python--exercise44.继承Vs.包含">
+<meta name="twitter:description" content="在有关英雄战胜邪恶的童话中，总是有某种形式的黑暗森林。它可能是一个山洞，森林，另一个星球或者其他地方，每个人都知道英雄不应该去。当然，当不就之后坏人被你找到的时候，你发现，英雄已经去那个愚蠢的森林里杀坏人去了。看起来英雄进入了一种状态，这种状态要求英雄必须在这个邪恶的森林中冒险。 
+在面向对象编程中，继承就是那个黑暗森林。有经验的程序员知道要避免这种邪恶,因为他们知道,黑暗森林深处有着多重继承这个">
+  
+    <link rel="alternative" href="/atom.xml" title="flyouting and shirley" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">flyouting and shirley</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">记录一点一滴</p>
+		
+
+		<!--
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>Über</li>
+						
+					</ul>
+				</div>
+			</div>
+		-->
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">首页</a></li>
+				        
+							<li><a href="/archives">文章列表</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				<div class="switch-part switch-part2"><script>var n ='b-26003349-pe-f-801';var ch ='pc_6'; var w1 = 200;var h1 = 280;</script> <script src='http://static.luna.58.com/js/mad.js'></script></div>
+				
+				<!--
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/AndroidStudio/" style="font-size: 10px;">AndroidStudio</a> <a href="/tags/DB/" style="font-size: 12.5px;">DB</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/ImageSpan/" style="font-size: 10px;">ImageSpan</a> <a href="/tags/ORM/" style="font-size: 12.5px;">ORM</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/activeandroid/" style="font-size: 10px;">activeandroid</a> <a href="/tags/android/" style="font-size: 17.5px;">android</a> <a href="/tags/intent/" style="font-size: 10px;">intent</a> <a href="/tags/key/" style="font-size: 10px;">key</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/span/" style="font-size: 10px;">span</a> <a href="/tags/transitions/" style="font-size: 10px;">transitions</a> <a href="/tags/volley/" style="font-size: 15px;">volley</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/后台，多线程/" style="font-size: 10px;">后台，多线程</a> <a href="/tags/相机/" style="font-size: 15px;">相机</a> <a href="/tags/终端/" style="font-size: 10px;">终端</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+					</div>
+				</section>
+				-->
+				
+				<!--
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				-->
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">flyouting and shirley</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">flyouting and shirley</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">记录一点一滴</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">首页</a></li>
+		        
+					<li><a href="/archives">文章列表</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-learn-python-the-hard-way-exercise44" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/30/learn-python-the-hard-way-exercise44/" class="article-date">
+  	<time datetime="2014-11-30T02:21:35.000Z" itemprop="datePublished">2014-11-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      笨办法学Python--exercise44.继承Vs.包含
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Python/">Python</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在有关英雄战胜邪恶的童话中，总是有某种形式的黑暗森林。它可能是一个山洞，森林，另一个星球或者其他地方，每个人都知道英雄不应该去。当然，当不就之后坏人被你找到的时候，你发现，英雄已经去那个愚蠢的森林里杀坏人去了。看起来英雄进入了一种状态，这种状态要求英雄必须在这个邪恶的森林中冒险。 </p>
+<p>在面向对象编程中，继承就是那个黑暗森林。有经验的程序员知道要避免这种邪恶,因为他们知道,黑暗森林深处有着多重继承这个邪恶的皇后。 她喜欢那她那庞大的牙齿吃掉软件和程序员。但这个森林是如此强大，如此诱人，几乎每一个程序员都必须进入它，与邪恶的皇后战斗，尽量做到全身而退，才可以称自己是真正的程序员。你不能抗拒的继承森林的诱惑，所以你进去了。冒险之后，你试着远离那个邪恶的森林，当你再次被迫进入的时候，你会携带一支军队进入（这段翻译的太烂了，实在没办法把编程和童话联系起来！）</p>
+<p>这是一种有趣的方式来解说我要在这节练习教你的东西，它叫做继承，当你使用它的时候，一定要当心再当心。正在森林里和女王战斗的程序员可能告诉你你必须进去。他们这么说是因为他们需要你的帮忙，可能因为他们创建了太多他们已经无法掌控的东西。但是你一定要记得：</p>
+<p>大多数继承的用途，可以简化或用组合物所取代，并应不惜一切代价避免多重继承。</p>
+<h2 id="什么是继承"><a href="#什么是继承" class="headerlink" title="什么是继承"></a>什么是继承</h2><p>继承是用来描述一个类从它的父类那里获得大部分甚至全部父类的功能。当你写下<code>class Foo(Bar)</code>的时候，就发生了继承，这句代码的意思是“创建一个叫做Foo的类，并继承Bar” 。当你执行这句的时候，编程语言使得<code>Foo</code>的实例所有的行为都跟<code>Bar</code>的实例一样。这么做，可以让你在类<code>Bar</code>中放一些通用功能，而那些需要特殊定制的函数或功能可以放在类 <code>Foo</code> 中。</p>
+<p>当你需要做这些特殊化函数编写的时候，父子类之间有3中交互方法：</p>
+<blockquote>
+<ol>
+<li>子类的方法隐性继承父类方法</li>
+<li>子类重写父类的方法</li>
+<li>对子类的操作改变父类</li>
+</ol>
+</blockquote>
+<p>我将按顺序给你展示这3种交互方式，并给你看它们的代码。</p>
+<h3 id="隐性继承"><a href="#隐性继承" class="headerlink" title="隐性继承"></a>隐性继承</h3><p>首先，我将给你展示的是隐性继承发生在你在父类中定义了方法，而在子类中没有：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">implicit</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">"PARENT implicit()"</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span><span class="params">(Parent)</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">dad = Parent()</span><br><span class="line">son = Child()</span><br><span class="line"></span><br><span class="line">dad.implicit()</span><br><span class="line">son.implicit()</span><br></pre></td></tr></table></figure></p>
+<p>在<code>class Child</code>下使用<code>pass</code>的目的是告诉Python，在这里你想要一个空白的块。这里创建了一个叫做<code>Child</code>的类，但是没有在这个类中定义任何性的方法。它将从类<code>Parent</code>继承获得所有的方法。当你执行这段代码的时候，你会看到：</p>
+<pre><code>$ python ex44a.py
+PARENT implicit()
+PARENT implicit()
+</code></pre><p>注意一下，尽管我再代码的13行调用了<code>son.implicit()</code>，而类<code>Child</code>并没有一个定义叫做<code>implicit</code>的方法，代码仍然正常工作了，因为它调用了<code>Parent</code>中定义的同名方法。这个高速你的是：如果你在基类(i.e., <code>Parent</code>)中定义了一个方法，那么所有的子类(i.e., <code>Child</code>) 都可以自动的获得这个功能。对于你需要在很多类中有重复的方法来说，非常方便。</p>
+<h3 id="重写方法"><a href="#重写方法" class="headerlink" title="重写方法"></a>重写方法</h3><p>关于有些方法是隐式调用的问题原因在于有时候你想让子类有不同的表现。这时你想重写子类中的方法且有效的覆盖父类中的方法。要做到这一点，你只需要在子类中定义一个同名的方法就行，例如<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">override</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">"PARENT override()"</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span><span class="params">(Parent)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">override</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">"CHILD override()"</span></span><br><span class="line"></span><br><span class="line">dad = Parent()</span><br><span class="line">son = Child()</span><br><span class="line"></span><br><span class="line">dad.override()</span><br><span class="line">son.override()</span><br></pre></td></tr></table></figure></p>
+<p>在这个例子中，两个类中我都有一个叫做<code>override</code>的方法，所以让我们来看看当你运行此例时都发生了什么</p>
+<pre><code>$ python ex44b.py
+PARENT override()
+CHILD override()
+</code></pre><p>你可以看到，当第14行执行时，它执行了父类的<code>override</code>方法，因为变量<code>dad</code>是一个父类实例，但是当第15行执行时，打印的是子类的<code>override</code>方法，这是因为<code>son</code>是一个子类的实例，这个子类重写了那个方法，定义了自己的版本。</p>
+<p>休息以下，在继续下面的内容之前，尝试练习这两种方法。</p>
+<h3 id="之前或之后改变父类"><a href="#之前或之后改变父类" class="headerlink" title="之前或之后改变父类"></a>之前或之后改变父类</h3><p>第三种使用继承的方式比较特别，你想在父类版本的方法执行行为前后给出些提示，你首先像上个例子那样重写了方法，接着你使用一个Python内建的叫做<code>super</code>的方法得到了父类版本的方法调用。以下这个例子就是这么做的，你可以感受一下上面的描述是什么意思。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">altered</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">"PARENT altered()"</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span><span class="params">(Parent)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">altered</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">"CHILD, BEFORE PARENT altered()"</span></span><br><span class="line">        super(Child, self).altered()</span><br><span class="line">        <span class="keyword">print</span> <span class="string">"CHILD, AFTER PARENT altered()"</span></span><br><span class="line"></span><br><span class="line">dad = Parent()</span><br><span class="line">son = Child()</span><br><span class="line"></span><br><span class="line">dad.altered()</span><br><span class="line">son.altered()</span><br></pre></td></tr></table></figure>
+<p>重要的地方在于9-11行，在<code>son.altered()</code>被调用前我做了如下操作：</p>
+<blockquote>
+<ol>
+<li>因为我已经重写了子类的<code>Child.altered</code>方法，第9行的运行结果应该和你的期待是一样</li>
+<li>在这个例子中，我打算使用<code>super</code>来得到父类的<code>Parent.altered</code>版本。</li>
+<li>在第10行，我调用了<code>super(Child, self).altered()</code>方法, 这个方法能够意识到继承的发生，并给你获得类<code>Parent</code>。你可以这样读这行代码“调用<code>super</code>，参数为<code>Child</code>和<code>self</code>,然后不管它返回什么，调用方法<code>altered</code> ”</li>
+<li>在这种情况下，父类的<code>Parent.altered</code>版本执行，并打印出父类的信息。</li>
+<li>最后，代码从<code>Parent.altered</code> 返回， <code>Child.altered</code> 方法继续打印出剩下的信息。</li>
+</ol>
+</blockquote>
+<p>运行了程序之后，你应该能看到下面的内容：</p>
+<pre><code>$ python ex44c.py
+PARENT altered()
+CHILD, BEFORE PARENT altered()
+PARENT altered()
+CHILD, AFTER PARENT altered()
+</code></pre><h3 id="三种组合使用"><a href="#三种组合使用" class="headerlink" title="三种组合使用"></a>三种组合使用</h3><p>为了论证上面的三种方式，我有一个最终版本的文件，该文件给你展示了每一种继承方式的交互：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">override</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">"PARENT override()"</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">implicit</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">"PARENT implicit()"</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">altered</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">"PARENT altered()"</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span><span class="params">(Parent)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">override</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">"CHILD override()"</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">altered</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">"CHILD, BEFORE PARENT altered()"</span></span><br><span class="line">        super(Child, self).altered()</span><br><span class="line">        <span class="keyword">print</span> <span class="string">"CHILD, AFTER PARENT altered()"</span></span><br><span class="line"></span><br><span class="line">dad = Parent()</span><br><span class="line">son = Child()</span><br><span class="line"></span><br><span class="line">dad.implicit()</span><br><span class="line">son.implicit()</span><br><span class="line"></span><br><span class="line">dad.override()</span><br><span class="line">son.override()</span><br><span class="line"></span><br><span class="line">dad.altered()</span><br><span class="line">son.altered()</span><br></pre></td></tr></table></figure></p>
+<p>通读每一行代码，不管有没有被重写，写一个注释用来解释每一行实现了什么，然后将代码运行起来，确认你的结果和你的期望是否一致：</p>
+<pre><code>$ python ex44d.py
+PARENT implicit()
+PARENT implicit()
+PARENT override()
+CHILD override()
+PARENT altered()
+CHILD, BEFORE PARENT altered()
+PARENT altered()
+CHILD, AFTER PARENT altered()
+</code></pre><h3 id="使用super-的原因"><a href="#使用super-的原因" class="headerlink" title="使用super()的原因"></a>使用<code>super()</code>的原因</h3><p>这看起来应该是常识，但是随后我们即将进入一个叫做所多重继承的麻烦事。 多重继承是指当你定义一个的类的时候，从一个或多个类继承，例如:</p>
+<pre><code>class SuperFun(Child, BadStuff):
+    pass
+</code></pre><p>上述代码的意思是, “创建一个叫做<code>SuperFun</code>的类，它同时继承类<code>Child</code> 和类 <code>BadStuff</code> .”</p>
+<p>在这个例子中，只要你隐式的调用任何<code>SuperFun</code>的实例，Python把必须从类<code>Child</code>和<code>BadStuff</code>查询可能的函数，但是，查找也需要一个顺序。为了做到这点，Python使用”方法解析顺序”(MRO)和一种叫做C3的运算法则来直接获得。</p>
+<p>因为MRO是复杂的，并使用了明确定义的算法，Python不能让你来获得正确的MRO，相反的，Python提供给你<code>super()</code>方法，它用来处理所有这一切你需要改变类型的行为，如同我在<code>Child.altered</code>所实现的。使用<code>super()</code>你不必担心得到的是否是正确的方法，Python会帮你找到正确的那个。</p>
+<h3 id="init-中使用super"><a href="#init-中使用super" class="headerlink" title="__init__中使用super()"></a><code>__init__</code>中使用<code>super()</code></h3><p><code>super()</code>最常见的用途是在基类的<code>__init__</code>方法里。这通常是你需要在子类里实现什么事情，然后完成父类初始化的地方。以下是在类<code>Child</code>中这样做的一个简单的例子:</p>
+<pre><code>class Child(Parent):
+
+    def __init__(self, stuff):
+        self.stuff = stuff
+        super(Child, self).__init__()
+</code></pre><p>除了我在<code>__init__</code>中初始化父类之前定义了一些变量，这个跟上面的例子<code>Child.altered</code>几乎是一样的。</p>
+<h2 id="包含"><a href="#包含" class="headerlink" title="包含"></a>包含</h2><p>继承是有用的， 但另一种方式仅仅是用其他类和模块就做到了同样的事情， 而没有使用隐性继承。如果你看一下使用继承的三种方式，其中的两种方法涉及编写新的代码来替换或改变父类功能。这可以很容易地通过调用模块函数复制。下面是一个例子：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Other</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">override</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">"OTHER override()"</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">implicit</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">"OTHER implicit()"</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">altered</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">"OTHER altered()"</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.other = Other()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">implicit</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.other.implicit()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">override</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">"CHILD override()"</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">altered</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">"CHILD, BEFORE OTHER altered()"</span></span><br><span class="line">        self.other.altered()</span><br><span class="line">        <span class="keyword">print</span> <span class="string">"CHILD, AFTER OTHER altered()"</span></span><br><span class="line"></span><br><span class="line">son = Child()</span><br><span class="line"></span><br><span class="line">son.implicit()</span><br><span class="line">son.override()</span><br><span class="line">son.altered()</span><br></pre></td></tr></table></figure>
+<p>在这段代码中，我没有使用名字<code>Parent</code>，因为没有父子的<code>is-a</code>关系了。这是一个<code>has-a</code>关系,在这个关系中<code>Child</code> <code>has-a</code> <code>Other</code>被用来保证代码的正常工作。当我运行代码时，看到以下输出： </p>
+<pre><code>$ python ex44e.py
+OTHER implicit()
+CHILD override()
+CHILD, BEFORE OTHER altered()
+OTHER altered()
+CHILD, AFTER OTHER altered()
+</code></pre><p>你可以看到<code>Child</code>和<code>Other</code>中的大部分代码实现了相同的功能。唯一的不同之处在于我必须定义一个 <code>Child.implicit</code> 方法去做一个动作. 然后我可以问问自己，如果我需要一个<code>Other</code>类，是不是只要把它放在一个叫做<code>other.py</code>的模块中就可以?</p>
+<h2 id="什么时候用继承，什么时候用包含"><a href="#什么时候用继承，什么时候用包含" class="headerlink" title="什么时候用继承，什么时候用包含"></a>什么时候用继承，什么时候用包含</h2><p>继承与包含的问题可以归结为试图解决可重复使用代码的问题。你不想在你的软件中有重复的代码，因为这不是高效的干净的代码。继承通过创建一种机制，让你在基类中有隐含的功能来解决这个问题。而包含则是通过给你的模块和函数可以在其他类别被调用来解决这个问题。</p>
+<p>如果这两种方案都能解决代码复用问题的话，哪一个更合适呢？答案是主观的，这看起来是令人难以相信的，但是我会给你3个指导性原则：</p>
+<blockquote>
+<ol>
+<li>不惜一切代价避免多重继承，因为它太复杂太不可靠。如果你必须要使用它，那么一定要知道类的层次结构，并花时间找到每一个类是从哪里来的。</li>
+<li>将代码封装为模块，这样就可以在许多不同的地方或情况使用。</li>
+<li>只有当有明显相关的可重用的代码，且在一个共同概念下时，可以使用继承。</li>
+</ol>
+</blockquote>
+<p>不要变成规则的奴隶。关于面向对象编程要记住的是：这是一个程序员创建打包和共享代码的社会习俗。因为它是一个社会习俗，但在Python的法典中，你可能会因为跟你合作的人而被迫避开这些规则。在这种情况下，了解他们是如何使用规则的，然后去适应形势。</p>
+<h2 id="附加题"><a href="#附加题" class="headerlink" title="附加题"></a>附加题</h2><p>这节练习中只有一个附加题，因为这其实是一个很大的练习。阅读 <code>http://www.python.org/dev/peps/pep-0008/</code> 并尝试将它应用到你的代码中。你会发现，有些内容跟你从这本书学到的不同，但是现在你应该能够理解他们的建议，并将其应用到自己的代码中。本书中剩余部分的代码可能会也可能不会遵循这些准则，这个要取决于这些准则是否会使代码更加混乱。我建议你也这样做，因为理解比让大家都对你深奥的知识有印象更重要。</p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="Q-我如何更好的解决我以前没有遇到的问题？"><a href="#Q-我如何更好的解决我以前没有遇到的问题？" class="headerlink" title="Q: 我如何更好的解决我以前没有遇到的问题？"></a>Q: 我如何更好的解决我以前没有遇到的问题？</h3><blockquote>
+<p>更好的解决问题的办法只有一个，那就是尽量多的自己解决遇到的问题。通常，人们遇到一个棘手的问题，就会冲出去寻找答案。当你必须要把事情做好的时候，这种方法很好，但是如果你有时间的话，最好还是自己想办法解决这个问题。尽你所能的思考这个问题，尝试一切可能的办法，直到你解决这个问题。在此之后你找到的答案，你觉得会更加令人满意，而且你还会得到更好的解决问题的方法。</p>
+</blockquote>
+<h3 id="Q-对象不是复制的类吗？"><a href="#Q-对象不是复制的类吗？" class="headerlink" title="Q: 对象不是复制的类吗？"></a>Q: 对象不是复制的类吗？</h3><blockquote>
+<p>在某些语言里(比如 JavaScript) 是这样的。这些被称为原型的语言，这些语言中对象和类没有什么不同之处。然而在Python中，类作为模板，可以生成新对象，类似于如何使用模具制造硬币。</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/11/30/learn-python-the-hard-way-exercise45/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          笨办法学Python--exercise45.你来制作一个游戏
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/11/29/learn-python-the-hard-way-exercise43/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">笨办法学Python--exercise43.基本的面向对象的分析和设计</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="learn-python-the-hard-way-exercise44" data-title="笨办法学Python--exercise44.继承Vs.包含" data-url="http://coofee.me/2014/11/30/learn-python-the-hard-way-exercise44/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"flyouting"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 flyouting and shirley
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

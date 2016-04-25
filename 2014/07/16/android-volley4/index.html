@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Volley框架的增强一 | flyouting and shirley</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Volley框架整体是很适合快速开发时使用的，但是在某些项目中，纠结于一些需求，Volley框架就需要自己动手改一改了。
+##开放网络请求dispatcher线程数量
+RequestQueue的构造函数中是可以定义网络请求线程池的数量的，但是在Volley中的newRequestQueue()方法中却没有线程数量的参数可以传入。这里可以添加一个。顺便可以在这里添加自定义L2缓冲区的参数。改动后代码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Volley框架的增强一">
+<meta property="og:url" content="http://coofee.me/2014/07/16/android-volley4/index.html">
+<meta property="og:site_name" content="flyouting and shirley">
+<meta property="og:description" content="Volley框架整体是很适合快速开发时使用的，但是在某些项目中，纠结于一些需求，Volley框架就需要自己动手改一改了。
+##开放网络请求dispatcher线程数量
+RequestQueue的构造函数中是可以定义网络请求线程池的数量的，但是在Volley中的newRequestQueue()方法中却没有线程数量的参数可以传入。这里可以添加一个。顺便可以在这里添加自定义L2缓冲区的参数。改动后代码">
+<meta property="og:updated_time" content="2014-11-05T14:42:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Volley框架的增强一">
+<meta name="twitter:description" content="Volley框架整体是很适合快速开发时使用的，但是在某些项目中，纠结于一些需求，Volley框架就需要自己动手改一改了。
+##开放网络请求dispatcher线程数量
+RequestQueue的构造函数中是可以定义网络请求线程池的数量的，但是在Volley中的newRequestQueue()方法中却没有线程数量的参数可以传入。这里可以添加一个。顺便可以在这里添加自定义L2缓冲区的参数。改动后代码">
+  
+    <link rel="alternative" href="/atom.xml" title="flyouting and shirley" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">flyouting and shirley</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">记录一点一滴</p>
+		
+
+		<!--
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>Über</li>
+						
+					</ul>
+				</div>
+			</div>
+		-->
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">首页</a></li>
+				        
+							<li><a href="/archives">文章列表</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				<div class="switch-part switch-part2"><script>var n ='b-26003349-pe-f-801';var ch ='pc_6'; var w1 = 200;var h1 = 280;</script> <script src='http://static.luna.58.com/js/mad.js'></script></div>
+				
+				<!--
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/AndroidStudio/" style="font-size: 10px;">AndroidStudio</a> <a href="/tags/DB/" style="font-size: 12.5px;">DB</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/ImageSpan/" style="font-size: 10px;">ImageSpan</a> <a href="/tags/ORM/" style="font-size: 12.5px;">ORM</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/activeandroid/" style="font-size: 10px;">activeandroid</a> <a href="/tags/android/" style="font-size: 17.5px;">android</a> <a href="/tags/intent/" style="font-size: 10px;">intent</a> <a href="/tags/key/" style="font-size: 10px;">key</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/span/" style="font-size: 10px;">span</a> <a href="/tags/transitions/" style="font-size: 10px;">transitions</a> <a href="/tags/volley/" style="font-size: 15px;">volley</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/后台，多线程/" style="font-size: 10px;">后台，多线程</a> <a href="/tags/相机/" style="font-size: 15px;">相机</a> <a href="/tags/终端/" style="font-size: 10px;">终端</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+					</div>
+				</section>
+				-->
+				
+				<!--
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				-->
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">flyouting and shirley</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">flyouting and shirley</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">记录一点一滴</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">首页</a></li>
+		        
+					<li><a href="/archives">文章列表</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-android-volley4" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/07/16/android-volley4/" class="article-date">
+  	<time datetime="2014-07-16T14:39:38.000Z" itemprop="datePublished">2014-07-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Volley框架的增强一
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/volley/">volley</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/笔记/">笔记</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Volley框架整体是很适合快速开发时使用的，但是在某些项目中，纠结于一些需求，Volley框架就需要自己动手改一改了。</p>
+<p>##开放网络请求dispatcher线程数量</p>
+<p>RequestQueue的构造函数中是可以定义网络请求线程池的数量的，但是在Volley中的newRequestQueue()方法中却没有线程数量的参数可以传入。这里可以添加一个。顺便可以在这里添加自定义L2缓冲区的参数。改动后代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">     * 创建一个默认的请求队列实例，启动worker线程池 Creates a default instance of the worker pool</span><br><span class="line">     * and calls &#123;@link RequestQueue#start()&#125; on it.</span><br><span class="line">     * </span><br><span class="line">     * @param context A &#123;@link Context&#125; 用于创建 cache 文件夹.</span><br><span class="line">     * @param stack An &#123;@link HttpStack&#125; 用于网络, 默认为null.</span><br><span class="line">     * @param threadPoolSize 线程池数量</span><br><span class="line">     * @param cache L2级磁盘缓冲区</span><br><span class="line">     * @return A started &#123;@link RequestQueue&#125; instance.</span><br><span class="line">     */</span><br><span class="line">    public static RequestQueue newRequestQueue(Context context, HttpStack stack, Cache cache,</span><br><span class="line">            int threadPoolSize) &#123;</span><br><span class="line">        File cacheDir = new File(context.getCacheDir(), DEFAULT_CACHE_DIR);</span><br><span class="line"></span><br><span class="line">        String userAgent = &quot;volley/0&quot;;</span><br><span class="line">        try &#123;</span><br><span class="line">            String packageName = context.getPackageName();</span><br><span class="line">            PackageInfo info = context.getPackageManager().getPackageInfo(packageName, 0);</span><br><span class="line">            userAgent = packageName + &quot;/&quot; + info.versionCode;</span><br><span class="line">        &#125; catch (NameNotFoundException e) &#123;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (stack == null) &#123;</span><br><span class="line">            if (Build.VERSION.SDK_INT &gt;= 9) &#123;</span><br><span class="line">                stack = new HurlStack();</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                // Gingerbread之前的版本, 采用HttpUrlConnection 不太合适.</span><br><span class="line">                // 原因参考这里:</span><br><span class="line">                // http://android-developers.blogspot.com/2011/09/androids-http-clients.html</span><br><span class="line">                stack = new HttpClientStack(AndroidHttpClient.newInstance(userAgent));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Network network = new BasicNetwork(stack);</span><br><span class="line">        RequestQueue queue;</span><br><span class="line">        if (threadPoolSize &lt;= 0) &#123;</span><br><span class="line">            queue = new RequestQueue(cache == null ? new DiskBasedCache(cacheDir) : cache, network);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            queue = new RequestQueue(cache == null ? new DiskBasedCache(cacheDir) : cache, network,</span><br><span class="line">                    threadPoolSize);</span><br><span class="line">        &#125;</span><br><span class="line">        queue.start();</span><br><span class="line"></span><br><span class="line">        return queue;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>##修改网络超时时间</p>
+<p>框架中默认的超时时间是2500毫秒，在中国这种环境中简直无法适应，所以稍微调整高点。10秒就还可以了，正常的网络这个值就行，如果不行也可以调整为30秒。修改文件为DefaultRetryPolicy<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/** 默认的超时时间 */</span><br><span class="line">    public static final int DEFAULT_TIMEOUT_MS = 10000;</span><br></pre></td></tr></table></figure></p>
+<p>##定义一个优化后的ImageLoader</p>
+<p>实际开发中一定会处理这样一个问题，ListView的每个Item都包含一个图片，在我们快速滑动ListView的时候，每个图片获取的逻辑操作都被启动了，但是由于Item的复用机制，在一个Item被复用的时候，这个item调起的图片请求线程可能还正在运行或者在排队，这时候我们需要把这个线程取消掉以节约资源。</p>
+<p>Volley框架中有个NetworkImageView，在类里边包含了一个ImageContainer，当view被复用的时候，发现这个ImageContainer存在，我们就可以从这里获取之前的url，去队列里取消掉。但是这样的逻辑在默认的ImageLoader里是不存在的，我们需要自己添加一个。</p>
+<p>主要逻辑代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">public ImageContainer get(String requestUrl, ImageView imageView, Drawable placeHolder,</span><br><span class="line">            int maxWidth, int maxHeight) &#123;</span><br><span class="line"></span><br><span class="line">        // 当这个view被复用，查找是否有旧的图片加载请求绑定到这个ImageView</span><br><span class="line">        ImageContainer imageContainer = imageView.getTag() != null</span><br><span class="line">                &amp;&amp; imageView.getTag() instanceof ImageContainer ? (ImageContainer) imageView</span><br><span class="line">                .getTag() : null;</span><br><span class="line"></span><br><span class="line">        // 找到之前请求的图片地址</span><br><span class="line">        String recycledImageUrl = imageContainer != null ? imageContainer.getRequestUrl() : null;</span><br><span class="line"></span><br><span class="line">        // 如果新的图片地址为null，或者跟之前的请求地址不同</span><br><span class="line">        if (requestUrl == null || !requestUrl.equals(recycledImageUrl)) &#123;</span><br><span class="line">            if (imageContainer != null) &#123;</span><br><span class="line">                // 取消之前的请求</span><br><span class="line">                imageContainer.cancelRequest();</span><br><span class="line">                imageView.setTag(null);</span><br><span class="line">            &#125;</span><br><span class="line">            if (requestUrl != null) &#123;</span><br><span class="line">                // 启动一个新的Request去请求新的地址</span><br><span class="line">                imageContainer = get(requestUrl,</span><br><span class="line">                        getImageListener(mResources, imageView, placeHolder, mFadeInImage),</span><br><span class="line">                        maxWidth, maxHeight);</span><br><span class="line">                // 把Request作为tag存入对应的ImageView</span><br><span class="line">                imageView.setTag(imageContainer);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                imageView.setImageDrawable(placeHolder);</span><br><span class="line">                imageView.setTag(null);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return imageContainer;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>###添加一个返回字节数据的ImageRequest</p>
+<p>Volley中的ImageRequest有默认的数据解析，会转换成符合要求的bitmap返回，项目中有可能是gif类图片，如果转换成bitmap，会只有第一帧。这时我们需要拿到返回的数据，转换成我们需要的类型。而不是统统的都是bitmap。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 通过一个url获取图片数据，返回值为byte[]</span><br><span class="line"> * </span><br><span class="line"> * @author coffee</span><br><span class="line"> */</span><br><span class="line">public class OtherImageRequest extends Request&lt;byte[]&gt; &#123;</span><br><span class="line">    /** 请求超时时间 */</span><br><span class="line">    private static final int IMAGE_TIMEOUT_MS = 2000;</span><br><span class="line"></span><br><span class="line">    /** 重试次数 */</span><br><span class="line">    private static final int IMAGE_MAX_RETRIES = 2;</span><br><span class="line"></span><br><span class="line">    /** 超时时间的乘数，重试时才用到 */</span><br><span class="line">    private static final float IMAGE_BACKOFF_MULT = 2f;</span><br><span class="line"></span><br><span class="line">    private final Response.Listener&lt;byte[]&gt; mListener;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Creates a new image request</span><br><span class="line">     * </span><br><span class="line">     * @param url URL of the image</span><br><span class="line">     * @param listener Listener to receive</span><br><span class="line">     * @param errorListener Error listener, or null to ignore errors</span><br><span class="line">     */</span><br><span class="line">    public OtherImageRequest(String url, Response.Listener&lt;byte[]&gt; listener,</span><br><span class="line">            Response.ErrorListener errorListener) &#123;</span><br><span class="line">        super(Method.GET, url, errorListener);</span><br><span class="line">        setRetryPolicy(new DefaultRetryPolicy(IMAGE_TIMEOUT_MS, IMAGE_MAX_RETRIES,</span><br><span class="line">                IMAGE_BACKOFF_MULT));</span><br><span class="line">        mListener = listener;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Priority getPriority() &#123;</span><br><span class="line">        return Priority.LOW;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected Response&lt;byte[]&gt; parseNetworkResponse(NetworkResponse response) &#123;</span><br><span class="line">        return Response.success(response.data, HttpHeaderParser.parseCacheHeaders(response));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void deliverResponse(byte[] response) &#123;</span><br><span class="line">        mListener.onResponse(response);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>###给图片添加有效期<br>在图片获取中，一般服务端是没有<code>cache-control</code>的，所有图片在文件缓冲中的有效期往往是没有设置的，也就代表这没有这层缓冲。所以需要给图片缓冲加个有效期。在<code>HttpHeaderParser</code>文件中有<code>个parseCacheHeaders</code>方法是用来解析头文件，设置有效期的。所以，这里可以添加一个方法，专门针对<code>ImageRequest</code>来处理有效期。<br>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">    * Extracts a &#123;@link Cache.Entry&#125; from a &#123;@link NetworkResponse&#125;. This will</span><br><span class="line">    * ignore the http server&apos;s Cache-Control.</span><br><span class="line">    * </span><br><span class="line">    * @param response The network response to parse headers from</span><br><span class="line">    * @return a cache entry for the given response, or null if the response is</span><br><span class="line">    *         not cacheable.</span><br><span class="line">    */</span><br><span class="line">   public static Cache.Entry parseImageCacheHeaders(NetworkResponse response) &#123;</span><br><span class="line">       long now = System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">       Map&lt;String, String&gt; headers = response.headers;</span><br><span class="line"></span><br><span class="line">       long serverDate = 0;</span><br><span class="line">       String serverEtag = null;</span><br><span class="line">       String headerValue;</span><br><span class="line"></span><br><span class="line">       headerValue = headers.get(&quot;Date&quot;);</span><br><span class="line">       if (headerValue != null) &#123;</span><br><span class="line">           serverDate = parseDateAsEpoch(headerValue);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       serverEtag = headers.get(&quot;ETag&quot;);</span><br><span class="line">       // in 30 minutes cache will be hit, but also refreshed on background</span><br><span class="line">       final long cacheHitButRefreshed = 30 * 60 * 1000;</span><br><span class="line">       // in 24 hours this cache entry expires completely</span><br><span class="line">       final long cacheExpired = 24 * 60 * 60 * 1000;</span><br><span class="line">       final long softExpire = now + cacheHitButRefreshed;</span><br><span class="line">       final long ttl = now + cacheExpired;</span><br><span class="line"></span><br><span class="line">       Cache.Entry entry = new Cache.Entry();</span><br><span class="line">       entry.data = response.data;</span><br><span class="line">       entry.etag = serverEtag;</span><br><span class="line">       entry.softTtl = softExpire;</span><br><span class="line">       entry.ttl = ttl;</span><br><span class="line">       entry.serverDate = serverDate;</span><br><span class="line">       entry.responseHeaders = headers;</span><br><span class="line"></span><br><span class="line">       return entry;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<p>设定30分钟后再次访问需要刷新，24小时文件完全过期，需要重新联网获取。<br>然后在ImageRequest中解析header的地方替换方法即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if (bitmap == null) &#123;</span><br><span class="line">            return Response.error(new ParseError(response));</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return Response.success(bitmap, HttpHeaderParser.parseImageCacheHeaders(response));</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></p>
+<p>之后的工作有添加支持gzip的网络访问，添加自定义的L2缓冲区，添加网络请求进度。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/07/16/android-volley5/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Volley框架的增强二
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/07/14/android-volley3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Volley源码学习笔记三</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="android-volley4" data-title="Volley框架的增强一" data-url="http://coofee.me/2014/07/16/android-volley4/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"flyouting"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 flyouting and shirley
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

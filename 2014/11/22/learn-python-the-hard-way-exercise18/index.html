@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>笨办法学Python--exercise18.命名, 变量, 代码, 函数 | flyouting and shirley</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="标题包含的内容够多的吧？接下来我要教你“函数(function)”了！说到函数，不一样的人会对它有不一样的理解和使用方法，不过我只会教你现在能用到的最简单的使用方式。
+函数可以做三样事情：
+
+
+它们给代码片段命名，就跟“变量”给字符串和数字命名一样。
+它们可以接受参数，就跟你的脚本接受argv一样。
+通过使用 #1 和 #2，它们可以让你创建“微型脚本”或者“小命令”。
+
+
+python中你可以使">
+<meta property="og:type" content="article">
+<meta property="og:title" content="笨办法学Python--exercise18.命名, 变量, 代码, 函数">
+<meta property="og:url" content="http://coofee.me/2014/11/22/learn-python-the-hard-way-exercise18/index.html">
+<meta property="og:site_name" content="flyouting and shirley">
+<meta property="og:description" content="标题包含的内容够多的吧？接下来我要教你“函数(function)”了！说到函数，不一样的人会对它有不一样的理解和使用方法，不过我只会教你现在能用到的最简单的使用方式。
+函数可以做三样事情：
+
+
+它们给代码片段命名，就跟“变量”给字符串和数字命名一样。
+它们可以接受参数，就跟你的脚本接受argv一样。
+通过使用 #1 和 #2，它们可以让你创建“微型脚本”或者“小命令”。
+
+
+python中你可以使">
+<meta property="og:updated_time" content="2014-11-27T13:43:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="笨办法学Python--exercise18.命名, 变量, 代码, 函数">
+<meta name="twitter:description" content="标题包含的内容够多的吧？接下来我要教你“函数(function)”了！说到函数，不一样的人会对它有不一样的理解和使用方法，不过我只会教你现在能用到的最简单的使用方式。
+函数可以做三样事情：
+
+
+它们给代码片段命名，就跟“变量”给字符串和数字命名一样。
+它们可以接受参数，就跟你的脚本接受argv一样。
+通过使用 #1 和 #2，它们可以让你创建“微型脚本”或者“小命令”。
+
+
+python中你可以使">
+  
+    <link rel="alternative" href="/atom.xml" title="flyouting and shirley" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">flyouting and shirley</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">记录一点一滴</p>
+		
+
+		<!--
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>Über</li>
+						
+					</ul>
+				</div>
+			</div>
+		-->
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">首页</a></li>
+				        
+							<li><a href="/archives">文章列表</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				<div class="switch-part switch-part2"><script>var n ='b-26003349-pe-f-801';var ch ='pc_6'; var w1 = 200;var h1 = 280;</script> <script src='http://static.luna.58.com/js/mad.js'></script></div>
+				
+				<!--
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/AndroidStudio/" style="font-size: 10px;">AndroidStudio</a> <a href="/tags/DB/" style="font-size: 12.5px;">DB</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/ImageSpan/" style="font-size: 10px;">ImageSpan</a> <a href="/tags/ORM/" style="font-size: 12.5px;">ORM</a> <a href="/tags/Python/" style="font-size: 12.5px;">Python</a> <a href="/tags/activeandroid/" style="font-size: 10px;">activeandroid</a> <a href="/tags/android/" style="font-size: 17.5px;">android</a> <a href="/tags/intent/" style="font-size: 10px;">intent</a> <a href="/tags/key/" style="font-size: 10px;">key</a> <a href="/tags/layout/" style="font-size: 10px;">layout</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/span/" style="font-size: 10px;">span</a> <a href="/tags/transitions/" style="font-size: 10px;">transitions</a> <a href="/tags/volley/" style="font-size: 15px;">volley</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/后台，多线程/" style="font-size: 10px;">后台，多线程</a> <a href="/tags/相机/" style="font-size: 15px;">相机</a> <a href="/tags/终端/" style="font-size: 10px;">终端</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+					</div>
+				</section>
+				-->
+				
+				<!--
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				-->
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">flyouting and shirley</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://ww2.sinaimg.cn/small/4a242739gw1eu09kkcr5xj2050050glt.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">flyouting and shirley</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">记录一点一滴</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">首页</a></li>
+		        
+					<li><a href="/archives">文章列表</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/flyouting" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/flyouting" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/flyouting" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="mailto:flyouting@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-learn-python-the-hard-way-exercise18" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/22/learn-python-the-hard-way-exercise18/" class="article-date">
+  	<time datetime="2014-11-22T14:53:55.000Z" itemprop="datePublished">2014-11-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      笨办法学Python--exercise18.命名, 变量, 代码, 函数
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Python/">Python</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>标题包含的内容够多的吧？接下来我要教你“函数(function)”了！说到函数，不一样的人会对它有不一样的理解和使用方法，不过我只会教你现在能用到的最简单的使用方式。</p>
+<p>函数可以做三样事情：</p>
+<blockquote>
+<ol>
+<li>它们给代码片段命名，就跟“变量”给字符串和数字命名一样。</li>
+<li>它们可以接受参数，就跟你的脚本接受<code>argv</code>一样。</li>
+<li>通过使用 #1 和 #2，它们可以让你创建“微型脚本”或者“小命令”。</li>
+</ol>
+</blockquote>
+<p>python中你可以使用<code>def</code>新建函数。我将让你创建四个不同的函数，它们工作起来和你的脚本一样。然后我会演示给你各个函数之间的关系。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># this one is like your scripts with argv</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_two</span><span class="params">(*args)</span>:</span></span><br><span class="line">    arg1, arg2 = args</span><br><span class="line">    <span class="keyword">print</span> <span class="string">"arg1: %r, arg2: %r"</span> % (arg1, arg2)</span><br><span class="line"></span><br><span class="line"><span class="comment"># ok, that *args is actually pointless, we can just do this</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_two_again</span><span class="params">(arg1, arg2)</span>:</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"arg1: %r, arg2: %r"</span> % (arg1, arg2)</span><br><span class="line"></span><br><span class="line"><span class="comment"># this just takes one argument</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_one</span><span class="params">(arg1)</span>:</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"arg1: %r"</span> % arg1</span><br><span class="line"></span><br><span class="line"><span class="comment"># this one takes no arguments</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_none</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"I got nothin'."</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print_two(<span class="string">"Zed"</span>,<span class="string">"Shaw"</span>)</span><br><span class="line">print_two_again(<span class="string">"Zed"</span>,<span class="string">"Shaw"</span>)</span><br><span class="line">print_one(<span class="string">"First!"</span>)</span><br><span class="line">print_none()</span><br></pre></td></tr></table></figure></p>
+<p>让我们把地一个函数<code>print_two</code>分解一下，这个函数和你写脚本的方式差不多，因此你看上去应该会觉着比较眼熟：</p>
+<blockquote>
+<p>1.首先我们告诉Python创建一个函数，我们使用到的命令是<code>def</code>，也就是“定义(define)”的意思。</p>
+<ol>
+<li>紧接着def的是函数的名称。本例中它的名称是<code>print_two</code>，但名字可以随便取，就叫<code>peanuts</code>也没关系。但函数名最好能够体现出函数的功能来。</li>
+<li>然后我们告诉函数我们需要<code>*args</code>，这和脚本的<code>argv</code>非常相似，参数必须放在圆括号 () 中才能正常工作。</li>
+<li>接着我们用冒号<code>:</code>结束本行，然后开始下一行缩进。</li>
+<li>冒号以下，使用4个空格缩进的行都是属于<code>print_two</code>这个函数的内容。 其中第一行的作用是将参数解包，这和脚本参数解包的原理差不多。</li>
+<li>为了演示它的工作原理，我们把解包后的每个参数都打印出来，这和我们在之前脚本练习中所作的类似。</li>
+</ol>
+</blockquote>
+<p>函数<code>print_two</code>的问题是：它并不是创建函数最简单的方法。在 Python 函数中我们可以跳过整个参数解包的过程，直接使用<code>()</code>里边的名称作为变量名。这就是<code>print_two_again</code>实现的功能。</p>
+<p>接下来的例子是<code>print_one</code>，它向你演示了函数如何接受单个参数。</p>
+<p>最后一个例子是<code>print_none</code>，它向你演示了函数可以不接收任何参数。</p>
+<blockquote>
+<p><strong>Warning:</strong><br>如果你不太能看懂上面的内容也别气馁。后面我们还有更多的练习向你展示如何创建和使用函数。现在你只要把函数理解成“迷你脚本”就可以了。</p>
+</blockquote>
+<h2 id="你看到的结果"><a href="#你看到的结果" class="headerlink" title="你看到的结果"></a>你看到的结果</h2><p>运行上面的脚本会看到如下结果:</p>
+<pre><code>$ python ex18.py
+arg1: &apos;Zed&apos;, arg2: &apos;Shaw&apos;
+arg1: &apos;Zed&apos;, arg2: &apos;Shaw&apos;
+arg1: &apos;First!&apos;
+I got nothin&apos;.
+$
+</code></pre><p>你应该已经看出函数是怎样工作的了。注意到函数的用法和你以前见过的 <code>exists</code>、<code>open</code>，以及别的“命令”有点类似了吧？其实我只是为了让你容易理解才叫它们“命令”，它们的本质其实就是函数。也就是说，你也可以在自己的脚本中创建你自己的“命令”。</p>
+<h2 id="附加题"><a href="#附加题" class="headerlink" title="附加题"></a>附加题</h2><p>为自己写一个<code>函数注意事项</code>以供后续参考。你可以写在一个索引卡片上随时阅读，直到你记住所有的要点为止。注意事项如下：</p>
+<blockquote>
+<ol>
+<li>函数定义是以 <code>def</code> 开始的吗？</li>
+<li>函数名称是以字符和下划线 <code>_</code>组成的吗？</li>
+<li>函数名称是不是紧跟着括号 <code>(</code> ？</li>
+<li>括号里是否包含参数？多个参数是否以逗号隔开？</li>
+<li>参数名称是否有重复？（不能使用重复的参数名）</li>
+<li>紧跟着参数的是不是括号和冒号 <code>):</code> ？</li>
+<li>紧跟着函数定义的代码是否使用了 4 个空格的缩进 (indent)？</li>
+<li>函数结束的位置是否取消了缩进 (“dedent”)？</li>
+</ol>
+</blockquote>
+<p>当你运行（或者说“使用use”或“调用call”）一个函数时，记得检查下面的点：</p>
+<blockquote>
+<ol>
+<li>调运函数时是否使用了函数的名称？</li>
+<li>函数名称是否紧跟着 <code>(</code>？</li>
+<li>括号后有无参数？多个参数是否以逗号隔开？</li>
+<li>函数是否以 <code>)</code> 结尾？</li>
+</ol>
+</blockquote>
+<p>按照这两份检查表里的内容检查你的代码，直到你不需要检查表为止。</p>
+<p>最后，将下面这句话阅读几遍：</p>
+<pre><code>‘运行函数(run)’、‘调用函数(call)’、和‘使用函数(use)’是同一个意思
+</code></pre><h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="Q-什么字符允许用在函数名上？"><a href="#Q-什么字符允许用在函数名上？" class="headerlink" title="Q:什么字符允许用在函数名上？"></a>Q:什么字符允许用在函数名上？</h3><blockquote>
+<p>和变量命名规则相同。不能以数字开头，并且只能包含字母数字和下划线。</p>
+</blockquote>
+<h3 id="Q-args-中的星号-是干嘛的？"><a href="#Q-args-中的星号-是干嘛的？" class="headerlink" title="Q:*args 中的星号*是干嘛的？"></a>Q:<code>*args</code> 中的星号<code>*</code>是干嘛的？</h3><blockquote>
+<p>它告诉python把函数的所有参数组织一个列表放在<code>args</code>里。类似你之前用过的<code>argv</code>，只不过<code>*args</code>是用在函数里的，</p>
+</blockquote>
+<h3 id="Q-这个练习让我觉得枯燥"><a href="#Q-这个练习让我觉得枯燥" class="headerlink" title="Q: 这个练习让我觉得枯燥"></a>Q: 这个练习让我觉得枯燥</h3><blockquote>
+<p>这是好事，说明你在输入代码方面做的越来越好，而且也能很好的明白这些代码是做什么的，想让练习不那么枯燥，输入我让你练习的代码，然后故意出错，检查你的错误并修复它们。</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/11/23/learn-python-the-hard-way-exercise19/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          笨办法学Python--exercise19.函数和变量
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/11/22/learn-python-the-hard-way-exercise17/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">笨办法学Python--exercise17.更多文件操作</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="learn-python-the-hard-way-exercise18" data-title="笨办法学Python--exercise18.命名, 变量, 代码, 函数" data-url="http://coofee.me/2014/11/22/learn-python-the-hard-way-exercise18/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"flyouting"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 flyouting and shirley
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
