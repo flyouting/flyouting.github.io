@@ -79,7 +79,7 @@
 						<li>Links</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -207,6 +207,58 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-test" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/25/test/" class="article-date">
+  	<time datetime="2016-04-25T15:11:15.000Z" itemprop="datePublished">2016-04-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/25/test/">test</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-learn-python-the-hard-way-appendix-a-next" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -1190,162 +1242,6 @@ C:\Users\zed\temp\i\like
 <li>删除目录<code>i/like/icecream</code>再自己创建几个目录，在你新创建的目录间进行切换。</li>
 <li>给自己解释下<code>pushd</code> 和 <code>popd</code>命令的输出。注意下，它是如何像一个堆栈一样工作的。</li>
 <li>你已经知道这些, 但请记住<code>mkdir -p</code> 将会创建整个路径，即使其中的目录都不存在。这是我在这节练习中首先要做的事情。</li>
-</ul>
-</blockquote>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/Python/">Python</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-learn-python-the-hard-way-appendix-a-ex7" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/12/06/learn-python-the-hard-way-appendix-a-ex7/" class="article-date">
-  	<time datetime="2014-12-06T04:46:43.000Z" itemprop="datePublished">2014-12-06</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/06/learn-python-the-hard-way-appendix-a-ex7/">笨办法学Python--附录A-练习7：删除路径 (rmdir)</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这节练习中，你将学习如何删除一个空目录。</p>
-<h2 id="做到这些"><a href="#做到这些" class="headerlink" title="做到这些"></a>做到这些</h2><h3 id="Linux-OSX"><a href="#Linux-OSX" class="headerlink" title="Linux/OSX"></a>Linux/OSX</h3><pre><code>$ cd temp
-$ ls
-stuff
-$ cd stuff/things/frank/joe/alex/john/
-$ cd ..
-$ rmdir john
-$ cd ..
-$ rmdir alex
-$ cd ..
-$ ls
-joe
-$ rmdir joe
-$ cd ..
-$ ls
-frank
-$ rmdir frank
-$ cd ..
-$ ls
-things
-$ rmdir things
-$ cd ..
-$ ls
-stuff
-$ rmdir stuff
-$ pwd
-~/temp
-$
-</code></pre><blockquote>
-<p><strong>Warning:</strong><br>如果你在Mac OSX上尝试执行rmdir命令，即使你确认这个目录是空的，但是计算机仍拒绝删除该目录，那么实际上应该是有一个名为<code>.DS_Store</code>的文件。这种情况下，你可以输入 <code>rm -rf &lt;dir&gt;</code> 来执行删除操作(将 <code>&lt;dir&gt;</code> 替换为你要删除的目录名)。</p>
-</blockquote>
-<h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><pre><code>&gt; cd temp
-&gt; ls
-
-
-    Directory: C:\Users\zed\temp
-
-
-Mode                LastWriteTime     Length Name
-----                -------------     ------ ----
-d----        12/17/2011   9:03 AM            stuff
-
-
-&gt; cd stuff/things/frank/joe/alex/john/
-&gt; cd ..
-&gt; rmdir john
-&gt; cd ..
-&gt; rmdir alex
-&gt; cd ..
-&gt; rmdir joe
-&gt; cd ..
-&gt; rmdir frank
-&gt; cd ..
-&gt; ls
-
-
-    Directory: C:\Users\zed\temp\stuff
-
-
-Mode                LastWriteTime     Length Name
-----                -------------     ------ ----
-d----        12/17/2011   9:14 AM            things
-
-
-&gt; rmdir things
-&gt; cd ..
-&gt; ls
-
-
-    Directory: C:\Users\zed\temp
-
-
-Mode                LastWriteTime     Length Name
-----                -------------     ------ ----
-d----        12/17/2011   9:14 AM            stuff
-
-
-&gt; rmdir stuff
-&gt; pwd
-
-Path
-----
-C:\Users\zed\temp
-
-
-&gt; cd ..
-&gt;
-</code></pre><h2 id="你应该学到的"><a href="#你应该学到的" class="headerlink" title="你应该学到的"></a>你应该学到的</h2><p>现在我把这些命令混合起来了，所以你需要加倍注意，并确保你输入了正确的命令。每次你犯一个错误，都是因为你没有仔细看。如果你发现自己犯了不少错误，那么休息以下，或者退出练习一天。你总是需要明天再试一次的。</p>
-<p>这个例子中，你学习了如何删除一个目录。很简单，你只需要在该目录的上一级目录，输入<code>rmdir &lt;dir&gt;</code>, 把<code>&lt;dir&gt;</code> 替换成你要删除的目录名。</p>
-<h2 id="更多练习"><a href="#更多练习" class="headerlink" title="更多练习"></a>更多练习</h2><blockquote>
-<ul>
-<li>创建20个以上的目标，再把他们都删除。</li>
-<li>创建一个深度为10的单一路径的目录，然后每次删除其中的一个。</li>
-<li>如果你尝试删除一个不为空的目录，你会得到一个错误。在后面的练习中我会告诉你如何删除这样的目录。</li>
 </ul>
 </blockquote>
 
