@@ -208,113 +208,6 @@
 
       <div class="body-wrap">
   
-    <article id="post-learn-python-the-hard-way-exercise3" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/11/18/learn-python-the-hard-way-exercise3/" class="article-date">
-  	<time datetime="2014-11-18T14:55:54.000Z" itemprop="datePublished">2014-11-18</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/11/18/learn-python-the-hard-way-exercise3/">笨办法学Python--exercise3.数字和数学计算</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>每一种编程语言都包含处理数字和进行数学计算的方法。不必担心，程序员经常撒谎说他们是多么牛的数学天才，其实他们根本不是。如果他们真是数学天才，他们早就去从事数学相关的行业了，而不是写写广告程序和社交网络游戏。</p>
-<p>这节练习里有很多的数学运算符号。我们来看一遍它们都叫什么名字。你要一边写一边念出它们的名字来，直到你念烦了为止。名字如下：</p>
-<blockquote>
-<ul>
-<li>+ plus 加号 </li>
-<li>- minus 减号</li>
-<li>/ slash 斜杠 除法</li>
-<li>* asterisk 星号 乘法</li>
-<li>% percent 百分号 模除</li>
-<li>&lt; less-than 小于号</li>
-<li>> greater-than 大于号</li>
-<li>&lt;= less-than-equal 小于等于号</li>
-<li>>= greater-than-equal 大于等于号</li>
-</ul>
-</blockquote>
-<p>有没有注意到以上只是些符号，没有运算操作呢？写完下面的练习代码后，再回到上面的列表，写出每个符号的作用。例如<code>+</code>是用来做加法运算的。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span> <span class="string">"I will now count my chickens:"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">"Hens"</span>, <span class="number">25</span> + <span class="number">30</span> / <span class="number">6</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">"Roosters"</span>, <span class="number">100</span> - <span class="number">25</span> * <span class="number">3</span> % <span class="number">4</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">"Now I will count the eggs:"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="number">3</span> + <span class="number">2</span> + <span class="number">1</span> - <span class="number">5</span> + <span class="number">4</span> % <span class="number">2</span> - <span class="number">1</span> / <span class="number">4</span> + <span class="number">6</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">"Is it true that 3 + 2 &lt; 5 - 7?"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="number">3</span> + <span class="number">2</span> &lt; <span class="number">5</span> - <span class="number">7</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">"What is 3 + 2?"</span>, <span class="number">3</span> + <span class="number">2</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">"What is 5 - 7?"</span>, <span class="number">5</span> - <span class="number">7</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">"Oh, that's why it's False."</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">"How about some more."</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">"Is it greater?"</span>, <span class="number">5</span> &gt; <span class="number">-2</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">"Is it greater or equal?"</span>, <span class="number">5</span> &gt;= <span class="number">-2</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">"Is it less or equal?"</span>, <span class="number">5</span> &lt;= <span class="number">-2</span></span><br></pre></td></tr></table></figure>
-<h2 id="你看到的结果"><a href="#你看到的结果" class="headerlink" title="你看到的结果"></a>你看到的结果</h2><pre><code>$ python ex3.py
-I will now count my chickens:
-Hens 30
-Roosters 97
-Now I will count the eggs:
-7
-Is it true that 3 + 2 &lt; 5 - 7?
-False
-What is 3 + 2? 5
-What is 5 - 7? -2
-Oh, that&apos;s why it&apos;s False.
-How about some more.
-Is it greater? True
-Is it greater or equal? True
-Is it less or equal? False
-</code></pre><h2 id="附加题"><a href="#附加题" class="headerlink" title="附加题"></a>附加题</h2><blockquote>
-<p>1.使用<code>#</code>在代码每一行的前一行为自己写一个注释，说明这一行的作用。<br>2.记得<code>练习 0</code>的内容吧？用里边的方法把<code>Python</code>运行起来，然后使用刚才学到的运算符号，把Python当做计算器玩玩。<br>3.自己找个需要计算的东西，写一个 <code>.py</code> 文件把它计算出来。<br>4.有没有发现有些计算结果是”错”的呢？计算结果只有整数，没有小数部分。研究一下这是为什么，搜索一下“浮点数(floating point number)” 是什么东西。<br>5.使用浮点数重写一遍<code>ex3.py</code>，让它的计算结果更准确(提示: 20.0 是一个浮点数)。</p>
-</blockquote>
-<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="Q-为什么-表示模除而不是“百分号”？"><a href="#Q-为什么-表示模除而不是“百分号”？" class="headerlink" title="Q: 为什么%表示模除而不是“百分号”？"></a>Q: 为什么<code>%</code>表示模除而不是“百分号”？</h3><blockquote>
-<p>这个问题的答案正好就是问什么大部分程序员选择用这个运算符。平时我们把它看做一个“百分号”。在编程计算中，通常把它和<code>/</code>一样当做除法的运算符。<code>%</code>是一个不同的运算，只是用<code>%</code>符号来表示。</p>
-</blockquote>
-<h3 id="Q-如何运算的？"><a href="#Q-如何运算的？" class="headerlink" title="Q: %如何运算的？"></a>Q: <code>%</code>如何运算的？</h3><blockquote>
-<p>另一种说法是, “X除以Y余J.” 比如, “100 除以16余数为4.” <code>%</code> 计算的结果就是这个余数。</p>
-</blockquote>
-<h3 id="Q-运算符的顺序是怎样的？"><a href="#Q-运算符的顺序是怎样的？" class="headerlink" title="Q: 运算符的顺序是怎样的？"></a>Q: 运算符的顺序是怎样的？</h3><blockquote>
-<p>在美国我们用一个括弧来指定加减乘除的顺序。Python中也同样遵循这个规律。</p>
-</blockquote>
-<h3 id="Q-是如何运算的？"><a href="#Q-是如何运算的？" class="headerlink" title="Q: /是如何运算的？"></a>Q: <code>/</code>是如何运算的？</h3><blockquote>
-<p>它只是舍去了小数点后面的部分，比较一下<code>7.0 / 4.0</code>和 <code>7 / 4</code>,你就会明白其中的不同了。</p>
-</blockquote>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/Python/">Python</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
     <article id="post-learn-python-the-hard-way-exercise2" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1239,6 +1132,81 @@ SyntaxError: EOL while scanning string literal
       
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/笔记/">笔记</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-markdownpad2-key" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/05/markdownpad2-key/" class="article-date">
+  	<time datetime="2014-11-04T17:21:49.000Z" itemprop="datePublished">2014-11-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/05/markdownpad2-key/">分享一个markdownpad2的授权key</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>无意间翻到一个MarkdownPad2 的授权，win平台上一直用这个编辑器。分享一下</p>
+<p>MarkdownPad 是 Windows 平台上一个功能完善的 Markdown 编辑器。</p>
+<h1 id="专为-Markdown-打造"><a href="#专为-Markdown-打造" class="headerlink" title="专为 Markdown 打造"></a>专为 Markdown 打造</h1><p>提供了语法高亮和方便的快捷键功能，给您最好的 Markdown 编写体验。</p>
+<p>来试一下：</p>
+<p>粗体 (Ctrl+B) and 斜体 (Ctrl+I)<br>引用 (Ctrl+Q)<br>代码块 (Ctrl+K)<br>标题 1, 2, 3 (Ctrl+1, Ctrl+2, Ctrl+3)<br>列表 (Ctrl+U and Ctrl+Shift+O)<br>实时预览，所见即所得</p>
+<p>无需猜测您的 语法 是否正确；每当您敲击键盘，实时预览功能都会立刻准确呈现出文档的显示效果。</p>
+<h1 id="自由定制"><a href="#自由定制" class="headerlink" title="自由定制"></a>自由定制</h1><p>100% 可自定义的字体、配色、布局和样式，让您可以将 MarkdownPad 配置的得心应手。</p>
+<p>为高级用户而设计的稳定的 Markdown 编辑器</p>
+<p>MarkdownPad 支持多种 Markdown 解析引擎，包括 标准 Markdown 、 Markdown 扩展 (包括表格支持) 以及 GitHub 风格 Markdown 。</p>
+<p>有了标签式多文档界面、PDF 导出、内置的图片上传工具、会话管理、拼写检查、自动保存、语法高亮以及内置的 CSS 管理器，您可以随心所欲地使用 MarkdownPad。</p>
+<h2 id="注册信息"><a href="#注册信息" class="headerlink" title="注册信息"></a>注册信息</h2><p>邮箱地址：</p>
+<p>Soar360@live.com</p>
+<p>授权秘钥：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GBPduHjWfJU1mZqcPM3BikjYKF6xKhlKIys3i1MU2eJHqWGImDHzWdD6xhMNLGVpbP2M5SN6bnxn2kSE8qHqNY5QaaRxmO3YSMHxlv2EYpjdwLcPwfeTG7kUdnhKE0vVy4RidP6Y2wZ0q74f47fzsZo45JE2hfQBFi2O9Jldjp1mW8HUpTtLA2a5/sQytXJUQl/QKO0jUQY4pa5CCx20sV1ClOTZtAGngSOJtIOFXK599sBr5aIEFyH0K7H4BoNMiiDMnxt1rD8Vb/ikJdhGMMQr0R4B+L3nWU97eaVPTRKfWGDE8/eAgKzpGwrQQoDh+nzX1xoVQ8NAuH+s4UcSeQ==</span><br></pre></td></tr></table></figure>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>不知道为何，MarkdownPad 2 的注册私钥泄密了，按照这个逻辑，是可以做成一个注册机的。附送私钥如下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">-----BEGIN RSA PRIVATE KEY-----</span><br><span class="line">Proc-Type: 4,ENCRYPTED</span><br><span class="line">DEK-Info: DES-EDE3-CBC,CCE015B0820B9A3F</span><br><span class="line"> </span><br><span class="line">4BiGKVEzt+cLBdilEZR+8Y0YHrarjNX4bT5XbQ5BgTcJwMYnARCKib+BgwX9wPUB</span><br><span class="line">3D7PUwt4m4OGemXXcC4ELUFyMqHIT6SILFSdTTIvnQbsWutx44zyJK9SlP/2uhG8</span><br><span class="line">JIUDdLWVv5kS8J/UcInC5bomKZ5SX3+0ziRpLWkgXoHJ5gjQ+fDNzAKLcNn7Bubq</span><br><span class="line">znjoSH8XuGnORp7d4FiRT5Vl9WpnBqyyFSkYwzDOK//iFgHyhYZ5BCInfQMX66Cj</span><br><span class="line">wk3Pax/ujSDzYalkkJe8o8VAcEisMoYhSTS9BnRpROn6V4UyAugWMPnEOgiBmO42</span><br><span class="line">HwLoqK7WXCe+wS1UiDnECU2wIU5Z8qL5oKEKFGukakK+mYXh8MHTkYq2ZQZBo8Vy</span><br><span class="line">venhBaolrViCWdkJ5MsuqarBJjyCeAS38GAJURxsKnd+Bp7gGAlNI/0OWIcrjIi4</span><br><span class="line">4o/0CaYRHR+PdeuJup5rUKPgGfMW0iOwmMncSM19hIiaU4/hHGYeXrL1aKfZX4ML</span><br><span class="line">YxWJ/i6u8U3gcJo/bOvjirxUZOLTfv3n5aDTcxU70ejgmmYLBaxKt32Ib9oLwnL8</span><br><span class="line">AUnWNRPZaNJ/X853ybsGu73vA/6HPw63g0EaNharg21Q1IhuggMvHJiN6Z9d4KGg</span><br><span class="line">Vio6++15SVcsyQEGZx+jjv95IEfgwUQXBmkNRZ/KJQQLkKuOuXuvakI5sWdNJLRo</span><br><span class="line">xY9W2lHMnY/Yi82V4P5odxFZOmAYK5DHCQ47gw9IzqGjCyxATAYgkoZR+PCP5y9n</span><br><span class="line">IZ8oRYbNpykXVvQC0JALgixIZaAjj30wXb1CcD3layQNkrp0O4qVzuqyT7e2aKEq</span><br><span class="line">XNeoB0uDNvn10L60QAOG5630uIIFRyXphZgrzScp97ABq7STQ7t4zTZhbmiwnPHq</span><br><span class="line">8xft+mO2rW3puYEHoEkQKwJcPUTpR/s67IIXQMs1y93WpJoOw7doumyNtAoR8EfK</span><br><span class="line">m/H4UoJhoiXL755n4CGnET+LEtuFO/0UwdWxj+u503ovWL021DAnKhrGPMpo73ga</span><br><span class="line">aL/OBSFSFyxY92qGqfMWNQOaoK5hCRhzp/8Pd+B1tjhnxUNOl1ulytmhJBigU5nV</span><br><span class="line">arkgJYmG+Ox15f1YWxmD1EhLOQLUgBruG04cjRnG4LXV+UBKRdcS3bECArFutlTw</span><br><span class="line">6ogbi8cbDJNBbGpnlfIbEgGEe423rCTuoLJcIZfIDvPDsMobd9lCgn2o95N3Ey4U</span><br><span class="line">+UT1PEDEhXW0nggdvZGy8y4T0ZIJ6Tn4asWHTsqH1fQYEz3H51pMehfCbxbc6Bbh</span><br><span class="line">nuNyrjv0NSNJvOAn71tFPRf6vgO83h5EFS0ov5ASbWchuf7BFpebmOO04aVMXPBe</span><br><span class="line">3nfE1L5in5ApK7AyhfdSPpELCxBUQ0av4k/0yw/P2TRllybgjdoXjlsJqBn7rkqr</span><br><span class="line">4u1H7pytlEWt0mSgZenlGXrOOEaknUe40z9BHNxliA7ET1MQk6veFVfbSFjeVUDk</span><br><span class="line">fsFAVE88/KHyMMfGwwcuLdnQnOBHNJ8iJjJF+RZy93QzveZB22+m5cl9SNXIMcEA</span><br><span class="line">mOm4Q8CaLwwzZmF9NKV2CjlmUTqOszJv5abS5YdrPavAR6QxGjZfya3nA2ASd6HN</span><br><span class="line">-----END RSA PRIVATE KEY-----</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/key/">key</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/其他/">其他</a>
 	</div>
 
 
