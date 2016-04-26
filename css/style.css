@@ -242,6 +242,7 @@ a {
   -ms-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
   height: 100%;
+  overflow: scroll;
 }
 #container .left-col .overlay {
   width: 100%;
@@ -687,11 +688,11 @@ a {
   left: 0;
 }
 #header .switch-part2 {
-  left: 100%;
-  top: 20px;
-  overlay-x: hidden;
-  overflow-y: auto;
-  max-height: 200px;
+  top: 220px;
+/*left: 100%;
+		overlay-x: hidden;
+		overflow-y: auto;
+		max-height: 200px;*/
 }
 #header .switch-part3 {
   left: 200%;
